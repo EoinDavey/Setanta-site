@@ -38,6 +38,7 @@ These are some ideas that might be taken forward into the project.
 - Non technicality. As the language is not English, there is no value in over saturating the user with technical words for things like programs, strings, floats, functions etc. These could be replaced with familiar concepts like stories, words, actions, characters etc.
 
 - LOGO/Scratch like visual elements: As the domain of the language is education, it would benefit greatly from a visual interface, a canvas where the user can draw pictures or make animations. This could be done in many ways including using the turtle graphics approach of LOGO, the more scratch like approach of using sprites and movement, or using programmable virtual robots.
+    - Possibility to enable easier drawing of celtic knots / symbols
 
 - Story telling: Irish has a great history of storytelling, both written and oral. Example programs can be written to play a "game" where the user plays through a historical Irish tale. e.g. Oisín and Tír na nÓg, Diarmuid and Gráinne etc.
 
