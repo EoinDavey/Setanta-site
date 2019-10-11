@@ -2,6 +2,6 @@
 
 Dictionary of terms used in the project.
 
-------- -------
- Stage   Árdan
-------- -------
+------- ---------
+ Stage   Stáitse
+------- ---------
