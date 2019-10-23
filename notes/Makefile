@@ -2,12 +2,13 @@
 
 .PHONY: clean
 
-MDFILES := $(wildcard *.md)
+MDFILES := $(wildcard src/*.md)
+TGTFILES := $(MDFILES:src/%.md=out/%.pdf)
 
-.md.pdf:
-	pandoc -f markdown -t latex -o $*.pdf $*.md
+default: $(TGTFILES)
 
-default: $(MDFILES:.md=.pdf)
+$(TGTFILES): out/%.pdf : src/%.md ;
+	pandoc -f markdown -t latex -o $@ src/$*.md
 
 clean:
-	${RM} *.pdf
+	${RM} ${TGTFILES}
