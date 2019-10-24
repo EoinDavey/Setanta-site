@@ -1,0 +1,17 @@
+{
+  "name": "fyp",
+  "description": "Final year project",
+  "dependencies": {
+    "@polymer/decorators": "^3.0.0",
+    "@polymer/polymer": "^3.0.0",
+    "@types/codemirror": "0.0.79",
+    "codemirror": "^5.49.2"
+  },
+  "devDependencies": {
+    "@polymer/test-fixture": "^4.0.2",
+    "@webcomponents/webcomponentsjs": "^2.0.0",
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4",
+    "wct-mocha": "^1.0.1"
+  }
+}

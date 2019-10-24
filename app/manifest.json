@@ -1,0 +1,7 @@
+{
+  "name": "fyp",
+  "short_name": "fyp",
+  "description": "Final year project",
+  "start_url": "/",
+  "display": "standalone"
+}
