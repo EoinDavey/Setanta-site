@@ -3,9 +3,9 @@
   "description": "Final year project",
   "dependencies": {
     "@polymer/decorators": "^3.0.0",
-    "@polymer/polymer": "^3.0.0",
     "@types/codemirror": "0.0.79",
-    "codemirror": "^5.49.2"
+    "codemirror": "^5.49.2",
+    "lit-element": "^2.2.1"
   },
   "devDependencies": {
     "@polymer/test-fixture": "^4.0.2",

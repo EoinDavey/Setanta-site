@@ -8,7 +8,7 @@ For the front-end of this project I intend to use the following web technologies
 
 ### Polymer: [*https://www.polymer-project.org*](https://www.polymer-project.org).
 
-The polymer project is a platform for developing web components and building web apps using web components. I have some experience using Polymer as I used this to develop a dashboard during my time in Google Zürich. I will be using Polymer version 3.0
+The polymer project is a platform for developing web components and building web apps using web components. I have some experience using Polymer as I used this to develop a dashboard during my time in Google Zürich. I will be using the LitElement library from the Polymer project.
 
 ### TypeScript.
 
