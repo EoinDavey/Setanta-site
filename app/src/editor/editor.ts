@@ -15,8 +15,14 @@ export class FYPEditor extends LitElement {
         <style>
             @import url(node_modules/codemirror/lib/codemirror.css);
             @import url(node_modules/codemirror/theme/solarized.css);
+            .CodeMirror {
+                height: 100%;
+            }
         </style>
-        <textarea id='editor'>console.log('Hello World!');</textarea>
+        <textarea id='editor'>const main = async () => {
+    write('Hello World!');
+}
+main();</textarea>
     `;
     }
 
@@ -26,7 +32,17 @@ export class FYPEditor extends LitElement {
             this.editor = CodeMirror.fromTextArea(tx, {
                 mode: "javascript",
                 lineNumbers: true,
+                indentUnit: 4,
             })
+            this.editor.setOption("extraKeys", {
+                "Ctrl-Enter": cm => {
+                    console.log('fyp-run');
+                    this.dispatchEvent(new CustomEvent('fyp-run', {
+                        bubbles: true,
+                        composed: true,
+                    }));
+                },
+            });
         };
     }
 }

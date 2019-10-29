@@ -1,8 +1,12 @@
 {
-  "npm": true,
-  "lint": {
-    "rules": [
-      "polymer-3"
-    ]
-  }
+    "sources" : [
+        "jsbuild/**",
+        "package.json"
+    ],
+    "npm": true,
+    "lint": {
+        "rules": [
+            "polymer-3"
+        ]
+    }
 }
