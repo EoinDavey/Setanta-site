@@ -4,4 +4,5 @@ Dictionary of terms used in the project.
 
 ------- ---------
  Stage   Stáitse
+ Step    Céim
 ------- ---------
