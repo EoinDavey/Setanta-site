@@ -11,8 +11,11 @@ class PosMap {
         this.map.get(posString)!.add(val);
     }
 
-    get(pos : Pos) : Set<Agent> | undefined {
-        return this.map.get(JSON.stringify(pos));
+    get(pos : Pos) : Set<Agent> {
+        const a = this.map.get(JSON.stringify(pos));
+        if(!a)
+            return new Set();
+        return a;
     }
 
     has(pos : Pos, val : Agent) : boolean {

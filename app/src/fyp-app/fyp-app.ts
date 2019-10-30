@@ -9,6 +9,9 @@ import * as G from '../engine/engine';
 class FypApp extends LitElement {
     @property({type: String}) title = "Final Year Project";
 
+
+    activeCancel : Function | null = null;
+
     static get styles() {
         return css`
             #container {
@@ -49,6 +52,7 @@ class FypApp extends LitElement {
         </style>
         <h1>${this.title}</h1>
         <button @click="${this.runCode}">Run Code</button>
+        <button @click="${this.stopCode}">Stop Code</button>
         <div id='container'>
             <canvas id='stage' width="1000" height="750"></canvas>
             <fyp-editor id="editor" @fyp-run="${this.runCode}"></fyp-editor>
@@ -65,8 +69,15 @@ class FypApp extends LitElement {
         this.stage.width = Math.floor(fac * (cw/ch));
     }
 
+    stopCode(e : Event){
+        if(this.activeCancel)
+            this.activeCancel();
+    }
+
     async runCode(e : Event) : Promise<void> {
         this.fixCanvas();
+        if(this.activeCancel)
+            return;
         const ctx = this.stage.getContext('2d');
         if(ctx == null)
             throw "Canvas not supported";
@@ -81,6 +92,7 @@ class FypApp extends LitElement {
         const execution = new Promise(resolve => {
             let halt = false;
             const finish = ()=> { halt = true; resolve(true); };
+            this.activeCancel = finish;
             const loop = async (times : number, gap : number, func : Function) => {
                 for(let i = 0; i < times && !halt; i++){
                     await func();
@@ -101,6 +113,7 @@ class FypApp extends LitElement {
         console.log('finished');
         clearInterval(ival);
         display.draw(ctx);
+        this.activeCancel = null;
     }
 
     get stage() : HTMLCanvasElement {
