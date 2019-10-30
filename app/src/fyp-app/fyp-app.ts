@@ -1,8 +1,9 @@
 import { TemplateResult, css, LitElement, html, property, customElement } from 'lit-element';
 import '../editor/editor';
-import { FYPEditor } from '../editor/editor';
 import '../console/console';
+import { FYPEditor } from '../editor/editor';
 import { FYPConsole } from '../console/console';
+import * as G from '../engine/engine';
 
 @customElement('fyp-app')
 class FypApp extends LitElement {
@@ -63,16 +64,34 @@ class FypApp extends LitElement {
         this.stage.height = 1000 * (ch/cw);
     }
 
-    async runCode(e : Event) : Promise<boolean> {
+    async runCode(e : Event) : Promise<void> {
         this.fixCanvas();
-        const finalise = ";finish();"
-        const c = this.editor.content + finalise;
-        return new Promise(resolve => {
-            const write = (msg : string) => this.console.writeOut(msg);
+        const ctx = this.stage.getContext('2d');
+        if(ctx == null)
+            throw "Canvas not supported";
+
+        const c = this.editor.content;
+        const display = new G.DisplayEngine(this.stage.width, this.stage.height);
+
+        const ival = setInterval(() => display.draw(ctx), 10);
+
+        const write = (msg : string) => this.console.writeOut(msg);
+        const sleep = (time : number) => new Promise(resolve => setTimeout(resolve, time));
+        const loop = async (times : number, gap : number, func : Function) => {
+            for(let i = 0; i < times; i++){
+                await func();
+                await sleep(gap);
+            }
+        };
+
+        const execution = new Promise(resolve => {
             const finish = ()=> resolve(true);
-            const ctx = this.stage.getContext('2d');
             eval(c);
         });
+
+        const res = await execution;
+        console.log('finished');
+        clearInterval(ival);
     }
 
     get stage() : HTMLCanvasElement {

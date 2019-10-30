@@ -19,10 +19,22 @@ export class FYPEditor extends LitElement {
                 height: 100%;
             }
         </style>
-        <textarea id='editor'>const main = async () => {
-    write('Hello World!');
+        <textarea id='editor'>
+async function main() {
+    const g = new G.GridStage();
+    display.setStage(g);
+    const ag = g.newAgent(0, 0, "red");
+    await loop(10, 30, () => ag.moveRight());
 }
-main();</textarea>
+
+// BOILERPLATE
+(async ()=> {
+    const minTime = new Promise(resolve => setTimeout(resolve, 100));
+    await Promise.all([minTime, main()]);
+    write('finished');
+    finish();
+})();
+</textarea>
     `;
     }
 
