@@ -25,3 +25,9 @@ The user could define the following steps
 1. Setup variables, functions, agents, custom step behaviours.
 2. Attach all starting agents to the stage
 3. **Execute** the stage, starting it's step loop.
+
+## Asynchronous execution
+
+Using the javascript task queue we can implement "simultaneous" execution of multiple agents. The execution will be actually single threaded, only one thing happening at any given moment, but the constructs we use for loops and statements will hide preemptability, meaning we can jump between concurrent tasks.
+
+There needs to be a construct to "launch" the asynchronous tasks. A semantic possibility is an event driven approach. A syntactic approach might be something akin to go's `go` keyword. The use of the `go` keyword would cause an asynchronous execution of the given function. This is effectively an inversion of the javascript `await` keyword, the await keyword is used to specify a synchronous execution, we require the opposite.

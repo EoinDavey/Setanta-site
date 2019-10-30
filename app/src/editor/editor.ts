@@ -20,16 +20,35 @@ export class FYPEditor extends LitElement {
             }
         </style>
         <textarea id='editor'>
+class GravAgent extends G.Agent {
+    async fall() {
+        await forever(30, () => {
+            if(!this.stage.blocked(this.posX, this.posY+1))
+                this.moveDown();
+        });
+    }
+}
+
 async function main() {
     const g = new G.GridStage();
     display.setStage(g);
-    const ag = g.newAgent(0, 0, "red");
-    await loop(10, 30, () => ag.moveRight());
+    
+    const szX = Math.floor(display.sizeX / g.agentSize);
+    const szY = Math.floor(display.sizeY / g.agentSize);
+    
+    const midX = Math.floor(szX / 2);
+    
+    for(let i = 0; i < szX; i++)
+    	g.attach(new G.Agent(i, szY - 1, "green"));
+    
+    const ag = new GravAgent(midX, 0, "red");
+    g.attach(ag);
+    ag.fall();
 }
 
 // BOILERPLATE
 (async ()=> {
-    const minTime = new Promise(resolve => setTimeout(resolve, 100));
+    const minTime = new Promise(resolve => setTimeout(resolve, 2000));
     await Promise.all([minTime, main()]);
     write('finished');
     finish();

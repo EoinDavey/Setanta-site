@@ -60,8 +60,9 @@ class FypApp extends LitElement {
     private fixCanvas() : void {
         const cw = this.stage.clientWidth;
         const ch = this.stage.clientHeight;
-        this.stage.width = 1000;
-        this.stage.height = 1000 * (ch/cw);
+        const fac = 750;
+        this.stage.height = fac;
+        this.stage.width = Math.floor(fac * (cw/ch));
     }
 
     async runCode(e : Event) : Promise<void> {
@@ -77,21 +78,29 @@ class FypApp extends LitElement {
 
         const write = (msg : string) => this.console.writeOut(msg);
         const sleep = (time : number) => new Promise(resolve => setTimeout(resolve, time));
-        const loop = async (times : number, gap : number, func : Function) => {
-            for(let i = 0; i < times; i++){
-                await func();
-                await sleep(gap);
-            }
-        };
-
         const execution = new Promise(resolve => {
-            const finish = ()=> resolve(true);
+            let halt = false;
+            const finish = ()=> { halt = true; resolve(true); };
+            const loop = async (times : number, gap : number, func : Function) => {
+                for(let i = 0; i < times && !halt; i++){
+                    await func();
+                    await sleep(gap);
+                }
+            };
+            const forever = async (gap : number, func : Function) => {
+                while(!halt){
+                    await func();
+                    await sleep(gap);
+                }
+            };
+
             eval(c);
         });
 
         const res = await execution;
         console.log('finished');
         clearInterval(ival);
+        display.draw(ctx);
     }
 
     get stage() : HTMLCanvasElement {

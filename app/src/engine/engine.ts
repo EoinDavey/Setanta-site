@@ -31,8 +31,8 @@ class PosMap {
     }
 }
 
-export abstract class Stage {
-    abstract draw(ctx : CanvasCtx) : void;
+interface Stage {
+    draw(ctx : CanvasCtx) : void;
 }
 
 export class DisplayEngine {
@@ -57,13 +57,12 @@ export class DisplayEngine {
     }
 }
 
-export class GridStage extends Stage {
+export class GridStage {
     readonly agentSize : number = 20;
     agents : Agent[] = [];
     agentMap = new PosMap();
 
     constructor(agentSize? : number){
-        super();
         if(agentSize)
             this.agentSize = agentSize;
     }
@@ -75,24 +74,23 @@ export class GridStage extends Stage {
         return mp.size > 0;
     }
 
-    updateAgent(oldPos : Pos, newPos : Pos, ag : Agent){
+    updateAgent(oldPos : Pos, newPos : Pos, ag : Agent) {
         if(this.agentMap.has(oldPos, ag))
             this.agentMap.remove(oldPos, ag);
         this.agentMap.add(newPos, ag);
     }
 
-    draw(ctx : CanvasCtx) : void {
+    draw(ctx : CanvasCtx) {
         for(let agent of this.agents){
             ctx.fillStyle = agent.fillStyle;
             ctx.fillRect(agent.posX * this.agentSize, agent.posY * this.agentSize, this.agentSize, this.agentSize);
         }
     }
 
-    newAgent(x : number, y : number, style : string) : Agent {
-        const ag = new Agent(x, y, style);
+    attach(ag : Agent) {
         this.agents.push(ag);
-        this.agentMap.add([x,y], ag);
-        return ag;
+        this.agentMap.add([ag.posX, ag.posY], ag);
+        ag.stage = this;
     }
 }
 
@@ -100,14 +98,14 @@ export class Agent {
     private _pos : Pos;
     fillStyle : string;
 
-    protected stage : GridStage | undefined;
+    stage : GridStage | undefined;
 
     constructor(posX : number, posY : number, fillStyle : string){
         this._pos = [posX, posY];
         this.fillStyle = fillStyle;
     }
 
-    handleUpdate(oldPos : Pos, newPos : Pos) : void {
+    handleUpdate(oldPos : Pos, newPos : Pos) {
         if(!(this.stage))
             return;
         this.stage.updateAgent(oldPos, newPos, this);
