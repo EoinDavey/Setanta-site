@@ -31,3 +31,7 @@ The user could define the following steps
 Using the javascript task queue we can implement "simultaneous" execution of multiple agents. The execution will be actually single threaded, only one thing happening at any given moment, but the constructs we use for loops and statements will hide preemptability, meaning we can jump between concurrent tasks.
 
 There needs to be a construct to "launch" the asynchronous tasks. A semantic possibility is an event driven approach. A syntactic approach might be something akin to go's `go` keyword. The use of the `go` keyword would cause an asynchronous execution of the given function. This is effectively an inversion of the javascript `await` keyword, the await keyword is used to specify a synchronous execution, we require the opposite.
+
+### Update 31/10/2019
+
+Experimenting with the asynchronous execution paradigm outlined above has been pretty positive. I've been successful in writing several demos in this style, including Game Of Life and Langtons Ant. It seems promising, More experimentation will tell whether it is the right approach to use.

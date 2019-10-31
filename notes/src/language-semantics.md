@@ -65,6 +65,10 @@ I think the cost-benefit balance of including some sort of concurrency primitive
 
 There is also a dichotomy between the Go runtime's use of *goroutines* and the single threaded world of javascript that I think would not be fun to try and wrangle.
 
+### Update 31/10/2019
+
+Prototyping semantics in JavaScript is showing that some sort of concurrency will be needed. It need not be multi-threaded however, so we will not need things like mutices.
+
 ## Meta-programming constructs
 
 My thoughts on meta-programming are almost exactly the same as the ones for concurrency primitives. I think that, while interesting, they are out of place in a beginner friendly language.
