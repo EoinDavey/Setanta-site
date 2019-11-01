@@ -60,11 +60,4 @@ async function main() {
             grid.attach(new ConwayAgent(i, j, Math.random() > 0.5));
     await grid.run();
 }
-
-// BOILERPLATE
-(async () => {
-    const minTime = new Promise(resolve => setTimeout(resolve, 2000));
-    await Promise.all([minTime, main()]);
-    write('finished');
-    finish();
-})();
+main();

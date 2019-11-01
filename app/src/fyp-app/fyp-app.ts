@@ -3,14 +3,13 @@ import '../editor/editor';
 import '../console/console';
 import { FYPEditor } from '../editor/editor';
 import { FYPConsole } from '../console/console';
-import * as G from '../engine/engine';
+import { ExecCtx, DisplayEngine } from '../engine/engine';
 
 @customElement('fyp-app')
 class FypApp extends LitElement {
     @property({type: String}) title = "Final Year Project";
 
-
-    activeCancel : Function | null = null;
+    activeCtx : ExecCtx | undefined = undefined;
 
     static get styles() {
         return css`
@@ -54,7 +53,7 @@ class FypApp extends LitElement {
         <button @click="${this.runCode}">Run Code</button>
         <button @click="${this.stopCode}">Stop Code</button>
         <div id='container'>
-            <canvas id='stage' width="1000" height="750"></canvas>
+            <canvas id='stage' width="1000" height="750" tabindex="0" @keydown="${this.handleKeyDown}"></canvas>
             <fyp-editor id="editor" @fyp-run="${this.runCode}"></fyp-editor>
             <fyp-console id="console"></fyp-console>
         </div>
@@ -70,50 +69,34 @@ class FypApp extends LitElement {
     }
 
     stopCode(e : Event){
-        if(this.activeCancel)
-            this.activeCancel();
+        if(this.activeCtx)
+            this.activeCtx.stop();
+    }
+
+    handleKeyDown(e : KeyboardEvent) {
+        if(this.activeCtx)
+            this.activeCtx.handleKeyDown(e);
     }
 
     async runCode(e : Event) : Promise<void> {
         this.fixCanvas();
-        if(this.activeCancel)
+        if(this.activeCtx && this.activeCtx.running())
             return;
         const ctx = this.stage.getContext('2d');
         if(ctx == null)
             throw "Canvas not supported";
 
-        const c = this.editor.content;
-        const display = new G.DisplayEngine(this.stage.width, this.stage.height);
+        const prog = this.editor.content;
 
-        const ival = setInterval(() => display.draw(ctx), 10);
+        const display = new DisplayEngine(this.stage.width, this.stage.height);
 
         const write = (msg : string) => this.console.writeOut(msg);
-        const sleep = (time : number) => new Promise(resolve => setTimeout(resolve, time));
-        const execution = new Promise(resolve => {
-            let halt = false;
-            const finish = ()=> { halt = true; resolve(true); };
-            this.activeCancel = finish;
-            const loop = async (times : number, gap : number, func : Function) => {
-                for(let i = 0; i < times && !halt; i++){
-                    await func();
-                    await sleep(gap);
-                }
-            };
-            const forever = async (gap : number, func : Function) => {
-                while(!halt){
-                    await func();
-                    await sleep(gap);
-                }
-            };
 
-            eval(c);
-        });
+        const exec = new ExecCtx(write, display);
 
-        const res = await execution;
-        console.log('finished');
-        clearInterval(ival);
-        display.draw(ctx);
-        this.activeCancel = null;
+        this.activeCtx = exec;
+
+        await exec.run(ctx, prog);
     }
 
     get stage() : HTMLCanvasElement {

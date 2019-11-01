@@ -47,11 +47,4 @@ async function main() {
     display.setStage(g);
 	await ant.walk();
 }
-
-// BOILERPLATE
-(async ()=> {
-    const minTime = new Promise(resolve => setTimeout(resolve, 2000));
-    await Promise.all([minTime, main()]);
-    write('finished');
-    finish();
-})();
+main();

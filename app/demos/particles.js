@@ -52,11 +52,4 @@ async function main() {
         ball.release();
     }
 }
-
-// BOILERPLATE
-(async () => {
-    const minTime = new Promise(resolve => setTimeout(resolve, 20000));
-    await Promise.all([minTime, main()]);
-    write('finished');
-    finish();
-})();
+main();

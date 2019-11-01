@@ -45,14 +45,7 @@ async function main() {
     g.attach(ag);
     ag.fall();
 }
-
-// BOILERPLATE
-(async ()=> {
-    const minTime = new Promise(resolve => setTimeout(resolve, 2000));
-    await Promise.all([minTime, main()]);
-    write('finished');
-    finish();
-})();
+main();
 </textarea>
     `;
     }
