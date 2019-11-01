@@ -35,6 +35,8 @@ class PosMap {
 
 export class GridStage {
     readonly agentSize : number = 20;
+    levels : number[] = [];
+    agentLs : Map<number, SimpleAgent[]> = new Map();
     agents : SimpleAgent[] = [];
     agentMap = new PosMap();
 
@@ -55,14 +57,20 @@ export class GridStage {
     }
 
     draw(ctx : CanvasCtx) {
-        for(let agent of this.agents){
-            ctx.fillStyle = agent.fillStyle;
-            ctx.fillRect(agent.posX * this.agentSize, agent.posY * this.agentSize, this.agentSize, this.agentSize);
+        for(let lvl of this.levels){
+            for(let agent of this.agentLs.get(lvl)!){
+                ctx.fillStyle = agent.fillStyle;
+                ctx.fillRect(agent.posX * this.agentSize, agent.posY * this.agentSize, this.agentSize, this.agentSize);
+            }
         }
     }
 
     attach(ag : SimpleAgent) {
-        this.agents.push(ag);
+        if(!this.agentLs.has(ag.level)){
+            this.agentLs.set(ag.level, []);
+            this.levels.push(ag.level); this.levels.sort();
+        }
+        this.agentLs.get(ag.level)!.push(ag);
         this.agentMap.add([ag.posX, ag.posY], ag);
         ag.stage = this;
     }
@@ -72,10 +80,12 @@ class SimpleAgent {
     protected _pos : Pos;
     fillStyle : string;
     stage : GridStage | undefined;
+    level : number;
 
-    constructor(posX : number, posY : number, fillStyle : string){
+    constructor(posX : number, posY : number, fillStyle : string, level : number = 0){
         this._pos = [posX, posY];
         this.fillStyle = fillStyle;
+        this.level = level;
     }
 
     handleUpdate(oldPos : Pos, newPos : Pos) {
@@ -89,7 +99,6 @@ class SimpleAgent {
         this._pos = newPos;
         this.handleUpdate(oldPos, newPos);
     }
-
 
     get posX() : number {
         return this._pos[0];
@@ -123,7 +132,8 @@ export class DirectionalAgent extends SimpleAgent {
     }
 
     moveForward() {
-        const t : Map<Dir, Pos> = new Map([[Dir.Up, [this.posX, this.posY - 1] as Pos],
+        const t : Map<Dir, Pos> = new Map([
+            [Dir.Up, [this.posX, this.posY - 1] as Pos],
             [Dir.Right, [this.posX + 1, this.posY] as Pos],
             [Dir.Down, [this.posX, this.posY + 1] as Pos],
             [Dir.Left, [this.posX - 1, this.posY] as Pos]]);

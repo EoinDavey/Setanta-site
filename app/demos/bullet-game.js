@@ -67,7 +67,7 @@ async function main() {
     
     await sleep(3000);
     await forever(2000, () => {
-        const x = randRange(0, szY);
+        const x = randRange(0, szX);
         const bull = new Bullet(x, 0, szY - 3);
         g.attach(bull);
         bull.start();
