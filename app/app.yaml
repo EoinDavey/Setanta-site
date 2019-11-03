@@ -1,0 +1,11 @@
+runtime: go111
+
+main: ./go/server/main.go
+
+handlers:
+    - url: /api/.*
+      script: auto
+
+    - url: /(.*\.(json|js|html|css|map))$
+      static_files: build/default/\1
+      upload: build/default/.*\.(json|js|html|css|map)$
