@@ -1,5 +1,13 @@
 # Language semantics
 
+## Outline - 3/11/2019
+
+### Semantics
+
+The language (*name tbd*) is going to be a single threaded, asynchronously executed language. It will contains classeswith classic Java style single inheritance. It will be dynamically typed, with relatively strong type coercion rules. The language will have first order functions. It will be garbage collected. There will be a keyword to execute any function asynchronously.
+
+## Decision reasons
+
 There are many language semantics details to be decided on, including
 
 - Type system (strong vs weak, static vs dynamic, duck typing)
