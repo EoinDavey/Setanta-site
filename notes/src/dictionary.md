@@ -2,7 +2,14 @@
 
 Dictionary of terms used in the project.
 
-------- ---------
- Stage   Stáitse
- Step    Céim
-------- ---------
+-------- ---------
+ Action   Gníomh
+ From     Ó
+ Name     Ainm
+ New      Nua
+ Stage    Stáitse
+ Story    Scéal
+ Step     Céim
+ This     Seo
+ Write    Scríobh
+-------- ---------
