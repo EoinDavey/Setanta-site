@@ -39,10 +39,10 @@ class Ant extends G.DirectionalAgent {
 
 async function main() {
     const g = new LangtonsGrid();
-    g.agentSize = 15;
+    g.agentSize = 20;
     const midX = Math.floor((display.sizeX / g.agentSize)/2);
     const midY = Math.floor((display.sizeY / g.agentSize)/2);
-    const ant = new Ant(midX, midY, "green");
+    const ant = new Ant(midX, midY, "green", 1);
     g.attachAnt(ant);
     display.setStage(g);
 	await ant.walk();
