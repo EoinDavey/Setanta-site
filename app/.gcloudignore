@@ -19,10 +19,6 @@
 /jsbuild/
 /node_modules/
 /test/
-*.json
-*.html
-!/build/*.json
-!/build/*.html
 
 # Binaries for programs and plugins
 *.exe
