@@ -1,9 +1,11 @@
-language: nodejs
+language: node_js
 node_js:
     - 11
 
+before_install:
+    - cd app/
+
 before_script:
-    - npm run setup
     - npm run build
 
 script:
