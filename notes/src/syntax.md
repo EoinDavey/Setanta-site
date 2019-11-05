@@ -11,14 +11,14 @@ This means that we can use more accessible, non-technical terms to describe elem
 This language will base many of it's syntactic features from the family of languages with C-style syntax. However, many of it's syntactic features will be derived from the linguistic structure of the Irish language itself.
 
 ### Example
-Below is an example script in the language. We create a class for a person (*Duine*), then a class for a man (*Fear*) that inherits from *Duine*.
+Below is an example script in the language. We create a class (*creatlach* meaning skeleton) for a person (*Duine*), then a class for a man (*Fear*) that inherits from *Duine*.
 
 *Fear* has a constructor that takes a name (*ainm*) and defines an action (*gníomh*) called *abair* (speak) that prints a string containing the name.
 
 *Duine* defines a function *siúl* (walk) that takes in an argument *céimeanna* (steps) and loops from 0 to *céimeanna*, printing the string "*Ag siúl*" (walking) each time.
 
 ```
-Duine {
+creatlach Duine {
     gníomh siúl(céimeanna) {
         le céim idir (0, céimeanna) déan {
             scríobh("Ag siúl")
@@ -26,7 +26,7 @@ Duine {
     }
 }
 
-Fear ó Duine {
+creatlach Fear ó Duine {
     nua (ainm) {
         [ainm seo] := ainm
     }
@@ -36,6 +36,6 @@ Fear ó Duine {
     }
 }
 
-sean = Fear("Sean")
+sean := Fear("Sean")
 [abair sean]()
 ```
