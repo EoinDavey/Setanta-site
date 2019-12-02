@@ -20,6 +20,10 @@ Below is an example script in the language. We create a class (*creatlach* meani
 ```
 creatlach Duine {
     gníomh siúl(céimeanna) {
+        má céimeanna == 0 {
+            scríobh("Ní gá dom siúl")
+            freagair
+        }
         le céim idir (0, céimeanna) déan {
             scríobh("Ag siúl")
         }

@@ -72,6 +72,7 @@ export class GridStage {
         }
         this.agentLs.get(ag.level)!.push(ag);
         this.agentMap.add([ag.posX, ag.posY], ag);
+        this.agents.push(ag);
         ag.stage = this;
     }
 }

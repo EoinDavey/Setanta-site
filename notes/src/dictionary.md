@@ -4,6 +4,8 @@ Dictionary of terms used in the project.
 
 ----------- -----------
  Action      Gníomh
+ Answer      Freagair (v.)
+ If          Má
  From        Ó
  Name        Ainm
  New         Nua
