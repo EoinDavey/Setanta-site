@@ -40,7 +40,7 @@ export class ExecCtx {
 
     async run(ctx : CanvasCtx, prog : string) {
         this.halt = false;
-        this.ival = setInterval(() => this.display.draw(ctx), this.frameGap);
+        this.ival = window.setInterval(() => this.display.draw(ctx), this.frameGap);
 
         const execution = new Promise(resolve => {
             const finish = ()=> { this.stop(); resolve(); };
