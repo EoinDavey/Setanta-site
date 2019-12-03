@@ -3,7 +3,8 @@
   "description": "Final year project",
   "scripts": {
     "setup": "npm install",
-    "build": "tsc && polymer build"
+    "build": "tspeg src/interpreter/grammar.gram src/interpreter/parser.ts && tsc && polymer build",
+    "clean": "rm -rf jsbuild"
   },
   "dependencies": {
     "@types/codemirror": "0.0.79",

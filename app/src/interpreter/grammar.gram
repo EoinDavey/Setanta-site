@@ -1,0 +1,12 @@
+Expr      := Eq
+Eq        := head=Comp tail={'[!=]=' trm=Comp}*
+Comp      := head=Sum tail={op=Compare trm=Sum}*
+Sum       := head=Product tail={op=PlusMinus trm=Product}*
+Product   := head=Atom tail={op=MulDiv trm=Atom}*
+Atom      := _ trm=INT _ | _ trm=INT _ | _ '(' trm=Expr ')' _
+PlusMinus := '\+|-'
+MulDiv    := '\*|\/|%'
+Compare   := '(<=)|(>=)|<|>'
+ID        := '[a-zA-Z_]+'
+INT       := '[0-9]+'
+_         := '\s*'
