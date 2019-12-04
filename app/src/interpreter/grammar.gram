@@ -1,9 +1,11 @@
-Expr      := Eq
-Eq        := head=Comp tail={'[!=]=' trm=Comp}*
+Expr      := And
+And       := head=Or tail={'\&' trm=Or}*
+Or        := head=Eq tail={'\|' trm=Eq}*
+Eq        := head=Comp tail={op='[!=]=' trm=Comp}*
 Comp      := head=Sum tail={op=Compare trm=Sum}*
 Sum       := head=Product tail={op=PlusMinus trm=Product}*
 Product   := head=Atom tail={op=MulDiv trm=Atom}*
-Atom      := _ trm=INT _ | _ trm=INT _ | _ '(' trm=Expr ')' _
+Atom      := _ trm=INT _ | _ trm=ID _ | _ '\(' trm=Expr '\)' _
 PlusMinus := '\+|-'
 MulDiv    := '\*|\/|%'
 Compare   := '(<=)|(>=)|<|>'
