@@ -1,3 +1,6 @@
+Program   := Stmt*
+Stmt      := _ asgn=AssgnStmt _ | _ expr=Expr _
+AssgnStmt := id=ID _ '=' _ expr=Expr
 Expr      := And
 And       := head=Or tail={'\&' trm=Or}*
 Or        := head=Eq tail={'\|' trm=Eq}*

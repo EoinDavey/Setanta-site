@@ -5,8 +5,24 @@ export type Value = number | boolean;
 
 export class Interpreter {
     env : Map<string, Value> = new Map();
-    interpret(expr : P.Expr) : Value {
-        return this.evalExpr(expr);
+    interpret(p : P.Program) {
+        this.execStmtBlock(p);
+    }
+    execStmtBlock(blk : P.Stmt[]){
+        for(let st of blk){
+            this.execStmt(st);
+        }
+    }
+    execStmt(st : P.Stmt) {
+        if(st.kind === ASTKinds.Stmt_1){
+            this.execAssgn(st.asgn);
+        } else {
+            this.evalExpr(st.expr);
+        }
+    }
+    execAssgn(a : P.AssgnStmt) {
+        const val = this.evalExpr(a.expr);
+        this.env.set(a.id, val);
     }
     evalExpr(expr : P.Expr) : Value {
         return this.evalAnd(expr);
@@ -75,7 +91,7 @@ export class Interpreter {
             return this.evalINT(at.trm);
         if(at.kind === ASTKinds.Atom_2)
             return this.evalID(at.trm);
-        return this.interpret(at.trm);
+        return this.evalExpr(at.trm);
     }
     evalID(id : P.ID) : Value {
         const g = this.env.get(id);
