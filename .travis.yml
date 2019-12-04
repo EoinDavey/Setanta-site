@@ -6,6 +6,9 @@ before_install:
     - openssl aes-256-cbc -K $encrypted_0c35eebf403c_key -iv $encrypted_0c35eebf403c_iv
       -in gae-keys.json.enc -out gae-keys.json -d
 
+before_script:
+    - npm run test-build
+
 before_deploy:
     - npm run clean
     - npm run build

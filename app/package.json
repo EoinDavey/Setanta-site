@@ -4,7 +4,8 @@
   "scripts": {
     "setup": "npm install",
     "build": "tspeg src/interpreter/grammar.gram src/interpreter/parser.ts && tsc && polymer build",
-    "tsc-test" : "tsc -w --project tsconfig.test.json",
+    "test-build" : "tspeg src/interpreter/grammar.gram src/interpreter/parser.ts && tsc --project tsconfig.test.json",
+    "test-watch" : "tsc -w --project tsconfig.test.json",
     "clean": "rm -rf jsbuild && rm -rf testbuild && rm -rf build",
     "test" : "jest"
   },
