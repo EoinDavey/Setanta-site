@@ -3,6 +3,12 @@ import { ASTKinds } from './parser';
 
 export type Value = number | boolean;
 
+class RuntimeError extends Error {
+    constructor(message : string){
+        super(`Runtime Error: ${message}`);
+    }
+}
+
 export class Interpreter {
     env : Map<string, Value> = new Map();
     interpret(p : P.Program) {
@@ -68,7 +74,7 @@ export class Interpreter {
         return p.tail.reduce((x, y) => {
             const at = this.evalProduct(y.trm);
             if(!(typeof at === "number" && typeof x === "number"))
-                throw "Runtime Error";
+                throw new RuntimeError("Operands must be numbers");
             if(y.op === '+')
                 return x+at;
             return x-at;
@@ -78,7 +84,7 @@ export class Interpreter {
         return p.tail.reduce((x, y) => {
             const at = this.evalAtom(y.trm);
             if(!(typeof at === "number" && typeof x === "number"))
-                throw "Runtime Error";
+                throw new RuntimeError("Operands must be numbers");
             if(y.op === '*')
                 return x*at;
             if(y.op === '/')
@@ -96,7 +102,7 @@ export class Interpreter {
     evalID(id : P.ID) : Value {
         const g = this.env.get(id);
         if(!g)
-            throw `Runtime error: ${id} not found`
+            throw new RuntimeError(`${g} not found`);
         return g;
     }
     evalINT(i : P.INT) : number {
