@@ -1,0 +1,3 @@
+[submodule "app/src/setanta"]
+	path = app/src/setanta
+	url = https://github.com/EoinDavey/Setanta.git
