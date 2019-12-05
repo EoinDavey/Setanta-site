@@ -3,11 +3,9 @@
   "description": "Final year project",
   "scripts": {
     "setup": "npm install",
-    "build": "tspeg src/interpreter/grammar.gram src/interpreter/parser.ts && tsc && polymer build",
-    "test-build" : "tspeg src/interpreter/grammar.gram src/interpreter/parser.ts && tsc --project tsconfig.test.json",
-    "test-watch" : "tsc -w --project tsconfig.test.json",
-    "clean": "rm -rf jsbuild && rm -rf testbuild && rm -rf build",
-    "test" : "jest"
+    "build": "tsc && polymer build",
+    "clean": "rm -rf jsbuild && rm -rf build",
+    "test": "echo \"no tests\""
   },
   "dependencies": {
     "@types/codemirror": "0.0.79",
@@ -16,24 +14,8 @@
     "lit-element": "^2.2.1"
   },
   "devDependencies": {
-    "@types/jest": "^24.0.23",
-    "jest": "^24.9.0",
     "polymer-cli": "^1.9.11",
-    "ts-jest": "^24.2.0",
     "tslint": "^6.0.0-beta0",
-    "tspeg": "^1.1.5",
     "typescript": "^3.7.2"
-  },
-  "jest": {
-      "preset": "ts-jest",
-      "globals" : {
-          "ts-jest": {
-            "tsConfig": "tsconfig.test.json"
-          }
-      },
-      "testPathIgnorePatterns" : [
-          "/node_modules/",
-          "^.+\\.js$"
-      ]
   }
 }
