@@ -17,14 +17,15 @@ Below is an example script in the language. We create a class (*creatlach* meani
 
 *Duine* defines a function *siúl* (walk) that takes in an argument *céimeanna* (steps) and loops from 0 to *céimeanna*, printing the string "*Ag siúl*" (walking) each time.
 
+\newpage
+
 ```
 creatlach Duine {
     gníomh siúl(céimeanna) {
         má céimeanna == 0 {
             scríobh("Ní gá dom siúl")
-            freagair
         }
-        le céim idir (0, céimeanna) déan {
+        le céim idir (0, céimeanna) {
             scríobh("Ag siúl")
         }
     }
@@ -43,3 +44,68 @@ creatlach Fear ó Duine {
 sean := Fear("Sean")
 [abair sean]()
 ```
+
+\newpage
+
+## Structures
+
+### Expressions
+
+Expressions can be formed from the following operators, with usual operator precedence rules
+
+#### Numeric operators $(\mathbb{R} \times \mathbb{R} \to \mathbb{R})$
+
+| `+`     |  `-`  | `*`   | `/`      | `%`    |
+|:-------:|:-----:|:-----:|:--------:|:------:|
+|  plus   | minus | times | division | modulo |
+
+#### Boolean operators $(\{\mathrm{fír}, \mathrm{bréag}\} \times \{\mathrm{fír}, \mathrm{bréag}\} \to \{\mathrm{fír}, \mathrm{bréag}\})$
+
+| `&`   |  `|`  |
+|:-----:|:-----:|
+|  and  |  or   |
+
+Both operators are short-circuiting
+
+#### Comparison
+
+| `==`  |  `!=`      | `<=`, `>=`, `<`, `>`  |
+|:-----:|:----------:|:---------------------:|
+| equal |  not equal | order comparison      |
+
+Comparison is strict, for values to be compared they must be of the same type.
+
+#### Variables and scoping
+
+Variables are lexically (block) scoped.
+
+Variables are defined by the definition statement
+
+```
+<id> := <expr>
+```
+
+Variables can be reassigned by assignment statement
+
+```
+<id> = <expr>
+```
+
+#### Conditionals
+
+Setanta has one ( so far ) conditional control flow structure, the if (*má*) statement
+
+```
+má <expr> <stmt> nó <stmt>
+```
+
+The *nó* branch is optional
+
+#### Looping structures
+
+Setanta has two loop structures (so far)
+
+- Range loop: `le <id> idir (<expr>, <expr>) <stmt>`  
+  Loops between the first and second expression, tying the result to `<id>` on each iteration
+
+- While loop: `nuair a <expr> <stmt>`
