@@ -20,32 +20,14 @@ export class FYPEditor extends LitElement {
             }
         </style>
         <textarea id='editor'>
-class GravAgent extends G.Agent {
-    async fall() {
-        await forever(30, () => {
-            if(!this.stage.blocked(this.posX, this.posY+1))
-                this.moveDown();
-        });
-    }
-}
+x := 0
+y := 1
 
-async function main() {
-    const g = new G.GridStage();
-    display.setStage(g);
-    
-    const szX = Math.floor(display.sizeX / g.agentSize);
-    const szY = Math.floor(display.sizeY / g.agentSize);
-    
-    const midX = Math.floor(szX / 2);
-    
-    for(let i = 0; i < szX; i++)
-    	g.attach(new G.Agent(i, szY - 1, "green"));
-    
-    const ag = new GravAgent(midX, 0, "red");
-    g.attach(ag);
-    ag.fall();
+nuair a y < 100 {
+    scríobh(y)
+    y = x + y
+    x = y - x
 }
-main();
 </textarea>
     `;
     }
