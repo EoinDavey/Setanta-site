@@ -7,6 +7,7 @@ before_install:
       -in gae-keys.json.enc -out gae-keys.json -d
 
 before_deploy:
+    - npm run clean
     - npm run build
 
 deploy:
