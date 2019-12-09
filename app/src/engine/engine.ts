@@ -1,5 +1,9 @@
 import { Stage, CanvasCtx } from './types';
 import { sleep } from './util';
+import { Interpreter } from '../setanta/src/i10r';
+import { Parser } from '../setanta/src/parser';
+import { Value } from '../setanta/src/values';
+import { RuntimeError } from '../setanta/src/error';
 import * as G from './gridstage';
 
 function evalClosure(write : (msg: string) => void,
@@ -10,7 +14,38 @@ function evalClosure(write : (msg: string) => void,
     G : object,
     prog : string) {
 
-    eval(prog);
+    const p = new Parser(prog);
+    const res = p.parse();
+    if(res.err){
+        alert(res.err);
+        finish();
+        return;
+    }
+    const ast = res.ast!;
+
+    const builtins : [string, Value][]= [
+        [
+            "scríobh",
+            {
+                arity: () => 1,
+                call: (args) => {
+                    write(String(args[0]));
+                    return null;
+                }
+            },
+        ],
+    ]
+    const i = new Interpreter(builtins);
+    try {
+        i.interpret(ast);
+    } catch (e) {
+        if(e instanceof RuntimeError){
+            alert(e);
+        }
+        throw e;
+    } finally {
+        finish();
+    }
 }
 
 export class ExecCtx {
