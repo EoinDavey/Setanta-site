@@ -20,13 +20,31 @@ export class FYPEditor extends LitElement {
             }
         </style>
         <textarea id='editor'>
-x := 0
-y := 1
+gníomh triail(x, freagair) {
+    má x <= 2 {
+        freagair(x == 2)
+    } nó {
+        phríomha := fíor
+        le i idir(2, x - 1) {
+            má i*i > x
+                bris
+            má x % i == 0 {
+                phríomha = breag
+                bris
+            }
+        }
+        freagair(phríomha)
+    }
+}
 
-nuair a y < 100 {
-    scríobh(y)
-    y = x + y
-    x = y - x
+le i idir (2, 100) {
+    phríomha := breag
+    gníomh f(x) {
+        phríomha = x
+    }
+    triail(i, f)
+    má phríomha
+        scríobh(i)
 }
 </textarea>
     `;
