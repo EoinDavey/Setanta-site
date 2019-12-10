@@ -54,7 +54,7 @@ le i idir (2, 100) {
         if(this.shadowRoot){
             const tx = this.shadowRoot.getElementById('editor') as HTMLTextAreaElement;
             this.editor = CodeMirror.fromTextArea(tx, {
-                mode: "javascript",
+                mode: "setanta",
                 lineNumbers: true,
                 indentUnit: 4,
             })
