@@ -20,7 +20,7 @@ export class FYPEditor extends LitElement {
             }
         </style>
         <textarea id='editor'>
-gníomh triail(x) {
+gníomh príomha(x) {
     má x <= 2
         toradh x == 2
     le i idir(2, x) {
@@ -33,11 +33,9 @@ gníomh triail(x) {
 }
 
 le i idir (2, 100) {
-    má triail(i)
+    má príomha(i)
         scríobh(i)
-}
-
-</textarea>
+}</textarea>
     `;
     }
 
