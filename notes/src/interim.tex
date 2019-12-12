@@ -15,7 +15,7 @@
     2019 - 2020}
     \author{\Large Student: Eoin Davey - 16334926 \and \Large Supervisor: Dr. Barak Pearlmutter}
     \maketitle
-    \section*{Goals of the project}
+    \section{Goals of the project}
 
         The primary goal of this project is to create a new, modern programming language built around the Irish language, \Setanta{}, with an intuitive online learning environment, allowing the language to be used as an educational tool, with no installation required.
 
@@ -25,7 +25,7 @@
 
         The project also involves development of new tools to help in programming language implementation for the web, namely building an expressive, powerful parser generator for TypeScript. This parser generator is then used to develop the interpreter for \Setanta{}.
 
-    \section*{Background}
+    \section{Background}
 
         English is well established as the lingua franca of the programming world, even languages developed outside the Anglosphere are designed to be written in English, for example \emph{Ruby} is from Japan and \emph{Lua} is from Brazil, but both are designed around the English language. Part of the aim of this project is to explore what syntactic and semantic constructs that a language not designed around English might have.
 
@@ -35,11 +35,11 @@
 
         As \Setanta{} is to be run in the browser, it is written in a web friendly language, specifically TypeScript, a strongly typed JavaScript variant. However, there was no existing parser generator for TypeScript in existence. Part of this project therefore became to create a fully functional parser generator for TypeScript, and to then use it to build the \Setanta{} interpreter.
 
-    \section*{Progress to Date}
+    \section{Progress to Date}
 
         There has been much progress made on the project so far, below I'll outline the progress made on the 3 core components.
 
-        \subsection*{\tsPEG{} - The TypeScript Parser Generator}
+        \subsection{\tsPEG{} - The TypeScript Parser Generator}
 
             The TypeScript parser generator, named \tsPEG{} is effectively complete, It is \href{https://www.npmjs.com/package/tspeg}{published on the NPM package repository}, currently at version 1.1.6.
 
@@ -49,7 +49,7 @@
 
             When I announced \tsPEG{} on relevant channels online, it received strong positive attention, peaking at around 350 weekly downloads.
 
-        \subsection*{\Setanta{} - The Irish Programming Language - Teanga R\'iomhchl\'ar\'uchain as Gaeilge}
+        \subsection{\Setanta{} - The Irish Programming Language - Teanga R\'iomhchl\'ar\'uchain as Gaeilge}
 
             At the time of writing \Setanta{} is well under way to completion. It's code can be found on \href{https://github.com/EoinDavey/Setanta}{Github}. \Setanta{} supports a whole list of features that you expect from a modern language. It has a REPL, supports all standard maths operators, dynamically typed, lexically scoped, first class functions, higher order functions, closures, a few types of loops and conditionals etc. It will eventually also support classes and inheritance, as well as asynchronous execution.
 
@@ -57,14 +57,20 @@
             It is an interpreted language that can be executed client-side in the browser, as well as locally through the node JavaScript engine.
             The syntax of \Setanta{} will be familiar to those used to the C family of languages, but is an original syntax that borrows some of it's constructs from the grammatical structure of the Irish language itself.
 
-        \subsection*{The \Setanta{} learning environment}
+        \subsection{The \Setanta{} learning environment}
 
         The online learning environment for \Setanta{} has a \href{https://vey.ie/goto?go=fyp}{live demo online} and available now. The environment has a text editor, an IO console, a graphics display panel, and a high level OOP API for interacting with the drawing panel, allowing the user to program simple games and demos.
         The learning environment MVP was configured and developed before the \Setanta{} interpreter was ready, so originally used JavaScript as the language you could run, now that the \Setanta{} interpreter is operational, it is now executable. However as \Setanta{} does not yet support the OOP operations required to interact with the graphics library API, the graphics are currently disabled.
 
-    \section*{Problems Encountered}
+    \section{Problems Encountered}
 
     The biggest initial problem for \Setanta{} was the lack of a sufficient parser generator for TypeScript. I had decided to do the project in TypeScript, as I wanted to run the project in the browser, but I didn't want to use JavaScript because of it's weak typing system. WebAssembly was considered, but I found it wasn't mature enough to be worth experimenting with for this project.
     After some discussion with my supervisor it was decided it would be a good addition to the project to create my own TypeScript parser generator, \tsPEG{}. I took inspiration from some other parser gnerators, largely from textX, PEG.js and pgen, to create a fully featured one for TypeScript. This also served as a great way to learn the ins and outs of the TypeScript type system.
-    \section*{Planned Steps to Completion}
+    \section{Planned Steps to Completion}
+
+    There are a few main steps left to complete the project. Firstly classes and inheritance constructs must be added to \Setanta{}. This is important to allow interfacing with the graphics engine API in the browser learning environment, as well as being an important feature for an educational programming language. I also need to add async execution to \Setanta{}, to allow things like concurrency and I/O to be done.
+
+    The learning environment also requires more work, more advanced API functionality needs to be added, to allow more interesting programs to be written, as well as some backend work to be done to allow saving of programs, along the lines of the \href{https://play.golang.org}{Go playground}.
+
+    The domain of the project is education, so it will benefit largely from a series of beginner-targeted documentation articles, teaching the user how to use the language. As the language runs in the browser it could be possible to make this an interactive process.
 \end{document}

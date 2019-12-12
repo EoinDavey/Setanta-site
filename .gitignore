@@ -2,3 +2,4 @@ gae-keys.json
 *.aux
 *.log
 *.swp
+*.out
