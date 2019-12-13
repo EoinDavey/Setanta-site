@@ -9,22 +9,21 @@ CodeMirror.defineSimpleMode("setanta", {
     // no ambiguity between this one and the one above
     {regex: /(gn[ií]omh)(\s+)([a-zA-ZáéíóúÁÉÍÓÚ]+)(\()(.*)(\))/,
         token: ["def", null, "variable-2", null, "variable-3", null]},
-    {regex: /(?:gn[ií]omh|má|le|bris|idir|(?:nuair\s+a)|nó)\b/,
+    {regex: /(?:gn[ií]omh|le|bris|idir|toradh|(?:nuair\s+a))\b/,
      token: "keyword"},
-    {regex: /(?:scr[ií]obh)\b/, token: "builtin"},
+    {regex: /(?:scr[ií]obh|fad|thar)\b/, token: "builtin"},
     {regex: /(má|nó)([ {]|$)/, token: ["keyword", null]},
     {regex: /f[ií]or|breag/, token: "atom"},
     {regex: /0x[a-f\d]+|[-+]?(?:\.\d+|\d+\.?\d*)(?:e[-+]?\d+)?/i,
      token: "number"},
     {regex: /[-+\/*=<>!]+/, token: "operator"},
     {regex: /[a-zA-ZáéíóúÁÉÍÓÚ$]+/, token: "variable"},
+    {regex: /[\{\[\(]/, indent: true},
+    {regex: /[\}\]\)]/, dedent: true},
     //{regex: /\/\/.*/, token: "comment"},
     //{regex: /\/(?:[^\\]|\\.)*?\//, token: "variable-3"},
     //// A next property will cause the mode to move to a different state
     //{regex: /\/\*/, token: "comment", next: "comment"},
-    //// indent and dedent properties guide autoindentation
-    //{regex: /[\{\[\(]/, indent: true},
-    //{regex: /[\}\]\)]/, dedent: true},
     //// You can embed other modes with the mode property. This rule
     //// causes all code between << and >> to be highlighted with the XML
     //// mode.
