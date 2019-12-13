@@ -1,7 +1,7 @@
 import { Stage, CanvasCtx } from './types';
 import { sleep } from './util';
 import { Interpreter } from '../setanta/src/i10r';
-import { Parser } from '../setanta/src/parser';
+import { Parser } from '../setanta/src/gen_parser';
 import { Value } from '../setanta/src/values';
 import { RuntimeError } from '../setanta/src/error';
 import * as G from './gridstage';
