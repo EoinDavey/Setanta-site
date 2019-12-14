@@ -20,22 +20,25 @@ export class FYPEditor extends LitElement {
             }
         </style>
         <textarea id='editor'>
+>-- An uimhir phríomha é x?
 gníomh príomha(x) {
     má x <= 2
         toradh x == 2
     le i idir(2, x) {
         má i*i > x
             bris
-        má x % i == 0
+        má x % i == 0 >-- Níl uimhir phríomha é
             toradh breag
     }
-    toradh fíor
+    toradh fíor >-- Is uimhir phríomha é
 }
 
+scríobh('Seo na uimhreacha phríomha idir 0 agus 100')
 le i idir (2, 100) {
     má príomha(i)
         scríobh(i)
-}</textarea>
+}
+</textarea>
     `;
     }
 

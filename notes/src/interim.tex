@@ -27,9 +27,9 @@
 
     \section{Background}
 
-        English is well established as the lingua franca of the programming world, even languages developed outside the Anglosphere are designed to be written in English, for example \emph{Ruby} is from Japan and \emph{Lua} is from Brazil, but both are designed around the English language. Part of the aim of this project is to explore what syntactic and semantic constructs that a language not designed around English might have.
-
-        The Irish language is in daily use around Ireland, it is a strong living language in many areas, and has a strong community of enthusiastic speakers. It is the primary language in many schools, both primary and secondary, around the country. Ireland's education system is beginning to bring more and more Computer Science education into the school curriculum.
+        English is well established as the lingua franca of the programming world, even languages developed outside the Anglosphere are designed to be written in English, for example \emph{Ruby} is from Japan and \emph{Lua} is from Brazil, but both are designed around the English language.
+        
+        The Irish language is in daily use around Ireland. It is the primary language in many schools, both primary and secondary, around the country. Ireland's education system is beginning to bring more and more Computer Science education into the school curriculum.
         
         For this reason and many others, there will be more and more Irish speaking people looking to get started learning programming, and what better way than by learning on an accessible platform, in a modern language, and in their own native tongue.
 
@@ -66,6 +66,7 @@
 
     The biggest initial problem for \Setanta{} was the lack of a sufficient parser generator for TypeScript. I had decided to do the project in TypeScript, as I wanted to run the project in the browser, but I didn't want to use JavaScript because of it's weak typing system. WebAssembly was considered, but I found it wasn't mature enough to be worth experimenting with for this project.
     After some discussion with my supervisor it was decided it would be a good addition to the project to create my own TypeScript parser generator, \tsPEG{}. I took inspiration from some other parser gnerators, largely from textX, PEG.js and pgen, to create a fully featured one for TypeScript. This also served as a great way to learn the ins and outs of the TypeScript type system.
+
     \section{Planned Steps to Completion}
 
     There are a few main steps left to complete the project. Firstly classes and inheritance constructs must be added to \Setanta{}. This is important to allow interfacing with the graphics engine API in the browser learning environment, as well as being an important feature for an educational programming language. I also need to add async execution to \Setanta{}, to allow things like concurrency and I/O to be done.

@@ -2,11 +2,12 @@ CodeMirror.defineSimpleMode("setanta", {
   // The start state contains the rules that are intially used
   start: [
     // The regex matches the token, the token property contains the type
-    //{regex: /"(?:[^\\]|\\.)*?(?:"|$)/, token: "string"},
     // You can match multiple tokens at once. Note that the captured
     // groups must span the whole string in this case
     // Rules are matched in the order in which they appear, so there is
     // no ambiguity between this one and the one above
+    {regex: />--((?!--<).)*(--<|$)/, token: "comment"},
+    {regex: /'([^\'\\]|(\\.))*'/, token: "string"},
     {regex: /(gn[ií]omh)(\s+)([a-zA-ZáéíóúÁÉÍÓÚ]+)(\()(.*)(\))/,
         token: ["def", null, "variable-2", null, "variable-3", null]},
     {regex: /(?:gn[ií]omh|le|bris|idir|toradh|(?:nuair\s+a))\b/,
@@ -20,7 +21,6 @@ CodeMirror.defineSimpleMode("setanta", {
     {regex: /[a-zA-ZáéíóúÁÉÍÓÚ$]+/, token: "variable"},
     {regex: /[\{\[\(]/, indent: true},
     {regex: /[\}\]\)]/, dedent: true},
-    //{regex: /\/\/.*/, token: "comment"},
     //{regex: /\/(?:[^\\]|\\.)*?\//, token: "variable-3"},
     //// A next property will cause the mode to move to a different state
     //{regex: /\/\*/, token: "comment", next: "comment"},
