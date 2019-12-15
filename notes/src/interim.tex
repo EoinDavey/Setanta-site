@@ -25,20 +25,18 @@
 
     \section{Background}
 
-        English is well established as the lingua franca of the programming world, even languages developed outside the Anglosphere are designed to be written in English, for example \emph{Ruby} is from Japan but is designed around the English language.
+        English is well established as the lingua franca of the programming world, even languages developed outside the Anglosphere are designed to be written in English, for example \emph{Ruby} is from Japan, and \emph{Lua} is from Brazil.
         
-        The Irish language is in daily use around Ireland. It is the primary language in many schools, primary and secondary, around the country. Ireland's education system is beginning to bring more and more Computer Science education into the school curriculum.
-        
-        For this reason and many others, there will be more and more Irish speaking people looking to get started learning programming, and what better way than by learning on an accessible platform, in a modern language, and in their own native tongue.
+        The Irish language is in daily use around Ireland. It is the primary language in many schools, primary and secondary, around the country. Ireland's education system is beginning to bring more and more Computer Science education into the school curriculum. For this reason and many others, there will be more and more Irish speakers looking to get started learning programming, and what better way than by learning on an accessible platform, in a modern language, and in their native tongue.
 
         As \Setanta{} is to be run in the browser, it is written in a web friendly language, specifically TypeScript, a strongly typed JavaScript variant. However, there was no existing parser generator for TypeScript in existence. Part of this project therefore became to create a fully functional parser generator for TypeScript, and to then use it to build the \Setanta{} interpreter.
 
     \section{Progress to Date}
         \subsection{\tsPEG{} - The TypeScript Parser Generator}
 
-            The TypeScript parser generator, named \tsPEG{} is effectively complete, It is \href{https://www.npmjs.com/package/tspeg}{published on the NPM package repository}, currently at version 1.1.6.
+            The TypeScript parser generator, named \tsPEG{} is effectively complete, It is \href{https://www.npmjs.com/package/tspeg}{published on the NPM package repository}, currently at version 1.1.6.  \tsPEG{} is a fully featured parser generator, built around the PEG grammar formalisation (a variant of Context Free Grammars). \tsPEG{} is capable of generating parsers for any context free language, and even some context sensitive ones. It's built on top of an innovative regex based implicit lexing system, meaning no separate lexical analyser is required.
 
-            \tsPEG{} is a fully featured parser generator, built around the PEG grammar formalisation (a variant of Context Free Grammars). \tsPEG{} is capable of generating parsers for any context free language, and even some context sensitive ones. It's built on top of an innovative regex based implicit lexing system, meaning no separate lexical analyser is required.
+    My supervisor thinks the parser generator itself is of sufficient independent interest, and value to the community, to be project-worthy on it's own.
 
             \tsPEG{} is self-hosting, the grammar for \tsPEG{} grammars is defined itself in the \tsPEG{} grammar. This serves as a strong verification of \tsPEG{}'s power.
 
