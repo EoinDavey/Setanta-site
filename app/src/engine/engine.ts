@@ -2,11 +2,11 @@ import { Stage, CanvasCtx } from './types';
 import { sleep } from './util';
 import { Interpreter } from '../setanta/src/i10r';
 import { Parser } from '../setanta/src/gen_parser';
-import { Value } from '../setanta/src/values';
+import { Value, goLitreacha } from '../setanta/src/values';
 import { RuntimeError } from '../setanta/src/error';
 import * as G from './gridstage';
 
-function evalClosure(write : (msg: string) => void,
+async function evalClosure(write : (msg: string) => void,
     display : DisplayEngine,
     loop : (times : number, gap : number, func : (i : number) => void) => void,
     forever : (gap : number, func : () => void) => void,
@@ -23,25 +23,27 @@ function evalClosure(write : (msg: string) => void,
     }
     const ast = res.ast!;
 
-    const builtins : [string, Value][]= [
+    const builtins : [string[], Value][]= [
         [
-            "scríobh",
+            ["scríobh"],
             {
-                arity: () => 1,
-                call: (args) => {
-                    write(String(args[0]));
-                    return null;
+                ainm: 'scríobh',
+                arity: () => -1,
+                call: (args) : Promise<Value> => {
+                    return new Promise<null>(r => {
+                        write(args.map(goLitreacha).join(' '));
+                        r(null);
+                    });
                 }
             },
         ],
     ]
     const i = new Interpreter(builtins);
     try {
-        i.interpret(ast);
-    } catch (e) {
-        if(e instanceof RuntimeError){
+        await i.interpret(ast);
+    } catch(e) {
+        if(e instanceof RuntimeError)
             alert(e);
-        }
         throw e;
     } finally {
         finish();
