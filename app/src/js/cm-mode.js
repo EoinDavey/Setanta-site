@@ -8,9 +8,11 @@ CodeMirror.defineSimpleMode("setanta", {
     // no ambiguity between this one and the one above
     {regex: />--((?!--<).)*(--<|$)/, token: "comment"},
     {regex: /'([^\'\\]|(\\.))*'/, token: "string"},
-    {regex: /(gn[ií]omh)(\s+)([a-zA-ZáéíóúÁÉÍÓÚ]+)(\()(.*)(\))/,
+    {regex: /(creatlach)(\s+)([a-zA-ZáéíóúÁÉÍÓÚ_]+)/,
+        token: ["def", null, "variable-2"]},
+    {regex: /(gn[ií]omh)(\s+)([a-zA-ZáéíóúÁÉÍÓÚ_]+)(\()(.*)(\))/,
         token: ["def", null, "variable-2", null, "variable-3", null]},
-    {regex: /(?:gn[ií]omh|le|bris|idir|toradh|(?:nuair\s+a))\b/,
+    {regex: /(?:seo|tuis|le|bris|idir|toradh|(?:nuair\s+a))\b/,
      token: "keyword"},
     {regex: /(?:scr[ií]obh|fad|thar)\b/, token: "builtin"},
     {regex: /(má|nó)([ {]|$)/, token: ["keyword", null]},
