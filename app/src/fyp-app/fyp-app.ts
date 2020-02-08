@@ -1,15 +1,12 @@
-import { TemplateResult, css, LitElement, html, property, customElement } from 'lit-element';
-import '../editor/editor';
-import '../console/console';
-import { FYPEditor } from '../editor/editor';
-import { FYPConsole } from '../console/console';
-import { ExecCtx, DisplayEngine } from '../engine/engine';
+import { css, customElement, html, LitElement, property, TemplateResult } from "lit-element";
+import "../console/console";
+import { FYPConsole } from "../console/console";
+import "../editor/editor";
+import { FYPEditor } from "../editor/editor";
+import { DisplayEngine, ExecCtx } from "../engine/engine";
 
-@customElement('fyp-app')
+@customElement("fyp-app")
 class FypApp extends LitElement {
-    @property({type: String}) title = "Final Year Project";
-
-    activeCtx : ExecCtx | undefined = undefined;
 
     static get styles() {
         return css`
@@ -43,7 +40,22 @@ class FypApp extends LitElement {
         `;
     }
 
-    render () : TemplateResult {
+    get stage(): HTMLCanvasElement {
+        return this.shadowRoot!.getElementById("stage")! as HTMLCanvasElement;
+    }
+
+    get editor(): FYPEditor {
+        return this.shadowRoot!.getElementById("editor")! as FYPEditor;
+    }
+
+    get console(): FYPConsole {
+        return this.shadowRoot!.getElementById("console")! as FYPConsole;
+    }
+    @property({type: String}) public title = "Final Year Project";
+
+    public activeCtx: ExecCtx | undefined = undefined;
+
+    public render(): TemplateResult {
         return html`
         <style>
             @import url(node_modules/codemirror/lib/codemirror.css);
@@ -60,37 +72,33 @@ class FypApp extends LitElement {
     `;
     }
 
-    private fixCanvas() : void {
-        const cw = this.stage.clientWidth;
-        const ch = this.stage.clientHeight;
-        const fac = 750;
-        this.stage.height = fac;
-        this.stage.width = Math.floor(fac * (cw/ch));
-    }
-
-    stopCode(e : Event){
-        if(this.activeCtx)
+    public stopCode(e: Event) {
+        if (this.activeCtx) {
             this.activeCtx.stop();
+        }
     }
 
-    handleKeyDown(e : KeyboardEvent) {
-        if(this.activeCtx)
+    public handleKeyDown(e: KeyboardEvent) {
+        if (this.activeCtx) {
             this.activeCtx.handleKeyDown(e);
+        }
     }
 
-    async runCode(e : Event) : Promise<void> {
+    public async runCode(e: Event): Promise<void> {
         this.fixCanvas();
-        if(this.activeCtx && this.activeCtx.running())
+        if (this.activeCtx && this.activeCtx.running()) {
             return;
-        const ctx = this.stage.getContext('2d');
-        if(ctx == null)
-            throw "Canvas not supported";
+        }
+        const ctx = this.stage.getContext("2d");
+        if (ctx == null) {
+            throw new Error("Canvas not supported");
+        }
 
         const prog = this.editor.content;
 
         const display = new DisplayEngine(this.stage.width, this.stage.height);
 
-        const write = (msg : string) => this.console.writeOut(msg);
+        const write = (msg: string) => this.console.writeOut(msg);
 
         const exec = new ExecCtx(write, display);
 
@@ -99,15 +107,11 @@ class FypApp extends LitElement {
         await exec.run(ctx, prog);
     }
 
-    get stage() : HTMLCanvasElement {
-        return this.shadowRoot!.getElementById('stage')! as HTMLCanvasElement;
-    }
-
-    get editor() : FYPEditor {
-        return this.shadowRoot!.getElementById('editor')! as FYPEditor;
-    }
-
-    get console() : FYPConsole {
-        return this.shadowRoot!.getElementById('console')! as FYPConsole;
+    private fixCanvas(): void {
+        const cw = this.stage.clientWidth;
+        const ch = this.stage.clientHeight;
+        const fac = 750;
+        this.stage.height = fac;
+        this.stage.width = Math.floor(fac * (cw / ch));
     }
 }

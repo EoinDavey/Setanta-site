@@ -1,16 +1,17 @@
-import { TemplateResult, LitElement, html, property, customElement } from 'lit-element';
+import { customElement, html, LitElement, property, TemplateResult } from "lit-element";
 
-@customElement('fyp-editor')
+@customElement("fyp-editor")
 export class FYPEditor extends LitElement {
     private editor: CodeMirror.Editor | undefined;
 
     get content(): string {
-        if(this.editor)
+        if (this.editor) {
             return this.editor.getValue();
+        }
         return "";
     }
 
-    render () : TemplateResult {
+    public render(): TemplateResult {
         return html`
         <style>
             @import url(node_modules/codemirror/lib/codemirror.css);
@@ -42,23 +43,23 @@ le i idir (2, 100) {
     `;
     }
 
-    firstUpdated(changedProperties: any){
-        if(this.shadowRoot){
-            const tx = this.shadowRoot.getElementById('editor') as HTMLTextAreaElement;
+    public firstUpdated(changedProperties: any) {
+        if (this.shadowRoot) {
+            const tx = this.shadowRoot.getElementById("editor") as HTMLTextAreaElement;
             this.editor = CodeMirror.fromTextArea(tx, {
-                mode: "setanta",
-                lineNumbers: true,
                 indentUnit: 4,
-            })
+                lineNumbers: true,
+                mode: "setanta",
+            });
             this.editor.setOption("extraKeys", {
-                "Ctrl-Enter": cm => {
-                    console.log('fyp-run');
-                    this.dispatchEvent(new CustomEvent('fyp-run', {
+                "Ctrl-Enter": (cm) => {
+                    console.log("fyp-run");
+                    this.dispatchEvent(new CustomEvent("fyp-run", {
                         bubbles: true,
                         composed: true,
                     }));
                 },
             });
-        };
+        }
     }
 }

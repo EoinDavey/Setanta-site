@@ -4,8 +4,9 @@
   "scripts": {
     "setup": "npm install",
     "build": "tsc && polymer build",
+    "lint-all": "tslint --project . -c tslint.json --force",
     "clean": "rm -rf jsbuild && rm -rf build",
-    "test": "echo \"no tests\""
+    "test": "tslint --project . -c tslint.json"
   },
   "dependencies": {
     "@types/codemirror": "0.0.79",

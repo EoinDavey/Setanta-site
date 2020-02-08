@@ -1,19 +1,19 @@
-import { TemplateResult, LitElement, html, property, customElement } from 'lit-element';
+import { customElement, html, LitElement, property, TemplateResult } from "lit-element";
 
-@customElement('fyp-console')
+@customElement("fyp-console")
 export class FYPConsole extends LitElement {
 
     @property({type: Array})
-    lines : string[] = [];
+    public lines: string[] = [];
 
-    render () : TemplateResult {
+    public render(): TemplateResult {
         return html`
         <div id='wrapper'>
-        ${this.lines.map(ln => html`<p>${ln}</p>`)}
+        ${this.lines.map((ln) => html`<p>${ln}</p>`)}
         </div>`;
     }
 
-    public writeOut(msg : string) : void {
+    public writeOut(msg: string): void {
         this.lines.push(msg);
         this.requestUpdate();
     }
