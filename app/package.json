@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "polymer-cli": "^1.9.11",
-    "tslint": "^6.0.0-beta0",
+    "tslint": "^5.20.1",
     "typescript": "^3.7.2"
   }
 }
