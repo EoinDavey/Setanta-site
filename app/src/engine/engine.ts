@@ -1,3 +1,4 @@
+import * as Asserts from "../setanta/src/asserts";
 import { RuntimeError } from "../setanta/src/error";
 import { Parser } from "../setanta/src/gen_parser";
 import { Interpreter } from "../setanta/src/i10r";
@@ -6,20 +7,7 @@ import * as G from "./gridstage";
 import { CanvasCtx, Stage } from "./types";
 import { sleep } from "./util";
 
-async function evalClosure(write: (msg: string) => void,
-                           display: DisplayEngine,
-                           loop: (times: number, gap: number, func: (i: number) => void) => void,
-                           finish: () => void,
-                           prog: string) {
-
-    const p = new Parser(prog);
-    const res = p.parse();
-    if (res.err) {
-        alert(res.err);
-        finish();
-        return;
-    }
-    const ast = res.ast!;
+function getBuiltins(write: (msg: string) => void): Array<[string[], Value]> {
 
     const builtins: Array<[string[], Value]> = [
         [
@@ -35,26 +23,29 @@ async function evalClosure(write: (msg: string) => void,
                 },
             },
         ],
+        [
+            ["coladh"],
+            {
+                ainm: "coladh",
+                arity: () => 1,
+                call: (args: Value[]): Promise<Value> => {
+                    return new Promise<null>((r) => {
+                        setTimeout(() => r(), Asserts.assertNumber(args[0]));
+                    });
+                },
+            },
+        ],
     ];
-    const i = new Interpreter(builtins);
-    try {
-        await i.interpret(ast);
-    } catch (e) {
-        if (e instanceof RuntimeError) {
-            alert(e);
-        }
-        throw e;
-    } finally {
-        finish();
-    }
+    return builtins;
 }
 
 export class ExecCtx {
-    public writeFn: (x: string) => void;
-    public display: DisplayEngine;
-    public frameGap: number = 10;
-    public halt: boolean = false;
-    public ival: number = 0;
+    private writeFn: (x: string) => void;
+    private display: DisplayEngine;
+    private frameGap: number = 10;
+    private halt: boolean = false;
+    private ival: number = 0;
+    private interpreter: Interpreter | null = null;
 
     constructor(write: (x: string) => void, display: DisplayEngine) {
         this.writeFn = write;
@@ -67,6 +58,9 @@ export class ExecCtx {
 
     public stop() {
         this.halt = true;
+        if (this.interpreter) {
+            this.interpreter.stop();
+        }
         clearInterval(this.ival);
     }
 
@@ -76,21 +70,31 @@ export class ExecCtx {
 
     public async run(ctx: CanvasCtx, prog: string) {
         this.halt = false;
+
+        const builtins = getBuiltins(this.writeFn);
+
+        const p = new Parser(prog);
+        const res = p.parse();
+        if (res.err) {
+            alert(res.err);
+            return;
+        }
+        const ast = res.ast!;
+        const i = new Interpreter(builtins);
+        this.interpreter = i;
         this.ival = window.setInterval(() => this.display.draw(ctx), this.frameGap);
-
-        const execution = new Promise((resolve) => {
-            const finish = () => { this.stop(); resolve(); };
-            const loop = async (times: number, gap: number, func: (i: number) => void) => {
-                for (let i = 0; i < times && !this.halt; i++) {
-                    await func(i);
-                    await sleep(gap);
-                }
-            };
-            evalClosure(this.writeFn, this.display, loop, finish, prog);
-        });
-
-        await execution;
-        this.display.draw(ctx);
+        try {
+            await i.interpret(ast);
+        } catch (e) {
+            if (e instanceof RuntimeError) {
+                alert(e.msg);
+            } else {
+                throw e;
+            }
+        } finally {
+            this.stop();
+            this.display.draw(ctx);
+        }
     }
 }
 

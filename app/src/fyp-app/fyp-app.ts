@@ -53,7 +53,7 @@ class FypApp extends LitElement {
     }
     @property({type: String}) public title = "Final Year Project";
 
-    public activeCtx: ExecCtx | undefined = undefined;
+    public activeCtx: ExecCtx | null = null;
 
     public render(): TemplateResult {
         return html`
@@ -84,27 +84,27 @@ class FypApp extends LitElement {
         }
     }
 
-    public async runCode(e: Event): Promise<void> {
+    public runCode(e: Event) {
         this.fixCanvas();
         if (this.activeCtx && this.activeCtx.running()) {
             return;
         }
         const ctx = this.stage.getContext("2d");
-        if (ctx == null) {
-            throw new Error("Canvas not supported");
+        if (ctx === null) {
+            throw new Error("Canvas not supported"); // TODO → Gaeilge
         }
 
-        const prog = this.editor.content;
+        const program = this.editor.content;
 
-        const display = new DisplayEngine(this.stage.width, this.stage.height);
+        const engine = new DisplayEngine(this.stage.width, this.stage.height);
 
         const write = (msg: string) => this.console.writeOut(msg);
 
-        const exec = new ExecCtx(write, display);
+        const exec = new ExecCtx(write, engine);
 
         this.activeCtx = exec;
 
-        await exec.run(ctx, prog);
+        return exec.run(ctx, program);
     }
 
     private fixCanvas(): void {
