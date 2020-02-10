@@ -1,43 +1,11 @@
 import * as Asserts from "../setanta/src/asserts";
 import { RuntimeError } from "../setanta/src/error";
 import { Parser } from "../setanta/src/gen_parser";
-import { Interpreter } from "../setanta/src/i10r";
-import { goLitreacha, Value } from "../setanta/src/values";
+import { Interpreter, STOP } from "../setanta/src/i10r";
+import { callFunc, goLitreacha, Value } from "../setanta/src/values";
 import * as G from "./gridstage";
 import { CanvasCtx, Stage } from "./types";
 import { sleep } from "./util";
-
-function getBuiltins(write: (msg: string) => void): Array<[string[], Value]> {
-
-    const builtins: Array<[string[], Value]> = [
-        [
-            ["scríobh"],
-            {
-                ainm: "scríobh",
-                arity: () => -1,
-                call: (args): Promise<Value> => {
-                    return new Promise<null>((r) => {
-                        write(args.map(goLitreacha).join(" "));
-                        r(null);
-                    });
-                },
-            },
-        ],
-        [
-            ["coladh"],
-            {
-                ainm: "coladh",
-                arity: () => 1,
-                call: (args: Value[]): Promise<Value> => {
-                    return new Promise<null>((r) => {
-                        setTimeout(() => r(), Asserts.assertNumber(args[0]));
-                    });
-                },
-            },
-        ],
-    ];
-    return builtins;
-}
 
 export class ExecCtx {
     private writeFn: (x: string) => void;
@@ -71,7 +39,7 @@ export class ExecCtx {
     public async run(ctx: CanvasCtx, prog: string) {
         this.halt = false;
 
-        const builtins = getBuiltins(this.writeFn);
+        const builtins = this.getBuiltins(this.writeFn);
 
         const p = new Parser(prog);
         const res = p.parse();
@@ -95,6 +63,56 @@ export class ExecCtx {
             this.stop();
             this.display.draw(ctx);
         }
+    }
+
+    private getBuiltins(write: (msg: string) => void): Array<[string[], Value]> {
+
+        const builtins: Array<[string[], Value]> = [
+            [
+                ["scríobh"],
+                {
+                    ainm: "scríobh",
+                    arity: () => -1,
+                    call: (args): Promise<Value> => {
+                        return new Promise<null>((r) => {
+                            write(args.map(goLitreacha).join(" "));
+                            r(null);
+                        });
+                    },
+                },
+            ],
+            [
+                ["coladh"],
+                {
+                    ainm: "coladh",
+                    arity: () => 1,
+                    call: (args: Value[]): Promise<Value> => {
+                        return new Promise<null>((r) => {
+                            setTimeout(() => r(), Asserts.assertNumber(args[0]));
+                        });
+                    },
+                },
+            ],
+            [
+                ["méarchlár", "méarchlar", "mearchlár", "mearchlar"],
+                {
+                    ainm: "méarchlár",
+                    arity: () => 1,
+                    call: (args: Value[]): Promise<Value> => {
+                        const f = Asserts.assertCallable(args[0]);
+                        this.display.registerKeyHandler((code: string) => {
+                            return callFunc(f, [code]).catch((err) => {
+                                if (err !== STOP) {
+                                    return Promise.reject(err);
+                                }
+                            });
+                        });
+                        return Promise.resolve(null);
+                    },
+                },
+            ],
+        ];
+        return builtins;
     }
 }
 
