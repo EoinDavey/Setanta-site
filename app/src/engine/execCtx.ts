@@ -8,9 +8,7 @@ import { DisplayEngine } from "./engine";
 export class ExecCtx {
     private writeFn: (x: string) => void;
     private display: DisplayEngine;
-    private frameGap: number = 10;
     private halt: boolean = false;
-    private ival: number = 0;
     private interpreter: Interpreter | null = null;
 
     constructor(write: (x: string) => void, display: DisplayEngine) {
@@ -104,6 +102,13 @@ export class ExecCtx {
                             ainm: "dron",
                             arity: () => 4,
                             call: (args: Value[]) => this.display.drawRect(args),
+                        },
+                    ],
+                    ["glan",
+                        {
+                            ainm: "glan",
+                            arity: () => 0,
+                            call: (args: Value[]) => this.display.clear(args),
                         },
                     ],
                 ]),

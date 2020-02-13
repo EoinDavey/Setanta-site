@@ -53,4 +53,9 @@ export class DisplayEngine {
         this.ctx.fillRect(x1, y1, x2, y2);
         return Promise.resolve(null);
     }
+
+    public clear(args: Value[]): Promise<Value> {
+        this.ctx.clearRect(0, 0, this.sizeXHidden, this.sizeYHidden);
+        return Promise.resolve(null);
+    }
 }
