@@ -3,7 +3,8 @@ import "../console/console";
 import { FYPConsole } from "../console/console";
 import "../editor/editor";
 import { FYPEditor } from "../editor/editor";
-import { DisplayEngine, ExecCtx } from "../engine/engine";
+import { DisplayEngine } from "../engine/engine";
+import { ExecCtx } from "../engine/execCtx";
 
 @customElement("fyp-app")
 class FypApp extends LitElement {
