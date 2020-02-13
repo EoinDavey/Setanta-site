@@ -96,7 +96,7 @@ class FypApp extends LitElement {
 
         const program = this.editor.content;
 
-        const engine = new DisplayEngine(this.stage.width, this.stage.height);
+        const engine = new DisplayEngine(this.stage.width, this.stage.height, ctx);
 
         const write = (msg: string) => this.console.writeOut(msg);
 
@@ -104,7 +104,7 @@ class FypApp extends LitElement {
 
         this.activeCtx = exec;
 
-        return exec.run(ctx, program);
+        return exec.run(program);
     }
 
     private fixCanvas(): void {
