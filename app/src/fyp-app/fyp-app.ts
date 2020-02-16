@@ -86,10 +86,10 @@ class FypApp extends LitElement {
     }
 
     public runCode(e: Event) {
-        this.fixCanvas();
         if (this.activeCtx && this.activeCtx.running()) {
             return;
         }
+        this.fixCanvas();
         const ctx = this.stage.getContext("2d");
         if (ctx === null) {
             throw new Error("Canvas not supported"); // TODO → Gaeilge
