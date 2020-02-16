@@ -21,23 +21,33 @@ export class FYPEditor extends LitElement {
             }
         </style>
         <textarea id='editor'>
->-- An uimhir phríomha é x?
-gníomh príomha(x) {
-    má x <= 2
-        toradh x == 2
-    le i idir(2, x) {
-        má i*i > x
-            bris
-        má x % i == 0 >-- Níl uimhir phríomha é
-            toradh breag
-    }
-    toradh fíor >-- Is uimhir phríomha é
-}
+>-- Fáilte go Setanta!
 
-scríobh('Seo na uimhreacha phríomha idir 0 agus 100')
-le i idir (2, 100) {
-    má príomha(i)
-        scríobh(i)
+scríobh('Céad Míle Fáilte')
+
+X := fadX@stáitse
+Y := fadY@stáitse
+
+x := 0
+y := 0
+
+dx := 1
+dy := 1
+
+ard := 50
+
+dath@stáitse('dearg')
+
+nuair-a fíor {
+    má x + dx + ard > X | x + dx < 0
+    	dx = -dx
+    má y + dy + ard > Y | y + dy < 0
+    	dy = -dy
+    x = x + dx
+    y = y + dy
+    glan@stáitse()
+    dron@stáitse(x, y, ard, ard)
+  	coladh(1)
 }
 </textarea>
     `;
