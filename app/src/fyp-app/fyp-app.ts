@@ -1,3 +1,6 @@
+import "@polymer/iron-icons/av-icons.js";
+import "@polymer/paper-button/paper-button.js";
+import "@polymer/paper-icon-button/paper-icon-button.js";
 import { css, customElement, html, LitElement, property, TemplateResult } from "lit-element";
 import "../console/console";
 import { FYPConsole } from "../console/console";
@@ -11,6 +14,22 @@ class FypApp extends LitElement {
 
     static get styles() {
         return css`
+            #top-bar paper-icon-button {
+                color: var(--theme-accent);
+                height: 50pt;
+                width: 50pt;
+            }
+            #top-bar {
+                background-color: var(--theme-primary);
+                color: white;
+                top: 0;
+                margin-bottom: 10px;
+                padding: 20px;
+            }
+            #top-bar h1 {
+                display: inline-block;
+                margin-top: 0;
+            }
             #container {
                 display: grid;
                 grid-template-columns: minmax(0,1fr) minmax(0,1fr);
@@ -38,6 +57,18 @@ class FypApp extends LitElement {
                 height: 100%;
                 outline: thin inset #aaaaaa;
             }
+            #buttons {
+                display: inline-block;
+                border-left: 2px solid var(--theme-divider);
+                margin-left: 10px;
+            }
+            #code-link {
+                background-color: var(--theme-accent);
+                float:right;
+            }
+            #top-bar a {
+                color: white;
+            }
         `;
     }
 
@@ -52,19 +83,20 @@ class FypApp extends LitElement {
     get console(): FYPConsole {
         return this.shadowRoot!.getElementById("console")! as FYPConsole;
     }
-    @property({type: String}) public title = "Final Year Project";
+    @property({type: String}) public title = "Setanta";
 
     public activeCtx: ExecCtx | null = null;
 
     public render(): TemplateResult {
         return html`
-        <style>
-            @import url(node_modules/codemirror/lib/codemirror.css);
-            @import url(node_modules/codemirror/theme/solarized.css);
-        </style>
-        <h1>${this.title}</h1>
-        <button @click="${this.runCode}">Run Code</button>
-        <button @click="${this.stopCode}">Stop Code</button>
+        <div id='top-bar'>
+            <h1>${this.title}</h1>
+            <div id="buttons">
+                <paper-icon-button id="run-button" icon="av:play-circle-filled" @click="${this.runCode}">Run Code</paper-icon-button>
+                <paper-icon-button id="stop-button" icon="av:stop" @click="${this.stopCode}">Stop Code</paper-icon-button>
+            </div>
+            <a href="https://github.com/EoinDavey/Setanta"> <paper-button id="code-link" raised>Féach ar an gcód</paper-button></a>
+        </div>
         <div id='container'>
             <canvas id='stage' width="1000" height="750" tabindex="0" @keydown="${this.handleKeyDown}"></canvas>
             <fyp-editor id="editor" @fyp-run="${this.runCode}"></fyp-editor>

@@ -9,8 +9,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-        <title>Final Year Project</title>
-        <meta name="description" content="Final year project">
+        <title>Setanta</title>
+        <meta name="description" content="Setanta">
 
         <!-- See https://goo.gl/OOhYW5 -->
         <link rel="manifest" href="/manifest.json">
@@ -19,6 +19,22 @@
 
         <script type="module" src="/jsbuild/fyp-app/fyp-app.js" crossorigin></script>
         <script src="/jsbuild/js/cm-mode.js" crossorigin></script>
+        <style>
+            body {
+                margin: 0px;
+                --theme-primary: #4CAF50;
+                --theme-primary-light: #C8E6C9;
+                --theme-primary-dark: #388E3C;
+                --theme-accent: #1976d2;
+                --theme-text-primary: #212121;
+                --theme-text-secondary: #757575;
+                --theme-divider: #BDBDBD;
+            }
+            html {
+                font-family: Roboto;
+                color: var(--theme-text-primary);
+            }
+        </style>
     </head>
     <body>
         <fyp-app></fyp-app>

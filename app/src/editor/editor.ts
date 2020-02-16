@@ -13,11 +13,11 @@ export class FYPEditor extends LitElement {
 
     public render(): TemplateResult {
         return html`
+        <link rel="stylesheet" href="node_modules/codemirror/lib/codemirror.css"/>
+        <link rel="stylesheet" href="node_modules/codemirror/theme/solarized.css"/>
         <style>
-            @import url(node_modules/codemirror/lib/codemirror.css);
-            @import url(node_modules/codemirror/theme/solarized.css);
             .CodeMirror {
-                height: 100%;
+                height: 100% !important;
             }
         </style>
         <textarea id='editor'>
