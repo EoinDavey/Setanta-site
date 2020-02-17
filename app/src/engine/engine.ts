@@ -8,10 +8,13 @@ const colourMap: Map<string, string> = new Map([
     ["bandearg", "pink"],
     ["bán", "white"],
     ["bándearg", "pink"],
+    ["corcra", "purple"],
     ["dearg", "red"],
     ["dubh", "black"],
     ["glas", "green"],
     ["gorm", "blue"],
+    ["oraiste", "orange"],
+    ["oráiste", "orange"],
     ["liath", "gray"],
 ]);
 export class DisplayEngine {
