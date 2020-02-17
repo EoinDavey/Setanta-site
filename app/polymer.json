@@ -2,7 +2,8 @@
     "sources" : [
         "jsbuild/**",
         "package.json",
-        "manifest.json"
+        "manifest.json",
+        "assets/**"
     ],
     "npm": true,
     "lint": {
