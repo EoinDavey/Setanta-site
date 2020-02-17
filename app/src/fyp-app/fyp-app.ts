@@ -95,7 +95,10 @@ class FypApp extends LitElement {
                 <paper-icon-button id="run-button" icon="av:play-circle-filled" @click="${this.runCode}">Run Code</paper-icon-button>
                 <paper-icon-button id="stop-button" icon="av:stop" @click="${this.stopCode}">Stop Code</paper-icon-button>
             </div>
-            <a href="https://github.com/EoinDavey/Setanta"> <paper-button id="code-link" raised>Féach ar an gcód</paper-button></a>
+            <a href="https://github.com/EoinDavey/Setanta"><paper-button id="code-link" raised>
+            <img src="assets/github.png">
+            Féach ar an gcód
+            </paper-button></a>
         </div>
         <div id='container'>
             <canvas id='stage' width="1000" height="750" tabindex="0" @keydown="${this.handleKeyDown}"></canvas>
