@@ -25,10 +25,27 @@ class FypApp extends LitElement {
                 top: 0;
                 margin-bottom: 10px;
                 padding: 20px;
+                display: flex;
+                align-items: center;
             }
             #top-bar h1 {
                 display: inline-block;
                 margin-top: 0;
+                margin-bottom: 0;
+                margin-left: 10px;
+            }
+            #buttons {
+                display: inline-block;
+                border-left: 2px solid var(--theme-divider);
+                margin-left: 10px;
+            }
+            #code-link {
+                background-color: var(--theme-accent);
+                float:right;
+            }
+            #top-bar a {
+                color: white;
+                margin-left: auto;
             }
             #container {
                 display: grid;
@@ -57,18 +74,6 @@ class FypApp extends LitElement {
                 height: 100%;
                 outline: thin inset #aaaaaa;
             }
-            #buttons {
-                display: inline-block;
-                border-left: 2px solid var(--theme-divider);
-                margin-left: 10px;
-            }
-            #code-link {
-                background-color: var(--theme-accent);
-                float:right;
-            }
-            #top-bar a {
-                color: white;
-            }
         `;
     }
 
@@ -90,6 +95,7 @@ class FypApp extends LitElement {
     public render(): TemplateResult {
         return html`
         <div id='top-bar'>
+            <img src="assets/logo50x50.png"/>
             <h1>${this.title}</h1>
             <div id="buttons">
                 <paper-icon-button id="run-button" icon="av:play-circle-filled" @click="${this.runCode}">Run Code</paper-icon-button>

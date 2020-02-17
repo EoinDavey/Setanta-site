@@ -3,6 +3,7 @@
         "jsbuild/**",
         "package.json",
         "manifest.json",
+        "favicon.ico",
         "assets/**"
     ],
     "npm": true,
