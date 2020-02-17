@@ -6,6 +6,8 @@ import { CanvasCtx } from "./types";
 const colourMap: Map<string, string> = new Map([
     ["ban", "white"],
     ["bandearg", "pink"],
+    ["bui", "yellow"],
+    ["buí", "yellow"],
     ["bán", "white"],
     ["bándearg", "pink"],
     ["corcra", "purple"],
