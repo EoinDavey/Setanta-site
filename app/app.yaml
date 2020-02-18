@@ -3,16 +3,11 @@ runtime: go111
 main: ./go/server/main.go
 
 handlers:
-    - url: /api/.*
-      secure: always
-      script: auto
-
     - url: /(.*\.(ico|xml|webmanifest|json|png|js|html|css|map))$
       static_files: build/default/\1
       secure: always
       upload: build/default/.*\.(ico|xml|webmanifest|json|png|js|html|css|map)$
 
     - url: /$
-      static_files: build/default/index.html
+      script: auto
       secure: always
-      upload: build/default/index.html

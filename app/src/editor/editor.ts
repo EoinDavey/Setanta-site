@@ -2,7 +2,6 @@ import { css, customElement, html, LitElement, property, TemplateResult } from "
 
 @customElement("fyp-editor")
 export class FYPEditor extends LitElement {
-    private editor: CodeMirror.Editor | undefined;
 
     get content(): string {
         if (this.editor) {
@@ -364,6 +363,9 @@ div.CodeMirror-dragcursors {
 span.CodeMirror-selectedtext { background: none; }
         `;
     }
+    @property({type: String}) public startContent = `
+}`;
+    private editor: CodeMirror.Editor | undefined;
     public render(): TemplateResult {
         return html`
         <style>
@@ -372,34 +374,6 @@ span.CodeMirror-selectedtext { background: none; }
             }
         </style>
         <textarea id='editor'>
->-- Fáilte go Setanta!
-
-scríobh('Céad Míle Fáilte')
-
-X := fadX@stáitse
-Y := fadY@stáitse
-
-x := 0
-y := 0
-
-dx := 1
-dy := 1
-
-ard := 50
-
-dath@stáitse('dearg')
-
-nuair-a fíor {
-    má x + dx + ard > X | x + dx < 0
-    	dx = -dx
-    má y + dy + ard > Y | y + dy < 0
-    	dy = -dy
-    x = x + dx
-    y = y + dy
-    glan@stáitse()
-    dron@stáitse(x, y, ard, ard)
-  	coladh(1)
-}
 </textarea>
     `;
     }
@@ -412,6 +386,7 @@ nuair-a fíor {
                 lineNumbers: true,
                 mode: "setanta",
             });
+            this.editor.setValue(this.startContent);
             this.editor.setOption("extraKeys", {
                 "Ctrl-Enter": (cm) => {
                     console.log("fyp-run");

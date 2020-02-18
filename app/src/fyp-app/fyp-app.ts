@@ -89,6 +89,7 @@ class FypApp extends LitElement {
         return this.shadowRoot!.getElementById("console")! as FYPConsole;
     }
     @property({type: String}) public title = "Setanta";
+    @property({type: String}) public content = "";
 
     public activeCtx: ExecCtx | null = null;
 
@@ -108,7 +109,7 @@ class FypApp extends LitElement {
         </div>
         <div id='container'>
             <canvas id='stage' width="1000" height="750" tabindex="0" @keydown="${this.handleKeyDown}"></canvas>
-            <fyp-editor id="editor" @fyp-run="${this.runCode}"></fyp-editor>
+            <fyp-editor startContent="${this.content}" id="editor" @fyp-run="${this.runCode}"></fyp-editor>
             <fyp-console id="console"></fyp-console>
         </div>
     `;
