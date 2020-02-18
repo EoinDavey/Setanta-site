@@ -6,7 +6,8 @@
     "build": "tsc && polymer build",
     "lint-all": "tslint --project . -c tslint.json --force",
     "clean": "rm -rf jsbuild && rm -rf build",
-    "test": "tslint --project . -c tslint.json"
+    "test": "tslint --project . -c tslint.json",
+    "local": "GOOGLE_APPLICATION_CREDENTIALS=\"google-creds.json\" dev_appserver.py --port=8081  app.yaml"
   },
   "dependencies": {
     "@polymer/iron-icons": "^3.0.1",

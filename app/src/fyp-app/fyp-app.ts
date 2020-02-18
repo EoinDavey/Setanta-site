@@ -106,6 +106,9 @@ class FypApp extends LitElement {
             <img src="assets/github.png">
             Féach ar an gcód
             </paper-button></a>
+            <paper-button @click="${this.saveCode}" raised>
+            Sábháil
+            </paper-button>
         </div>
         <div id='container'>
             <canvas id='stage' width="1000" height="750" tabindex="0" @keydown="${this.handleKeyDown}"></canvas>
@@ -148,6 +151,27 @@ class FypApp extends LitElement {
         this.activeCtx = exec;
 
         return exec.run(program);
+    }
+
+    public async saveCode(e: Event) {
+        const program = this.editor.content;
+        const data = {
+            content: program,
+        };
+        const url = "/store";
+        const resp = await fetch(url, {
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json",
+            },
+            method: "POST",
+        });
+        const text = await resp.text();
+        if (resp.ok) {
+            window.history.pushState({code: text}, text, "/" + text);
+        } else {
+            alert(text);
+        }
     }
 
     private fixCanvas(): void {
