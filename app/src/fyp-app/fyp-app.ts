@@ -3,6 +3,7 @@ import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-card/paper-card.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
+import { TextMarker } from "codemirror";
 import { css, customElement, html, LitElement, property, TemplateResult } from "lit-element";
 import "../console/console";
 import { FYPConsole } from "../console/console";
@@ -101,6 +102,8 @@ class FypApp extends LitElement {
 
     public activeCtx: ExecCtx | null = null;
 
+    private marks: TextMarker[] = [];
+
     public render(): TemplateResult {
         return html`
         <div id='top-bar'>
@@ -138,6 +141,11 @@ class FypApp extends LitElement {
     `;
     }
 
+    public clearMarks() {
+        this.marks.forEach((mark) => mark.clear());
+        this.marks = [];
+    }
+
     public stopCode(e: Event) {
         if (this.activeCtx) {
             this.activeCtx.stop();
@@ -150,11 +158,12 @@ class FypApp extends LitElement {
         }
     }
 
-    public runCode(e: Event) {
+    public async runCode(e: Event) {
         if (this.activeCtx && this.activeCtx.running()) {
             return;
         }
         this.fixCanvas();
+        this.clearMarks();
         const ctx = this.stage.getContext("2d");
         if (ctx === null) {
             throw new Error("Canvas not supported"); // TODO → Gaeilge
@@ -170,7 +179,17 @@ class FypApp extends LitElement {
 
         this.activeCtx = exec;
 
-        return exec.run(program);
+        const err = await exec.run(program);
+        if (err) {
+            const line = err.pos.line;
+            const ch = err.pos.offset;
+            console.log(line, ch);
+            if (this.editor.editor) {
+                const mrk = this.editor.editor.markText({line: line - 1, ch: ch - 1}, {line: line - 1, ch}, {className: "syntax-error"});
+                this.marks.push(mrk);
+            }
+            alert(`Eisceacht ar líne ${line}: Ag súil le: ${err.expmatches}`);
+        }
     }
 
     public async saveCode(e: Event) {

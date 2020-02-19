@@ -365,12 +365,16 @@ span.CodeMirror-selectedtext { background: none; }
     }
     @property({type: String}) public startContent = `
 }`;
-    private editor: CodeMirror.Editor | undefined;
+    public editor: CodeMirror.Editor | undefined;
     public render(): TemplateResult {
         return html`
         <style>
             .CodeMirror {
                 height: 100% !important;
+            }
+            .syntax-error {
+                background: #FBC2C4 !important;
+                color: #8a1f11 !important;
             }
         </style>
         <textarea id='editor'>
@@ -389,7 +393,6 @@ span.CodeMirror-selectedtext { background: none; }
             this.editor.setValue(this.startContent);
             this.editor.setOption("extraKeys", {
                 "Ctrl-Enter": (cm) => {
-                    console.log("fyp-run");
                     this.dispatchEvent(new CustomEvent("fyp-run", {
                         bubbles: true,
                         composed: true,

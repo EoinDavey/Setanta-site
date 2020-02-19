@@ -8,7 +8,7 @@ import { DisplayEngine } from "./engine";
 export class ExecCtx {
     private writeFn: (x: string) => void;
     private display: DisplayEngine;
-    private halt: boolean = false;
+    private halt: boolean = true;
     private interpreter: Interpreter | null = null;
 
     constructor(write: (x: string) => void, display: DisplayEngine) {
@@ -37,8 +37,7 @@ export class ExecCtx {
         const p = new Parser(prog);
         const res = p.parse();
         if (res.err) {
-            alert(res.err);
-            return;
+            return res.err;
         }
         const ast = res.ast!;
         const i = new Interpreter(builtins);
