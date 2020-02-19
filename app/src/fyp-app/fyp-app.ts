@@ -1,6 +1,7 @@
 import "@polymer/iron-icons/av-icons.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/paper-button/paper-button.js";
+import "@polymer/paper-card/paper-card.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import { css, customElement, html, LitElement, property, TemplateResult } from "lit-element";
 import "../console/console";
@@ -55,25 +56,31 @@ class FypApp extends LitElement {
                 grid-column-gap: 2vh;
                 grid-row-gap: 2vw;
                 height: 80vh;
+                margin-left: 10px;
             }
-            #editor {
+            #editor-card {
                 grid-column-start: 2;
                 grid-row-start: span 2;
             }
-            #console {
+            #console-card {
                 grid-column-start: 1;
                 grid-column-end: 2;
                 grid-row-start: 2;
                 overflow: auto;
-                outline: 1px solid black;
             }
-            #stage {
+            #stage-card {
                 grid-column-start: 1;
                 grid-column-end: 2;
                 grid-row-start: 1;
+            }
+            #stage {
                 width: 100%;
                 height: 100%;
-                outline: thin inset #aaaaaa;
+            }
+            .card-content {
+                width: 100%;
+                height: 100%;
+                padding: 0px;
             }
         `;
     }
@@ -112,9 +119,21 @@ class FypApp extends LitElement {
             </paper-button></a>
         </div>
         <div id='container'>
-            <canvas id='stage' width="1000" height="750" tabindex="0" @keydown="${this.handleKeyDown}"></canvas>
-            <fyp-editor startContent="${this.content}" id="editor" @fyp-run="${this.runCode}"></fyp-editor>
-            <fyp-console id="console"></fyp-console>
+            <paper-card id="stage-card">
+                <div class="card-content">
+                    <canvas id='stage' width="1000" height="750" tabindex="0" @keydown="${this.handleKeyDown}"></canvas>
+                </div>
+            </paper-card>
+            <paper-card id="editor-card">
+                <div class="card-content">
+                    <fyp-editor startContent="${this.content}" id="editor" @fyp-run="${this.runCode}"></fyp-editor>
+                </div>
+            </paper-card>
+            <paper-card id="console-card">
+                <div class="card-content">
+                    <fyp-console id="console"></fyp-console>
+                </div>
+            </paper-card>
         </div>
     `;
     }
