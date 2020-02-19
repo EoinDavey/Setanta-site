@@ -1,4 +1,5 @@
 import "@polymer/iron-icons/av-icons.js";
+import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import { css, customElement, html, LitElement, property, TemplateResult } from "lit-element";
@@ -101,14 +102,14 @@ class FypApp extends LitElement {
             <div id="buttons">
                 <paper-icon-button id="run-button" icon="av:play-circle-filled" @click="${this.runCode}">Run Code</paper-icon-button>
                 <paper-icon-button id="stop-button" icon="av:stop" @click="${this.stopCode}">Stop Code</paper-icon-button>
+            <paper-icon-button icon="icons:save" @click="${this.saveCode}" raised>
+            Sábháil
+            </paper-icon-button>
             </div>
             <a href="https://github.com/EoinDavey/Setanta"><paper-button id="code-link" raised>
             <img src="assets/github.png">
             Féach ar an gcód
             </paper-button></a>
-            <paper-button @click="${this.saveCode}" raised>
-            Sábháil
-            </paper-button>
         </div>
         <div id='container'>
             <canvas id='stage' width="1000" height="750" tabindex="0" @keydown="${this.handleKeyDown}"></canvas>
