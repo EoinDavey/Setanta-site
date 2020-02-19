@@ -3,3 +3,5 @@ gae-keys.json
 *.log
 *.swp
 *.out
+*.toc
+*.log
