@@ -1,5 +1,6 @@
 \chapter{Introduction}
 For easier distinction between programming languages and "human" languages, from this point I will refer to programming languages as \textbf{PLs}, and traditional languages as just \textbf{languages}.
+
 \section{Motivation}
 English is the language of choice for the programming world, even PLs developed in non English speaking countries are designed to be written in English, e.g. \emph{Lua} (developed in the Netherlands), \emph{Ruby} (developed in Japan). This focus on one single language must have some impact the way we design our PLs. Many PLs have been written for other languages, but if you go to use one you will almost certainly find that it is a \emph{translation} of a PL originally written for English speakers\cite{wikipllist}. If we design a PL from the ground up around a non English language, what changes do we see between it and the industry standard English PLs.
 
@@ -27,7 +28,7 @@ After a design is settled on we move to creating the parser generator \tsPEG{}. 
 
 After creation of \Setanta{} we return to the learning environment, adding a backend that allows users to save their code and send it to others. We improve the visual look of the website, and improve the concurrency abstractions as we prepare it for release.
 
-\section{Metrics}
+\section{Evaluation Metrics}
 
 The main strategy to evaluate this project is by evaluating the degree of completion of the main goals. We will evaluate how successful the project was by examining the level of success that was attained in completing the goals. The goals for \Setanta{} include creating a new, modern programming language in Irish, evaluating how it differs from languages designed in English, how beginner friendly it is, and how much interest there is in the language from the community at large.
 
@@ -35,4 +36,27 @@ For \tsPEG{} the goals are to create a powerful parser generator for TypeScript.
 
 The learning environment has many goals. It must be an accessible website where users can write and execute \Setanta{} code. The website should allow users to experiment with \Setanta{}, both through classical text IO programming, and by allowing them access to an API to draw and manipulate shapes and objects on a graphics display. It should be a beginner friendly website so that it draws the interest of people who have not yet learned to program.
 
-\section{Project}
+\section{Project Achievements}
+In the completion of this project several significant accomplishments were realized.
+\begin{itemize}
+    \item \textbf{Successful creation and launch of \tsPEG{}}
+
+        The TypeScript parser generator \tsPEG{} was created successfully and released on the NPM (Node Package Manager). \tsPEG{} was announced on some TypeScript forums and garnered some attention, peaking at 242 average weekly downloads for a period after its release. \tsPEG{} was used in the creation of \Setanta{} to great success.
+
+    \item \textbf{Implementation of \Setanta{}.}
+
+        As the main goal of the project, \Setanta{} was developed almost exactly to the original design. It's a modern, powerful, expressive language with all the bells and whistles that we have come to expect. \Setanta{} is a strong but dynamically typed language that can be executed both in the browser and locally on the command line through the NodeJS runtime. To test the expressive power of \Setanta{} I wrote solutions to several programming problems from the \emph{Advent of Code} problem set in \Setanta{}. These solutions went on to be part of the test suite.
+
+    \item \textbf{\trys{} - The \Setanta{} learning environment.}
+
+        \trys{} was created and hosted on the Google App Engine, and satisfies all the requirements that were expected of it. Visiting \trys{} the user can write and execute \Setanta{} code. They are able to save their code and send it to their friends by the user of unique URLs assigned to each saved piece of code. \trys{} also features the planned graphics display where the programmer can draw and manipulate different shapes and objects in a graphical way.
+
+    \item \textbf{Allowing Irish to affect the design of \Setanta{}.}
+
+        Part of the goals of designing \Setanta{} was to allow the Irish language to influence it's design, and by doing so to see what parts of industry standard languages are subtly influenced by their design in English. \Setanta{} has some syntactic constructs that were affected by the use of Irish as its "host" language. These effects highlight some of the Anglo-centric designs in today's languages, including in features that we consider to be almost universal.
+
+    \item \textbf{Abstraction out over the browsers concurrency issues.}
+        
+        Anyone who's written code for the browser will know the pain of the single-threaded, non blocking world of JavaScript. Programs executed on the browser cannot launch multiple threads, or wait for operations to finish, unless you use \Setanta{}. The \Setanta{} runtime abstracts out the JavaScript internal task queue and callback systems, and allows the user to write code that waits for blocking operations such as user input, and to execute things concurrently such as running infinite rendering loops but still allowing keyboard inputs to be processed.
+
+\end{itemize}
