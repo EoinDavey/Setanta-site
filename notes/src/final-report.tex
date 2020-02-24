@@ -1,6 +1,7 @@
 \documentclass[11pt]{extreport}
 \usepackage[a4paper, margin=25mm]{geometry}
 \usepackage{fancyhdr}
+\usepackage{amsmath}
 \usepackage{hyperref}
 \usepackage{graphicx}
 \usepackage{listings}
@@ -16,6 +17,12 @@
     colorlinks=true,
     urlcolor=blue,
 }
+\lstset
+{
+    numbers=left,
+    basicstyle=\ttfamily\footnotesize,
+    breaklines=true,
+}
 \pagestyle{fancy}
 \fancyhf{}
 \rhead{\thepage}
@@ -29,6 +36,7 @@
     \chapinp{introduction}
     \chapinp{background}
     \chapinp{problemdesc}
+    \chapinp{solution}
 
     \chapinp{bibliography}
 \end{document}
