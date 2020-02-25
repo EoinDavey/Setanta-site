@@ -1,8 +1,11 @@
 \documentclass[11pt]{extreport}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage[a4paper, margin=25mm]{geometry}
 \usepackage{fancyhdr}
 \usepackage{amsmath}
 \usepackage{hyperref}
+\usepackage{xcolor}
 \usepackage{graphicx}
 \usepackage{listings}
 \usepackage{float}
@@ -20,8 +23,31 @@
 \lstset
 {
     numbers=left,
-    basicstyle=\ttfamily\footnotesize,
+    basicstyle=\footnotesize,
+    showstringspaces=false,
     breaklines=true,
+    keywordstyle=\color{blue}\bfseries,
+    stringstyle=\ttfamily,
+    inputencoding=utf8,
+    extendedchars=true,
+    literate=%
+        {á}{{\'a}}1
+        {ó}{{\'o}}1
+        {é}{{\'e}}1
+        {í}{{\'i}}1
+        {ú}{{\'u}}1
+        {má}{{{\color{blue}\textbf{m\'a}}}}2
+        {nuair-a}{{{\color{blue}\textbf{nuair-a}}}}6
+        {gníomh}{{{\color{blue}\textbf{gn\'iomh}}}}6
+        {fíor}{{{\color{orange}f\'ior}}}3
+        {breag}{{{\color{orange}breag}}}5
+    }
+\lstdefinelanguage{setanta}
+{
+    morekeywords={
+        le, idir, creatlach
+    },
+    morestring=[d]'
 }
 \pagestyle{fancy}
 \fancyhf{}
