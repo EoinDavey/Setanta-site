@@ -1,3 +1,4 @@
+import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/iron-icons/av-icons.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/paper-button/paper-button.js";
@@ -123,6 +124,7 @@ class FypApp extends LitElement {
             </paper-icon-button>
             </div>
             <a href="http://docs.try-setanta.ie" id="cabhair"><paper-button raised>
+            <iron-icon icon="icons:help"></iron-icon>
             Cabhair
             </paper-button></a>
             <a href="https://github.com/EoinDavey/Setanta"><paper-button id="code-link" raised>
