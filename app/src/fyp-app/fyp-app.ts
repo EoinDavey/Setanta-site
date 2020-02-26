@@ -38,10 +38,13 @@ class FypApp extends LitElement {
                 margin-bottom: 0;
                 margin-left: 10px;
             }
-            #buttons {
+            #buttons-left {
                 display: inline-block;
                 border-left: 2px solid var(--theme-divider);
                 margin-left: 10px;
+            }
+            #buttons-right {
+                margin-left: auto;
             }
             #code-link {
                 background-color: var(--theme-accent);
@@ -50,9 +53,6 @@ class FypApp extends LitElement {
             #top-bar a {
                 color: white;
                 text-decoration: none;
-            }
-            #cabhair {
-                margin-left: auto;
             }
             #cabhair paper-button {
                 background-color: var(--theme-accent);
@@ -118,21 +118,23 @@ class FypApp extends LitElement {
         <div id='top-bar'>
             <img src="assets/logo50x50.png"/>
             <h1>${this.title}</h1>
-            <div id="buttons">
+            <div id="buttons-left">
                 <paper-icon-button id="run-button" icon="av:play-circle-filled" @click="${this.runCode}">Run Code</paper-icon-button>
                 <paper-icon-button id="stop-button" icon="av:stop" @click="${this.stopCode}">Stop Code</paper-icon-button>
-            <paper-icon-button icon="icons:save" @click="${this.saveCode}" raised>
-            Sábháil
-            </paper-icon-button>
+                <paper-icon-button icon="icons:save" @click="${this.saveCode}" raised>
+                Sábháil
+                </paper-icon-button>
             </div>
-            <a href="http://docs.try-setanta.ie" id="cabhair"><paper-button raised>
-            <iron-icon icon="icons:help"></iron-icon>
-            Cabhair
-            </paper-button></a>
-            <a href="https://github.com/EoinDavey/Setanta"><paper-button id="code-link" raised>
-            <img src="assets/github.png">
-            Féach ar an gcód
-            </paper-button></a>
+            <div id="buttons-right">
+                <a href="http://docs.try-setanta.ie" id="cabhair"><paper-button raised>
+                <iron-icon icon="icons:help"></iron-icon>
+                Cabhair
+                </paper-button></a>
+                <a href="https://github.com/EoinDavey/Setanta"><paper-button id="code-link" raised>
+                <img src="assets/github.png">
+                Féach ar an gcód
+                </paper-button></a>
+            </div>
         </div>
         <div id='container'>
             <paper-card id="stage-card">
