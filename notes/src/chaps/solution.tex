@@ -148,12 +148,13 @@ creatlach Person ó Animal {
             \end{lstlisting}
         \item \textbf{Literals}
 
-            \Setanta{} supports literals for integers, booleans, strings and lists.
+            \Setanta{} supports literals for integers, booleans, null, strings and lists.
             \begin{lstlisting}[language=setanta, frame=single, caption=Setanta literals]
 a := 500
 b := 'Dia duit domhan'
 c := [1,2,3,4, fíor]
 d := fíor != breag
+c := neamhní
             \end{lstlisting}
 \end{itemize}
 
@@ -184,3 +185,36 @@ In direct contrast to this, in Irish we list possession in increasing order, mea
 \[pane \leftarrow window \leftarrow door \leftarrow car \leftarrow man\]
 
 This linguistic difference between Irish and English is again addressed by the @ operator. The standard '.' operator reflects the English language structure, \verb|man.car.door.window.pane|, but in \Setanta{} we use the Irish ordering \verb|pane@window@door@car@man|. This is another connection between English and the standard design of PLs that is easily overlooked.
+
+\subsection{Allowing blocking operations}
+
+As discussed in the technical background section, the JavaScript runtime, whether it be NodeJS or a browser, only allow usage of a single thread, and no blocking operations. However, writing \Setanta{} allows the user to use blocking functions. Figure \ref{blockingcomparison} shows a side by side comparison of equivalent programs in JavaScript and Setanta, it's clear that the Setanta program is much simpler due to allowing the program to block.
+
+\begin{figure}[ht]
+    \begin{minipage}[t]{0.45\textwidth}
+        \begin{lstlisting}[language=, caption=JavaScript]
+setTimeout(() => {
+    console.log('sleep1');
+    setTimeout(() => {
+        console.log('sleep2');
+        setTimeout(() => {
+            console.log('sleep3')
+        }, 100);
+    }, 100);
+}, 100);
+        \end{lstlisting}
+    \end{minipage}\qquad
+    \begin{minipage}[t]{0.45\textwidth}
+        \begin{lstlisting}[language=setanta, caption=Setanta]
+sleep(100)
+scríobh('sleep1')
+sleep(100)
+scríobh('sleep2')
+sleep(100)
+scríobh('sleep3')
+        \end{lstlisting}
+    \end{minipage}
+    \caption{Equivalent code in JavaScript + Setanta}
+    \label{blockingcomparison}
+\end{figure}
+
