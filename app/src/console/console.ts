@@ -11,14 +11,15 @@ export class FYPConsole extends LitElement {
     static get styles() {
         return css`
 #input {
-    height: 20%;
+    height: 18%;
     border-top: 2px solid var(--theme-divider);
     margin-left: 2%;
     margin-right: 2%;
 }
 #list {
-    height: 80%;
+    height: 78%;
     overflow: auto;
+    margin-left: 2%;
 }
 #wrapper {
     height: 100%
