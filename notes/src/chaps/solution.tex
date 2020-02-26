@@ -192,7 +192,7 @@ As discussed in the technical background section, the JavaScript runtime, whethe
 
 \begin{figure}[ht]
     \begin{minipage}[t]{0.45\textwidth}
-        \begin{lstlisting}[language=, caption=JavaScript]
+        \begin{lstlisting}[language=javascript, caption=JavaScript]
 setTimeout(() => {
     console.log('sleep1');
     setTimeout(() => {
@@ -218,3 +218,8 @@ scríobh('sleep3')
     \label{blockingcomparison}
 \end{figure}
 
+\subsection{Concurrency}
+
+If you open the JavaScript console on any browser and enter \lstinline[language=javascript]|while(true){}| the browser tab will cease to be functional, i.e no buttons or text boxes or animations will work anymore. This is because the JavaScript engine is single threaded, the thread is busy computing \lstinline[language=javascript]|while(true){}|, and cannot process any other events.
+
+In contrast, if you write \lstinline[language=setanta]|nuair-a fíor {}| in \Setanta{}, the browser tab will remain responsive. This is due to the implicit concurrency of all \Setanta{} functions. \Setanta{} manipulates the JavaScript engine task queue to ensure that execution time is shared between the main browser thread actions, and executing the \Setanta{} code.

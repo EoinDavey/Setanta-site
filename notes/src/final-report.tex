@@ -37,10 +37,10 @@
         {í}{{\'i}}1
         {ú}{{\'u}}1
         {má}{{{\color{blue}\textbf{m\'a}}}}2
-        {nuair-a}{{{\color{blue}\textbf{nuair-a}}}}6
+        {nuair-a}{{{\color{blue}\textbf{nuair-a}}}}7
         {neamhní}{{{\color{purple}\textbf{neamhn\'i}}}}7
         {gníomh}{{{\color{blue}\textbf{gn\'iomh}}}}6
-        {fíor}{{{\color{orange}f\'ior}}}3
+        {fíor}{{{\color{orange}f\'ior}}}4
         {breag}{{{\color{orange}breag}}}5
     }
 \lstdefinelanguage{setanta}
@@ -50,6 +50,21 @@
     },
     morestring=[d]'
 }
+\lstdefinelanguage{JavaScript}{
+  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+  keywordstyle=\color{blue}\bfseries,
+  ndkeywords={class, export, boolean, throw, implements, import, this},
+  ndkeywordstyle=\color{darkgray}\bfseries,
+  identifierstyle=\color{black},
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  morestring=[b]',
+  morestring=[b]"
+}
+
 \pagestyle{fancy}
 \fancyhf{}
 \rhead{\thepage}

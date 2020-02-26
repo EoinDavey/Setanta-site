@@ -11,12 +11,13 @@ To overcome the non-blocking limitation of the execution thread the JavaScript e
 \begin{figure}
     \caption{Code if thread can be blocked.}
     \label{blockingcode}
-    \begin{lstlisting}
-    function sleepFor100ms() {
-        print('Starting sleep')
-        sleep(100)
-        print('After sleep')
-    }
+    \begin{lstlisting}[language=javascript]
+// Would work in an ideal world
+function sleepFor100ms() {
+    print('Starting sleep')
+    sleep(100)
+    print('After sleep')
+}
     \end{lstlisting}
 \end{figure}
 
@@ -25,11 +26,12 @@ Ideally this would print "Starting Sleep", wait 100ms, then print "After Sleep".
 \begin{figure}
     \caption{Using \texttt{setTimeout}}
     \label{setTimeoutCode}
-    \begin{lstlisting}
-    function sleepFor100ms() {
-        print('Starting sleep')
-        setTimeout(() => print('After sleep'), 100)
-    }
+    \begin{lstlisting}[language=javascript]
+// The real way to achieve this
+function sleepFor100ms() {
+    print('Starting sleep')
+    setTimeout(() => print('After sleep'), 100)
+}
     \end{lstlisting}
 \end{figure}
 
