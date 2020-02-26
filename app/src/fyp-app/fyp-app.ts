@@ -70,11 +70,13 @@ class FypApp extends LitElement {
                 grid-column-start: 2;
                 grid-row-start: span 2;
             }
+            #console {
+                height: 100%;
+            }
             #console-card {
                 grid-column-start: 1;
                 grid-column-end: 2;
                 grid-row-start: 2;
-                overflow: auto;
             }
             #stage-card {
                 grid-column-start: 1;
@@ -145,7 +147,7 @@ class FypApp extends LitElement {
             </paper-card>
             <paper-card id="console-card">
                 <div class="card-content">
-                    <fyp-console id="console"></fyp-console>
+                    <fyp-console id="console" @setanta-console-enter="${this.consoleWrite}"></fyp-console>
                 </div>
             </paper-card>
         </div>
@@ -221,6 +223,13 @@ class FypApp extends LitElement {
             window.history.pushState({code: text}, text, "/" + text);
         } else {
             alert(text);
+        }
+    }
+
+    private consoleWrite(e: CustomEvent) {
+        const inp = e.detail.value;
+        if (this.activeCtx) {
+            this.activeCtx.write(inp);
         }
     }
 

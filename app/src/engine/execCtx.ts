@@ -10,6 +10,7 @@ export class ExecCtx {
     private display: DisplayEngine;
     private halt: boolean = true;
     private interpreter: Interpreter | null = null;
+    private currentWriteWait: ((s: string) => void) | null = null;
 
     constructor(write: (x: string) => void, display: DisplayEngine) {
         this.writeFn = write;
@@ -29,6 +30,13 @@ export class ExecCtx {
 
     public running(): boolean {
         return !this.halt;
+    }
+
+    public write(s: string) {
+        if (this.currentWriteWait) {
+            this.currentWriteWait(s);
+            this.currentWriteWait = null;
+        }
     }
 
     public async run(prog: string) {
@@ -60,7 +68,7 @@ export class ExecCtx {
 
         const builtins: Array<[string[], Value]> = [
             [
-                ["scríobh"],
+                ["scríobh", "scriobh"],
                 {
                     ainm: "scríobh",
                     arity: () => -1,
@@ -68,6 +76,31 @@ export class ExecCtx {
                         return new Promise<null>((r) => {
                             this.writeFn(args.map(goLitreacha).join(" "));
                             r(null);
+                        });
+                    },
+                },
+            ],
+            [
+                ["ceist"],
+                {
+                    ainm: "ceist",
+                    arity: () => 1,
+                    call: (args: Value[]): Promise<Value> => {
+                        this.writeFn(goLitreacha(args[0]));
+                        return new Promise((r) => {
+                            this.currentWriteWait = r;
+                        });
+                    },
+                },
+            ],
+            [
+                ["léigh", "leigh"],
+                {
+                    ainm: "léigh",
+                    arity: () => 0,
+                    call: (args): Promise<Value> => {
+                        return new Promise((r) => {
+                            this.currentWriteWait = r;
                         });
                     },
                 },
