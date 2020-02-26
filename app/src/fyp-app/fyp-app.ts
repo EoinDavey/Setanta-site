@@ -48,7 +48,13 @@ class FypApp extends LitElement {
             }
             #top-bar a {
                 color: white;
+                text-decoration: none;
+            }
+            #cabhair {
                 margin-left: auto;
+            }
+            #cabhair paper-button {
+                background-color: var(--theme-accent);
             }
             #container {
                 display: grid;
@@ -116,6 +122,9 @@ class FypApp extends LitElement {
             Sábháil
             </paper-icon-button>
             </div>
+            <a href="http://docs.try-setanta.ie" id="cabhair"><paper-button raised>
+            Cabhair
+            </paper-button></a>
             <a href="https://github.com/EoinDavey/Setanta"><paper-button id="code-link" raised>
             <img src="assets/github.png">
             Féach ar an gcód
