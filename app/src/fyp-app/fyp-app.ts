@@ -116,8 +116,12 @@ class FypApp extends LitElement {
     public render(): TemplateResult {
         return html`
         <div id='top-bar'>
-            <img src="assets/logo50x50.png"/>
-            <h1>${this.title}</h1>
+            <a style="display: contents;" href="/">
+                <img src="assets/logo50x50.png"/>
+            </a>
+            <h1>
+                <a href="/"> ${this.title} </a>
+            </h1>
             <div id="buttons-left">
                 <paper-icon-button id="run-button" icon="av:play-circle-filled" @click="${this.runCode}">Run Code</paper-icon-button>
                 <paper-icon-button id="stop-button" icon="av:stop" @click="${this.stopCode}">Stop Code</paper-icon-button>
