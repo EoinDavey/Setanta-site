@@ -3,7 +3,6 @@ import "@polymer/iron-icons/av-icons.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-card/paper-card.js";
-import "@polymer/paper-icon-button/paper-icon-button.js";
 import { TextMarker } from "codemirror";
 import { css, customElement, html, LitElement, property, TemplateResult } from "lit-element";
 import "../console/console";
@@ -18,11 +17,6 @@ class FypApp extends LitElement {
 
     static get styles() {
         return css`
-            #top-bar paper-icon-button {
-                color: var(--theme-accent);
-                height: 50pt;
-                width: 50pt;
-            }
             #top-bar {
                 background-color: var(--theme-primary);
                 color: white;
@@ -36,11 +30,6 @@ class FypApp extends LitElement {
                 display: inline-block;
                 margin-top: 0;
                 margin-bottom: 0;
-                margin-left: 10px;
-            }
-            #buttons-left {
-                display: inline-block;
-                border-left: 2px solid var(--theme-divider);
                 margin-left: 10px;
             }
             #buttons-right {
@@ -59,29 +48,41 @@ class FypApp extends LitElement {
             }
             #container {
                 display: grid;
-                grid-template-columns: minmax(0,1fr) minmax(0,1fr);
-                grid-template-rows: minmax(0,1fr) minmax(0,1fr);
+                grid-template-columns: minmax(0,2fr) minmax(0,3fr);
+                grid-template-rows: minmax(0,4fr) minmax(0, 1fr) minmax(0, 4fr);
                 grid-column-gap: 2vh;
-                grid-row-gap: 2vw;
+                grid-row-gap: 1vw;
                 height: 80vh;
                 margin-left: 10px;
+                grid-template-areas:
+                    'stage editor'
+                    'buttons editor'
+                    'console editor';
             }
             #editor-card {
-                grid-column-start: 2;
-                grid-row-start: span 2;
+                grid-area: editor;
             }
             #console {
                 height: 100%;
             }
             #console-card {
-                grid-column-start: 1;
-                grid-column-end: 2;
-                grid-row-start: 2;
+                grid-area: console;
+            }
+            #buttons-card {
+                grid-area: buttons;
+            }
+            #buttons-card .card-content {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: center;
+                height: 100%;
+            }
+            #buttons-card paper-button {
+                color: var(--theme-accent);
             }
             #stage-card {
-                grid-column-start: 1;
-                grid-column-end: 2;
-                grid-row-start: 1;
+                grid-area: stage;
             }
             #stage {
                 width: 100%;
@@ -91,6 +92,18 @@ class FypApp extends LitElement {
                 width: 100%;
                 height: 100%;
                 padding: 0px;
+            }
+            @media (max-width: 600px) {
+                #container {
+                    grid-template-areas:
+                        'editor'
+                        'buttons'
+                        'stage'
+                        'console';
+                    grid-template-columns: minmax(0,1fr);
+                    grid-template-rows: minmax(0, 2fr) minmax(0,1fr) minmax(0, 2fr) minmax(0, 2fr);
+                    height: auto;
+                }
             }
         `;
     }
@@ -122,13 +135,6 @@ class FypApp extends LitElement {
             <h1>
                 <a href="/"> ${this.title} </a>
             </h1>
-            <div id="buttons-left">
-                <paper-icon-button id="run-button" icon="av:play-circle-filled" @click="${this.runCode}">Run Code</paper-icon-button>
-                <paper-icon-button id="stop-button" icon="av:stop" @click="${this.stopCode}">Stop Code</paper-icon-button>
-                <paper-icon-button icon="icons:save" @click="${this.saveCode}" raised>
-                Sábháil
-                </paper-icon-button>
-            </div>
             <div id="buttons-right">
                 <a href="http://docs.try-setanta.ie" id="cabhair"><paper-button raised>
                 <iron-icon icon="icons:help"></iron-icon>
@@ -141,6 +147,26 @@ class FypApp extends LitElement {
             </div>
         </div>
         <div id='container'>
+            <paper-card id="buttons-card">
+                <div class="card-content">
+                    <paper-button id="run-button" @click="${this.runCode}">
+                        <iron-icon icon="av:play-circle-filled"></iron-icon>
+                        Tosaigh
+                    </paper-button>
+                    <paper-button id="stop-button" @click="${this.stopCode}">
+                        <iron-icon icon="av:stop"></iron-icon>
+                        Stop
+                    </paper-button>
+                    <paper-button @click="${this.saveCode}">
+                        <iron-icon icon="icons:link"></iron-icon>
+                        Faigh nasc
+                    </paper-button>
+                    <paper-button @click="${this.startInFullscreen}">
+                        <iron-icon icon="icons:fullscreen"></iron-icon>
+                        Tosaigh i lán scáilean
+                    </paper-button>
+              </div>
+            </paper-card>
             <paper-card id="stage-card">
                 <div class="card-content">
                     <canvas id='stage' width="1000" height="750" tabindex="0" @keydown="${this.handleKeyDown}"></canvas>
@@ -246,5 +272,13 @@ class FypApp extends LitElement {
         const fac = 750;
         this.stage.height = fac;
         this.stage.width = Math.floor(fac * (cw / ch));
+    }
+
+    private async startInFullscreen(e: Event) {
+        if (this.activeCtx && this.activeCtx.running()) {
+            return;
+        }
+        await this.shadowRoot!.getElementById("stage-card")!.requestFullscreen();
+        await this.runCode(e);
     }
 }
