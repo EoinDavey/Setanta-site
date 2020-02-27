@@ -183,6 +183,7 @@ class FypApp extends LitElement {
         if (ctx === null) {
             throw new Error("Canvas not supported"); // TODO → Gaeilge
         }
+        ctx.lineWidth = 10;  // Start with line width 10
 
         const program = this.editor.content;
 
