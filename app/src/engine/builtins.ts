@@ -117,6 +117,13 @@ export function genBuiltins(display: DisplayEngine, writeFn: (s: string) => void
                         call: (args: Value[]) => display.drawCirc(args),
                     },
                 ],
+                [["glanDron"],
+                    {
+                        ainm: "glanDron",
+                        arity: () => 4,
+                        call: (args: Value[]) => display.clearRect(args),
+                    },
+                ],
                 [["glan"],
                     {
                         ainm: "glan",
