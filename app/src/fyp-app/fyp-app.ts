@@ -225,6 +225,8 @@ class FypApp extends LitElement {
 
         this.activeCtx = exec;
 
+        this.stage.focus();
+
         const err = await exec.run(program);
         if (err) {
             const line = err.pos.line;
