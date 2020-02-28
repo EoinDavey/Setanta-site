@@ -51,6 +51,10 @@ export class FYPConsole extends LitElement {
         list.scrollTop = list.scrollHeight;
     }
 
+    public clearHistory() {
+        this.lines = [];
+    }
+
     public writeOut(msg: string) {
         this.lines.push(msg);
         return this.requestUpdate();

@@ -166,6 +166,10 @@ class FypApp extends LitElement {
                         <iron-icon icon="icons:fullscreen"></iron-icon>
                         Tosaigh i lán scáilean
                     </paper-button>
+                    <paper-button @click="${this.consoleClear}">
+                        <iron-icon icon="icons:clear"></iron-icon>
+                        Glan
+                    </paper-button>
               </div>
             </paper-card>
             <paper-card id="stage-card">
@@ -269,6 +273,10 @@ class FypApp extends LitElement {
         if (this.activeCtx) {
             this.activeCtx.write(inp);
         }
+    }
+
+    private consoleClear(e: Event) {
+        this.console.clearHistory();
     }
 
     private fixCanvas(): void {
