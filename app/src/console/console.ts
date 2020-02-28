@@ -46,9 +46,14 @@ export class FYPConsole extends LitElement {
         </div>`;
     }
 
-    public writeOut(msg: string): void {
+    public scrollDown() {
+        const list = this.shadowRoot!.getElementById("list")!;
+        list.scrollTop = list.scrollHeight;
+    }
+
+    public writeOut(msg: string) {
         this.lines.push(msg);
-        this.requestUpdate();
+        return this.requestUpdate();
     }
 
     private keyPress(e: KeyboardEvent) {

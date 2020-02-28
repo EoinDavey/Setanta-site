@@ -219,7 +219,9 @@ class FypApp extends LitElement {
 
         const engine = new DisplayEngine(this.stage.width, this.stage.height, ctx);
 
-        const write = (msg: string) => this.console.writeOut(msg);
+        const write = (msg: string) => {
+            this.console.writeOut(msg).then(() => this.console.scrollDown());
+        };
 
         const exec = new ExecCtx(write, engine);
 
