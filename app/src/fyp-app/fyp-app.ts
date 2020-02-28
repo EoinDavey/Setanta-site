@@ -33,18 +33,16 @@ class FypApp extends LitElement {
                 margin-left: 10px;
             }
             #buttons-right {
+                display: flex;
+                flex-wrap: wrap;
                 margin-left: auto;
             }
-            #code-link {
+            #buttons-right paper-button {
                 background-color: var(--theme-accent);
-                float:right;
             }
             #top-bar a {
                 color: white;
                 text-decoration: none;
-            }
-            #cabhair paper-button {
-                background-color: var(--theme-accent);
             }
             #container {
                 display: grid;
@@ -136,13 +134,16 @@ class FypApp extends LitElement {
                 <a href="/"> ${this.title} </a>
             </h1>
             <div id="buttons-right">
+                <a href="http://docs.try-setanta.ie/samplaí"><paper-button raised>
+                    <span style="height: 24px"></span>Samplaí
+                </paper-button></a>
                 <a href="http://docs.try-setanta.ie" id="cabhair"><paper-button raised>
-                <iron-icon icon="icons:help"></iron-icon>
-                Cabhair
+                    <iron-icon icon="icons:help"></iron-icon>
+                    Cabhair
                 </paper-button></a>
                 <a href="https://github.com/EoinDavey/Setanta"><paper-button id="code-link" raised>
-                <img src="assets/github.png">
-                Féach ar an gcód
+                    <img src="assets/github.png"/>
+                    Féach ar an gcód
                 </paper-button></a>
             </div>
         </div>
