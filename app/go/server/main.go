@@ -52,7 +52,7 @@ nuair-a fíor {
 `
 
 type Entry struct {
-	Content string
+	Content string `datastore:",noindex"`
 }
 
 func retrieveHandler(w http.ResponseWriter, r *http.Request) {
