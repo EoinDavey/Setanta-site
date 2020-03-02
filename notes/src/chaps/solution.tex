@@ -86,7 +86,7 @@ _         := '\s*'
     \end{lstlisting}
 \end{figure}
 
-\section{\Setanta{}}
+\section{\Setanta{}} \label{setantasolution}
 
 \subsection{High Level Design}
 \Setanta{} is also written in TypeScript. The code structure of \Setanta{} allows it to be run as a local REPL through the NodeJS engine, but also in the browser. A high level architecture diagram is given in Figure \ref{setantadiagram}.
@@ -232,7 +232,7 @@ In contrast, if you write \lstinline[language=setanta]|nuair-a fíor {}| in \Set
 
 \subsection{High Level Design}
 
-\trys{}, like the other components is written mainly in TypeScript. The website is built on Google's LitElement library. LitElement is a library to write custom re-usable web components, it's a descendant of the Polymer framework, which has since been deprecated. The text editor component uses the open source library CodeMirror.
+\trys{}, like the other components is written mainly in TypeScript. The website is built on Google's LitElement library. LitElement is a library to write custom re-usable web components, it's a descendant of the Polymer framework, which has since been deprecated. LitElement is used to achieve a Material Design aesthetic. The text editor component uses the open source library CodeMirror.
 
 The backend for \trys{} is written in Go, and runs on the Google App Engine (GAE) cloud infrastructure platform. The backend for the site supports the ability to save and retrieve \Setanta{} programs to the cloud.
 
@@ -247,3 +247,26 @@ A high level architecture for \trys{} can be seen in Figure \ref{trysetantadiagr
 \end{figure}
 
 \trys{} is known to work with the Google Chrome, Mozilla Firefox and Safari browsers, however it does not work with Internet Explorer, or older versions of Edge.
+
+\subsection{Graphics API}
+
+To better enable the educational experience on \trys{}, the \Setanta{} runtime has access to a graphics API. The graphics API allows the user to draw simple graphics primitives and animations. This API is exposed to the \Setanta{} program as a global object. The user can access various fields and methods on this object to draw and manipulate shapes on the display. Figure \ref{sierpinksitriangle} shows a short program on \trys{} that draws a Sierpinski triangle.
+
+\begin{figure}
+    \caption{Sierpinski Triangle draw with \Setanta{}}
+    \label{sierpinksitriangle}
+    \begin{center}
+    \includegraphics[scale=0.45]{sierpinskitriangle}
+    \end{center}
+\end{figure}
+
+The graphics API also exposes methods to consume keyboard inputs, so the user can program simple games like \emph{Snake} with ease. It also features a full-screen mode.
+
+\subsection{Saving Code}
+
+\trys{} supports the ability to save a program to a specific URL. Clicking "Faigh nasc" (meaning "get link" redirects the user to a unique URL with which they can access their code. For example, the Sierpinski triangle example is available at:
+\begin{quote}
+    \href{https://try-setanta.ie/EhEKBlNjcmlwdBCAgIDgycODCg}{try-setanta.ie/EhEKBlNjcmlwdBCAgIDgycODCg.}
+\end{quote}
+
+This feature is handled by the Go backend on the Google App Engine. The programs are stored on the cloud Datastore, each program is identified by a unique integer. This unique integer is encoded into a string key, and this key is the URL where the code can be retrieved.
