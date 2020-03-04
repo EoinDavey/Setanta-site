@@ -5,7 +5,7 @@
 -----------    ----------------------
 Student        Eoin Davey
 Student Number 16334926
-Supervisor     Dr. Barak Pearlmutter
+Supervisor     Dr. Barak A. Pearlmutter
 Credits        5
 Repository     [https://github.com/EoinDavey/Final-Year-Project](https://github.com/EoinDavey/Final-Year-Project)
 -----------    ----------------------
