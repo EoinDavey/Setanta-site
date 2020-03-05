@@ -18,7 +18,7 @@ clean:
 	${RM} ${TGTFILES}
 
 out/interim.pdf : src/interim.tex
-	pdflatex --output-directory out src/interim.tex
+	latexmk -pdf -output-directory=out src/interim.tex
 
 out/final-report.pdf : src/final-report.tex $(CHAPS)
-	pdflatex --output-directory out src/final-report.tex
+	latexmk -pdf -output-directory=out src/final-report.tex
