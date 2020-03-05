@@ -123,7 +123,7 @@ nó
     scríobh('Tá x níos mo ná 1')
             \end{lstlisting}
 
-            \Setanta{} supports two main types of loops, "le idir" loops that allow the user to specify start and ends to the loop, and "nuair-a" loops, which are the familiar while loops.
+            \Setanta{} supports two main types of loops, ``le idir'' loops that allow the user to specify start and ends to the loop, and ``nuair-a'' loops, which are the familiar while loops.
 
             \begin{lstlisting}[language=setanta, frame=single, caption=Setanta loops]
 i := 0
@@ -164,7 +164,7 @@ One of the most important features of \Setanta{}'s syntax is the @ operator. The
 
 The @ operator is the lookup operator, it is used to reference member fields and methods of objects. It is functionally equivalent to the classic dot ('.') operator in C, C++, Java, Python, JavaScript etc. The subtle difference is the order, both the @ operator and the '.' operator are binary operators, but the @ operator flips its arguments compared to the '.'.
 
-In the standard usage of the dot operator, the expression \verb|a.b| refers to the member "b" of the object "a". In \Setanta{} \verb|a@b| refers to the member "a" of the object "b", the order has been reversed.
+In the standard usage of the dot operator, the expression \verb|a.b| refers to the member ``b'' of the object ``a''. In \Setanta{} \verb|a@b| refers to the member ``a'' of the object ``b'', the order has been reversed.
 
 This change seems unimportant, however, it breaks 2 deep and subtle links between English and the standard way we look at OOP programming languages.
 
@@ -174,7 +174,7 @@ The usage of the dot operator for member lookup gives rise to expressions like \
 
 By using the @ operator in \Setanta{} we instead get expressions like \verb|goTo@man(shop)| or \verb|query@dbClient(q)|, these expressions put the verb first, then the subject, then the object, reflecting the VSO structure of Irish. This subtle connection between a simple operator like '.' and the linguistic properties of English is not apparent.
 
-There is a second connection between English and the lookup operation that is broken by the @ operator. In English when talking about possession relationships ("has-a" relationships in database terms), we list the entities in decreasing order of possession e.g.
+There is a second connection between English and the lookup operation that is broken by the @ operator. In English when talking about possession relationships (``has-a'' relationships in database terms), we list the entities in decreasing order of possession e.g.
 \begin{quote}
     The man's car door window pane
 \end{quote}
@@ -264,7 +264,7 @@ The graphics API also exposes methods to consume keyboard inputs, so the user ca
 
 \subsection{Saving Code}
 
-\trys{} supports the ability to save a program to a specific URL. Clicking "Faigh nasc" (meaning "get link" redirects the user to a unique URL with which they can access their code. For example, the Sierpinski triangle example is available at:
+\trys{} supports the ability to save a program to a specific URL. Clicking ``Faigh nasc'' (meaning ``get link'' redirects the user to a unique URL with which they can access their code. For example, the Sierpinski triangle example is available at:
 \begin{quote}
     \href{https://try-setanta.ie/EhEKBlNjcmlwdBCAgIDgycODCg}{try-setanta.ie/EhEKBlNjcmlwdBCAgIDgycODCg.}
 \end{quote}
