@@ -29,7 +29,7 @@ Personally I dislike using dynamically typed languages, but I do appreciate how 
 
 ### Weak vs Strong
 
-The weak vs strong decision is more of a choice of where on the spectrum I want to lie, On one end of the spectrum we have weak typing, where the runtime will try it's very best to cast one type to the correct type needed by the operation. The opposite end of the spectrum is strong typing, where the runtime will refuse to compute any function or store any value who's type is at-all different from the one it expects.
+The weak vs strong decision is more of a choice of where on the spectrum I want to lie, On one end of the spectrum we have weak typing, where the runtime will try its very best to cast one type to the correct type needed by the operation. The opposite end of the spectrum is strong typing, where the runtime will refuse to compute any function or store any value who's type is at-all different from the one it expects.
 
 For this language I am leaning towards a slightly strongly typed language. In practice what this will mean is I want the runtime to take the initiative of converting ints to floats if you multiply by a float (*If I have ints/floats*) or converting ints to bools for checks. However it will not do things that languages like JavaScript will do like allowing adding strings and integers, or equality comparisons of lists and structs. I think this relatively middle ground will be forgiving enough for users to not have to waste characters casting types to do every calculation, but not so forgiving to create unpredictable behaviour.
 
@@ -50,14 +50,14 @@ There are many approaches open to me to implement inheritance.
 - **Single Inheritance**:  
 This is the approach used by a lot of mainstream languages, notably Java and C#. A new structured type can inherit attributes and methods from a parent type. The child types here can be seen as the parent type with more bolt's attached. I think that using this approach in the language would be beneficial as it is a common foundation to learn the ideas of inheritance from.
 - **Multiple Inheritance**:  
-This is basically the same as the above approach, but instead of inheriting properties of parent classes, it inherits from multiple classes, this does slightly break the idea of the child class being a direct subtype of the parent, but it does find prominent use in languages like Python. I think that the language doesn't necessarily need to support multiple inheritance, it's absence will likely not be felt or desired by beginners.
+This is basically the same as the above approach, but instead of inheriting properties of parent classes, it inherits from multiple classes, this does slightly break the idea of the child class being a direct subtype of the parent, but it does find prominent use in languages like Python. I think that the language doesn't necessarily need to support multiple inheritance, its absence will likely not be felt or desired by beginners.
 - **Prototypal Inheritance**:  
 This approach is used in JavaScript and Lua, instead a new class inheriting attributes and behaviours from some parent object, it inherits properties from a parent **object**. A given object has a link to a parent object embedded inside it, this means that if many objects all inherit from the same object and that object is mutated during the runtime, then all those children's inherited properties will also mutate.  
 This approach is also relatively beginner friendly, but the potential mutation of inherited properties during the execution of the program might prove problematic.
 - **Struct Embedding**:  
-This approach is similar to the prototype approach, but it can be argued it isn't *really* inheritance. Instead of a link to some parent object being included with every object, a parent object is directly into the child object. The child object inherits the properties from this parent object, but unlike the prototype approach the parent object doesn't really exist outside of the context of providing behaviour to it's child object. This approach is used by Go.
+This approach is similar to the prototype approach, but it can be argued it isn't *really* inheritance. Instead of a link to some parent object being included with every object, a parent object is directly into the child object. The child object inherits the properties from this parent object, but unlike the prototype approach the parent object doesn't really exist outside of the context of providing behaviour to its child object. This approach is used by Go.
 
-In conclusion I think that it's probably simplest and best to just use classic single inheritance.
+In conclusion I think that it’s probably simplest and best to just use classic single inheritance.
 
 ## First-class types
 

@@ -10,11 +10,11 @@ An approach I am calling *Scratch like* is an approach that would allow the user
 
 ### Turtle graphics
 
-Another approach is to allow the user to program a small robot (usually called the turtle). The turtle can draw lines as it moves around the plane. This approach is used by *LOGO* and it's derivatives, it allows the user to program complex figures easily, by co-ordinating the movement of a curve. It's effectively like a programmable etch-a-sketch.
+Another approach is to allow the user to program a small robot (usually called the turtle). The turtle can draw lines as it moves around the plane. This approach is used by *LOGO* and its derivatives, it allows the user to program complex figures easily, by co-ordinating the movement of a curve. It's effectively like a programmable etch-a-sketch.
 
 ### 2D grid
 
-An alternative of the *Scratch-like* approach is allowing the user to program different entities that exists on a 2D grid plane with integer co-ordinates, The user can move elements around the grid and customise the display of the grid. This is the approach used by programs like *AgentSheets*. For example a user could program a maze solver that can solve mazes drawn on the grid. While this approach could seem like a simplification of the *Scratch-like* approach it is powerful in it's own right, by limiting the code to a 2D grid it enables the user to quickly build different environments, For example, a simple game akin to **Frogger** could be developed with relative ease. This approach would also enable cellular automata simulations akin to Conway's Game of Life.
+An alternative of the *Scratch-like* approach is allowing the user to program different entities that exists on a 2D grid plane with integer co-ordinates, The user can move elements around the grid and customise the display of the grid. This is the approach used by programs like *AgentSheets*. For example a user could program a maze solver that can solve mazes drawn on the grid. While this approach could seem like a simplification of the *Scratch-like* approach it is powerful in its own right, by limiting the code to a 2D grid it enables the user to quickly build different environments, For example, a simple game akin to **Frogger** could be developed with relative ease. This approach would also enable cellular automata simulations akin to Conway's Game of Life.
 
 ### Combination of all above options
 

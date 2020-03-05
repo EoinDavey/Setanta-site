@@ -4,12 +4,12 @@ There are many options for choosing a paradigm for the execution of the program.
 
 ## Independent agents using the JavaScript task queue.
 
-For an Agent object define a `step` (`céim`) function that acts as a transition function taking the agent to it's next state in the stage. i.e. moving along defined trajectory, pathfinding, falling due to "gravity", user input movement etc.
-When an agent is added to the stage and activated, a task is added to run it's `step` function, when the `step` function is complete, another task is added to the queue to run it again, etc. etc. The user can perform whatever set up is required before attaching the agent to the stage. Care must be taken to avoid an infinite loop in the `step` function.
+For an Agent object define a `step` (`céim`) function that acts as a transition function taking the agent to its next state in the stage. i.e. moving along defined trajectory, pathfinding, falling due to "gravity", user input movement etc.
+When an agent is added to the stage and activated, a task is added to run its `step` function, when the `step` function is complete, another task is added to the queue to run it again, etc. etc. The user can perform whatever set up is required before attaching the agent to the stage. Care must be taken to avoid an infinite loop in the `step` function.
 
 Only one `step` function will be run at a time, blocking for input or sleep if desired.
 
-Each agent is in some way an automaton, with transition functions of arbitrary complexity. The user can program new automata in an OOP manner, then the stages can accept and attach an automaton and execute it's step function.
+Each agent is in some way an automaton, with transition functions of arbitrary complexity. The user can program new automata in an OOP manner, then the stages can accept and attach an automaton and execute its step function.
 
 This raises some problems to be considered.
 
@@ -18,13 +18,13 @@ This raises some problems to be considered.
 - How is pre-step setup defined? Another magic function akin to loop for setup?
 - How to decide when to halt execution? Require user input to halt?
 
-Maybe only the stage needs a step function that's called on loop after the setup. The stage can call `step` on all of it's attached children. No need for behaviour defined outside the language.
+Maybe only the stage needs a step function that's called on loop after the setup. The stage can call `step` on all of its attached children. No need for behaviour defined outside the language.
 
 The user could define the following steps
 
 1. Setup variables, functions, agents, custom step behaviours.
 2. Attach all starting agents to the stage
-3. **Execute** the stage, starting it's step loop.
+3. **Execute** the stage, starting its step loop.
 
 ## Asynchronous execution
 
