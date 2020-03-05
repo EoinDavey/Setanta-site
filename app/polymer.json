@@ -4,24 +4,12 @@
         "package.json",
         "assets/**"
     ],
+    "entrypoint": "index.html",
     "extraDependencies" : [
         "manifest.json",
         "favicon.ico",
         "node_modules/@webcomponents/webcomponentsjs/**"
     ],
     "moduleResolution": "node",
-    "npm": true,
-    "lint": {
-        "rules": [
-            "polymer-3"
-        ]
-    },
-    "build": [{
-        "name": "es5-bundle",
-        "bundle": true,
-        "js": {
-            "compile": true,
-            "minify": false
-        }
-    }]
+    "npm": true
 }

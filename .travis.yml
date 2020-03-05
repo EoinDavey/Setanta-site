@@ -8,7 +8,7 @@ before_install:
 
 before_deploy:
     - npm run clean
-    - npm run build
+    - npm run build-prod
 
 deploy:
     provider: gae

@@ -1,5 +1,6 @@
 /node_modules/
 /jsbuild/
+/templates/index.tmpl
 /testbuild/
 /build/
 google-creds.json

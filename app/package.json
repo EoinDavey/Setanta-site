@@ -3,7 +3,8 @@
   "description": "Final year project",
   "scripts": {
     "setup": "npm install",
-    "build": "tsc && polymer build",
+    "build": "tsc && polymer build && cp build/default/index.html templates/index.tmpl",
+    "build-prod": "tsc && polymer build --js-minify --html-minify --css-minify && cp build/default/index.html templates/index.tmpl",
     "lint-all": "tslint --project . -c tslint.json --force",
     "clean": "rm -rf jsbuild && rm -rf build",
     "test": "tslint --project . -c tslint.json",
