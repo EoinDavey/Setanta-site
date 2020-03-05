@@ -61,7 +61,7 @@ In conclusion I think that it’s probably simplest and best to just use classic
 
 ## First-class types
 
-I would like to have as many objects be first class as possible. This includes the obvious primitive types, e.g. bools, numbers, characters, but also functions and structs. I think that higher order functions and first class functions is a valuable concept for someone to learn, and I personally find them very useful, So I would like them to be included.
+I would like to have as many objects be first class as possible. This includes the obvious primitive types, e.g., bools, numbers, characters, but also functions and structs. I think that higher order functions and first class functions is a valuable concept for someone to learn, and I personally find them very useful, So I would like them to be included.
 
 ## Memory Management
 

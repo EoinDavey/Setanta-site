@@ -18,9 +18,9 @@ An alternative of the *Scratch-like* approach is allowing the user to program di
 
 ### Combination of all above options
 
-In this approach we pass control of the format of the stage to the user, The user can create a runtime object of a certain type of stage (e.g. turtle, 2d grid) and then pass that around to be drawn on. This would allow the greatest variability. It may also be possible to allow the user to layer several stages over one another, but this might be excessive.
+In this approach we pass control of the format of the stage to the user, The user can create a runtime object of a certain type of stage (e.g., turtle, 2d grid) and then pass that around to be drawn on. This would allow the greatest variability. It may also be possible to allow the user to layer several stages over one another, but this might be excessive.
 
-If this approach is taken it would allow more iterative work on the language to be done, A simple stage such as turtle might be created first, and then as the project proceeds more complex stage types might be added, e.g. 2D grid.
+If this approach is taken it would allow more iterative work on the language to be done, A simple stage such as turtle might be created first, and then as the project proceeds more complex stage types might be added, e.g., 2D grid.
 
 ## Sprites
 

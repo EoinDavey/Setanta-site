@@ -4,7 +4,7 @@ There are many options for choosing a paradigm for the execution of the program.
 
 ## Independent agents using the JavaScript task queue.
 
-For an Agent object define a `step` (`céim`) function that acts as a transition function taking the agent to its next state in the stage. i.e. moving along defined trajectory, pathfinding, falling due to "gravity", user input movement etc.
+For an Agent object define a `step` (`céim`) function that acts as a transition function taking the agent to its next state in the stage. I.e., moving along defined trajectory, pathfinding, falling due to "gravity", user input movement, etc.
 When an agent is added to the stage and activated, a task is added to run its `step` function, when the `step` function is complete, another task is added to the queue to run it again, etc. etc. The user can perform whatever set up is required before attaching the agent to the stage. Care must be taken to avoid an infinite loop in the `step` function.
 
 Only one `step` function will be run at a time, blocking for input or sleep if desired.
