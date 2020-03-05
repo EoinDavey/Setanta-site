@@ -276,6 +276,11 @@ class FypApp extends LitElement {
 
     private consoleClear(e: Event) {
         this.console.clearHistory();
+        const ctx = this.stage.getContext("2d");
+        if (ctx === null) {
+            return;
+        }
+        ctx.clearRect(0, 0, this.stage.clientWidth, this.stage.clientHeight);
     }
 
     private fixCanvas(): void {
