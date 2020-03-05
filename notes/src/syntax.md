@@ -8,7 +8,7 @@ This means that we can use more accessible, non-technical terms to describe elem
 
 ## Syntax family
 
-This language will base many of it's syntactic features from the family of languages with C-style syntax. However, many of it's syntactic features will be derived from the linguistic structure of the Irish language itself.
+This language will base many of its syntactic features from the family of languages with C-style syntax. However, many of it's syntactic features will be derived from the linguistic structure of the Irish language itself.
 
 ### Example
 Below is an example script in the language. We create a class (*creatlach* meaning skeleton) for a person (*Duine*), then a class for a man (*Fear*) that inherits from *Duine*.

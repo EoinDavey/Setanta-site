@@ -5,3 +5,5 @@ gae-keys.json
 *.out
 *.toc
 *.log
+*.fdb_latexmk
+*.fls

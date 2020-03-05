@@ -21,7 +21,7 @@ function sleepFor100ms() {
     \end{lstlisting}
 \end{figure}
 
-Ideally this would print "Starting Sleep", wait 100ms, then print "After Sleep". However, sleeping would be a blocking action on the thread, so this is not allowed. In JavaScript we must use the \texttt{setTimeout} function, which takes a callback function, and a time to wait before executing it. Figure \ref{setTimeoutCode} shows code that uses the \texttt{setTimeout} API to add a callback to the task queue.
+Ideally this would print ``Starting Sleep'', wait 100ms, then print ``After Sleep''. However, sleeping would be a blocking action on the thread, so this is not allowed. In JavaScript we must use the \texttt{setTimeout} function, which takes a callback function, and a time to wait before executing it. Figure \ref{setTimeoutCode} shows code that uses the \texttt{setTimeout} API to add a callback to the task queue.
 
 \begin{figure}
     \caption{Using \texttt{setTimeout}}
@@ -35,13 +35,13 @@ function sleepFor100ms() {
     \end{lstlisting}
 \end{figure}
 
-Similarly JavaScript uses an API to overcome the single-thread limitation. The developer is given access to certain functions that can use an extra thread for specific tasks, e.g. Fetching web content from a different website. These APIs also use callback functions to specify what should be done with the result of the functions.
+Similarly JavaScript uses an API to overcome the single-thread limitation. The developer is given access to certain functions that can use an extra thread for specific tasks, e.g., Fetching web content from a different website. These APIs also use callback functions to specify what should be done with the result of the functions.
 
 This reliance on callback functions leads to something that the JavaScript community refers to as \textbf{Callback Hell}.
 
 \subsection{async / await and Promises}
 
-In an attempt to overcome callback hell, recent versions of JavaScript have introduced a concept known as "async / await".\cite{es8spec} This feature introduces what is effectively a syntactic sugar over a concept introduced previously, known as \textbf{Promises}.
+In an attempt to overcome callback hell, recent versions of JavaScript have introduced a concept known as ``async / await''.\cite{es8spec} This feature introduces what is effectively a syntactic sugar over a concept introduced previously, known as \textbf{Promises}.
 
 Promises are a reference to a value that has not yet been computed, but will at some point be computed (resolved). These references are objects that can be manipulated just like any other object.
 
@@ -74,15 +74,15 @@ Several parser generators are available for JavaScript, including the excellent 
 
 \section{VSO vs SVO languages}
 
-In linguistics there is a concept known as word order, which is studying the order of how the different categories of words appear in sentences. One order that is studied is called the "constituent word order". The constituent word order is the order that a verb (V), object (O), and subject (S) appear in a sentence\cite{wordorder}. English is an SVO language, meaning that the subject comes first, then the verb, then the object. For example
+In linguistics there is a concept known as word order, which is studying the order of how the different categories of words appear in sentences. One order that is studied is called the ``constituent word order''. The constituent word order is the order that a verb (V), object (O), and subject (S) appear in a sentence\cite{wordorder}. English is an SVO language, meaning that the subject comes first, then the verb, then the object. For example
 \begin{quote}
     The man drove his car
 \end{quote}
-In this sentence "the man" is the subject, "drove" is the verb, and "his car" is the object, and they appear in the order SVO.
+In this sentence ``the man'' is the subject, ``drove'' is the verb, and ``his car'' is the object, and they appear in the order SVO.
 
 Irish is a VSO language, meaning the verb comes first, then the subject, then the object. The same above sentence in Irish would be
 \begin{quote}
     Thiomáin an fear a charr
 \end{quote}
-In this case "Thiomáin" (drove) is the verb, "an fear" (the man) is the subject, and "a charr" (his car) is the object.
+In this case ``Thiomáin'' (drove) is the verb, ``an fear'' (the man) is the subject, and ``a charr'' (his car) is the object.
 

@@ -415,7 +415,7 @@ $if(lang)$
   % See issue https://github.com/reutenauer/polyglossia/issues/127
   \renewcommand*\familydefault{\sfdefault}
   $endif$
-  % Load polyglossia as late as possible: uses bidi with RTL langages (e.g. Hebrew, Arabic)
+  % Load polyglossia as late as possible: uses bidi with RTL langages (e.g., Hebrew, Arabic)
   \usepackage{polyglossia}
   \setmainlanguage[$polyglossia-lang.options$]{$polyglossia-lang.name$}
 $for(polyglossia-otherlangs)$
@@ -430,7 +430,7 @@ $endif$
 $endif$
 $if(dir)$
 \ifxetex
-  % Load bidi as late as possible as it modifies e.g. graphicx
+  % Load bidi as late as possible as it modifies, e.g., graphicx
   \usepackage{bidi}
 \fi
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
@@ -517,7 +517,7 @@ $endif$
   % See https://github.com/reutenauer/polyglossia/issues/127
   \renewcommand*\familydefault{\sfdefault}
   $endif$
-  % load polyglossia as late as possible as it *could* call bidi if RTL lang (e.g. Hebrew or Arabic)
+  % load polyglossia as late as possible as it *could* call bidi if RTL lang (e.g., Hebrew or Arabic)
   \usepackage{polyglossia}
   \setmainlanguage[]{english}
 $for(polyglossia-otherlangs)$

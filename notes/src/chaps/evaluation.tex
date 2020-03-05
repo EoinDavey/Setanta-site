@@ -18,7 +18,7 @@ As outlined in the solution section of \Setanta{} (\ref{setantasolution}), the i
 
 The correctness of \Setanta{} is ensured by a large suite of tests, including unit tests, and full end to end tests. In fact \Setanta{} contains over 1300 lines of test code alone. These tests ensure that every edge of language behaviour is correct, theses tests are run automatically by the continuous integration system with each commit. The current state of \Setanta{}'s builds can be seen at \href{https://travis-ci.com/EoinDavey/Setanta}{travis-ci.com/EoinDavey/Setanta.}
 
-\Setanta{}'s main issue is it's speed. As it is built on top of the JavaScript environment, but requires blocking operations and concurrency, it means that \Setanta{} has taken on an extremely large overhead. The result of this is that that \Setanta{} is notably slow at some tasks. However, the domain of \Setanta{} is education, not high performance or production computing, so this is not a direct detractor from the quality of the project.
+\Setanta{}'s main issue is its speed. As it is built on top of the JavaScript environment, but requires blocking operations and concurrency, it means that \Setanta{} has taken on an extremely large overhead. The result of this is that that \Setanta{} is notably slow at some tasks. However, the domain of \Setanta{} is education, not high performance or production computing, so this is not a direct detractor from the quality of the project.
 
 The fact that the same \Setanta{} interpreter can be used in the browser and in a local CLI shows the code is well abstracted and isolated, the main \lstinline|Interpreter| class is very portable and can loaded in any number of environments.
 
