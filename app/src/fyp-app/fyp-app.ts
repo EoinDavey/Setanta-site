@@ -137,7 +137,7 @@ class FypApp extends LitElement {
                 <a href="http://docs.try-setanta.ie/samplaí"><paper-button raised>
                     <span style="height: 24px"></span>Samplaí
                 </paper-button></a>
-                <a href="http://docs.try-setanta.ie" id="cabhair"><paper-button raised>
+                <a href="https://docs.try-setanta.ie" id="cabhair"><paper-button raised>
                     <iron-icon icon="icons:help"></iron-icon>
                     Cabhair
                 </paper-button></a>
