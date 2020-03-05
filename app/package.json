@@ -3,10 +3,10 @@
   "description": "Final year project",
   "scripts": {
     "setup": "npm install",
-    "build": "tsc && polymer build && cp build/default/index.html templates/index.tmpl",
-    "build-prod": "tsc && polymer build --js-minify --html-minify --css-minify && cp build/default/index.html templates/index.tmpl",
+    "build": "tsc && polymer build && mkdir -p templates && cp build/default/index.html templates/index.tmpl",
+    "build-prod": "tsc && polymer build --js-minify --html-minify --css-minify && mkdir -p templates && cp build/default/index.html templates/index.tmpl",
     "lint-all": "tslint --project . -c tslint.json --force",
-    "clean": "rm -rf jsbuild && rm -rf build",
+    "clean": "rm -rf jsbuild && rm -rf build && rm -rf templates",
     "test": "tslint --project . -c tslint.json",
     "local": "GOOGLE_APPLICATION_CREDENTIALS=\"google-creds.json\" dev_appserver.py --port=8081  app.yaml"
   },
