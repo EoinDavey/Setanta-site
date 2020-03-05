@@ -280,7 +280,7 @@ class FypApp extends LitElement {
         if (ctx === null) {
             return;
         }
-        ctx.clearRect(0, 0, this.stage.clientWidth, this.stage.clientHeight);
+        ctx.clearRect(0, 0, this.stage.width, this.stage.height);
     }
 
     private fixCanvas(): void {
