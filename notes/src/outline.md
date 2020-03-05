@@ -35,7 +35,7 @@ These are some ideas that might be taken forward into the project.
 
 - Postfix notation for function application. The inspiration for this is the fact that Irish is a VSO (Verb Subject Object) language rather than an SVO language like English. This means that Irish lists the verb (*function*) before the subject and object. In contrast in most modern OOP languages the subject is listed first, then the verb, then the arguments. This could have a syntactic effect on our language, but also a semantic one, as if the function is syntactically more prominent then a more functional paradigm might suit the language best.
 
-- Genitive word order - In English the order of genitive case words is left to right. E.g. "Sean's coat", "The President of Ireland's dogs" . This property is translated across into English programming languages very directly, in most languages with structural data types these ideas could be expressed like `Sean.coat` or `Ireland.President.Dog`.  
+- Genitive word order - In English the order of genitive case words is left to right. E.g., "Sean's coat", "The President of Ireland's dogs" . This property is translated across into English programming languages very directly, in most languages with structural data types these ideas could be expressed like `Sean.coat` or `Ireland.President.Dog`.  
 This is in direct contrast with Irish however, in Irish genitive word order is right to left. "Sean's coat" is expressed more akin to coat of Sean, (*cóta Sheain*). The same goes for "The President of Ireland's dogs", in Irish this is *Madraí Uachtarán na hÉireann*. The word order here is dog, president, Ireland. Some syntactic form could be used that expressions attribute selection of object or structured data from right to left.
 
 - Non technicality. As the language is not English, there is no value in over saturating the user with technical words for things like programs, strings, floats, functions etc. These could be replaced with familiar concepts like stories, words, actions, characters etc.
@@ -43,7 +43,7 @@ This is in direct contrast with Irish however, in Irish genitive word order is r
 - LOGO/Scratch like visual elements: As the domain of the language is education, it would benefit greatly from a visual interface, a canvas where the user can draw pictures or make animations. This could be done in many ways including using the turtle graphics approach of LOGO, the more scratch like approach of using sprites and movement, or using programmable virtual robots.
     - Possibility to enable easier drawing of celtic knots / symbols
 
-- Story telling: Irish has a great history of storytelling, both written and oral. Example programs can be written to play a "game" where the user plays through a historical Irish tale. e.g. Oisín and Tír na nÓg, Diarmuid and Gráinne etc.
+- Story telling: Irish has a great history of storytelling, both written and oral. Example programs can be written to play a "game" where the user plays through a historical Irish tale: Oisín and Tír na nÓg, Diarmuid and Gráinne, etc.
 
 - Class inheritance denoted using "Ó" keyword. This is a small feature that could be added to the language that comes from the cultural and historical fact that names in Irish have historically used *Ó* meaning *from* to denote ancestry.
 
