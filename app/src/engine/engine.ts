@@ -48,7 +48,9 @@ export class DisplayEngine {
     // changes fill stye colour
     public changeColour(args: Value[]): Promise<Value> {
         const s: string = Asserts.assertLitreacha(args[0]);
-        this.ctx.fillStyle = colourMap.get(s) || s;
+        const col = colourMap.get(s) || s;
+        this.ctx.fillStyle = col;
+        this.ctx.strokeStyle = col;
         return Promise.resolve(null);
     }
 
