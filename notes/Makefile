@@ -1,6 +1,6 @@
 .SUFFIXES: .md .pdf
 
-.PHONY: clean
+.PHONY: clean default
 
 MDFILES  := $(wildcard src/*.md)
 TEXFILES := $(wildcard src/*.tex)
