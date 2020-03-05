@@ -363,8 +363,7 @@ div.CodeMirror-dragcursors {
 span.CodeMirror-selectedtext { background: none; }
         `;
     }
-    @property({type: String}) public startContent = `
-}`;
+    @property({type: String}) public startcontent = `}`;
     public editor: CodeMirror.Editor | undefined;
     public render(): TemplateResult {
         return html`
@@ -390,7 +389,7 @@ span.CodeMirror-selectedtext { background: none; }
                 lineNumbers: true,
                 mode: "setanta",
             });
-            this.editor.setValue(this.startContent);
+            this.editor.setValue(this.startcontent);
             this.editor.setOption("extraKeys", {
                 "Ctrl-Enter": (cm) => {
                     this.dispatchEvent(new CustomEvent("fyp-run", {

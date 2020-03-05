@@ -179,7 +179,7 @@ class FypApp extends LitElement {
             </paper-card>
             <paper-card id="editor-card">
                 <div class="card-content">
-                    <fyp-editor startContent="${this.content}" id="editor" @fyp-run="${this.runCode}"></fyp-editor>
+                    <fyp-editor startcontent="${this.content}" id="editor" @fyp-run="${this.runCode}"></fyp-editor>
                 </div>
             </paper-card>
             <paper-card id="console-card">
@@ -238,7 +238,6 @@ class FypApp extends LitElement {
         if (err) {
             const line = err.pos.line;
             const ch = err.pos.offset;
-            console.log(line, ch);
             if (this.editor.editor) {
                 const mrk = this.editor.editor.markText({line: line - 1, ch: ch - 1}, {line: line - 1, ch}, {className: "syntax-error"});
                 this.marks.push(mrk);
