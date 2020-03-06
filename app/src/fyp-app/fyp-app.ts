@@ -46,7 +46,7 @@ class FypApp extends LitElement {
             }
             #container {
                 display: grid;
-                grid-template-columns: minmax(0,2fr) minmax(0,3fr);
+                grid-template-columns: minmax(0,3fr) minmax(0,4fr);
                 grid-template-rows: minmax(0,4fr) minmax(0, 1fr) minmax(0, 4fr);
                 grid-column-gap: 2vh;
                 grid-row-gap: 1vw;
