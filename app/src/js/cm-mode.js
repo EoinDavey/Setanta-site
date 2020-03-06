@@ -15,7 +15,7 @@ CodeMirror.defineSimpleMode("setanta", {
     {regex: /(?:seo|tuis|le|bris|idir|chun-cinn|toradh|nuair-a)\b/,
      token: "keyword"},
     {regex: /(?:scr[ií]obh|fad|thar|cuid|mata|coladh|stáitse)\b/, token: "builtin"},
-    {regex: /(?:má|nó|no|ma)/, token: "keyword"},
+    {regex: /(?:má|nó|no|ma)\b/, token: "keyword"},
     {regex: /f[ií]or|br[eé]ag|neamhn[ií]/, token: "atom"},
     {regex: /-?[0-9]+(?:\.[0-9]+)?/i,
      token: "number"},
