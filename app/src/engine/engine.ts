@@ -128,6 +128,26 @@ export class DisplayEngine {
         return Promise.resolve(null);
     }
 
+    // arity: 6; args[0-6]: number
+    // x, y, rad, startAngle, endAngle, clockwise?
+    // Draws a filled in arc
+    public drawArcFull(args: Value[]): Promise<Value> {
+        this.ctx.beginPath();
+        this.arcPath(args);
+        this.ctx.fill();
+        return Promise.resolve(null);
+    }
+
+    // arity: 6; args[0-6]: number
+    // x, y, rad, startAngle, endAngle, clockwise?
+    // Draws an arc
+    public drawArc(args: Value[]): Promise<Value> {
+        this.ctx.beginPath();
+        this.arcPath(args);
+        this.ctx.stroke();
+        return Promise.resolve(null);
+    }
+
     // arity: 4; args[0]: number, args[1]: number, args[2]: number, args[3]: number
     // clears rectangle at position (args[0], args[1]) with width args[2] and height args[3]
     public clearRect(args: Value[]): Promise<Value> {
@@ -143,6 +163,17 @@ export class DisplayEngine {
     // clears the display
     public clear(args: Value[]): Promise<Value> {
         this.ctx.clearRect(0, 0, this.sizeXHidden, this.sizeYHidden);
+        return Promise.resolve(null);
+    }
+
+    private arcPath(args: Value[]): Promise<Value> {
+        const x = Asserts.assertNumber(args[0]);
+        const y = Asserts.assertNumber(args[1]);
+        const radius = Asserts.assertNumber(args[2]);
+        const start = Asserts.assertNumber(args[3]);
+        const end = Asserts.assertNumber(args[4]);
+        const clockwise = Asserts.assertBool(args[5]);
+        this.ctx.arc(x, y, radius, start, end, clockwise);
         return Promise.resolve(null);
     }
 
