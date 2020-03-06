@@ -134,12 +134,12 @@ class FypApp extends LitElement {
                 <a href="/"> ${this.title} </a>
             </h1>
             <div id="buttons-right">
-                <a href="https://docs.try-setanta.ie/samplaí"><paper-button raised>
-                    <span style="height: 24px"></span>Samplaí
-                </paper-button></a>
                 <a href="https://docs.try-setanta.ie" id="cabhair"><paper-button raised>
                     <iron-icon icon="icons:help"></iron-icon>
-                    Cabhair
+                    Foghlaim
+                </paper-button></a>
+                <a href="https://docs.try-setanta.ie/samplaí"><paper-button raised>
+                    <span style="height: 24px"></span>Samplaí
                 </paper-button></a>
                 <a href="https://github.com/EoinDavey/Setanta"><paper-button id="code-link" raised>
                     <img src="assets/github.png"/>
