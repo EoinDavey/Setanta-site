@@ -58,33 +58,7 @@ Grammars are defined by a sequence of grammar rules, for example
 
 When developing \tsPEG{}, first a simple input parser was written by hand, supporting only the most basic syntax. A code generator was written that could take in the AST from this simple grammar and output a parser for it. Then the meta-grammar for the input grammar syntax was written and the generator was run. This replaced the hand written parser with a new generated one, self hosting itself and opening itself up to bootstrapping.
 
-This new self hosting generator was then used to add more and more features and operators to itself, eventually resulting in the full self describing meta-grammar for the \tsPEG{} input syntax in Figure \ref{tspegsyntax}.
-
-\begin{figure}
-    \caption{\tsPEG{} meta-grammar definition}
-    \label{tspegsyntax}
-    \begin{lstlisting}
-GRAM      := header=HDR? rules=RULEDEF+
-HDR       := '---' content='((?!---)(.|\n))*' '---'
-RULEDEF   := _ name=NAME _ ':=' _ rule=RULE _
-RULE      := head=ALT tail={_ '\|' _ alt=ALT }*
-          .list = ALT[] { return [this.head, ...this.tail.map((x) => x.alt)]; }
-ALT       := matches=MATCHSPEC+ attrs=ATTR*
-MATCHSPEC := _ named={name=NAME _ '=' _}? rule=POSTOP _
-POSTOP    := pre=PREOP op='\+|\*|\?'?
-            .optional = boolean { return this.op !== null && this.op === '?'}
-PREOP     := op='\&|!'? at=ATOM
-ATOM      := name=NAME !'\s*:='
-           | match=STRLIT
-           | '{' _ sub=RULE _ '}'
-ATTR      := _ '.' name=NAME _ '=' _ type='[^\s\{]+' _ '\{'
-    action='([^\{\}\\]|(\\.))*'
-'\}'
-NAME      := '[a-zA-Z_]+'
-STRLIT    := '\'' val='([^\'\\]|(\\.))*' '\''
-_         := '\s*'
-    \end{lstlisting}
-\end{figure}
+This new self hosting generator was then used to add more and more features and operators to itself, eventually resulting in the full self describing meta-grammar for the \tsPEG{} input syntax included in Appendix 1.
 
 \section{\Setanta{}} \label{setantasolution}
 
