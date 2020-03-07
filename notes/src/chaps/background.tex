@@ -6,33 +6,30 @@ The only PL that standard web browsers (\emph{Google Chrome, Mozilla Firefox, Sa
 In addition to this restriction on PLs, each browser instance limits executing code to a single, non-blocking thread.
 
 \subsection{Task Queue APIs}
-To overcome the non-blocking limitation of the execution thread the JavaScript environment exposes an API to a simple task queue, allowing users to pass in \textbf{callbacks}, which are functions that will be executed at some later time. Figure \ref{blockingcode} contains some simple code that would work if the browser thread allowed blocking.
+To overcome the non-blocking limitation of the execution thread the JavaScript environment exposes an API to a simple task queue, allowing users to pass in \textbf{callbacks}, which are functions that will be executed at some later time. In Figure \ref{blockingcode} we compare code in a version of JS that allows blocking, and show the real code that must be used using callbacks using the \texttt{setTimeout} API to add the callback to the task queue.
 
-\begin{figure}
-    \caption{Code if thread can be blocked.}
+\begin{figure}[ht]
+    \caption{Code if thread can be blocked vs real situation.}
     \label{blockingcode}
-    \begin{lstlisting}[language=javascript]
+    \begin{minipage}[t]{0.45\textwidth}
+        \begin{lstlisting}[language=javascript]
 // Would work in an ideal world
 function sleepFor100ms() {
     print('Starting sleep')
     sleep(100)
     print('After sleep')
 }
-    \end{lstlisting}
-\end{figure}
-
-Ideally this would print ``Starting Sleep'', wait 100ms, then print ``After Sleep''. However, sleeping would be a blocking action on the thread, so this is not allowed. In JavaScript we must use the \texttt{setTimeout} function, which takes a callback function, and a time to wait before executing it. Figure \ref{setTimeoutCode} shows code that uses the \texttt{setTimeout} API to add a callback to the task queue.
-
-\begin{figure}
-    \caption{Using \texttt{setTimeout}}
-    \label{setTimeoutCode}
-    \begin{lstlisting}[language=javascript]
+        \end{lstlisting}
+    \end{minipage}\qquad
+    \begin{minipage}[t]{0.45\textwidth}
+        \begin{lstlisting}[language=javascript]
 // The real way to achieve this
 function sleepFor100ms() {
     print('Starting sleep')
     setTimeout(() => print('After sleep'), 100)
 }
-    \end{lstlisting}
+        \end{lstlisting}
+    \end{minipage}
 \end{figure}
 
 Similarly JavaScript uses an API to overcome the single-thread limitation. The developer is given access to certain functions that can use an extra thread for specific tasks, e.g., Fetching web content from a different website. These APIs also use callback functions to specify what should be done with the result of the functions.
@@ -44,10 +41,10 @@ This reliance on callback functions leads to something that the JavaScript commu
 In an attempt to overcome callback hell, recent versions of JavaScript have introduced a concept known as ``async / await''.\cite{es8spec} This feature introduces what is effectively a syntactic sugar over a concept introduced previously, known as \textbf{Promises}.
 
 Promises are a reference to a value that has not yet been computed, but will at some point be computed (resolved). These references are objects that can be manipulated just like any other object.
-
 Mozilla describe Promises as
+
 \begin{quote}
-A Promise is a proxy for a value not necessarily known when the promise is created. It allows you to associate handlers with an asynchronous action's eventual success value or failure reason. This lets asynchronous methods return values like synchronous methods: instead of immediately returning the final value, the asynchronous method returns a promise to supply the value at some point in the future.
+A Promise is a proxy for a value not necessarily known when the promise is created. It allows you to associate handlers with an asynchronous action's eventual success value or failure reason.
     \cite{mozillapromises}
 \end{quote}
 
