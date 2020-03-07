@@ -185,5 +185,6 @@ export class DisplayEngine {
             const y = Asserts.assertNumber(pt[1]);
             this.ctx.lineTo(x, y);
         }
+        this.ctx.closePath();
     }
 }

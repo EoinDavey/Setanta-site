@@ -21,35 +21,68 @@ var (
 
 const projectID = "final-year-project-257911"
 const kind = "Script"
-const defaultContent = `>-- Fáilte go Setanta!
+const defaultContent = `>-- ###########
+>-- # Gaeilge #
+>-- ###########
 
-scríobh('Céad Míle Fáilte')
+>-- Téigh go dtí https://docs.try-setanta.ie nó cliceáil "Foghlaim" chun Setanta a fhoghlaim
 
-X := fadX@stáitse
-Y := fadY@stáitse
+>-- Brúigh ar Tosaigh chun an ríomhchlár a tosnú
 
-x := 0
-y := 0
+>-- ###########
+>-- # English #
+>-- ###########
 
-dx := 1
-dy := 1
+>-- Go to https://docs.try-setanta.ie or click "Foghlaim" to learn Setanta
 
-ard := 50
+>-- Click on Tosaigh to start the program
 
-dath@stáitse('dearg')
+Í := íos(fadX@stáitse, fadY@stáitse)*0.9
+I := 0.85 * Í
 
-nuair-a fíor {
-    má x + dx + ard > X | x + dx < 0
-    	dx = -dx
-    má y + dy + ard > Y | y + dy < 0
-    	dy = -dy
-    x = x + dx
-    y = y + dy
-    glan@stáitse()
-    dron@stáitse(x, y, ard, ard)
-  	coladh(1)
+dx := (fadX@stáitse - I)/2
+dy := (fadY@stáitse - I)/2
+
+lthd@stáitse(20)
+
+r := I/2
+
+t := [
+    [r + r * sin@mata(pi@mata / 3) + dx, r - r * cos@mata(pi@mata / 3) + dy],
+    [r - r * sin@mata(pi@mata / 3) + dx, r - r * cos@mata(pi@mata / 3) + dy],
+    [r + dx, I + dy]
+]
+t += [t[0]]
+
+le i idir (1, fad(t)) {
+    dfx := t[i][0] - t[i-1][0]
+    dfy := t[i][1] - t[i-1][1]
+    le j idir (1, 51) {
+    	líne@stáitse(t[i-1][0], t[i-1][1], t[i-1][0] + (j/50) * dfx, t[i-1][1] + (j/50) * dfy)
+        coladh(10)
+	}
 }
-`
+cruth@stáitse(t)
+
+rngs := [[1/2, 7/6], [11/6, 1/2], [7/6, 11/6]]
+
+dath@stáitse('#1976d2ff')
+
+le i idir (0, 3) {
+    le j idir (1, 51) {
+		píosaCiorcal@stáitse(t[i][0], t[i][1], r, rngs[i][0]*pi@mata, (rngs[i][0] + (4*j/300))*pi@mata, bréag)
+        coladh(10)
+    }
+}
+
+le i idir (0, Í/2, 2) {
+	dath@stáitse('#388E3C')
+	ciorcalLán@stáitse(r + dx, r + dy, i)
+    dath@stáitse('#1976d2ff')
+    le i idir (0, 3)
+    	píosaCiorcal@stáitse(t[i][0], t[i][1], r, rngs[i][0]*pi@mata, rngs[i][1]*pi@mata, bréag)
+    coladh(1)
+}`
 
 type Entry struct {
 	Content string `datastore:",noindex"`
