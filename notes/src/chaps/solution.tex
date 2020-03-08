@@ -77,60 +77,22 @@ The \Setanta{} runtime uses the \tsPEG{} parser generator to generate its parser
 
 \subsection{Syntax}
 
-The syntax of \Setanta{} is new, but should feel familiar to most people. It has been designed to simple and approachable.
+The syntax for \Setanta{} is a full syntax for a modern programming language, and so will not fit in this report and has been moved to Appendix 2. 
 
-\Setanta{} programs, like most imperative languages, consist of a sequence of statements. Some important \Setanta{} features are outlined below:
-\begin{itemize}
-    \item \textbf{Variable declarations}
+In short, the syntax of \Setanta{} is a familiar syntax, with influence from C-family languages, as well as Python and Go. The syntax also has some innovative features which will be outlined in the next section. A short example program can be seen in Figure \ref{setantaexample}. Demos of Setanta programs can be found at \href{http://docs.try-setanta.ie/sampla\%C3\%AD/}{docs.try-setanta.ie/samplaí}
 
-        In \Setanta{} variables are declared using the \verb|:=| operator, and can be re-assigned using the classic \verb|=| operator. The distinction is to provide a clear lexical difference between variable declaration and reassignment.
-    \item \textbf{Loops + Conditionals}
-
-        \Setanta{} support the classic conditional execution structure of if, else if, else. This is mostly a direct translation into Irish. However it should be noted that no bracketing is required around the expression.
-
-            \begin{lstlisting}[language=setanta, frame=single, caption=Setanta conditionals]
-má x == 0
-    scríobh('Tá x cothrom le 0')
-nó má x == 1
-    scríobh('Tá x cothrom le 1')
-nó
-    scríobh('Tá x níos mo ná 1')
-            \end{lstlisting}
-
-            \Setanta{} supports two main types of loops, ``le idir'' loops that allow the user to specify start and ends to the loop, and ``nuair-a'' loops, which are the familiar while loops.
-
-            \begin{lstlisting}[language=setanta, frame=single, caption=Setanta loops]
+\begin{figure}[ht]
+    \caption{Setanta example code}
+    \label{setantaexample}
+    \begin{lstlisting}[language=setanta]
 i := 0
 le i idir (0, 10)
     i = i + 1
 x := 0
 nuair-a x < 10
     x = x + 1
-            \end{lstlisting}
-        \item \textbf{Classes + Functions}
-
-            \Setanta{} supports declaring new classes, with methods, as well as functions on their own.
-            \begin{lstlisting}[language=setanta, frame=single, caption=Setanta classes]
-creatlach Person ó Animal {
-    gníomh nua(name) {
-        name@seo = name
-    }
-    gníomh speak() {
-        scríobh('Hi, My name is ' + name@seo)
-    }
-}
-            \end{lstlisting}
-        \item \textbf{Literals}
-
-            \Setanta{} supports literals for integers, booleans, null, strings and lists.
-            \begin{lstlisting}[language=setanta, frame=single, caption=Setanta literals]
-a := 500
-b := 'Dia duit domhan'
-c := [1,2,3,4, fíor]
-d := fíor != breag
-c := neamhní
-            \end{lstlisting}
-\end{itemize}
+    \end{lstlisting}
+\end{figure}
 
 \subsection{The @ operator - An example of Irish vs English host language}\label{atoperator}
 

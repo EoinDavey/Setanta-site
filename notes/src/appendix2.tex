@@ -1,0 +1,138 @@
+\documentclass[11pt]{extarticle}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[a4paper, margin=25mm]{geometry}
+\usepackage{fancyhdr}
+\usepackage{textcomp}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{float}
+\floatstyle{boxed} 
+\restylefloat{figure}
+\graphicspath{ {src/} }
+\newcommand{\Setanta}{\emph{Setanta}}
+\newcommand{\tsPEG}{\emph{tsPEG}}
+\newcommand{\trys}{\href{https://try-setanta.ie}{try-setanta.ie}}
+\renewcommand{\baselinestretch}{1.5}
+\hypersetup{
+    colorlinks=true,
+    urlcolor=blue,
+}
+\lstdefinelanguage{setanta}
+{
+    morekeywords={
+        le, idir, creatlach, toradh
+    },
+    morestring=[d]'
+}
+\lstset
+{
+    numbers=left,
+    basicstyle=\footnotesize,
+    showstringspaces=false,
+    breaklines=true,
+    keywordstyle=\color{blue}\bfseries,
+    stringstyle=\ttfamily,
+    inputencoding=utf8,
+    extendedchars=true,
+    literate=%
+        {á}{{\'a}}1
+        {ó}{{\'o}}1
+        {é}{{\'e}}1
+        {í}{{\'i}}1
+        {ú}{{\'u}}1
+        {má}{{{\color{blue}\textbf{m\'a}}}}2
+        {nó}{{{\color{blue}\textbf{n\'o}}}}2
+        {nuair-a}{{{\color{blue}\textbf{nuair-a}}}}7
+        {neamhní}{{{\color{purple}\textbf{neamhn\'i}}}}7
+        {gníomh}{{{\color{blue}\textbf{gn\'iomh}}}}6
+        {fíor}{{{\color{orange}f\'ior}}}4
+        {breag}{{{\color{orange}breag}}}5
+    }
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\thepage}
+\lhead{Eoin Davey - Final Year Project 2020 - 5 credits}
+\def\chapinp#1{\input{src/chaps/#1}}
+\begin{document}
+    \title{Appendix 2}
+    \author{Eoin Davey - 16634926}
+    \date{}
+    \maketitle
+    \thispagestyle{fancy}
+The syntax of \Setanta{} is new, but should feel familiar to most people. It has been designed to be simple and approachable. It takes inspiration from C like languages, but has some new ideas of it's own.
+The grammar has been designed for unambiguity so no semicolons or similar construct are required.
+
+\Setanta{} programs, like most imperative languages, consist of a sequence of statements. Some important \Setanta{} features are outlined below:
+\begin{itemize}
+    \item \textbf{Variable declarations}
+
+        In \Setanta{} variables are declared using the \verb|:=| operator, and can be re-assigned using the classic \verb|=| operator. The distinction is to provide a clear lexical difference between variable declaration and reassignment.
+
+            \begin{lstlisting}[language=setanta, frame=single, caption=Variables]
+x := 0
+x = x + 1
+            \end{lstlisting}
+    \item \textbf{Conditionals}
+
+        \Setanta{} support the classic conditional execution structure of if, else if, else. This is mostly a direct translation into Irish, as it uses the keyword \lstinline[language=setanta]|má| meaning ``if''. However it should be noted that no bracketing is required around the expression.
+
+            \begin{lstlisting}[language=setanta, frame=single, caption=Setanta conditionals]
+má x == 0
+    scríobh('Tá x cothrom le 0')
+nó má x == 1
+    scríobh('Tá x cothrom le 1')
+nó
+    scríobh('Tá x níos mo ná 1')
+            \end{lstlisting}
+        \item \textbf{Loops}
+
+            \Setanta{} supports two main types of loops, ``le idir'' loops that allow the user to specify start and ends to the loop, and ``nuair-a'' loops, which are the familiar while loops.
+
+            \begin{lstlisting}[language=setanta, frame=single, caption=Setanta loops]
+i := 0
+le i idir (0, 10)
+    i = i + 1
+x := 0
+nuair-a x < 10
+    x = x + 1
+            \end{lstlisting}
+        \item \textbf{Functions}
+
+            Functions in \Setanta{} are referred to with the term ``gníomh'' meaning ``action''. They can constructed with the \lstinline[language=setanta]|gníomh| keyword, followed by a name and argument list. The \lstinline[language=setanta]|toradh| keyword can be used to return values from the function.
+            \begin{lstlisting}[language=setanta, frame=single, caption=Setanta function example]
+gníomh fibonacci(n) {
+    má n <= 1
+        toradh 1
+    toradh fibonacci(n-1) + fibonacci(n-2)
+}
+            \end{lstlisting}
+        \item \textbf{Classes}
+
+            \Setanta{} supports declaring new classes, with methods, and a constructor.  Classes can inherit from other classes using the keyword \emph{ó}
+            \begin{lstlisting}[language=setanta, frame=single, caption=Setanta classe example]
+creatlach Person ó Animal {
+    gníomh nua(name) {
+        name@seo = name
+    }
+    gníomh speak() {
+        scríobh('Hi, My name is ' + name@seo)
+    }
+}
+            \end{lstlisting}
+        \item \textbf{Literals}
+
+            \Setanta{} supports literals for integers, booleans, null, strings and lists.
+            \begin{lstlisting}[language=setanta, frame=single, caption=Setanta literals]
+a := 500
+b := 'Dia duit domhan'
+c := [1,2,3,4, fíor]
+d := fíor != breag
+c := neamhní
+            \end{lstlisting}
+\end{itemize}
+
+\end{document}
