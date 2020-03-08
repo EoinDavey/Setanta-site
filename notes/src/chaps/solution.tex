@@ -132,21 +132,20 @@ c := neamhní
             \end{lstlisting}
 \end{itemize}
 
-\subsection{The @ operator}\label{atoperator}
+\subsection{The @ operator - An example of Irish vs English host language}\label{atoperator}
 
 One of the most important features of \Setanta{}'s syntax is the @ operator. The @ operator is where the influence of the Irish language on the design of \Setanta{} is felt most clearly. In fact, the @ operator is a simple innovation that addresses 2 distinct differences between Irish and English.
 
 The @ operator is the lookup operator, it is used to reference member fields and methods of objects. It is functionally equivalent to the classic dot ('.') operator in C, C++, Java, Python, JavaScript etc. The subtle difference is the order, both the @ operator and the '.' operator are binary operators, but the @ operator flips its arguments compared to the '.'.
 
 In the standard usage of the dot operator, the expression \verb|a.b| refers to the member ``b'' of the object ``a''. In \Setanta{} \verb|a@b| refers to the member ``a'' of the object ``b'', the order has been reversed.
-
 This change seems unimportant, however, it breaks 2 deep and subtle links between English and the standard way we look at OOP programming languages.
 
-Firstly, as discussed in the technical background, English is an SVO language, meaning that in sentences, the subject comes first, then the verb, then the object. This property of English is directly reflected in the design of the classic dot operator.
+Firstly, as discussed in the technical background (\ref{vsosvo}), English is an SVO language. This property of English is directly reflected in the design of the classic dot operator.
 
 The usage of the dot operator for member lookup gives rise to expressions like \verb|man.goTo(shop)|, or \verb|dbClient.query(q)|, these expression implicitly put the subject first, then the verb, then the object, directly mimicking the SVO structure of the host language.
 
-By using the @ operator in \Setanta{} we instead get expressions like \verb|goTo@man(shop)| or \verb|query@dbClient(q)|, these expressions put the verb first, then the subject, then the object, reflecting the VSO structure of Irish. This subtle connection between a simple operator like '.' and the linguistic properties of English is not apparent.
+By using the @ operator in \Setanta{} we instead get expressions like \verb|goTo@man(shop)| or \verb|query@dbClient(q)|, these expressions put the verb first, then the subject, then the object, reflecting the VSO structure of Irish. This subtle connection between a simple operator like '.' and the linguistic properties of English is not immediately apparent.
 
 There is a second connection between English and the lookup operation that is broken by the @ operator. In English when talking about possession relationships (``has-a'' relationships in database terms), we list the entities in decreasing order of possession, e.g.,
 \begin{quote}
@@ -164,7 +163,7 @@ This linguistic difference between Irish and English is again addressed by the @
 
 The semantics of \Setanta{} will be familiar to most users, it's an imperative, strongly dynamically typed language. \Setanta{} supports a gauntlet of modern features including first class functions, inheritance, event based concurrency, and automatic memory management. Although \Setanta{} is an imperative language, it does support a more functional style of programming as well.
 
-\subsection{Allowing blocking operations}
+\subsection{Blocking operations \& concurrency}
 
 As discussed in the technical background section, the JavaScript runtime, whether it be NodeJS or a browser, only allow usage of a single thread, and no blocking operations. However, writing \Setanta{} allows the user to use blocking functions. Figure \ref{blockingcomparison} shows a side by side comparison of equivalent programs in JavaScript and Setanta, it's clear that the Setanta program is much simpler due to allowing the program to block.
 
@@ -184,61 +183,44 @@ setTimeout(() => {
     \end{minipage}\qquad
     \begin{minipage}[t]{0.45\textwidth}
         \begin{lstlisting}[language=setanta, caption=Setanta]
-sleep(100)
-scríobh('sleep1')
-sleep(100)
-scríobh('sleep2')
-sleep(100)
-scríobh('sleep3')
+coladh(100)
+scríobh('coladh1')
+coladh(100)
+scríobh('coladh2')
+coladh(100)
+scríobh('coladh3')
         \end{lstlisting}
     \end{minipage}
     \caption{Equivalent code in JavaScript + Setanta}
     \label{blockingcomparison}
 \end{figure}
 
-\subsection{Concurrency}
-
-If you open the JavaScript console on any browser and enter \lstinline[language=javascript]|while(true){}| the browser tab will cease to be functional, i.e no buttons or text boxes or animations will work anymore. This is because the JavaScript engine is single threaded, the thread is busy computing \lstinline[language=javascript]|while(true){}|, and cannot process any other events.
-
-In contrast, if you write \lstinline[language=setanta]|nuair-a fíor {}| in \Setanta{}, the browser tab will remain responsive. This is due to the implicit concurrency of all \Setanta{} functions. \Setanta{} manipulates the JavaScript engine task queue to ensure that execution time is shared between the main browser thread actions, and executing the \Setanta{} code.
+If you open the JavaScript console on any browser and enter \lstinline[language=javascript]|while(true){}| the browser tab will cease to be functional, i.e no buttons or text boxes or animations will work anymore. This is because the JavaScript engine is single threaded.
+In contrast, if you write \lstinline[language=setanta]|nuair-a fíor {}| in \Setanta{}, the browser tab will remain responsive. This is due to the implicit concurrency of all \Setanta{} functions.
 
 \section{The learning environment - \trys{}}
 
 \subsection{High Level Design}
 
 \trys{}, like the other components is written mainly in TypeScript. The website is built on Google's LitElement library. LitElement is a library to write custom re-usable web components, it's a descendant of the Polymer framework, which has since been deprecated. LitElement is used to achieve a Material Design aesthetic. The text editor component uses the open source library CodeMirror.
-
 The backend for \trys{} is written in Go, and runs on the Google App Engine (GAE) cloud infrastructure platform. The backend for the site supports the ability to save and retrieve \Setanta{} programs to the cloud.
-
-A high level architecture for \trys{} can be seen in Figure \ref{trysetantadiagram}
-
-\begin{figure}
-    \caption{\trys{} High Level Design}
-    \label{trysetantadiagram}
-    \begin{center}
-    \includegraphics[scale=0.4]{trysetantadiagram}
-    \end{center}
-\end{figure}
-
-\trys{} is known to work with the Google Chrome, Mozilla Firefox and Safari browsers, however it does not work with Internet Explorer, or older versions of Edge.
 
 \subsection{Graphics API}
 
 To better enable the educational experience on \trys{}, the \Setanta{} runtime has access to a graphics API. The graphics API allows the user to draw simple graphics primitives and animations. This API is exposed to the \Setanta{} program as a global object. The user can access various fields and methods on this object to draw and manipulate shapes on the display. Figure \ref{sierpinksitriangle} shows a short program on \trys{} that draws a Sierpinski triangle.
+The graphics API also exposes methods to consume keyboard inputs, so the user can program simple games like \emph{Snake} with ease. It also features a full-screen mode.
 
-\begin{figure}
-    \caption{Sierpinski Triangle draw with \Setanta{}}
+\begin{figure}[ht]
+    \caption{Sierpinski Triangle drawn with \Setanta{}}
     \label{sierpinksitriangle}
     \begin{center}
     \includegraphics[scale=0.45]{sierpinskitriangle}
     \end{center}
 \end{figure}
 
-The graphics API also exposes methods to consume keyboard inputs, so the user can program simple games like \emph{Snake} with ease. It also features a full-screen mode.
-
 \subsection{Saving Code}
 
-\trys{} supports the ability to save a program to a specific URL. Clicking ``Faigh nasc'' (meaning ``get link'' redirects the user to a unique URL with which they can access their code. For example, the Sierpinski triangle example is available at:
+\trys{} supports the ability to save a program to a specific URL. Clicking ``Faigh nasc'' (meaning ``get link'') redirects the user to a unique URL with which they can access their code. For example, the Sierpinski triangle example is available at:
 \begin{quote}
     \href{https://try-setanta.ie/EhEKBlNjcmlwdBCAgIDgycODCg}{try-setanta.ie/EhEKBlNjcmlwdBCAgIDgycODCg.}
 \end{quote}
