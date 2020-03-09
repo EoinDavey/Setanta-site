@@ -10,9 +10,13 @@
 \usepackage{graphicx}
 \usepackage{listings}
 \usepackage{float}
+\usepackage{titlesec}
 \floatstyle{boxed} 
 \restylefloat{figure}
 \graphicspath{ {src/} }
+\titleclass{\chapter}{straight}
+\titleformat{\chapter}[hang]{\titlerule\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter:}{1em}{}[\titlerule]
+\titlespacing*{\chapter}{0pt}{2em}{2em}
 \newcommand{\Setanta}{\emph{Setanta}}
 \newcommand{\tsPEG}{\emph{tsPEG}}
 \newcommand{\trys}{\href{https://try-setanta.ie}{try-setanta.ie}}
@@ -83,5 +87,6 @@
     \chapinp{evaluation}
     \chapinp{conclusion}
 
+    \newpage
     \chapinp{bibliography}
 \end{document}
