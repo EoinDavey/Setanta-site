@@ -1,6 +1,8 @@
 \documentclass[11pt]{extreport}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage{mathptmx}
+\usepackage{setspace}
 \usepackage[a4paper, margin=25mm]{geometry}
 \usepackage{fancyhdr}
 \usepackage{textcomp}
@@ -20,7 +22,7 @@
 \newcommand{\Setanta}{\emph{Setanta}}
 \newcommand{\tsPEG}{\emph{tsPEG}}
 \newcommand{\trys}{\href{https://try-setanta.ie}{try-setanta.ie}}
-\renewcommand{\baselinestretch}{1.15}
+\setstretch{1.15}
 \hypersetup{
     colorlinks=true,
     urlcolor=blue,
@@ -77,8 +79,12 @@
 \def\chapinp#1{\input{src/chaps/#1}}
 \begin{document}
     \chapinp{titlepage}
+    \thispagestyle{plain}
     \tableofcontents
+    \thispagestyle{plain}
+    \newpage
 
+    \setcounter{page}{2}
     \chapinp{abstract}
     \chapinp{introduction}
     \chapinp{background}
