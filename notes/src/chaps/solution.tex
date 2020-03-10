@@ -41,10 +41,10 @@ INT  := val='[0-9]+'
 
 Grammars are defined by a sequence of grammar rules, for example
     \[\texttt{match} := \texttt{rule1} \mathbin{|} \texttt{rule2} \mathbin{|} \texttt{\textquotesingle a+\textquotesingle}\]
-    defines a new rule \verb|match| that tries first \verb|rule1| then \verb|rule2|, then tries to match the regex expression \verb|a+|. The full list of operators is included in Appendix A.
-
+    defines a new rule \verb|match| that tries first \verb|rule1| then \verb|rule2|, then tries to match the regex expression \verb|a+|.
     The \tsPEG{} grammar also allows specification of computed properties, for example Figure \ref{tspegcomputed} defines a rule to match integer literals that stores the value of the integer as a computed property.
 
+   \textbf{Please see Appendix \ref{tspegdocs} for full documentation of \tsPEG{}'s grammar} 
 \begin{figure}
     \caption{\tsPEG{} computed properties example}
     \label{tspegcomputed}
