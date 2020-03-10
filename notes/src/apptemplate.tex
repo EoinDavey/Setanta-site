@@ -1,7 +1,6 @@
 \documentclass[11pt]{extreport}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[page, toc]{appendix}
 \usepackage{mathptmx}
 \usepackage{setspace}
 \usepackage[a4paper, margin=25mm]{geometry}
@@ -18,7 +17,7 @@
 \restylefloat{figure}
 \graphicspath{ {src/} }
 \titleclass{\chapter}{straight}
-\titleformat{\chapter}[hang]{\titlerule\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter:}{1em}{}[\titlerule]
+\titleformat{\chapter}[hang]{\titlerule\normalfont\huge\bfseries}{}{1em}{}[\titlerule]
 \titlespacing*{\chapter}{0pt}{2em}{2em}
 \newcommand{\Setanta}{\emph{Setanta}}
 \newcommand{\tsPEG}{\emph{tsPEG}}
@@ -45,7 +44,6 @@
         {í}{{\'i}}1
         {ú}{{\'u}}1
         {má}{{{\color{blue}\textbf{m\'a}}}}2
-        {nó}{{{\color{blue}\textbf{n\'o}}}}2
         {nuair-a}{{{\color{blue}\textbf{nuair-a}}}}7
         {neamhní}{{{\color{purple}\textbf{neamhn\'i}}}}7
         {gníomh}{{{\color{blue}\textbf{gn\'iomh}}}}6
@@ -55,7 +53,7 @@
 \lstdefinelanguage{setanta}
 {
     morekeywords={
-        le, idir, creatlach, toradh
+        le, idir, creatlach
     },
     morestring=[d]'
 }
@@ -79,29 +77,7 @@
 \rhead{\thepage}
 \lhead{Eoin Davey - Final Year Project 2020 - 5 credits}
 \def\chapinp#1{\input{src/chaps/#1}}
-\def\appinp#1{\input{src/appendices/#1}}
 \begin{document}
-    \chapinp{titlepage}
-    \thispagestyle{plain}
-    \tableofcontents
-    \thispagestyle{plain}
-    \newpage
-
-    \setcounter{page}{1}
-    \chapinp{abstract}
-    \chapinp{introduction}
-    \chapinp{background}
-    \chapinp{problemdesc}
-    \chapinp{solution}
-    \chapinp{evaluation}
-    \chapinp{conclusion}
-
-    \newpage
-    \chapinp{bibliography}
-    \titleclass{\chapter}{top}
-
-    \begin{appendices}
-        \appinp{appendix1}
-        \appinp{appendix2}
-    \end{appendices}
+\appendix
+---CONTENT---
 \end{document}
