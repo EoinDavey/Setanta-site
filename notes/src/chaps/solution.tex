@@ -237,7 +237,42 @@ If you open the JavaScript console on any browser and enter \lstinline[language=
 
 In contrast, if you write \lstinline[language=setanta]|nuair-a fíor {}| in \Setanta{}, the browser tab will remain responsive. This is due to the implicit concurrency of all \Setanta{} functions. \Setanta{} manipulates the JavaScript engine task queue to ensure that execution time is shared between the main browser thread actions, and executing the \Setanta{} code.
 
-\textbf{How this was achieved is outlined in Appendix 3}
+\textbf{How this was achieved is outlined in Appendix C}
+
+\subsection{Tree Compression for performance}
+
+The arithmetic expressions in \Setanta{} have a certain operator precedence, this precedence matches the usual order of operations that we are used to. For example in the expression \verb|1 + 2 * 3|, the multiplication is performed before the addition, giving the correct answer of 7.
+
+The grammar for \Setanta{} is carefully designed to ensure that all precedences are correct.
+It's not just multiplication and addition, there are in fact 10 different levels of precedence in the grammar for \Setanta{}.
+You can see the \Setanta{} grammar spec (that \tsPEG{} uses to generate the parser) in Appendix D.
+
+A side effect of this many layered grammar specification means that simple expressions like \verb|1 + 2 * 3| generate very tall, but sparse syntax trees. In Figure \ref{setanta:uncompressedtree} you can see the full syntax tree generated for \verb|1+2*3|.
+Most of these AST nodes contain no information. But in evaluating this expression directly we must traverse the entire tree.
+
+If the expression includes variables (\verb|a + b * c|) we must do this every single time we evaluate it, we can't cache the result.
+
+The solution that I came up with is to take advantage of \tsPEG{}'s \hyperref[computed-properties]{computed properties} support. In fact this tree compression problem is exactly the problem I added computed properties to \tsPEG{} to allow me to solve.
+
+The idea is that, at parse time, each node computes a ``shortcut'' attribute. If the node detects that it is not required, it allows nodes to shortcut it. This is all computed once when the AST is constructed. Following only the shortcut links for the expression \verb|1 + 2 * 3| we instead get a much compressed tree seen in Figure \ref{setanta:compressedtree}.
+
+This change caused a measurable speedup of around 19\% when measured against the test programs. The test set of programs before this change would run in about 1.6s, after this tree compression addition the tests would take about 1.3s.
+
+\begin{figure}
+    \caption{Uncompressed tree for ``1 + 2 * 3''}
+    \label{setanta:uncompressedtree}
+    \begin{center}
+    \includegraphics[scale=0.3]{app2assets/tallgraph}
+    \end{center}
+\end{figure}
+
+\begin{figure}
+    \caption{Compressed tree for ``1 + 2 * 3''}
+    \label{setanta:compressedtree}
+    \begin{center}
+    \includegraphics[scale=0.8]{app2assets/smallgraph}
+    \end{center}
+\end{figure}
 
 \section{The learning environment - \trys{}}
 
