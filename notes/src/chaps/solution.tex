@@ -182,7 +182,8 @@ Firstly, as discussed in the technical background, English is an SVO language, m
 
 The usage of the dot operator for member lookup gives rise to expressions like \verb|man.goTo(shop)|, or \verb|dbClient.query(q)|, these expression implicitly put the subject first, then the verb, then the object, directly mimicking the SVO structure of the host language.
 
-By using the @ operator in \Setanta{} we instead get expressions like \verb|goTo@man(shop)| or \verb|query@dbClient(q)|, these expressions put the verb first, then the subject, then the object, reflecting the VSO structure of Irish. This subtle connection between a simple operator like '.' and the linguistic properties of English is not apparent.
+By using the @ operator in \Setanta{} we instead get expressions like \verb|goTo@man(shop)| or\\
+\verb|query@dbClient(q)|, these expressions put the verb first, then the subject, then the object, reflecting the VSO structure of Irish. This subtle connection between a simple operator like '.' and the linguistic properties of English is not apparent.
 
 There is a second connection between English and the lookup operation that is broken by the @ operator. In English when talking about possession relationships (``has-a'' relationships in database terms), we list the entities in decreasing order of possession, e.g.,
 \begin{quote}
@@ -247,7 +248,8 @@ The grammar for \Setanta{} is carefully designed to ensure that all precedences 
 It's not just multiplication and addition, there are in fact 10 different levels of precedence in the grammar for \Setanta{}.
 You can see the \Setanta{} grammar spec (that \tsPEG{} uses to generate the parser) in Appendix D.
 
-A side effect of this many layered grammar specification means that simple expressions like \verb|1 + 2 * 3| generate very tall, but sparse syntax trees. In Figure \ref{setanta:uncompressedtree} you can see the full syntax tree generated for \verb|1+2*3|.
+A side effect of this many layered grammar specification means that simple expressions like\\
+\verb|1 + 2 * 3| generate very tall, but sparse syntax trees. In Figure \ref{setanta:uncompressedtree} you can see the full syntax tree generated for \verb|1+2*3|.
 Most of these AST nodes contain no information. But in evaluating this expression directly we must traverse the entire tree.
 
 If the expression includes variables (\verb|a + b * c|) we must do this every single time we evaluate it, we can't cache the result.
