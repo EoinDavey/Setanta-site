@@ -276,6 +276,16 @@ This change caused a measurable speedup of around 19\% when measured against the
     \end{center}
 \end{figure}
 
+\section{Async / await slowness}
+
+As mentioned in the \hyperref[background:asyncawait]{technical background}, recent versions of JavaScript have introduced a new syntactic construct known as async/await. This feature is intended to get around the problem of writing blocking and asynchronous code in JavaScript. In theory, async / await is just a syntactic sugar for the \hyperref[background:asyncawait]{Promises API}, and is recommended to use to improve readability and maintainability of code.
+
+When writing the interpreter for \Setanta{} to allow blocking operations, I took advantage of this new async / await feature, and it did lead to simple easy to read code. However, when I timed my tests, I found that the interpreter had been reduced to running at an absolute crawl. My test suite now took over 13 seconds to execute all programs.
+
+As an experiment, I re-wrote the whole interpreter directly with the Promises API, manually resolving the async / await syntactic sugar, and then I executed my tests again. The results were shocking, the execution time for my tests was reduced down to almost 1 second, a ~13x speedup!
+
+This was highly shocking to me, as I had never heard word of async / await being slower than the raw Promises API before, in fact a cursory Google search will bring up countless results of people talking about how the speed of async / await is comparable or even faster than Promises.
+
 \section{The learning environment - \trys{}}
 
 \subsection{High Level Design}
@@ -308,7 +318,7 @@ To better enable the educational experience on \trys{}, the \Setanta{} runtime h
     \end{center}
 \end{figure}
 
-The graphics API also exposes methods to consume keyboard inputs, so the user can program simple games like \emph{Snake} with ease. It also features a full-screen mode.
+The graphics API also exposes methods to consume keyboard inputs, so the user can program simple games like \emph{Snake} with ease. It also features a full-screen mode. You can find the \emph{Snake} game demo at \href{https://try-setanta.ie/EhEKBlNjcmlwdBCAgICgxt6JCg}{https://try-setanta.ie/EhEKBlNjcmlwdBCAgICgxt6JCg}
 
 \subsection{Saving Code}
 
