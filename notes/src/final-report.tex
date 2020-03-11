@@ -35,6 +35,7 @@
     showstringspaces=false,
     breaklines=true,
     keywordstyle=\color{blue}\bfseries,
+    commentstyle=\color{purple}\ttfamily,
     stringstyle=\ttfamily,
     inputencoding=utf8,
     extendedchars=true,
@@ -57,7 +58,8 @@
     morekeywords={
         le, idir, creatlach, toradh
     },
-    morestring=[d]'
+    morestring=[d]',
+    comment=[l]{>--}
 }
 \lstdefinelanguage{JavaScript}{
   keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
@@ -68,7 +70,6 @@
   sensitive=false,
   comment=[l]{//},
   morecomment=[s]{/*}{*/},
-  commentstyle=\color{purple}\ttfamily,
   stringstyle=\color{red}\ttfamily,
   morestring=[b]',
   morestring=[b]"

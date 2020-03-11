@@ -44,7 +44,7 @@ Grammars are defined by a sequence of grammar rules, for example
     defines a new rule \verb|match| that tries first \verb|rule1| then \verb|rule2|, then tries to match the regex expression \verb|a+|.
     The \tsPEG{} grammar also allows specification of computed properties, for example Figure \ref{tspegcomputed} defines a rule to match integer literals that stores the value of the integer as a computed property.
 
-   \textbf{Please see Appendix \ref{tspegdocs} for full documentation of \tsPEG{}'s grammar} 
+   \textbf{Please see \hyperref[tspegdocs]{Appendix \ref*{tspegdocs}} for full documentation of \tsPEG{}'s grammar} 
 \begin{figure}
     \caption{\tsPEG{} computed properties example}
     \label{tspegcomputed}
@@ -165,8 +165,8 @@ d := fíor != breag
 c := neamhní
             \end{lstlisting}
 
-    A more complete description of \Setanta{}'s syntax can be found in Appendix 2.
 \end{itemize}
+            \noindent\textbf{Please see \hyperref[setantadocs]{Appendix \ref*{setantadocs}} for a full description of the syntax and semantics of \Setanta{}. The 20 page limit on the report means the full description cannot be directly included.}
 
 \subsection{The @ operator}\label{atoperator}
 
@@ -200,6 +200,7 @@ This linguistic difference between Irish and English is again addressed by the @
 
 The semantics of \Setanta{} will be familiar to most users, it's an imperative, strongly dynamically typed language. \Setanta{} supports a gauntlet of modern features including first class functions, inheritance, event based concurrency, and automatic memory management. Although \Setanta{} is an imperative language, it does support a more functional style of programming as well.
 
+        \noindent\textbf{Again please see \hyperref[setantadocs]{Appendix \ref*{setantadocs}} for a full description of the syntax and semantics of \Setanta{}.}
 \subsection{Blocking operations \& Concurrency}
 
 As discussed in the technical background section, the JavaScript runtime, whether it be NodeJS or a browser, only allow usage of a single thread, and no blocking operations. However, writing \Setanta{} allows the user to use blocking functions. Figure \ref{blockingcomparison} shows a side by side comparison of equivalent programs in JavaScript and Setanta, it's clear that the Setanta program is much simpler due to allowing the program to block.
