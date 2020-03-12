@@ -6,7 +6,13 @@ The only PL that standard web browsers (\emph{Google Chrome, Mozilla Firefox, Sa
 In addition to this restriction on PLs, each browser instance limits executing code to a single, non-blocking thread.
 
 \subsection{Task Queue APIs}\label{background:task-queues}
-To overcome the non-blocking limitation of the execution thread the JavaScript environment exposes an API to a simple task queue, allowing users to pass in \textbf{callbacks}, which are functions that will be executed at some later time. Figure \ref{blockingcode} contains some simple code that would work if the browser thread allowed blocking.
+To overcome the non-blocking limitation of the execution thread the JavaScript environment exposes an API to a simple ''task queue``.
+The task queue is exactly what it sound like, it's a queue of operations that the JavaScript environment maintains and performs them in ``first in first out'' order (roughly). This task queue contains lots of important tasks, such as mouse and keyboard event processing, scrolling, rendering, button animations etc.
+
+The JavaScript runtime allows users to add their own tasks to the queue, by passing in \textbf{callbacks} to certain built-in functions. Callbacks are added to the task queue and will be executed at some later time.
+
+By design JavaScript does not allow any blocking operations, e.g., \verb|sleep|, or synchronous network calls or IO reads. The task queue API is therefore used to work around this.
+Figure \ref{blockingcode} contains some simple code that would work if the browser thread allowed blocking.
 
 \begin{figure}
     \caption{Code if thread can be blocked.}
@@ -35,9 +41,9 @@ function sleepFor100ms() {
     \end{lstlisting}
 \end{figure}
 
-Similarly JavaScript uses an API to overcome the single-thread limitation. The developer is given access to certain functions that can use an extra thread for specific tasks, e.g., Fetching web content from a different website. These APIs also use callback functions to specify what should be done with the result of the functions.
+Similarly JavaScript uses an API to overcome the single-thread limitation. The developer is given access to certain functions that can use an extra thread for specific tasks, e.g., Fetching web content from a different website. These APIs also use callback functions to specify what should be done with the result of the functions, they perform their requested action, and then place the callback function on the task queue.
 
-This reliance on callback functions leads to something that the JavaScript community refers to as \textbf{Callback Hell}.
+This reliance on callback functions leads to something that the JavaScript community refers to as \textbf{Callback Hell}\cite{callbackhell}.
 
 \subsection{async / await and Promises}\label{background:asyncawait}
 
