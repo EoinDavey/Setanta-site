@@ -5,7 +5,7 @@
 The only PL that standard web browsers (\emph{Google Chrome, Mozilla Firefox, Safari, Edge, Internet Explorer, etc.}) can execute is JavaScript. There is a movement to bring other PLs to the browser via a technology called WebAssembly, but this has not fully come to fruition yet.  
 In addition to this restriction on PLs, each browser instance limits executing code to a single, non-blocking thread.
 
-\subsection{Task Queue APIs}
+\subsection{Task Queue APIs}\label{background:task-queues}
 To overcome the non-blocking limitation of the execution thread the JavaScript environment exposes an API to a simple task queue, allowing users to pass in \textbf{callbacks}, which are functions that will be executed at some later time. Figure \ref{blockingcode} contains some simple code that would work if the browser thread allowed blocking.
 
 \begin{figure}

@@ -201,10 +201,12 @@ This linguistic difference between Irish and English is again addressed by the @
 
 The semantics of \Setanta{} will be familiar to most users, it's an imperative, strongly dynamically typed language. \Setanta{} supports a gauntlet of modern features including first class functions, inheritance, event based concurrency, and automatic memory management. Although \Setanta{} is an imperative language, it does support a more functional style of programming as well.
 
-        \noindent\textbf{Again please see \hyperref[setantadocs]{Appendix \ref*{setantadocs}} for a full description of the syntax and semantics of \Setanta{}.}
+        \noindent\textbf{Please see \hyperref[setantadocs]{Appendix \ref*{setantadocs}} for a full description of the syntax and semantics of \Setanta{}.}
+
 \subsection{Blocking operations \& Concurrency}
 
-As discussed in the technical background section, the JavaScript runtime, whether it be NodeJS or a browser, only allow usage of a single thread, and no blocking operations. However, writing \Setanta{} allows the user to use blocking functions. Figure \ref{blockingcomparison} shows a side by side comparison of equivalent programs in JavaScript and Setanta, it's clear that the Setanta program is much simpler due to allowing the program to block.
+As discussed in the technical background section, the JavaScript runtime, whether it be NodeJS or a browser, only allows usage of a single thread, and no blocking operations.
+However, \Setanta{} allows the user to write and use blocking functions. Figure \ref{blockingcomparison} shows a side by side comparison of equivalent programs in JavaScript and Setanta, it's clear that the Setanta program is much simpler due to allowing the program to block.
 
 \begin{figure}[ht]
     \begin{minipage}[t]{0.45\textwidth}
@@ -234,11 +236,23 @@ scríobh('sleep3')
     \label{blockingcomparison}
 \end{figure}
 
-If you open the JavaScript console on any browser and enter \lstinline[language=javascript]|while(true){}| the browser tab will cease to be functional, i.e no buttons or text boxes or animations will work anymore. This is because the JavaScript engine is single threaded, the thread is busy computing \lstinline[language=javascript]|while(true){}|, and cannot process any other events.
+If you open the JavaScript console on any browser and enter \lstinline[language=javascript]|while(true){}| the browser tab will cease to be functional, i.e no buttons or text boxes or animations will work anymore.
+This is because the JavaScript engine is single threaded, the thread is busy computing \lstinline[language=javascript]|while(true){}|, and cannot process any other events.
 
 In contrast, if you write \lstinline[language=setanta]|nuair-a fíor {}| in \Setanta{}, the browser tab will remain responsive. This is due to the implicit concurrency of all \Setanta{} functions. \Setanta{} manipulates the JavaScript engine task queue to ensure that execution time is shared between the main browser thread actions, and executing the \Setanta{} code.
 
-\textbf{How this was achieved is outlined in Appendix C}
+\subsubsection{How this was achieved}
+
+As discussed in the \hyperref[background:asyncawait]{technical background}, Recent versions of JavaScript include a technology known as ``Promises''. These values are stand-ins for future values, that are yet unknown. The \verb|Interpreter| class in \Setanta{} makes heavy use of Promises, to allow the execution of the program to be suspended at any moment. By allowing suspension of the interpreter, we allow the code to appear to block, while under the hood, the thread has not technically blocked.
+
+This idea works in theory, but in practice, an interesting problem was observed. As outlined in the technical background, JavaScript engines use \hyperref[background:task-queues]{task queues} in the runtime to manage callbacks. Promises use this task queue to enqueue the operations that should be performed on the unknown values that they are a proxy for. However, unlike other task queue APIs exposed to the JavaScript runtime, Promises use something called the ``microtask queue''. The normal task queue is referred to then as the ``macrotask queue''. This distinction is little known, as it is usually of very little importance. However, the difference is crucial to \Setanta{}s implementation.
+
+When the JavaScript runtime is deciding what task to execute next, it always chooses a task from the microtask queue over any macrotask. This is because Promises are usually used to enqueue smaller operations on data, such as printing the results of web requests. However, when Promises have been used to construct a Turing complete language like \Setanta{}, we encounter the problem that while the program is running, it keeps the microtask queue full, never allowing a macrotask to be run. 
+
+Macrotasks are important to the JavaScript runtime, and the browser especially, things like animations, scrolling, rendering, keyboard events, button presses etc. are all macrotasks. Therefore if we are blocking the macrotask queue from being executed for some long amount of time, we are preventing all these important operations from happening.
+
+I experimented with forcing all the Promises to use the macrotask queue, rather than the microtask queue. But it turns out, the microtask queue is much faster than the macrotask queue, so this resulted in massive slowdowns. A happy medium had to be found.
+My eventual solution was to allow some finite amount of microtasks to be used, before a macrotask should be used instead. After experimentation on a few platforms I found a nice number to be around the 5000 mark. Meaning that every 5000 operations performed by the \Setanta{} runtime, it enqueues the next operation on the macrotask queue, allowing other macrotasks to be processed before the execution continues.
 
 \subsection{Tree Compression for performance}
 
@@ -256,7 +270,7 @@ If the expression includes variables (\verb|a + b * c|) we must do this every si
 
 The solution that I came up with is to take advantage of \tsPEG{}'s \hyperref[computed-properties]{computed properties} support. In fact this tree compression problem is exactly the problem I added computed properties to \tsPEG{} to allow me to solve.
 
-The idea is that, at parse time, each node computes a ``shortcut'' attribute. If the node detects that it is not required, it allows nodes to shortcut it. This is all computed once when the AST is constructed. Following only the shortcut links for the expression \verb|1 + 2 * 3| we instead get a much compressed tree seen in Figure \ref{setanta:compressedtree}.
+The idea is that, at parse time, each node computes a ``shortcut'' attribute. If the node detects that it is not required, it computes a pointer to the next ``important'' node below it, and returns that, shortcutting the node entirely, while maintaining the strong typing of the AST. This is all computed once when the AST is constructed. Following only the shortcut links for the expression \verb|1 + 2 * 3| we instead get a much compressed tree seen in Figure \ref{setanta:compressedtree}.
 
 This change caused a measurable speedup of around 19\% when measured against the test programs. The test set of programs before this change would run in about 1.6s, after this tree compression addition the tests would take about 1.3s.
 
