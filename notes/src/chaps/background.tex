@@ -58,6 +58,35 @@ A Promise is a proxy for a value not necessarily known when the promise is creat
     \cite{mozillapromises}
 \end{quote}
 
+Promises allow us to use an almost monadic programming style to write our asynchronous programs. However, in a similar way to Haskell's ``do'' notation, the async / await syntax allows us to write our asynchronous programs in a more imperative style. Figure \ref{background:figure:async-await} shows an example of using Promises directly vs using the async / await syntactic sugar to write the same function.
+
+\begin{figure}
+    \caption{Promises vs async / await}
+    \label{background:figure:async-await}
+    \begin{minipage}[t]{0.45\textwidth}
+        \begin{lstlisting}[language=javascript]
+// Async addition using Promises
+function doAsyncAddition() {
+    return getA().then(a => {
+        return getB().then(b => {
+            return a + b;
+        });
+    });
+}
+        \end{lstlisting}
+    \end{minipage}
+    \begin{minipage}[t]{0.45\textwidth}
+        \begin{lstlisting}[language=javascript]
+// Async addition using async / await syntactic sugar.
+async function doAsyncAddition() {
+    const a = await getA();
+    const b = await getB();
+    return a + b;
+}
+        \end{lstlisting}
+    \end{minipage}
+\end{figure}
+
 \section{TypeScript}
 TypeScript is an open source PL being developed by Microsoft, TypeScript is the primary PL that is used in the implementation of this project. Microsoft describes it as
 
