@@ -12,6 +12,8 @@
      \item The parser must utilise the TypeScript type system to the fullest extent, making use of discriminated union types and enum types to create a strongly typed AST for the input grammar.
  
      \item The \tsPEG{} input format should be expressive enough to allow users to specify complex and powerful grammars easily. It should support the standard set of PEG operators.
+
+     \item \tsPEG{} should allow the user to construct dynamic syntax trees through the use of computed properties.
  \end{itemize}
 
 \section{\Setanta{}}
@@ -29,11 +31,11 @@ Outside of these technical requirements, the design of \Setanta{} is largely fre
 
 \section{\trys{}}
 
-The learning environment at \trys{} also has some technical requirements. \trys{} exists as a portal to using and learning \Setanta{}. Therefore it must satisfy the following conditions:
+The learning environment at \trys{} also has some technical requirements. The purpose of \trys{} is to act as a portal to using, learning and sharing \Setanta{}. Therefore it must satisfy the following conditions:
 \begin{itemize}
     \item \trys{} must enable visitors to the site to write and execute \Setanta{} code.
-    \item \trys{} must be clearly laid out and simple to use.
+    \item \trys{} must have a clear layout and be simple to use.
     \item Some method of saving code and sharing it with friends needs to be included.
     \item As with \Setanta{}, \trys{} must not require any knowledge of English, only Irish can be used.
-    \item Some sort of graphical display must be included, and should have an API that is exposed to the \Setanta{} runtime.
+    \item Some sort of graphical display must be included and should have an API that is exposed to the \Setanta{} runtime.
 \end{itemize}
