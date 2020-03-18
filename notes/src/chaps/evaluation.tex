@@ -18,7 +18,8 @@ As outlined in the solution section of \Setanta{} (\ref{setantasolution}), the i
 
 The correctness of \Setanta{} is ensured by a large suite of tests, including unit tests, and full end to end tests. \Setanta{} contains over 1300 lines of test code alone. These tests ensure that every edge of language behaviour is correct, theses tests are run automatically by the continuous integration system with each commit. The current state of \Setanta{}'s builds can be seen at \href{https://travis-ci.com/EoinDavey/Setanta}{travis-ci.com/EoinDavey/Setanta.}
 
-\Setanta{}'s main issue is its speed. As it is built on top of the JavaScript environment but requires blocking operations and concurrency, it means that \Setanta{} has taken on an extremely large overhead. The result of this is that \Setanta{} is notably slow at some tasks. However, the domain of \Setanta{} is education, not high performance or production computing, so this is not a direct detractor from the quality of the project.
+\Setanta{}'s main issue is its speed. As it is built on top of the JavaScript environment but requires blocking operations and concurrency, it means that \Setanta{} has taken on an extremely large overhead. The result of this is that \Setanta{} is notably slow at some tasks. However, the domain of \Setanta{} is education, not high performance or production computing, so this is not a direct detractor from the quality of the project. I have taken several steps to keep the efficiency of \Setanta{} at a high enough level that it's not noticeably slow.
+These steps are outlined in sections \ref{solution:treecompression} and \ref{solution:asyncawaitslowness}.
 
 The fact that the same \Setanta{} interpreter can be used both in the browser and in a local CLI shows the code is well abstracted and isolated, the main \lstinline|Interpreter| class is very portable and can be loaded in a wide variety of environments.
 
@@ -29,8 +30,8 @@ The fact that the same \Setanta{} interpreter can be used both in the browser an
 The \trys{} learning environment has also been largely successful and meets most of the original design goals for it. \trys{} is a simple to use website where the user can write and execute \Setanta{} code, it has a good editor with syntax highlighting and a powerful graphics API.
 The implementation of \trys{} is quite modern, taking advantage of the latest features of HTML5 and CSS3. \trys{} is built on the web components technology, this means that the main components of the \trys{} website are fully isolated, abstracted and re-usable.
 
-\trys{} doesn't meet the original design plan of having an extremely high-level graphics API. Instead, there is a lower-level graphics API as I found in the development process of this API that it was easier to understand a simple API that let you call a function to draw circles, squares etc. than a very high-level API where you would need to use classes and inheritance and other features to interact with the API.
+\trys{} doesn't meet the original design plan of having an extremely high-level graphics API. Instead, there is a lower-level graphics API. This decision was made as I found in the development process of this API that it was easier to understand a simple API that let you call a function to draw circles, squares etc. than a very high-level API where you would need to use classes and inheritance and other features to interact with the API.
 
 \section{Overall end to end correctness}
 
-The act of going to \trys{}, writing a game in \Setanta{}, executing it, and playing the game in the browser is a full end to end proof that each component, \trys{}, \Setanta{} and \tsPEG{} are all fully functional, as each part is 100\% vital to the project as a whole.
+The overall end to end correctness of this project is apparent. The act of going to \trys{}, writing a game in \Setanta{}, executing it, and playing the game in the browser is a full end to end proof that each component, \trys{}, \Setanta{} and \tsPEG{} are all fully functional, as each part is 100\% vital to the project as a whole.

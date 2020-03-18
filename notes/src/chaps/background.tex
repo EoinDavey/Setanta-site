@@ -7,40 +7,38 @@ In addition to this restriction on PLs, each browser instance limits executing c
 
 \subsection{Task Queue APIs}\label{background:task-queues}
 To overcome the non-blocking limitation of the execution thread the JavaScript environment exposes an API to a simple ''task queue``.
-The task queue is exactly what it sounds like, it's a queue of operations that the JavaScript environment maintains and performs them in ``first in first out'' order (roughly). This task queue contains lots of important tasks, such as mouse and keyboard event processing, scrolling, rendering, button animations etc.
+The task queue is exactly what it sounds like, it's a queue of operations that the JavaScript environment maintains and performs in ``first in first out'' order (roughly). This task queue contains lots of important tasks, such as mouse and keyboard event processing, scrolling, rendering, button animations etc.
 
 The JavaScript runtime allows users to add their own tasks to the queue by passing in \textbf{callbacks} to certain built-in functions. Callbacks are added to the task queue and will be executed at some later stage.
 When the JavaScript runtime completes a task, it moves to the next task in the queue.
 
 By design JavaScript does not allow any blocking operations, e.g., \verb|sleep|, or synchronous network calls or IO reads. The task queue API is therefore used to work around this.
-Figure \ref{blockingcode} contains some simple code that would work if the browser thread allowed blocking.
 
 \begin{figure}
-    \caption{Code if thread can be blocked.}
-    \label{blockingcode}
-    \begin{lstlisting}[language=javascript]
-// Would work in an ideal world
+    \caption{Comparison of blocking and non-blocking code}
+    \label{background:blockingcomparison}
+    \begin{minipage}[t]{0.45\textwidth}
+        \begin{lstlisting}[language=javascript]
+// Would work if blocking allowed
 function sleepFor100ms() {
     print('Starting sleep')
     sleep(100)
     print('After sleep')
 }
-    \end{lstlisting}
-\end{figure}
-
-Ideally, this would print ``Starting Sleep'', wait 100ms, then print ``After Sleep''. However, sleeping would be a blocking action on the thread, so this is not allowed. In JavaScript, we must use the \texttt{setTimeout} function, which takes a callback function, and a time to wait before executing it. Figure \ref{setTimeoutCode} shows some code that uses the \texttt{setTimeout} API to add a callback to the task queue.
-
-\begin{figure}
-    \caption{Using \texttt{setTimeout}}
-    \label{setTimeoutCode}
-    \begin{lstlisting}[language=javascript]
+        \end{lstlisting}
+    \end{minipage}
+    \begin{minipage}[t]{0.45\textwidth}
+        \begin{lstlisting}[language=javascript]
 // The real way to achieve this
 function sleepFor100ms() {
     print('Starting sleep')
     setTimeout(() => print('After sleep'), 100)
 }
-    \end{lstlisting}
+        \end{lstlisting}
+    \end{minipage}
 \end{figure}
+
+Figure \ref{background:blockingcomparison} shows a comparison of two JavaScript functions, one shows a function if blocking was allowed, and the other shows using the task queue APIs to get around it. Ideally these functions would print ``Starting Sleep'', wait 100ms, then print ``After Sleep''. However, sleeping would be a blocking action on the thread, so this is not allowed. In JavaScript, we must use the \texttt{setTimeout} function, which takes a callback function, and a time to wait before executing it.
 
 Similarly, JavaScript uses an API to overcome the single-thread limitation. The developer is given access to certain functions that can use an extra thread for specific tasks, e.g., Fetching web content from a different website. These APIs also use callback functions to specify what should be done with the result of the functions, they perform their requested action and then place the callback function on the task queue.
 
@@ -109,7 +107,7 @@ A parser generator is a program that, given a description of some formal grammar
 
 Several parser generators are available for JavaScript, including the excellent \emph{pegjs} parser generator. However, no such parser generator was available for TypeScript, this is what prompted the creation of \tsPEG{}.
 
-\section{VSO vs SVO languages}
+\section{VSO vs SVO languages}\label{background:vsosvo}
 
 In linguistics, there is a concept known as word order, which is studying the order of how the different categories of words appear in sentences. One order that is studied is called the ``constituent word order''. The constituent word order is the order that a verb (V), object (O), and subject (S) appear in a sentence\cite{wordorder}. English is an SVO language, meaning that the subject comes first, then the verb, then the object. For example
 \begin{quote}

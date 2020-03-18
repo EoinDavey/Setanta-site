@@ -6,7 +6,7 @@ I will discuss the design and implementation of each of the main components of t
 
 \subsection{High Level Design}
 
-\tsPEG{} was built using TypeScript, and the NodeJS JavaScript runtime. The NodeJS runtime allows us to execute JavaScript (and hence TypeScript) code locally.
+\tsPEG{} was built using TypeScript and the NodeJS JavaScript runtime. The NodeJS runtime allows us to execute JavaScript (and hence TypeScript) code locally.
 
 The source code is hosted online at
 \href{https://github.com/EoinDavey/tsPEG}{github.com/EoinDavey/tsPEG}, and the \tsPEG{} package is available on the NPM package repository at \href{https://www.npmjs.com/package/tspeg}{npmjs.com/package/tspeg}.
@@ -30,7 +30,7 @@ The source code is hosted online at
 \begin{figure}
     \caption{\tsPEG{} input grammar example}
     \label{tspegexample}
-    \begin{lstlisting}
+    \begin{lstlisting}[language=tspeg]
 SUM  := head=FAC tail={ op='\+|-' sm=FAC }*
 FAC  := head=ATOM tail={ op='\*|/' sm=ATOM }*
 ATOM := val=INT
@@ -39,16 +39,16 @@ INT  := val='[0-9]+'
     \end{lstlisting}
 \end{figure}
 
-Grammars are defined by a sequence of grammar rules, for example
+Grammars are defined by a sequence of grammar rules, for example,
     \[\texttt{match} := \texttt{rule1} \mathbin{|} \texttt{rule2} \mathbin{|} \texttt{\textquotesingle a+\textquotesingle}\]
-    defines a new rule called \verb|match|. \tsPEG{}'s parser will first try to match \verb|rule1|. If this match was not successful then it will try to match \verb|rule2|. Finally, if both of those matches failed, then it will try to match the regex expression \verb|a+|.
+defines a new rule called \verb|match|. \tsPEG{}'s parser will first try to match \verb|rule1|. If this match was not successful then it will try to match \verb|rule2|. Finally, if both of those matches failed, then it will try to match the regex expression \verb|a+|. If it can't match \verb|a+| then \verb|match| is considered to have failed.
     The \tsPEG{} grammar also allows specification of computed properties, for example, Figure \ref{tspegcomputed} defines a rule to match integer literals that stores the value of the integer as a computed property.
 
-   \textbf{Please see \hyperref[tspegdocs]{Appendix \ref*{tspegdocs}} for full documentation of \tsPEG{}'s grammar} 
+   \textbf{Please see \hyperref[tspegdocs]{Appendix \ref*{tspegdocs}} for full documentation of \tsPEG{}'s grammar, operators and features.} 
 \begin{figure}
     \caption{\tsPEG{} computed properties example}
     \label{tspegcomputed}
-    \begin{lstlisting}
+    \begin{lstlisting}[language=tspeg]
 INT := literal='[0-9]+'
        .value = number { return parseInt(this.literal) }
     \end{lstlisting}
@@ -65,7 +65,7 @@ This new self-hosting generator was then used to add more and more features and 
 \begin{figure}
     \caption{\tsPEG{} meta-grammar definition}
     \label{tspegsyntax}
-    \begin{lstlisting}
+    \begin{lstlisting}[language=tspeg]
 GRAM      := header=HDR? rules=RULEDEF+
 HDR       := '---' content='((?!---)(.|\n))*' '---'
 RULEDEF   := _ name=NAME _ ':=' _ rule=RULE _
@@ -111,7 +111,7 @@ The \Setanta{} runtime uses the \tsPEG{} parser generator to generate its parser
 
 \subsection{Syntax}
 
-The syntax of \Setanta{} is new but should feel familiar to most people. It has been designed to simple and approachable.
+The syntax of \Setanta{} is new but should feel familiar to most people. It has been designed to be simple and approachable.
 
 \Setanta{} programs, like most imperative languages, consist of a sequence of statements. Some important \Setanta{} features are outlined below:
 \begin{itemize}
@@ -120,7 +120,7 @@ The syntax of \Setanta{} is new but should feel familiar to most people. It has 
         In \Setanta{}, variables are declared using the \verb|:=| operator and can be re-assigned using the classic \verb|=| operator. The distinction is to provide a clear lexical difference between variable declaration and reassignment.
     \item \textbf{Loops + Conditionals}
 
-        \Setanta{} supports the classic conditional execution structure of if, else if, else. This is mostly a direct translation into Irish. However, it should be noted that no bracketing is required around the expression.
+        \Setanta{} supports the classic conditional execution structure of ``if, else if, else''. This is mostly a direct translation into Irish. However, it should be noted that no bracketing is required around the expression.
 
             \begin{lstlisting}[language=setanta, frame=single, caption=Setanta conditionals]
 má x == 0
@@ -172,18 +172,18 @@ c := neamhní
 
 One of the most important features of \Setanta{}'s syntax is the @ operator. The @ operator is where the influence of the Irish language on the design of \Setanta{} is felt most clearly. In fact, the @ operator is a simple innovation that addresses 2 distinct differences between Irish and English.
 
-The @ operator is the lookup operator, it is used to reference member fields and methods of objects. It is functionally equivalent to the classic dot ('.') operator in C, C++, Java, Python, JavaScript etc. The subtle difference is the order, both the @ operator and the '.' operator are binary operators, but the @ operator flips its arguments compared to the '.'.
+The @ operator is the lookup operator, it is used to reference member fields and methods of objects. It is functionally equivalent to the classic dot ('.') operator in C, C++, Java, Python, JavaScript etc. The subtle difference is the order, both the @ operator and the '.' operator are binary operators, but the @ operator flips its arguments compared to the '.' operator.
 
 In the standard usage of the dot operator, the expression \verb|a.b| refers to the member ``b'' of the object ``a''. In \Setanta{} \verb|a@b| refers to the member ``a'' of the object ``b'', the order has been reversed.
 
 This change seems unimportant, however, it breaks 2 deep and subtle links between English and the standard way we look at OOP programming languages.
 
-Firstly, as discussed in the technical background, English is an SVO language, meaning that in sentences, the subject comes first, then the verb, then the object. This property of English is directly reflected in the design of the classic dot operator.
+Firstly, as \hyperref[background:vsosvo]{discussed in the technical background}, English is an SVO language, meaning that in English sentences, the subject comes first, then the verb, then the object. This property of English is directly reflected in the design of the classic dot operator.
 
 The usage of the dot operator for member lookup gives rise to expressions like \verb|man.goTo(shop)|, or \verb|dbClient.query(q)|, these expressions implicitly put the subject first, then the verb, then the object, directly mimicking the SVO structure of the host language.
 
 By using the @ operator in \Setanta{} we instead get expressions like \verb|goTo@man(shop)| or\\
-\verb|query@dbClient(q)|, these expressions put the verb first, then the subject, then the object, reflecting the VSO structure of Irish. This subtle connection between a simple operator like '.' and the linguistic properties of English is not apparent.
+\verb|query@dbClient(q)|, these expressions put the verb first, then the subject, then the object, reflecting the VSO structure of Irish. This subtle connection between a simple operator like '.' and the linguistic properties of English is not apparent at first glance.
 
 There is a second connection between English and the lookup operation that is broken by the @ operator. In English when talking about possession relationships (``has-a'' relationships in database terms), we list the entities in decreasing order of possession, e.g.,
 \begin{quote}
@@ -224,11 +224,11 @@ setTimeout(() => {
     \end{minipage}\qquad
     \begin{minipage}[t]{0.45\textwidth}
         \begin{lstlisting}[language=setanta, caption=Setanta]
-sleep(100)
+coladh(100)
 scríobh('sleep1')
-sleep(100)
+coladh(100)
 scríobh('sleep2')
-sleep(100)
+coladh(100)
 scríobh('sleep3')
         \end{lstlisting}
     \end{minipage}
@@ -237,13 +237,13 @@ scríobh('sleep3')
 \end{figure}
 
 If you open the JavaScript console on any browser and enter \lstinline[language=javascript]|while(true){}| the browser tab will cease to be functional, i.e no buttons or text-boxes or animations will work anymore.
-This is because the JavaScript engine is single-threaded, the thread is busy computing \lstinline[language=javascript]|while(true){}|, and cannot process any other events.
+This is because the JavaScript engine is single-threaded, the thread is busy computing \lstinline[language=javascript]|while(true){}| and cannot process any other events.
 
 In contrast, if you write \lstinline[language=setanta]|nuair-a fíor {}| in \Setanta{}, the browser tab will remain responsive. This is due to the implicit concurrency of all \Setanta{} functions. \Setanta{} manipulates the JavaScript engine task queue to ensure that execution time is shared between the main browser thread actions and executing the \Setanta{} code.
 
 \subsubsection{How this was achieved}
 
-As discussed in the \hyperref[background:asyncawait]{technical background}, Recent versions of JavaScript include a technology known as ``Promises''. These values are stand-ins for future values, that are yet unknown. The \verb|Interpreter| class in \Setanta{} makes heavy use of Promises, to allow the execution of the program to be suspended at any moment. By allowing suspension of the interpreter, we allow the code to appear to block, while under the hood, the thread has not technically blocked.
+As discussed in the \hyperref[background:asyncawait]{technical background}, Recent versions of JavaScript include a technology known as ``Promises''. These values are stand-ins for future values that are yet unknown. The \verb|Interpreter| class in \Setanta{} makes heavy use of Promises, to allow the execution of the program to be suspended at any moment. By allowing suspension of the interpreter, we allow the code to appear to block, while under the hood, the thread has not technically blocked.
 
 This idea works in theory, but in practice, an interesting problem was observed. As outlined in the technical background, JavaScript engines use \hyperref[background:task-queues]{task queues} in the runtime to manage callbacks. Promises use this task queue to enqueue the operations that should be performed on the unknown values that they are a proxy for. However, unlike other task queue APIs exposed to the JavaScript runtime, Promises use something called the ``microtask queue''. The normal task queue is referred to then as the ``macrotask queue''. This distinction is little known, as it is usually of very little importance. However, the difference is crucial to \Setanta{}'s implementation.
 
@@ -255,18 +255,19 @@ I experimented with forcing all the Promises to use the macrotask queue, rather 
 My eventual solution was to allow some finite amount of microtasks to be used before a macrotask should be used instead. After experimentation on a few platforms, I found a nice number to be around 5000. Meaning that after every 5000 operations performed by the \Setanta{} runtime, it enqueues the next operation on the macrotask queue, allowing other macrotasks to be processed before the execution continues.
 
 \subsection{Tree Compression for performance}
+\label{solution:treecompression}
 
 The arithmetic expressions in \Setanta{} have a certain operator precedence, this precedence matches the usual order of operations that we are used to. For example in the expression \verb|1 + 2 * 3|, the multiplication is performed before the addition, giving the correct answer of 7.
 
 The grammar for \Setanta{} is carefully designed to ensure that all precedences are correct.
 It's not just multiplication and addition, there are 10 different levels of precedence in the grammar for \Setanta{}.
-You can see the \Setanta{} grammar spec (that \tsPEG{} uses to generate the parser) in Appendix D.
+You can see the \Setanta{} grammar spec (that \tsPEG{} uses to generate the parser) in \hyperref[appendix:setantagrammar]{Appendix \ref*{appendix:setantagrammar}}.
 
 A side effect of this many-layered grammar specification means that simple expressions like\\
 \verb|1 + 2 * 3| generate very tall, but sparse syntax trees. In Figure \ref{setanta:uncompressedtree} you can see the full syntax tree generated for \verb|1+2*3|.
 Most of these AST nodes contain no information. But in evaluating this expression directly we must traverse the entire tree.
 
-If the expression includes variables (\verb|a + b * c|) we must do this every single time we evaluate it, we can't cache the result.
+If the expression includes variables e.g., ``\verb|a + b * c|'' we must do this every single time we evaluate it, we can't cache the result.
 
 The solution that I came up with is to take advantage of \tsPEG{}'s \hyperref[computed-properties]{computed properties} support. Notably, this tree compression problem is exactly the problem I added computed properties to \tsPEG{} to allow me to solve.
 
@@ -291,6 +292,7 @@ This change caused a measurable speedup of around 19\% when measured against the
 \end{figure}
 
 \section{Async / await slowness}
+\label{solution:asyncawaitslowness}
 
 As mentioned in the \hyperref[background:asyncawait]{technical background}, recent versions of JavaScript have introduced a new syntactic construct known as async/await. This feature is intended to get around the problem of writing blocking and asynchronous code in JavaScript. In theory, async / await is just syntactic sugar for the \hyperref[background:asyncawait]{Promises API}, and is recommended to use to improve readability and maintainability of code.
 
@@ -318,7 +320,7 @@ A high-level architecture outline for \trys{} can be seen in Figure \ref{tryseta
     \end{center}
 \end{figure}
 
-\trys{} is known to work with the Google Chrome, Mozilla Firefox, Safari and Microsoft Edge browsers, however, it does not work with Internet Explorer.
+\trys{} is known to work with the Google Chrome, Mozilla Firefox, Safari and Microsoft Edge browsers, however, it does not work with Internet Explorer. This is due to Internet Explorer not supporting the Promises API directly. It should be possible to compile the code down to an earlier version of JavaScript that would work with IE, but this is of very low priority.
 
 \subsection{Graphics API}
 
@@ -332,7 +334,7 @@ To better enable the educational experience on \trys{}, the \Setanta{} runtime h
     \end{center}
 \end{figure}
 
-The graphics API also exposes methods to consume keyboard inputs, so the user can program simple games like \emph{Snake} with ease. It also features a full-screen mode. You can find the \emph{Snake} game demo at \href{https://try-setanta.ie/EhEKBlNjcmlwdBCAgICgxt6JCg}{https://try-setanta.ie/EhEKBlNjcmlwdBCAgICgxt6JCg}
+The graphics API also exposes methods to consume keyboard inputs, so the user can program simple games like \emph{Snake} with ease. It also features a full-screen mode. You can find the \emph{Snake} game demo at \url{https://try-setanta.ie/EhEKBlNjcmlwdBCAgICgxt6JCg}.
 
 \subsection{Saving Code}
 
