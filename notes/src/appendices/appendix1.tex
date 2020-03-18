@@ -91,7 +91,7 @@ helloChoice := hello 'Mars' | helloWorld
 
   \begin{enumerate}
   \def\labelenumi{\arabic{enumi}.}
-  
+
   \item
     First this rule will try to match the left hand side of the
     operator: \texttt{hello\ \textquotesingle{}Mars\textquotesingle{}},
@@ -126,7 +126,7 @@ es2015) and load it into NodeJS to test it. This can be seen in Figure \ref{basi
 \caption{Matching our simple grammar}
 \label{basictspegexample}
 \centering
-    \includegraphics[scale=0.7]{src/app1assets/example1.png}
+\includegraphics[scale=0.7]{src/app1assets/example1.png}
 \end{figure}
 
 As you can see we get \texttt{null} error for `Hello World', and `Hello
@@ -247,6 +247,23 @@ rule := 'It\'s a ' 'long '+ 'way away'
   but not to consume it.
 \end{itemize}
 
+\subsection{Sub-rules}\label{sub-rules}
+
+Inline sub-rules can be specified in \emph{tsPEG}. These use the
+\texttt{\{} and \texttt{\}} brackets for grouping, and allow you to
+write smaller rules inline in a larger rule. For example
+
+\begin{verbatim}
+rule := 'start' {some optional part}? 'finish'
+\end{verbatim}
+
+We want the part in the middle to be optional, so we wrap it in
+\texttt{\{} and \texttt{\}} and apply the \texttt{?} operator. The
+\texttt{\{\}} brackets create a sub-rule. Note that if you want to
+assign the subrules values to the tree you do need to assign a name to
+it e.g.
+\texttt{rule\ :=\ \textquotesingle{}start\textquotesingle{}\ middle=\{some\ optional\ part\}?\ \textquotesingle{}finish\textquotesingle{}}.
+
 \hypertarget{syntax-errors}{\subsection{Syntax
 Errors}\label{syntax-errors}}
 
@@ -344,3 +361,70 @@ import { myFunc, myType } from "./mypackage";
 rule := hello='Hello World'
         .value = myType { return myFunc(this.hello); }
 \end{verbatim}
+
+\subsection{Kind Checking}\label{kind-checking}
+
+\emph{tsPEG} uses
+\href{https://www.typescriptlang.org/docs/handbook/advanced-types.html\#discriminated-unions}{discriminated
+unions} to distinguish between types of AST nodes. Each AST node type
+has a field called \texttt{kind} which contains some value from the
+\texttt{ASTKinds} enum. This \texttt{kind} field can be used to
+differentiate between AST results.
+
+\subsubsection{Example}\label{example}
+
+\begin{verbatim}
+Choice := Word | Int
+Word   := word='[a-z]+'
+Int    := val='[0-9]+'
+\end{verbatim}
+
+When writing a function to process the parse tree for this grammar, you
+can check if \texttt{kind\ ===\ ASTKinds.Word} or
+\texttt{kind\ ===\ ASTKinds.Int} to see which rule was matched.
+
+\begin{verbatim}
+import { Choice, Parser, ASTKinds } from  "./parser";
+
+function makeChoice(c: Choice) {
+    if(c.kind === ASTKinds.Word) {
+        console.log('Matched word ', c.word)
+    } else {
+        console.log('Matched int ', c.val)
+    }
+}
+\end{verbatim}
+
+\subsubsection{Kind names}\label{kind-names}
+
+The names of the ASTKinds enum entries vary.
+
+\begin{itemize}
+\item
+  For simples rules like
+  \texttt{Rule\ :=\ name=\textquotesingle{}regex\textquotesingle{}} the
+  kind will be \texttt{ASTKinds.Rule}.
+\item
+  For rules with multiple choices such as
+  \texttt{Rule\ :=\ choiceA=\textquotesingle{}regexA\textquotesingle{}\ \textbar{}\ choiceB=\textquotesingle{}regexB\textquotesingle{}}
+  the \texttt{kind} will either be one of \texttt{ASTKinds.Rule\_1} or
+  \texttt{ASTKinds.Rule\_2} depending on which rule was matched. In
+  general they are of the form
+  \texttt{ASTKinds.\textless{}RuleName\textgreater{}\_N} for the
+  \texttt{N}th choice.
+\item
+  Rules that directly reference a different rule like
+  \texttt{rule\ :=\ otherrule} don't get their own AST type, so inherit
+  the \texttt{kind} from the other rule.
+\item
+  Sub-rules are given the kind
+  \texttt{ASTKinds.\textless{}ParentRule\textgreater{}\_\$N} for the
+  \texttt{N}th subrule of rule \texttt{ParentRule}. For example in the
+  rule
+  \texttt{Rule\ :=\ sub=\{\ name=\textquotesingle{}regex\textquotesingle{}\ \}}
+  the \texttt{kind} for the sub-rule is \texttt{ASTKinds.Rule\_\$0}.
+\item
+  If in doubt it's simple to inspect the generated parser file to find
+  what the correct kind name is. The compiler will also be sure to tell
+  you when you're wrong.
+\end{itemize}
