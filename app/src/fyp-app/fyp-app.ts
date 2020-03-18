@@ -150,11 +150,11 @@ class FypApp extends LitElement {
         <div id='container'>
             <paper-card id="buttons-card">
                 <div class="card-content">
-                    <paper-icon-button icon="av:play-circle-filled" id="run-button" @click="${this.runCode}">
+                    <paper-icon-button icon="icons:link" @click="${this.saveCode}">
                     </paper-icon-button>
                     <paper-icon-button icon="av:stop" id="stop-button" @click="${this.stopCode}">
                     </paper-icon-button>
-                    <paper-icon-button icon="icons:link" @click="${this.saveCode}">
+                    <paper-icon-button icon="av:play-circle-filled" id="run-button" @click="${this.runCode}">
                     </paper-icon-button>
                     <paper-icon-button icon="icons:fullscreen" @click="${this.startInFullscreen}">
                     </paper-icon-button>
