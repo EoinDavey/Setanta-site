@@ -3,6 +3,7 @@ import "@polymer/iron-icons/av-icons.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-card/paper-card.js";
+import "@polymer/paper-icon-button/paper-icon-button.js";
 import { TextMarker } from "codemirror";
 import { css, customElement, html, LitElement, property, TemplateResult } from "lit-element";
 import "../console/console";
@@ -22,7 +23,7 @@ class FypApp extends LitElement {
                 color: white;
                 top: 0;
                 margin-bottom: 10px;
-                padding: 20px;
+                padding: 10px;
                 display: flex;
                 align-items: center;
             }
@@ -73,11 +74,13 @@ class FypApp extends LitElement {
                 display: flex;
                 flex-wrap: wrap;
                 align-items: center;
-                justify-content: center;
+                justify-content: space-evenly;
                 height: 100%;
             }
-            #buttons-card paper-button {
+            #buttons-card paper-icon-button {
                 color: var(--theme-accent);
+                height: 80%;
+                flex-grow: 1;
             }
             #stage-card {
                 grid-area: stage;
@@ -127,9 +130,6 @@ class FypApp extends LitElement {
     public render(): TemplateResult {
         return html`
         <div id='top-bar'>
-            <a style="display: contents;" href="/">
-                <img src="assets/logo50x50.png"/>
-            </a>
             <h1>
                 <a href="/"> ${this.title} </a>
             </h1>
@@ -150,26 +150,16 @@ class FypApp extends LitElement {
         <div id='container'>
             <paper-card id="buttons-card">
                 <div class="card-content">
-                    <paper-button id="run-button" @click="${this.runCode}">
-                        <iron-icon icon="av:play-circle-filled"></iron-icon>
-                        Tosaigh
-                    </paper-button>
-                    <paper-button id="stop-button" @click="${this.stopCode}">
-                        <iron-icon icon="av:stop"></iron-icon>
-                        Stop
-                    </paper-button>
-                    <paper-button @click="${this.saveCode}">
-                        <iron-icon icon="icons:link"></iron-icon>
-                        Faigh nasc
-                    </paper-button>
-                    <paper-button @click="${this.startInFullscreen}">
-                        <iron-icon icon="icons:fullscreen"></iron-icon>
-                        Tosaigh i lán scáilean
-                    </paper-button>
-                    <paper-button @click="${this.consoleClear}">
-                        <iron-icon icon="icons:clear"></iron-icon>
-                        Glan
-                    </paper-button>
+                    <paper-icon-button icon="av:play-circle-filled" id="run-button" @click="${this.runCode}">
+                    </paper-icon-button>
+                    <paper-icon-button icon="av:stop" id="stop-button" @click="${this.stopCode}">
+                    </paper-icon-button>
+                    <paper-icon-button icon="icons:link" @click="${this.saveCode}">
+                    </paper-icon-button>
+                    <paper-icon-button icon="icons:fullscreen" @click="${this.startInFullscreen}">
+                    </paper-icon-button>
+                    <paper-icon-button icon="icons:clear" @click="${this.consoleClear}">
+                    </paper-icon-button>
               </div>
             </paper-card>
             <paper-card id="stage-card">
