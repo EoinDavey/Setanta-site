@@ -100,14 +100,28 @@ class FypApp extends LitElement {
                 padding: 0px;
             }
             @media (max-width: 600px) {
+                #top-bar {
+                    flex-direction: column;
+                }
+                #container paper-card {
+                    margin-bottom: 10px;
+                }
+                #editor-card { order: 1; }
+                #buttons-card { order: 2; }
+                #stage-card { order: 3; }
+                #console-card {
+                    order: 4;
+                    height: 250px;
+                }
+                #buttons-right {
+                    justify-content: center;
+                }
+                #buttons-right a {
+                    margin-top: 5px;
+                }
                 #container {
-                    grid-template-areas:
-                        'editor'
-                        'buttons'
-                        'stage'
-                        'console';
-                    grid-template-columns: minmax(0,1fr);
-                    grid-template-rows: minmax(0, 2fr) minmax(0,1fr) minmax(0, 2fr) minmax(0, 2fr);
+                    display: flex;
+                    flex-direction: column;
                     height: auto;
                 }
             }
