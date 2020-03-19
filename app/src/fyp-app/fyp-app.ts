@@ -80,7 +80,12 @@ class FypApp extends LitElement {
             #buttons-card paper-icon-button {
                 color: var(--theme-accent);
                 height: 80%;
-                flex-grow: 1;
+                width: 15%;
+                padding: 0px;
+            }
+            #buttons-card paper-icon-button:hover {
+                color: white;
+                background-color: var(--theme-accent);
             }
             #stage-card {
                 grid-area: stage;

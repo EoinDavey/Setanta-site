@@ -1,4 +1,3 @@
-import "@polymer/paper-input/paper-input.js";
 import { css, customElement, html, LitElement, property, TemplateResult } from "lit-element";
 
 interface PaperInput extends HTMLElement {
@@ -11,10 +10,20 @@ export class FYPConsole extends LitElement {
     static get styles() {
         return css`
 #input {
+    width: 80%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: 0;
+    height: 100%;
+    font-size: inherit;
+}
+#input-wrap {
     height: 18%;
-    border-top: 2px solid var(--theme-divider);
     margin-left: 2%;
     margin-right: 2%;
+    border-bottom: 2px solid var(--theme-accent);
+    border-top: 2px solid var(--theme-divider);
 }
 #list {
     height: 78%;
@@ -40,9 +49,10 @@ export class FYPConsole extends LitElement {
             <div id='list'>
                 ${this.lines.map((ln) => html`<p>${ln}</p>`)}
             </div>
-            <paper-input id='input' @keypress="${this.keyPress}">
-            <div slot="prefix"><span id='pref'>᚛</span></div>
-            </paper-input>
+            <div id="input-wrap">
+                <span id="pref">᚛</span>
+                <input id='input' @keypress="${this.keyPress}" autocomplete="off"></input>
+                </input>
         </div>`;
     }
 
