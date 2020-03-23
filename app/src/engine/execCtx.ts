@@ -1,8 +1,8 @@
-import * as Asserts from "../setanta/src/asserts";
-import { RuntimeError } from "../setanta/src/error";
-import { Parser } from "../setanta/src/gen_parser";
-import { Interpreter, STOP } from "../setanta/src/i10r";
-import { callFunc, goLitreacha, ObjWrap, Value } from "../setanta/src/values";
+import * as Asserts from "setanta/src/asserts";
+import { RuntimeError } from "setanta/src/error";
+import { Parser } from "setanta/src/gen_parser";
+import { Interpreter, STOP } from "setanta/src/i10r";
+import { callFunc, goLitreacha, ObjWrap, Value } from "setanta/src/values";
 import { genBuiltins } from "./builtins";
 import { DisplayEngine } from "./engine";
 

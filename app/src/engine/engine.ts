@@ -1,5 +1,5 @@
-import * as Asserts from "../setanta/src/asserts";
-import { Value } from "../setanta/src/values";
+import * as Asserts from "setanta/src/asserts";
+import { Value } from "setanta/src/values";
 import { ExecCtx } from "./execCtx";
 import { CanvasCtx } from "./types";
 

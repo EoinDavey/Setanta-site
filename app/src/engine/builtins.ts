@@ -1,11 +1,11 @@
-import * as Asserts from "../setanta/src/asserts";
-import { STOP } from "../setanta/src/i10r";
-import { callFunc, goLitreacha, ObjWrap, Value } from "../setanta/src/values";
+import * as Asserts from "setanta/src/asserts";
+import { STOP } from "setanta/src/i10r";
+import { callFunc, goLitreacha, ObjWrap, Value } from "setanta/src/values";
 import { DisplayEngine } from "./engine";
 
 export function genBuiltins(display: DisplayEngine, writeFn: (s: string) => void,
-                            setWriteWait: (fn: (s: string) => void) => void): Array<[string[], Value]> {
-    const builtins: Array<[string[], Value]> = [
+                            setWriteWait: (fn: (s: string) => void) => void): [string[], Value][] {
+    const builtins: [string[], Value][] = [
         [
             ["scríobh", "scriobh"],
             {
