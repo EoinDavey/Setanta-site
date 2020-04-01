@@ -38,7 +38,7 @@ function sleepFor100ms() {
     \end{minipage}
 \end{figure}
 
-Figure \ref{background:blockingcomparison} shows a comparison of two JavaScript functions, one shows a function if blocking was allowed, and the other shows using the task queue APIs to get around it. Ideally these functions would print ``Starting Sleep'', wait 100ms, then print ``After Sleep''. However, sleeping would be a blocking action on the thread, so this is not allowed. In JavaScript, we must use the \texttt{setTimeout} function, which takes a callback function, and a time to wait before executing it.
+Figure~\ref{background:blockingcomparison} shows a comparison of two JavaScript functions, one shows a function if blocking was allowed, and the other shows using the task queue APIs to get around it. Ideally these functions would print ``Starting Sleep'', wait 100ms, then print ``After Sleep''. However, sleeping would be a blocking action on the thread, so this is not allowed. In JavaScript, we must use the \texttt{setTimeout} function, which takes a callback function, and a time to wait before executing it.
 
 Similarly, JavaScript uses an API to overcome the single-thread limitation. The developer is given access to certain functions that can use an extra thread for specific tasks, e.g., Fetching web content from a different website. These APIs also use callback functions to specify what should be done with the result of the functions, they perform their requested action and then place the callback function on the task queue.
 
@@ -56,7 +56,7 @@ A Promise is a proxy for a value not necessarily known when the promise is creat
     \cite{mozillapromises}
 \end{quote}
 
-Promises allow us to use an almost monadic programming style to write our asynchronous programs. However, in a similar way to Haskell's ``do'' notation, the async / await syntax allows us to write our asynchronous programs in a more imperative style. Figure \ref{background:figure:async-await} shows an example of using Promises directly vs using the async / await syntactic sugar to write the same function.
+Promises allow us to use an almost monadic programming style to write our asynchronous programs. However, in a similar way to Haskell's ``do'' notation, the async / await syntax allows us to write our asynchronous programs in a more imperative style. Figure~\ref{background:figure:async-await} shows an example of using Promises directly vs using the async / await syntactic sugar to write the same function.
 
 \begin{figure}
     \caption{Promises vs async / await}
