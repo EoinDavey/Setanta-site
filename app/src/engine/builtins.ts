@@ -1,6 +1,6 @@
-import * as Asserts from "setanta/src/asserts";
-import { STOP } from "setanta/src/i10r";
-import { callFunc, goLitreacha, ObjWrap, Value } from "setanta/src/values";
+import * as Asserts from "setanta/node_build/asserts";
+import { STOP } from "setanta/node_build/i10r";
+import { callFunc, goLitreacha, ObjWrap, Value } from "setanta/node_build/values";
 import { DisplayEngine } from "./engine";
 
 export function genBuiltins(display: DisplayEngine, writeFn: (s: string) => void,
