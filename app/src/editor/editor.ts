@@ -1,4 +1,9 @@
 import { css, customElement, html, LitElement, property, TemplateResult } from "lit-element";
+import * as CodeMirror from 'codemirror';
+import 'codemirror/addon/mode/simple';
+import { defineMode } from '../js/cm-mode.js';
+
+defineMode(CodeMirror);
 
 @customElement("fyp-editor")
 export class FYPEditor extends LitElement {

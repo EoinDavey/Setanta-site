@@ -15,7 +15,7 @@ import (
 
 var (
 	qRegexp = regexp.MustCompile(`^/[a-zA-Z0-9-_]+$`)
-	tmplt   = template.Must(template.ParseFiles(`templates/index.tmpl`))
+	tmplt   = template.Must(template.ParseFiles(`index.html`))
 	client  *datastore.Client
 )
 

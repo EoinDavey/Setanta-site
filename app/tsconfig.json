@@ -61,10 +61,10 @@
     // "emitDecoratorMetadata": true,         /* Enables experimental support for emitting type metadata for decorators. */
   },
   "exclude": [
+      "webpack.config.js",
       "**/test/**",
-      "**/cli.ts",
       "jsbuild/**",
-      "build/**",
+      "dist/**",
       "demos/**"
   ]
 }
