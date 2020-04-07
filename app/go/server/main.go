@@ -66,7 +66,7 @@ cruth@stáitse(t)
 
 rngs := [[1/2, 7/6], [11/6, 1/2], [7/6, 11/6]]
 
-dath@stáitse('#1976d2ff')
+dath@stáitse('#1976d2')
 
 le i idir (0, 3) {
     le j idir (1, 51) {
@@ -78,7 +78,7 @@ le i idir (0, 3) {
 le i idir (0, Í/2, 2) {
 	dath@stáitse('#388E3C')
 	ciorcalLán@stáitse(r + dx, r + dy, i)
-    dath@stáitse('#1976d2ff')
+    dath@stáitse('#1976d2')
     le i idir (0, 3)
     	píosaCiorcal@stáitse(t[i][0], t[i][1], r, rngs[i][0]*pi@mata, rngs[i][1]*pi@mata, bréag)
     coladh(1)
