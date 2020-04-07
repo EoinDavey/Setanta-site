@@ -2,5 +2,5 @@
 /jsbuild/
 /templates/index.tmpl
 /testbuild/
-/build/
+/dist/
 google-creds.json
