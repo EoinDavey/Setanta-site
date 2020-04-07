@@ -161,7 +161,7 @@ class FypApp extends LitElement {
                     <span style="height: 24px"></span>Samplaí
                 </paper-button></a>
                 <a href="https://github.com/EoinDavey/Setanta"><paper-button id="code-link" raised>
-                    <img src="assets/github.png"/>
+                    <img src="/assets/github.png"/>
                     Féach ar an gcód
                 </paper-button></a>
             </div>
@@ -270,7 +270,7 @@ class FypApp extends LitElement {
         });
         const text = await resp.text();
         if (resp.ok) {
-            window.history.pushState({code: text}, text, "/" + text);
+            window.history.pushState({code: text}, text, "/editor/" + text);
         } else {
             alert(text);
         }

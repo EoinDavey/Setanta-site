@@ -3,11 +3,16 @@ runtime: go111
 main: ./go/server/main.go
 
 handlers:
+    - url: /$
+      static_files: dist/splash.html
+      secure: always
+      upload: dist/splash.html
+
     - url: /(.*\.(ico|xml|webmanifest|json|png|js|html|css|map))$
       static_files: dist/\1
       secure: always
       upload: dist/.*\.(ico|xml|webmanifest|json|png|js|html|css|map)$
 
-    - url: /$
+    - url: /editor/.*
       script: auto
       secure: always

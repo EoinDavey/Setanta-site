@@ -14,8 +14,8 @@ import (
 )
 
 var (
-	qRegexp = regexp.MustCompile(`^/[a-zA-Z0-9-_]+$`)
-	tmplt   = template.Must(template.ParseFiles(`index.html`))
+	qRegexp = regexp.MustCompile(`^/editor/[a-zA-Z0-9-_]+$`)
+	tmplt   = template.Must(template.ParseFiles(`editor.html`))
 	client  *datastore.Client
 )
 
@@ -102,7 +102,7 @@ func retrieveHandler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		tmplt.Execute(w, entry)
-	} else if r.URL.Path == `/` {
+	} else if path.Clean(r.URL.Path) == `/editor` {
 		tmplt.Execute(w, Entry{
 			Content: defaultContent,
 		})
