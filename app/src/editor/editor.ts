@@ -2,6 +2,9 @@ import { css, customElement, html, LitElement, property, TemplateResult } from "
 import * as CodeMirror from 'codemirror';
 import 'codemirror/addon/mode/simple';
 import { defineMode } from '../js/cm-mode.js';
+import "@polymer/iron-icon/iron-icon.js";
+import "@polymer/iron-icons/av-icons.js";
+import "@polymer/paper-icon-button/paper-icon-button.js";
 
 defineMode(CodeMirror);
 
@@ -366,24 +369,92 @@ div.CodeMirror-dragcursors {
 
 /* Help users use markselection to safely style text background */
 span.CodeMirror-selectedtext { background: none; }
-        `;
-    }
-    @property({type: String}) public startcontent = `}`;
-    public editor: CodeMirror.Editor | undefined;
-    public render(): TemplateResult {
-        return html`
-        <style>
             .CodeMirror {
                 height: 100% !important;
+                z-index: 0;
             }
             .syntax-error {
                 background: #FBC2C4 !important;
                 color: #8a1f11 !important;
             }
-        </style>
+            #wrapper {
+                height: 100%;
+            }
+            #floating {
+                position: absolute;
+                display: flex;
+                bottom: 16px;
+                align-items: flex-end;
+                right: 16px;
+                z-index: 10;
+            }
+            .fab {
+                height: 56px;
+                width: 56px;
+                background-color: var(--theme-accent);
+                color: white;
+	            box-shadow: 3px 3px 4px #999;
+                border-radius: 100%;
+            }
+            .fab:hover {
+	            box-shadow: 4px 4px 6px #666;
+                background-color: var(--theme-accent-light);
+            }
+            #run-button {
+                margin-right: 8px;
+            }
+            #play-buttons {
+                display: flex;
+                flex-direction: column;
+            }
+            #play-buttons:hover #fullscreen-button {
+                display: block;
+            }
+            #fullscreen-button {
+                display: var(--fullscreen-button-display, none);
+                margin-bottom: 8px;
+            }
+        `;
+    }
+    @property({type: String}) public startcontent = `}`;
+    @property({type: Boolean}) public running = false;
+    public editor: CodeMirror.Editor | undefined;
+    public render(): TemplateResult {
+        return html`
+        <div id="wrapper">
         <textarea id='editor'>
 </textarea>
+            <div id="floating">
+                <div id="play-buttons">
+                    <paper-icon-button icon="icons:fullscreen" id="fullscreen-button"
+                    @click="${this.fireFullscreenStartEvent}" class="fab">
+                    </paper-icon-button>
+                    <paper-icon-button class="fab" icon="${this.running ? "av:stop" : "av:play-arrow"}" id="run-button" @click="${this.toggleRun}"></paper-icon-button>
+                </div>
+                <paper-icon-button class="fab" icon="icons:link" @click="${this.fireSaveEvent}">
+                </paper-icon-button>
+            </div>
+        </div>
     `;
+    }
+
+    public toggleRun() {
+        if(this.running)
+            this.fireStopEvent();
+        else
+            this.fireRunEvent();
+    }
+
+    private fireFullscreenStartEvent() { this.fireEvent("fyp-fullscreen-start") }
+    private fireSaveEvent() { this.fireEvent("fyp-save"); }
+    private fireRunEvent() { this.fireEvent("fyp-run"); }
+    private fireStopEvent() { this.fireEvent("fyp-stop"); }
+
+    private fireEvent(e: string) {
+        this.dispatchEvent(new CustomEvent(e, {
+            bubbles: true,
+            composed: true,
+        }));
     }
 
     public firstUpdated(changedProperties: any) {
@@ -396,12 +467,7 @@ span.CodeMirror-selectedtext { background: none; }
             });
             this.editor.setValue(this.startcontent);
             this.editor.setOption("extraKeys", {
-                "Ctrl-Enter": (cm) => {
-                    this.dispatchEvent(new CustomEvent("fyp-run", {
-                        bubbles: true,
-                        composed: true,
-                    }));
-                },
+                "Ctrl-Enter": (cm) => this.fireRunEvent()
             });
         }
     }

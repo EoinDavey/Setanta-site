@@ -48,14 +48,13 @@ class FypApp extends LitElement {
             #container {
                 display: grid;
                 grid-template-columns: minmax(0,3fr) minmax(0,4fr);
-                grid-template-rows: minmax(0,4fr) minmax(0, 1fr) minmax(0, 4fr);
+                grid-template-rows: minmax(0,1fr) minmax(0, 1fr);
                 grid-column-gap: 2vh;
                 grid-row-gap: 1vw;
                 height: 80vh;
                 margin-left: 10px;
                 grid-template-areas:
                     'stage editor'
-                    'buttons editor'
                     'console editor';
             }
             #editor-card {
@@ -66,26 +65,6 @@ class FypApp extends LitElement {
             }
             #console-card {
                 grid-area: console;
-            }
-            #buttons-card {
-                grid-area: buttons;
-            }
-            #buttons-card .card-content {
-                display: flex;
-                flex-wrap: wrap;
-                align-items: center;
-                justify-content: space-evenly;
-                height: 100%;
-            }
-            #buttons-card paper-icon-button {
-                color: var(--theme-accent);
-                height: 80%;
-                width: 15%;
-                padding: 0px;
-            }
-            #buttons-card paper-icon-button:hover {
-                color: white;
-                background-color: var(--theme-accent);
             }
             #stage-card {
                 grid-area: stage;
@@ -106,11 +85,14 @@ class FypApp extends LitElement {
                 #container paper-card {
                     margin-bottom: 10px;
                 }
-                #editor-card { order: 1; }
-                #buttons-card { order: 2; }
-                #stage-card { order: 3; }
+                #editor-card {
+                    order: 1;
+                    height: 250px;
+                    --fullscreen-button-display: block;
+                }
+                #stage-card { order: 2; }
                 #console-card {
-                    order: 4;
+                    order: 3;
                     height: 250px;
                 }
                 #buttons-right {
@@ -146,6 +128,8 @@ class FypApp extends LitElement {
 
     private marks: TextMarker[] = [];
 
+    @property({type: Boolean, attribute: false})private running: boolean = false;
+
     public render(): TemplateResult {
         return html`
         <div id='top-bar'>
@@ -167,20 +151,6 @@ class FypApp extends LitElement {
             </div>
         </div>
         <div id='container'>
-            <paper-card id="buttons-card">
-                <div class="card-content">
-                    <paper-icon-button icon="icons:link" @click="${this.saveCode}">
-                    </paper-icon-button>
-                    <paper-icon-button icon="av:stop" id="stop-button" @click="${this.stopCode}">
-                    </paper-icon-button>
-                    <paper-icon-button icon="av:play-circle-filled" id="run-button" @click="${this.runCode}">
-                    </paper-icon-button>
-                    <paper-icon-button icon="icons:fullscreen" @click="${this.startInFullscreen}">
-                    </paper-icon-button>
-                    <paper-icon-button icon="icons:clear" @click="${this.consoleClear}">
-                    </paper-icon-button>
-              </div>
-            </paper-card>
             <paper-card id="stage-card">
                 <div class="card-content">
                     <canvas id='stage' width="1000" height="750" tabindex="0" @keydown="${this.handleKeyDown}"></canvas>
@@ -188,7 +158,11 @@ class FypApp extends LitElement {
             </paper-card>
             <paper-card id="editor-card">
                 <div class="card-content">
-                    <fyp-editor startcontent="${this.content}" id="editor" @fyp-run="${this.runCode}"></fyp-editor>
+                    <fyp-editor startcontent="${this.content}" id="editor"
+                    @fyp-stop="${this.stopCode}" @fyp-run="${this.runCode}"
+                    @fyp-save="${this.saveCode}" ?running=${this.running}
+                    @fyp-fullscreen-start="${this.startInFullscreen}"
+                    </fyp-editor>
                 </div>
             </paper-card>
             <paper-card id="console-card">
@@ -243,7 +217,9 @@ class FypApp extends LitElement {
 
         this.stage.focus();
 
+        this.running = true;
         const err = await exec.run(program);
+        this.running = false;
         if (err) {
             const line = err.pos.line;
             const ch = err.pos.offset;
@@ -281,15 +257,6 @@ class FypApp extends LitElement {
         if (this.activeCtx) {
             this.activeCtx.write(inp);
         }
-    }
-
-    private consoleClear(e: Event) {
-        this.console.clearHistory();
-        const ctx = this.stage.getContext("2d");
-        if (ctx === null) {
-            return;
-        }
-        ctx.clearRect(0, 0, this.stage.width, this.stage.height);
     }
 
     private fixCanvas(): void {
