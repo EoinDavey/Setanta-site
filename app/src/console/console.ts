@@ -10,23 +10,22 @@ export class FYPConsole extends LitElement {
     static get styles() {
         return css`
 #input {
-    width: 80%;
+    width: 90%;
     margin: 0;
     padding: 0;
     border: none;
+    border-bottom: 2px solid var(--theme-accent);
     outline: 0;
-    height: 100%;
+    height: calc(100% - 10px);
+    margin-bottom: 8px;
     font-size: inherit;
 }
 #input-wrap {
-    height: 18%;
-    margin-left: 2%;
-    margin-right: 2%;
-    border-bottom: 2px solid var(--theme-accent);
-    border-top: 2px solid var(--theme-divider);
+    border-top: 1px solid var(--theme-divider);
+    height: 20%;
 }
 #list {
-    height: 78%;
+    height: 80%;
     overflow: auto;
     margin-left: 2%;
 }
@@ -34,8 +33,8 @@ export class FYPConsole extends LitElement {
     height: 100%
 }
 #pref {
-    color: var(--theme-accent);
-    padding-right: 10px;
+    padding-right: 8px;
+    padding-left: 8px;
 }
         `;
     }
