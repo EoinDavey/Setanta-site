@@ -13,6 +13,15 @@ import { FYPEditor } from "../editor/editor";
 import { DisplayEngine } from "../engine/engine";
 import { ExecCtx } from "../engine/execCtx";
 
+// Add possible vendor prefix fullscreen functions to HTMLElement
+declare global {
+    interface HTMLElement {
+        msRequestFullscreen?: () => Promise<void>;
+        mozRequestFullscreen?: () => Promise<void>;
+        webkitRequestFullscreen?: () => Promise<void>;
+    }
+}
+
 @customElement("fyp-app")
 class FypApp extends LitElement {
 
@@ -271,7 +280,19 @@ class FypApp extends LitElement {
         if (this.activeCtx && this.activeCtx.running()) {
             return;
         }
-        await this.shadowRoot!.getElementById("stage-card")!.requestFullscreen();
+        const target = this.shadowRoot!.getElementById("stage-card")!;
+        if(target.requestFullscreen) {
+            await target.requestFullscreen();
+        } else if(target.webkitRequestFullscreen) {
+            await target.webkitRequestFullscreen();
+        } else if(target.mozRequestFullscreen) {
+            await target.mozRequestFullscreen();
+        } else if(target.msRequestFullscreen) {
+            await target.msRequestFullscreen();
+        } else {
+            alert("Ní féidir leat an cód a thosaigh i lán-scáileán sa bhrabhsálaí seo");
+            return;
+        }
         await this.runCode(e);
     }
 }

@@ -383,9 +383,9 @@ span.CodeMirror-selectedtext { background: none; }
             #floating {
                 position: absolute;
                 display: flex;
-                bottom: 16px;
+                bottom: 24px;
                 align-items: flex-end;
-                right: 16px;
+                right: 24px;
                 z-index: 10;
             }
             .fab {

@@ -47,7 +47,7 @@ class Splash extends LitElement {
         #header-wrapper {
             display: grid;
             grid-template-columns: auto auto;
-            grid-template:
+            grid-template-areas:
                 "logo title"
                 "logo subtitle"
         }

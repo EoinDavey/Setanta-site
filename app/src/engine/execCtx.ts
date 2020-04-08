@@ -19,7 +19,7 @@ export class ExecCtx {
     }
 
     public handleKeyDown(e: KeyboardEvent) {
-        this.display.keyFn(e.code);
+        this.display.keyFn(e.key);
     }
 
     public stop() {
