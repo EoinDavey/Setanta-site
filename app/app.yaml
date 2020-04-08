@@ -8,10 +8,10 @@ handlers:
       secure: always
       upload: dist/splash.html
 
-    - url: /(.*\.(ico|xml|webmanifest|json|png|js|html|css|map))$
+    - url: /(.*\.(ico|xml|webmanifest|json|png|js|html|css|map|svg))$
       static_files: dist/\1
       secure: always
-      upload: dist/.*\.(ico|xml|webmanifest|json|png|js|html|css|map)$
+      upload: dist/.*\.(ico|xml|webmanifest|json|png|js|html|css|map|svg)$
 
     - url: /editor/.*
       script: auto
