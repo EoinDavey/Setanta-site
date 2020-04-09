@@ -96,8 +96,14 @@ class FypApp extends LitElement {
                 }
                 #editor-card {
                     order: 1;
-                    height: 250px;
+                    min-height: 300px;
+                    /* hack for min-height */
+                    display: flex;
+                    flex-direction: column;
                     --fullscreen-button-display: block;
+                }
+                #editor-card .card-content {
+                    flex-grow: 1;
                 }
                 #stage-card { order: 2; }
                 #console-card {
