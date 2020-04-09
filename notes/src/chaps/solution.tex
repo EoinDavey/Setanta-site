@@ -291,7 +291,7 @@ This change caused a measurable speedup of around 19\% when measured against the
     \end{center}
 \end{figure}
 
-\section{Async / await slowness}
+\subsection{Async / await slowness}
 \label{solution:asyncawaitslowness}
 
 As mentioned in the \hyperref[background:asyncawait]{technical background}, recent versions of JavaScript have introduced a new syntactic construct known as async/await. This feature is intended to get around the problem of writing blocking and asynchronous code in JavaScript. In theory, async / await is just syntactic sugar for the \hyperref[background:asyncawait]{Promises API}, and is recommended to use to improve readability and maintainability of code.
@@ -330,7 +330,7 @@ To better enable the educational experience on \trys{}, the \Setanta{} runtime h
     \caption{Sierpinski Triangle drawn with \Setanta{}}
     \label{sierpinksitriangle}
     \begin{center}
-    \includegraphics[scale=0.45]{sierpinskitriangle}
+    \includegraphics[scale=0.43]{sierpinskitriangle}
     \end{center}
 \end{figure}
 
@@ -338,7 +338,7 @@ The graphics API also exposes methods to consume keyboard inputs, so the user ca
 
 \subsection{Saving Code}
 
-\trys{} supports the ability to save a program to a specific URL. Clicking ``Faigh nasc'' (meaning ``get link'' redirects the user to a unique URL with which they can access their code. For example, the Sierpinski triangle example is available at:
+\trys{} supports the ability to save a program to a specific URL. Clicking ``Faigh nasc'' (meaning ``get link'') redirects the user to a unique URL with which they can access their code. For example, the Sierpinski triangle example is available at:
 \begin{quote}
     \href{https://try-setanta.ie/EhEKBlNjcmlwdBCAgIDgycODCg}{try-setanta.ie/EhEKBlNjcmlwdBCAgIDgycODCg.}
 \end{quote}
