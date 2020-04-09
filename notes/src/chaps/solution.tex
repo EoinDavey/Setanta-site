@@ -344,3 +344,11 @@ The graphics API also exposes methods to consume keyboard inputs, so the user ca
 \end{quote}
 
 This feature is handled by the Go backend on the Google App Engine. The programs are stored on the cloud Datastore, each program is identified by a unique integer. This unique integer is encoded into a string key, and this key is the URL where the code can be retrieved.
+
+\subsection{UI/UX Design}
+
+The UI/UX design for the \trys{} website follows the Material Design\cite{material-design} design philosophy. When \trys{} is loaded, you are first brought to a simple landing page that directs the user to either visit the documentation, or open the editor, in English and in Irish.
+
+The editor site consists of 3 main components: A console, a graphics canvas and a text editor. They are distributed according the material design method, placed on individual card like components. Contextually relevant actions such as "run code", "stop code" etc are displayed in floating action buttons.
+
+Screenshots of the final design are included in Appendix~\ref{appendix:screenshots}.
