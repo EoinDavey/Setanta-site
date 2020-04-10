@@ -9,11 +9,11 @@ The \tsPEG{} parser generator was implemented almost precisely to the original d
     \item \tsPEG{} generates the parser for the \Setanta{} interpreter. This proves that \tsPEG{} is capable of generating parsers for fully-featured programming languages, with complex and intricate grammars. The use of \tsPEG{} in the \Setanta{} build process serves as a full stress test of all the features available to it.
 \end{itemize}
 
-\tsPEG{} has attracted attention from the TypeScript community, showing that it serves a useful purpose as a tool for the community. However, \tsPEG{} still has many features that it would benefit hugely from, the main one being improving the syntax error reporting capabilities, and efficiency.
+\tsPEG{} has attracted attention from the TypeScript community, showing that it serves a useful purpose as a tool for the community. \tsPEG{} has over 30 stars on Github and hit a peak of over 250 downloads in one week after it's initial release. However, \tsPEG{} still has many features that it would benefit hugely from, the main ones being improving the syntax error reporting capabilities and efficiency.
 
 \section{\Setanta{}}
 
-As outlined in the solution section of \Setanta{} (\ref{setantasolution}), the implementation of \Setanta{} was a success, it meets every goal that was set out originally for it.
+As outlined in the solution section of \Setanta{} (\ref{setantasolution}), the implementation of \Setanta{} was a success, it meets every goal that was set out originally for it. \Setanta{} is a modern, novel, innovative language, that runs in the browser and is built from the bottom up in Irish. Lot's of programs have been written in \Setanta{}, some by me, some by others.
 
 The correctness of \Setanta{} is ensured by a large suite of tests, including unit tests, and full end to end tests. \Setanta{} contains over 1300 lines of test code alone. These tests ensure that every edge of language behaviour is correct, theses tests are run automatically by the continuous integration system with each commit. The current state of \Setanta{}'s builds can be seen at \href{https://travis-ci.com/EoinDavey/Setanta}{travis-ci.com/EoinDavey/Setanta.}
 
@@ -31,6 +31,6 @@ The implementation of \trys{} is quite modern, taking advantage of the latest fe
 
 \trys{} doesn't meet the original design plan of having an extremely high-level graphics API. Instead, there is a lower-level graphics API. This decision was made as I found in the development process of this API that it was easier to understand a simple API that let you call a function to draw circles, squares etc. than a very high-level API where you would need to use classes and inheritance and other features to interact with the API.
 
-\section{Overall end to end correctness}
+\section{Overall project}
 
-The overall end to end correctness of this project is apparent. The act of going to \trys{}, writing a game in \Setanta{}, executing it, and playing the game in the browser is a full end to end proof that each component, \trys{}, \Setanta{} and \tsPEG{} are all fully functional, as each part is 100\% vital to the project as a whole.
+Overall I think this project has been a resounding success, especially for a project that is worth just 5 credits. The project works seamlessly from end to end, covering a wide range of technical skills, including compiler design, language design, back-end servers \& databases, front end web-development, technical documentation writing, UI/UX design, cloud infrastructure/deployment, testing, build systems, bootstrapping, etc. Each part of this project presented its own set of interesting problems to be solved, and each part comes together to create a complete final package.

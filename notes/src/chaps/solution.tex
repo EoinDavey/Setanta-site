@@ -247,11 +247,11 @@ As discussed in the \hyperref[background:asyncawait]{technical background}, Rece
 
 This idea works in theory, but in practice, an interesting problem was observed. As outlined in the technical background, JavaScript engines use \hyperref[background:task-queues]{task queues} in the runtime to manage callbacks. Promises use this task queue to enqueue the operations that should be performed on the unknown values that they are a proxy for. However, unlike other task queue APIs exposed to the JavaScript runtime, Promises use something called the ``microtask queue''. The normal task queue is referred to then as the ``macrotask queue''. This distinction is little known, as it is usually of very little importance. However, the difference is crucial to \Setanta{}'s implementation.
 
-When the JavaScript runtime is deciding what task to execute next, it always chooses a task from the microtask queue over any macrotask. This is because Promises are usually used to enqueue smaller operations on data, such as printing the results of web requests. However, when Promises have been used to construct a Turing complete language like \Setanta{}, we encounter the problem that while the program is running, it keeps the microtask queue full, never allowing a macrotask to be run. 
+When the JavaScript runtime is deciding what task to execute next, it always chooses a task from the microtask queue over any macrotask, as they are usually short. However, when Promises have been used to construct a Turing complete language like \Setanta{}, we encounter the problem that while the program is running, it keeps the microtask queue full, never allowing a macrotask to be run. 
 
-Macrotasks are important to the JavaScript runtime, and the browser especially, things like animations, scrolling, rendering, keyboard events, button presses etc. are all macrotasks. Therefore if we are blocking the macrotask queue from being executed for some long amount of time, we are preventing all these important operations from happening.
+Macrotasks are important to the JavaScript runtime, and the browser especially, things like animations, scrolling, rendering, keyboard events, button presses etc. are all macrotasks. Therefore by blocking the macrotask queue, we are preventing all these important operations from happening.
 
-I experimented with forcing all the Promises to use the macrotask queue, rather than the microtask queue. But it turns out, the microtask queue is much faster than the macrotask queue, so this resulted in massive slowdowns. A happy medium had to be found.
+I experimented with forcing all the Promises to use the macrotask queue, rather than the microtask queue. But it turns out that the microtask queue is much faster than the macrotask queue, so this resulted in massive slowdowns. A happy medium had to be found.
 My eventual solution was to allow some finite amount of microtasks to be used before a macrotask should be used instead. After experimentation on a few platforms, I found a nice number to be around 5000. Meaning that after every 5000 operations performed by the \Setanta{} runtime, it enqueues the next operation on the macrotask queue, allowing other macrotasks to be processed before the execution continues.
 
 \subsection{Tree Compression for performance}
@@ -266,14 +266,13 @@ You can see the \Setanta{} grammar spec (that \tsPEG{} uses to generate the pars
 A side effect of this many-layered grammar specification means that simple expressions like\\
 \verb|1 + 2 * 3| generate very tall, but sparse syntax trees. In Figure~\ref{setanta:uncompressedtree} you can see the full syntax tree generated for \verb|1+2*3|.
 Most of these AST nodes contain no information. But in evaluating this expression directly we must traverse the entire tree.
-
 If the expression includes variables e.g., ``\verb|a + b * c|'' we must do this every single time we evaluate it, we can't cache the result.
 
 The solution that I came up with is to take advantage of \tsPEG{}'s \hyperref[computed-properties]{computed properties} support. Notably, this tree compression problem is exactly the problem I added computed properties to \tsPEG{} to allow me to solve.
 
 The idea is that, at parse time, each node computes a ``shortcut'' attribute. If the node detects that it is not required, it computes a pointer to the next ``important'' node below it and returns that, shortcutting the node entirely, while maintaining the strong typing of the AST. This is all computed once when the AST is constructed. Following only the shortcut links for the expression \verb|1 + 2 * 3|, we instead get a compressed syntax tree seen in Figure~\ref{setanta:compressedtree}.
 
-This change caused a measurable speedup of around 19\% when measured against the test programs. The test set of programs before this change would run in about 1.6s, but after this tree compression addition, the tests would take about 1.3s.
+This change caused a measurable speedup of around 19\% when measured against the test programs. The test set of programs before this change would run in about 1.6s, but after would take about 1.3s.
 
 \begin{figure}
     \caption{Uncompressed tree for ``1 + 2 * 3''}
