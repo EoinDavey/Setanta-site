@@ -1,14 +1,11 @@
 \chapter{\tsPEG{} documentation}
 \label{tspegdocs}
 
-\section{tsPEG : A PEG Parser Generator for
-TypeScript}\label{tspeg-a-peg-parser-generator-for-typescript}
-
 \emph{tsPEG} is a PEG Parser generator for TypeScript. \emph{tsPEG}
 takes in an intuitive description of a grammar and outputs a fully
 featured parser that takes full advantage of the TypeScript type system.
 
-\subsection{Installation}\label{installation}
+\section{Installation}\label{installation}
 
 \texttt{tspeg} can be installed by running
 
@@ -16,7 +13,7 @@ featured parser that takes full advantage of the TypeScript type system.
 npm install -g tspeg
 \end{verbatim}
 
-\subsection{Features}\label{features}
+\section{Features}\label{features}
 
 \begin{itemize}
 
@@ -32,7 +29,7 @@ npm install -g tspeg
   differentiable using discriminated unions.
 \end{itemize}
 
-\subsection{CLI Usage}\label{cli-usage}
+\section{CLI Usage}\label{cli-usage}
 
 The CLI invocation syntax is as follows
 
@@ -41,7 +38,7 @@ The CLI invocation syntax is as follows
 This generates a TypeScript ES6 module that exports a parser class, as
 well as classes that represent your AST.
 
-\subsection{Parser Usage}\label{parser-usage}
+\section{Parser Usage}\label{parser-usage}
 
 The parser exports a \texttt{parse} function that accepts an input
 string, and returns \texttt{ParseResult} object like this
@@ -56,7 +53,7 @@ class ParseResult {
 If the err field is non-null, then a syntax error was found, otherwise
 the AST is stored in the \texttt{ast} field.
 
-\subsection{Grammar Syntax}\label{grammar-syntax}
+\section{Grammar Syntax}\label{grammar-syntax}
 
 \emph{tsPEG} grammars are specified with a simple syntax, similar to the
 classic EBNF syntax.
@@ -199,7 +196,7 @@ We can also use \protect\hyperlink{computed-properties}{computed
 properties} to calculate the result of the sum during the parsing
 process.
 
-\hypertarget{operators}{\subsection{Operators}\label{operators}}
+\hypertarget{operators}{\section{Operators}\label{operators}}
 
 \emph{tsPEG} supports a set of powerful operators to build complex
 grammars. The only operator we have seen so far is the
@@ -247,7 +244,7 @@ rule := 'It\'s a ' 'long '+ 'way away'
   but not to consume it.
 \end{itemize}
 
-\subsection{Sub-rules}\label{sub-rules}
+\section{Sub-rules}\label{sub-rules}
 
 Inline sub-rules can be specified in \emph{tsPEG}. These use the
 \texttt{\{} and \texttt{\}} brackets for grouping, and allow you to
@@ -264,7 +261,7 @@ assign the subrules values to the tree you do need to assign a name to
 it e.g.
 \texttt{rule\ :=\ \textquotesingle{}start\textquotesingle{}\ middle=\{some\ optional\ part\}?\ \textquotesingle{}finish\textquotesingle{}}.
 
-\hypertarget{syntax-errors}{\subsection{Syntax
+\hypertarget{syntax-errors}{\section{Syntax
 Errors}\label{syntax-errors}}
 
 A \texttt{SyntaxErr} object is composed of two fields, a \texttt{pos}
@@ -283,7 +280,7 @@ class PosInfo {
 }
 \end{verbatim}
 
-\hypertarget{computed-properties}{\subsection{Computed
+\hypertarget{computed-properties}{\section{Computed
 Properties}\label{computed-properties}}
 
 As well as assigning parsing results to variables and storing them on
@@ -345,7 +342,7 @@ As you can see the AST has a field called \texttt{sum} with the correct
 value of 340 in it. The \texttt{left} and \texttt{right} also have their
 computed \texttt{value} properties of 240 and 100.
 
-\subsection{Header}\label{header}
+\section{Header}\label{header}
 
 The introduction of computed properties means that now you might want to
 import some types or functions into your parser. Luckily you can specify
@@ -362,7 +359,7 @@ rule := hello='Hello World'
         .value = myType { return myFunc(this.hello); }
 \end{verbatim}
 
-\subsection{Kind Checking}\label{kind-checking}
+\section{Kind Checking}\label{kind-checking}
 
 \emph{tsPEG} uses
 \href{https://www.typescriptlang.org/docs/handbook/advanced-types.html\#discriminated-unions}{discriminated
