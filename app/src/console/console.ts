@@ -2,6 +2,7 @@ import { css, customElement, html, LitElement, property, TemplateResult } from "
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/paper-button/paper-button.js";
+import { RuntimeError } from "setanta/node_build/error";
 
 interface PaperInput extends HTMLElement {
     value: string;
@@ -19,8 +20,7 @@ export class FYPConsole extends LitElement {
     border-bottom: 2px solid;
     outline: 0;
     flex-grow: 1;
-    height: calc(100% - 10px);
-    margin-bottom: 8px;
+    height: 1.5rem;
     font-size: inherit;
 }
 #input-wrap {
@@ -28,15 +28,19 @@ export class FYPConsole extends LitElement {
     flex-direction: row;
     justify-content: space-between;
     border-top: 1px solid var(--theme-divider);
-    align-items: baseline;
-    height: 20%;
+    align-items: center;
+    height: 3rem;
 }
 #list {
-    height: 80%;
     overflow: auto;
-    margin-left: 2%;
+    flex-grow: 1;
+    margin-left: 8px;
+    margin-right: 8px;
+    padding-top: 8px;
 }
 #wrapper {
+    display: flex;
+    flex-direction: column;
     height: 100%
 }
 #pref {
@@ -45,21 +49,33 @@ export class FYPConsole extends LitElement {
 }
 #clear-button {
     color: var(--theme-accent);
-    height: 32px;
-    width: 32px;
+    height: 2rem;
+    width: 2rem;
     padding: 0px;
+}
+.error {
+    display: flex;
+    align-items: center;
+    background-color: #B00020;
+    color: white;
+    font-style: bold;
+    padding: 1rem;
+    font-family: Roboto-mono, monospace;
+}
+.error iron-icon {
+    margin-right: 1rem;
 }
         `;
     }
 
     @property({type: Array})
-    public lines: string[] = [];
+    public lines: TemplateResult[] = [];
 
     public render(): TemplateResult {
         return html`
         <div id='wrapper'>
             <div id='list'>
-                ${this.lines.map((ln) => html`<p>${ln}</p>`)}
+                ${this.lines}
             </div>
             <div id="input-wrap">
                 <span id="pref">᚛</span>
@@ -81,7 +97,13 @@ export class FYPConsole extends LitElement {
     }
 
     public writeOut(msg: string) {
-        this.lines.push(msg);
+        this.lines.push(html`<p>${msg}</p>`);
+        return this.requestUpdate();
+    }
+
+    public writeError(e: Error) {
+        const rep: string = (e instanceof RuntimeError) ? e.msg : e.toString();
+        this.lines.push(html`<div class="error"><iron-icon icon="icons:error-outline"></iron-icon>${rep}</div>`);
         return this.requestUpdate();
     }
 

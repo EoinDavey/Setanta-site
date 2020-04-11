@@ -233,16 +233,21 @@ class FypApp extends LitElement {
         this.stage.focus();
 
         this.running = true;
-        const err = await exec.run(program);
-        this.running = false;
-        if (err) {
-            const line = err.pos.line;
-            const ch = err.pos.offset;
-            if (this.editor.editor) {
-                const mrk = this.editor.editor.markText({line: line - 1, ch: ch - 1}, {line: line - 1, ch}, {className: "syntax-error"});
-                this.marks.push(mrk);
+        try {
+            const err = await exec.run(program);
+            if (err) {
+                const line = err.pos.line;
+                const ch = err.pos.offset;
+                if (this.editor.editor) {
+                    const mrk = this.editor.editor.markText({line: line - 1, ch: ch - 1}, {line: line - 1, ch}, {className: "syntax-error"});
+                    this.marks.push(mrk);
+                }
+                alert(`Eisceacht ar líne ${line}: Ag súil le: ${err.expmatches}`);
             }
-            alert(`Eisceacht ar líne ${line}: Ag súil le: ${err.expmatches}`);
+        } catch(e) {
+            this.console.writeError(e);
+        } finally {
+            this.running = false;
         }
     }
 

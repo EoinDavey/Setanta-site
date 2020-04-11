@@ -55,12 +55,6 @@ export class ExecCtx {
         this.halt = false;
         try {
             await i.interpret(ast);
-        } catch (e) {
-            if (e instanceof RuntimeError) {
-                alert(e.msg);
-            } else {
-                throw e;
-            }
         } finally {
             this.stop();
         }
