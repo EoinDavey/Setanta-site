@@ -71,14 +71,14 @@ In the completion of this project, several significant accomplishments were real
 
     \item \textbf{\trys{} - The \Setanta{} learning environment.}
 
-        \trys{} was created and hosted on the Google App Engine and satisfies all the requirements that were expected of it. Visiting \trys{} the user can write and execute \Setanta{} code. They can save their code and send it to their friends by the use of unique URLs assigned to each saved piece of code. \trys{} also features the planned graphics display where the programmer graphically maniuplate different shapes and objects.
+        \trys{} was created and hosted on the Google App Engine and satisfies all the requirements that were expected of it. Visiting \trys{} the user can write and execute \Setanta{} code. They can save their code and send it to their friends by the use of unique URLs assigned to each saved piece of code. \trys{} also features the planned graphics display where the programmer graphically manipulates different shapes and objects.
 
     \item \textbf{Allowing Irish to affect the design of \Setanta{}.}
 
-        Part of the goals of designing \Setanta{} was to allow the Irish language to influence its design, and by doing so to see what parts of industry-standard languages are subtly influenced by their design in English. \Setanta{} has some syntactic constructs that were affected by the use of Irish as its ``host'' language. These effects highlight some of the Anglo-centric designs in today's languages, including in features that we consider to be almost universal.
+        Part of the goals of designing \Setanta{} was to allow the Irish language to influence its design, and by doing so to see what parts of industry-standard languages are subtly influenced by their design in English. \Setanta{} has some syntactic constructs that were affected by the use of Irish as its ``host'' language. These effects highlight some of the Anglo-centric designs in today's languages, including in features that we consider to be almost universal. A significant example can be found in Section~\ref{atoperator}.
 
     \item \textbf{Abstraction out over the browsers concurrency issues.}
         
-        Anyone who's written code for the browser will know the pain of the single-threaded, non-blocking world of JavaScript. Programs executed on the browser cannot launch multiple threads, or wait for operations to finish. Unless you use \Setanta{}! The \Setanta{} runtime abstracts out the JavaScript internal task queue and callback systems and allows the user to write code that waits for blocking operations such as user input, and to execute things concurrently such as running infinite rendering loops but still allowing keyboard inputs to be processed.
+        Anyone who's written code for the browser will know the pain of the single-threaded, non-blocking world of JavaScript. Programs executed on the browser cannot launch multiple threads, or wait for operations to finish. Unless you use \Setanta{}! The \Setanta{} runtime abstracts out the JavaScript internal task queue and callback systems and allows the user to write code that waits for blocking operations such as user input, and to execute things concurrently such as running infinite rendering loops but still allowing keyboard inputs to be processed. How this was achieved is outlined in Section \ref{solution:blocking-concurrency}.
 
 \end{itemize}

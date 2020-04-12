@@ -204,6 +204,7 @@ The semantics of \Setanta{} will be familiar to most users, it's an imperative, 
         \noindent\textbf{Please see \hyperref[setantadocs]{Appendix \ref*{setantadocs}} for a full description of the syntax and semantics of \Setanta{}.}
 
 \subsection{Blocking operations \& Concurrency}
+\label{solution:blocking-concurrency}
 
 As discussed in the technical background section, the JavaScript runtime, whether it be NodeJS or a browser, only allows usage of a single thread and no blocking operations.
 However, \Setanta{} allows the user to write and use blocking functions. Figure~\ref{blockingcomparison} shows a side by side comparison of equivalent programs in JavaScript and Setanta, it's clear that the Setanta program is much simpler due to allowing the program to block.
