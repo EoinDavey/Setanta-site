@@ -1,7 +1,7 @@
 \documentclass[11pt]{extreport}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[page, toc]{appendix}
+\usepackage[page,toc]{appendix}
 \usepackage{mathptmx}
 \usepackage{setspace}
 \usepackage[a4paper, margin=25mm]{geometry}
@@ -9,13 +9,15 @@
 \usepackage{textcomp}
 \usepackage{amsmath}
 \usepackage{hyperref}
+\usepackage[toc, lof]{multitoc}
 \usepackage{xcolor}
 \usepackage{graphicx}
 \usepackage{listings}
 \usepackage{float}
 \usepackage{titlesec}
-\usepackage{caption}
+\usepackage[hypcap=false]{caption}
 \setlength{\headheight}{14pt}
+\setlength{\columnseprule}{0.5pt}
 \hypersetup{pageanchor=false}
 \floatstyle{boxed} 
 \restylefloat{figure}
@@ -88,18 +90,18 @@
     stringstyle=\color{blue}\ttfamily,
 }
 
-\pagestyle{fancy}
 \fancyhf{}
 \rhead{\thepage}
 \lhead{Eoin Davey - Final Year Project 2020 - 5 credits}
 \def\chapinp#1{\input{src/chaps/#1}}
 \def\appinp#1{\input{src/appendices/#1}}
 \begin{document}
+    \pagestyle{empty}
     \chapinp{titlepage}
-    \thispagestyle{plain}
     \tableofcontents
-    \thispagestyle{plain}
+    \listoffigures
     \newpage
+    \pagestyle{fancy}
 
     \setcounter{page}{1}
     \chapinp{abstract}

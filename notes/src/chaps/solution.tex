@@ -185,10 +185,7 @@ The usage of the dot operator for member lookup gives rise to expressions like \
 By using the @ operator in \Setanta{} we instead get expressions like \verb|goTo@man(shop)| or\\
 \verb|query@dbClient(q)|, these expressions put the verb first, then the subject, then the object, reflecting the VSO structure of Irish. This subtle connection between a simple operator like '.' and the linguistic properties of English is not apparent at first glance.
 
-There is a second connection between English and the lookup operation that is broken by the @ operator. In English when talking about possession relationships (``has-a'' relationships in database terms), we list the entities in decreasing order of possession, e.g.,
-\begin{quote}
-    The man's car door window pane
-\end{quote}
+There is a second connection between English and the lookup operation that is broken by the @ operator. In English when talking about possession relationships (``has-a'' relationships in database terms), we list the entities in decreasing order of possession, e.g.\ \emph{``The man's car door window pane''}.
 The order of possession here is
 \[man \rightarrow car \rightarrow door \rightarrow window \rightarrow pane\]
 
@@ -210,6 +207,7 @@ As discussed in the technical background section, the JavaScript runtime, whethe
 However, \Setanta{} allows the user to write and use blocking functions. Figure~\ref{blockingcomparison} shows a side by side comparison of equivalent programs in JavaScript and Setanta, it's clear that the Setanta program is much simpler due to allowing the program to block.
 
 \begin{figure}[ht]
+    \hspace{5mm}
     \begin{minipage}[t]{0.45\textwidth}
         \begin{lstlisting}[language=javascript, caption=JavaScript]
 setTimeout(() => {
@@ -271,9 +269,10 @@ If the expression includes variables e.g., ``\verb|a + b * c|'' we must do this 
 
 The solution that I came up with is to take advantage of \tsPEG{}'s \hyperref[computed-properties]{computed properties} support. Notably, this tree compression problem is exactly the problem I added computed properties to \tsPEG{} to allow me to solve.
 
-The idea is that, at parse time, each node computes a ``shortcut'' attribute. If the node detects that it is not required, it computes a pointer to the next ``important'' node below it and returns that, shortcutting the node entirely, while maintaining the strong typing of the AST. This is all computed once when the AST is constructed. Following only the shortcut links for the expression \verb|1 + 2 * 3|, we instead get a compressed syntax tree seen in Figure~\ref{setanta:compressedtree}.
+The idea is that, at parse time, each node computes a ``shortcut'' attribute. If the node detects that it is not required, it computes a pointer to the next ``important'' node below it and returns that, shortcutting the node entirely, while maintaining the strong typing of the AST. This is all computed once when the AST is constructed. Following only the shortcut links for the expression \verb|1 + 2 * 3|, we instead get a compressed syntax tree seen in Figure~\ref{setanta:compressedtree}. These shortcut attributes also compute if an operation is ``quick'', i.e.\ if it can be computed in a reasonably short amount of time, allowing us to skip the overhead of the Promises API for the evaluation.
 
 This change caused a measurable speedup of around 19\% when measured against the test programs. The test set of programs before this change would run in about 1.6s, but after would take about 1.3s.
+
 
 \begin{figure}
     \caption{Uncompressed tree for ``1 + 2 * 3''}
@@ -315,7 +314,6 @@ The documentation requires syntax highlighted code, rather than hand colour the 
 \trys{}, like the other components, is written mainly in TypeScript. The website is built on Google's LitElement library. LitElement is a library to write custom re-usable web components, it's a descendant of the Polymer framework, which has since been deprecated. LitElement is used to achieve a Material Design aesthetic. The text editor component uses the open-source library CodeMirror.
 
 The backend for \trys{} is written in Go and runs on the Google App Engine (GAE) cloud infrastructure platform. The backend for the site supports the ability to save and retrieve \Setanta{} programs to the cloud.
-
 A high-level architecture outline for \trys{} can be seen in Figure~\ref{trysetantadiagram}
 
 \begin{figure}
@@ -336,10 +334,7 @@ The graphics API also exposes methods to consume keyboard inputs, so the user ca
 
 \subsection{Saving Code}
 
-\trys{} supports the ability to save a program to a specific URL. Clicking ``Faigh nasc'' (meaning ``get link'') redirects the user to a unique URL with which they can access their code. For example, the Sierpinski triangle example is available at:
-\begin{quote}
-    \href{https://try-setanta.ie/EhEKBlNjcmlwdBCAgIDgycODCg}{try-setanta.ie/EhEKBlNjcmlwdBCAgIDgycODCg.}
-\end{quote}
+\trys{} supports the ability to save a program to a specific URL. Clicking ``Faigh nasc'' (meaning ``get link'') redirects the user to a unique URL with which they can access their code. For example, the Sierpinski triangle example is available at: \href{https://try-setanta.ie/EhEKBlNjcmlwdBCAgIDgycODCg}{try-setanta.ie/EhEKBlNjcmlwdBCAgIDgycODCg.}
 
 This feature is handled by the Go backend on the Google App Engine. The programs are stored on the cloud Datastore, each program is identified by a unique integer. This unique integer is encoded into a string key, and this key is the URL where the code can be retrieved.
 

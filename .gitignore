@@ -4,6 +4,7 @@ gae-keys.json
 *.swp
 *.out
 *.toc
+*.lof
 *.log
 *.fdb_latexmk
 *.fls

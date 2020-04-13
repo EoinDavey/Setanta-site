@@ -233,7 +233,7 @@ rule := 'It\'s a ' 'long '+ 'way away'
   and it does exactly what it says on the tin. This operator inverts the
   result of the match, meaning you can specify a rule by what it should
   not match. For example the rule
-  \texttt{rule\ :=\ \textquotesingle{}The\ banned\ word\ is\ \textquotesingle{}\ !\textquotesingle{}Macbeth\textquotesingle{}}
+  \texttt{rule\ :=\ \textquotesingle{}The\ banned\ word\ is\ \textquotesingle{}\ !\textquotesingle{}Macbeth\textquotesingle{}\ \textquotesingle{}{[}a-zA-Z{]}+\textquotesingle{}}
   This will match the phrase ``The banned word is X'' for any value of
   X, except when X is `Macbeth'
 \item
@@ -288,7 +288,7 @@ the AST, \emph{tsPEG} also allows you to create \textbf{computed
 properties}, which are fields on the AST that are computed when the
 parser is run.
 
-Computer properties are added to a rule by appending a new expression
+Computed properties are added to a rule by appending a new expression
 after the rule description like
 
 \begin{verbatim}
@@ -416,12 +416,47 @@ The names of the ASTKinds enum entries vary.
 \item
   Sub-rules are given the kind
   \texttt{ASTKinds.\textless{}ParentRule\textgreater{}\_\$N} for the
-  \texttt{N}th subrule of rule \texttt{ParentRule}. For example in the
+  \texttt{N}th subrule of \texttt{ParentRule}. For example in the
   rule
-  \texttt{Rule\ :=\ sub=\{\ name=\textquotesingle{}regex\textquotesingle{}\ \}}
+    \[\texttt{Rule\ :=\ sub=\{\ name=\textquotesingle{}regex\textquotesingle{}\ \}}\]
   the \texttt{kind} for the sub-rule is \texttt{ASTKinds.Rule\_\$0}.
 \item
   If in doubt it's simple to inspect the generated parser file to find
   what the correct kind name is. The compiler will also be sure to tell
   you when you're wrong.
 \end{itemize}
+
+\section{Position tracking}\label{position-tracking}
+
+tsPEG supports a special match expression ``\texttt{@}'' for storing the
+positions of matches. Using \texttt{@} you can store the current
+position of the parser.
+
+\subsubsection{Example}\label{example-1}
+
+Returning to our addition of two numbers from earlier, which matches
+``12+56'', ``123+456'' etc.
+
+\begin{verbatim}
+sum := left=num '\+' right=num
+num := '[0-9]+'
+\end{verbatim}
+
+If we want to store the location of the ``+'' operator we can use the @
+match like this:
+
+\begin{verbatim}
+sum := left=num pluspos=@ '\+' right=num
+num := '[0-9]+'
+\end{verbatim}
+
+This stores the position of the parser into the AST before the `+'
+symbol, the generated interface for the AST looks like:
+
+\begin{verbatim}
+interface sum {
+    left: string
+    pluspos: PosInfo
+    right: string
+}
+\end{verbatim}
