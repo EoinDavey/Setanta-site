@@ -12,6 +12,7 @@ import "../editor/editor";
 import { FYPEditor } from "../editor/editor";
 import { DisplayEngine } from "../engine/engine";
 import { ExecCtx } from "../engine/execCtx";
+import { RuntimeError } from "setanta/node_build/error";
 
 // Add possible vendor prefix fullscreen functions to HTMLElement
 declare global {
@@ -245,6 +246,18 @@ class FypApp extends LitElement {
                 alert(`Eisceacht ar líne ${line}: Ag súil le: ${err.expmatches}`);
             }
         } catch(e) {
+            if(e instanceof RuntimeError && e.start && e.end && this.editor.editor){
+                const mrk = this.editor.editor.markText(
+                    {
+                        line: e.start.line - 1,
+                        ch: e.start.offset
+                    },
+                    {
+                        line: e.end.line - 1,
+                        ch: e.end.offset
+                    }, {className: "syntax-error"});
+                this.marks.push(mrk);
+            }
             this.console.writeError(e);
         } finally {
             this.running = false;
