@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "copy-webpack-plugin": "^5.1.1",
-    "setanta": "^0.3.3",
+    "setanta": "^0.4.0",
     "tslint": "^6.1.0",
     "typescript": "^3.7.2",
     "webpack": "^4.42.1",

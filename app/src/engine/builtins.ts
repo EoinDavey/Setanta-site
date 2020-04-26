@@ -1,6 +1,6 @@
 import * as Asserts from "setanta/node_build/asserts";
-import { STOP } from "setanta/node_build/i10r";
-import { callFunc, goLitreacha, ObjWrap, Value } from "setanta/node_build/values";
+import { STOP } from "setanta/node_build/consts";
+import { callFunc, goTéacs, ObjIntfWrap, Value } from "setanta/node_build/values";
 import { DisplayEngine } from "./engine";
 
 export function genBuiltins(display: DisplayEngine, writeFn: (s: string) => void,
@@ -13,7 +13,7 @@ export function genBuiltins(display: DisplayEngine, writeFn: (s: string) => void
                 arity: () => -1,
                 call: (args): Promise<Value> => {
                     return new Promise<null>((r) => {
-                        writeFn(args.map(goLitreacha).join(" "));
+                        writeFn(args.map(goTéacs).join(" "));
                         r(null);
                     });
                 },
@@ -25,7 +25,7 @@ export function genBuiltins(display: DisplayEngine, writeFn: (s: string) => void
                 ainm: "ceist",
                 arity: () => 1,
                 call: (args: Value[]): Promise<Value> => {
-                    writeFn(goLitreacha(args[0]));
+                    writeFn(goTéacs(args[0]));
                     return new Promise((r) => {
                         setWriteWait(r);
                     });
@@ -58,7 +58,7 @@ export function genBuiltins(display: DisplayEngine, writeFn: (s: string) => void
         ],
         [
             ["stáitse", "staitse"],
-            new ObjWrap("stáitse", [
+            new ObjIntfWrap("stáitse", [
                 [["fadX"], display.sizeX],
                 [["fadY"], display.sizeY],
                 [["dath"],

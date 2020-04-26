@@ -1,8 +1,8 @@
 import * as Asserts from "setanta/node_build/asserts";
 import { RuntimeError } from "setanta/node_build/error";
 import { Parser } from "setanta/node_build/gen_parser";
-import { Interpreter, STOP } from "setanta/node_build/i10r";
-import { callFunc, goLitreacha, ObjWrap, Value } from "setanta/node_build/values";
+import { Interpreter } from "setanta/node_build/i10r";
+import { callFunc, goTéacs, ObjIntfWrap, Value } from "setanta/node_build/values";
 import { genBuiltins } from "./builtins";
 import { DisplayEngine } from "./engine";
 
