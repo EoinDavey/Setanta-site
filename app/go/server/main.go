@@ -27,7 +27,7 @@ const defaultContent = `>-- ###########
 
 >-- Téigh go dtí https://docs.try-setanta.ie nó cliceáil "Foghlaim" chun Setanta a fhoghlaim
 
->-- Brúigh ar an cnaipe tosaigh chun an ríomhchlár a tosnú
+>-- Brúigh ar an cnaipe tosaigh chun an ríomhchlár sampla a tosnú
 
 >-- ###########
 >-- # English #
@@ -35,7 +35,7 @@ const defaultContent = `>-- ###########
 
 >-- Go to https://docs.try-setanta.ie or click "Foghlaim" to learn Setanta
 
->-- Click on the start button to start the program
+>-- Click on the start button to start the example program
 
 Í := íos(fadX@stáitse, fadY@stáitse)*0.9
 I := 0.85 * Í
