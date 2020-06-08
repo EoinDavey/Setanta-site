@@ -45,18 +45,6 @@ export function genBuiltins(display: DisplayEngine, writeFn: (s: string) => void
             },
         ],
         [
-            ["coladh"],
-            {
-                ainm: "coladh",
-                arity: () => 1,
-                call: (args: Value[]): Promise<Value> => {
-                    return new Promise<null>((r) => {
-                        setTimeout(() => r(), Asserts.assertNumber(args[0]));
-                    });
-                },
-            },
-        ],
-        [
             ["stáitse", "staitse"],
             new ObjIntfWrap("stáitse", [
                 [["fadX"], display.sizeX],
@@ -89,6 +77,13 @@ export function genBuiltins(display: DisplayEngine, writeFn: (s: string) => void
                         call: (args: Value[]) => display.drawLineSeg(args),
                     },
                 ],
+                [["ciorcal"],
+                    {
+                        ainm: "ciorcal",
+                        arity: () => 3,
+                        call: (args: Value[]) => display.drawCirc(args),
+                    },
+                ],
                 [["ciorcalLán", "ciorcalLan"],
                     {
                         ainm: "líne",
@@ -108,13 +103,6 @@ export function genBuiltins(display: DisplayEngine, writeFn: (s: string) => void
                         ainm: "cruthLán",
                         arity: () => 1,
                         call: (args: Value[]) => display.drawShapeFull(args),
-                    },
-                ],
-                [["ciorcal"],
-                    {
-                        ainm: "ciorcal",
-                        arity: () => 3,
-                        call: (args: Value[]) => display.drawCirc(args),
                     },
                 ],
                 [["píosaCiorcal", "piosaCiorcal"],

@@ -59,7 +59,7 @@ le i idir (1, fad(t)) {
     dfy := t[i][1] - t[i-1][1]
     le j idir (1, 51) {
     	líne@stáitse(t[i-1][0], t[i-1][1], t[i-1][0] + (j/50) * dfx, t[i-1][1] + (j/50) * dfy)
-        coladh(10)
+        codladh(10)
 	}
 }
 cruth@stáitse(t)
@@ -71,7 +71,7 @@ dath@stáitse('#651fff')
 le i idir (0, 3) {
     le j idir (1, 51) {
 		píosaCiorcal@stáitse(t[i][0], t[i][1], r, rngs[i][0]*pi@mata, (rngs[i][0] + (4*j/300))*pi@mata, bréag)
-        coladh(10)
+        codladh(10)
     }
 }
 
@@ -81,7 +81,7 @@ le i idir (0, Í/2, 2) {
     dath@stáitse('#651fff')
     le i idir (0, 3)
     	píosaCiorcal@stáitse(t[i][0], t[i][1], r, rngs[i][0]*pi@mata, rngs[i][1]*pi@mata, bréag)
-    coladh(1)
+    codladh(1)
 }`
 
 type Entry struct {
