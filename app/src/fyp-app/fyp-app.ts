@@ -240,7 +240,10 @@ class FypApp extends LitElement {
                 const line = err.pos.line;
                 const ch = err.pos.offset;
                 if (this.editor.editor) {
-                    const mrk = this.editor.editor.markText({line: line - 1, ch: ch - 1}, {line: line - 1, ch}, {className: "syntax-error"});
+                    const mrk = this.editor.editor.markText(
+                        {line: line - 1, ch: ch - 1},
+                        {line: line - 1, ch},
+                        {className: "syntax-error"});
                     this.marks.push(mrk);
                 }
                 alert(`Eisceacht ar líne ${line}: Ag súil le: ${err.expmatches}`);
