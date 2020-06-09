@@ -41,7 +41,8 @@ export class FYPConsole extends LitElement {
 #wrapper {
     display: flex;
     flex-direction: column;
-    height: 100%
+    height: 100%;
+    width: 100%;
 }
 #pref {
     padding-right: 8px;

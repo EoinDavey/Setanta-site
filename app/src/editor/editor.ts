@@ -2,7 +2,7 @@ import { css, customElement, html, LitElement, property, TemplateResult } from "
 import * as CodeMirror from 'codemirror';
 import 'codemirror/addon/mode/simple';
 import { defineMode } from '../js/cm-mode.js';
-import "@polymer/iron-icon/iron-icon.js";
+import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/av-icons.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 
@@ -417,6 +417,7 @@ span.CodeMirror-selectedtext { background: none; }
         `;
     }
     @property({type: String}) public startcontent = `}`;
+    @property({type: Boolean}) public hidebuttons = false;
     @property({type: Boolean}) public running = false;
     public editor: CodeMirror.Editor | undefined;
     public render(): TemplateResult {
@@ -424,7 +425,8 @@ span.CodeMirror-selectedtext { background: none; }
         <div id="wrapper">
         <textarea id='editor'>
 </textarea>
-            <div id="floating">
+            ${this.hidebuttons ? html`` :
+            html`<div id="floating">
                 <div id="play-buttons">
                     <paper-icon-button icon="icons:fullscreen" id="fullscreen-button"
                     @click="${this.fireFullscreenStartEvent}" class="fab">
@@ -433,7 +435,7 @@ span.CodeMirror-selectedtext { background: none; }
                 </div>
                 <paper-icon-button class="fab" icon="icons:link" @click="${this.fireSaveEvent}">
                 </paper-icon-button>
-            </div>
+            </div>`}
         </div>
     `;
     }

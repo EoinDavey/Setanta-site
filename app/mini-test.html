@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="/node_modules/codemirror/lib/codemirror.css">
+        <link rel="stylesheet" href="/node_modules/codemirror/theme/solarized.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+        <title>Setanta - Mini Editor Test </title>
+
+        <script src="/node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+        <script src="/mini.js" crossorigin></script>
+        <style>
+            body {
+                margin: 0px;
+                --theme-primary: #2e7d32;
+                --theme-primary-light: #60ad5e;
+                --theme-primary-dark: #005005;
+                --theme-accent: #651fff;
+                --theme-accent-light: #a256ff;
+                --theme-text-primary: #212121;
+                --theme-text-secondary: #757575;
+                --theme-divider: #BDBDBD;
+                background: whitesmoke;
+            }
+            html {
+                font-family: Roboto, sans-serif;
+                color: var(--theme-text-primary);
+            }
+            #wrapper {
+                height: 350px;
+                width: 600px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Mini-Editor test page</h1>
+        <div id="wrapper">
+            <mini-editor></mini-editor>
+        </div>
+    </body>
+</html>
