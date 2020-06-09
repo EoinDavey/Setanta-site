@@ -8,7 +8,8 @@
     "clean": "rm -rf jsbuild && rm -rf dist",
     "test": "tslint --project . -c tslint.json",
     "local": "GOOGLE_APPLICATION_CREDENTIALS=\"google-creds.json\" dev_appserver.py --port=8081  app.yaml",
-    "local-light": "tsc && webpack-dev-server"
+    "local-light": "tsc && webpack-dev-server",
+    "diff": "git diff -- . ':(exclude)package-lock.json'"
   },
   "dependencies": {
     "@polymer/iron-icon": "^3.0.1",
@@ -16,6 +17,7 @@
     "@polymer/paper-button": "^3.0.1",
     "@polymer/paper-card": "^3.0.1",
     "@polymer/paper-icon-button": "^3.0.2",
+    "@polymer/paper-tabs": "^3.1.0",
     "@types/codemirror": "0.0.79",
     "@webcomponents/webcomponentsjs": "^2.3.0",
     "codemirror": "^5.49.2",

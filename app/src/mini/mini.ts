@@ -6,7 +6,14 @@ import "../console/console";
 import "@polymer/paper-card/paper-card.js";
 import "@polymer/iron-icons/av-icons.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
+import "@polymer/paper-tabs/paper-tabs.js";
+import "@polymer/paper-tabs/paper-tab.js";
 import { RuntimeComponent } from "../engine/runtimecomp";
+
+// Declare type for the paper-tabs element
+interface PaperTabs extends HTMLElement {
+    selected: number;
+}
 
 @customElement("mini-editor")
 class MiniEditor extends RuntimeComponent {
@@ -22,7 +29,7 @@ class MiniEditor extends RuntimeComponent {
                 grid-template-columns: minmax(0,1fr) minmax(0, 1fr);
                 grid-template-rows: 3rem minmax(0, 1fr);
                 grid-template-areas:
-                    'topbar topbar'
+                    'top-bar-left top-bar-right'
                     'editor other';
             }
             #editor {
@@ -31,20 +38,39 @@ class MiniEditor extends RuntimeComponent {
             #other {
                 grid-area: other;
                 border-left: 1px solid var(--theme-divider);
+                position: relative;
             }
-            #top-bar {
+            .top-bar {
                 background-color: var(--theme-accent);
-                grid-area: topbar;
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
+                color: white;
+            }
+            #top-bar-left {
+                grid-area: top-bar-left;
                 display: flex;
                 flex-direction: row;
             }
+            #top-bar-right {
+                grid-area: top-bar-right;
+            }
             .bar-button {
-                height: 100%;
-                width: 3rem;
-                color: white;
+                margin-top: 0.25rem;
+                margin-bottom: 0.25rem;
+                height: 2.5rem;
+                width: 2.5rem;
+                border-radius: 100%;
+                border: 2px solid white;
             }
             #stage {
-                display: none; /* disable for now */
+                width: 100%;
+                height: 100%;
+                position: absolute;
+            }
+            #console {
+                height: 100%;
+                width: 100%;
+                position: absolute;
             }
         `;
     }
@@ -52,18 +78,24 @@ class MiniEditor extends RuntimeComponent {
     public render(): TemplateResult {
         return html`
             <paper-card id="outer">
-                <div id="top-bar">
+                <div id="top-bar-left" class="top-bar">
                     <paper-icon-button icon="${this.running ? "av:stop" : "av:play-arrow"}"
-                    id="run-button" class="bar-button" @click="${this.runCode}">
+                    id="run-button" class="bar-button" @click="${this.toggleRun}">
                     </paper-icon-button>
+                </div>
+                <div id="top-bar-right" class="top-bar">
+                    <paper-tabs id="tabs" selected="0" @iron-select="${this.tabSelect}">
+                        <paper-tab><b>Consól / <i>Console</i></b></paper-tab>
+                        <paper-tab><b>Stáitse / <i>Stage</i></b></paper-tab>
+                    </paper-tabs>
                 </div>
                 <fyp-editor startcontent="scríobh('Dia duit')" id="editor" hidebuttons>
                 </fyp-editor>
                 <div id="other">
                     <fyp-console id="console"
-                    @setanta-console-enter="${this.consoleWrite}"
-                    ></fyp-console>
-                    <canvas id='stage' width="1000" height="750"></canvas>
+                    @setanta-console-enter="${this.consoleWrite}">
+                    </fyp-console>
+                    <canvas id="stage" width="1000" height="750"></canvas>
                 </div>
             </paper-card>`;
     }
@@ -76,5 +108,37 @@ class MiniEditor extends RuntimeComponent {
     }
     get stage(): HTMLCanvasElement {
         return this.shadowRoot!.getElementById("stage")! as HTMLCanvasElement;
+    }
+
+    get tabs(): PaperTabs {
+        return this.shadowRoot!.getElementById("tabs")! as PaperTabs;
+    }
+
+    private toggleRun(e: Event) {
+        if(this.running)
+            this.stopCode(e);
+        else
+            this.runCode(e);
+    }
+
+    // We use visibility css property with overlapping elements instead of
+    // display = "none" because when the canvas has not yet been displayed, it's
+    // not correctly initialised and doesn't draw correctly.
+    private tabSelect(e: Event) {
+        const sel = this.tabs.selected;
+        if(sel === 0) { // Selected Consól
+            // hide stage
+            this.stage.style.visibility = "hidden";
+            // show console
+            this.console.style.visibility = "visible";
+        } else if (sel === 1){ // Selected stáitse.
+            // We don't just use "else" because tabs.selected is a string on initial
+            // rendering
+
+            // hide console
+            this.console.style.visibility = "hidden";
+            // show stage
+            this.stage.style.visibility = "visible";
+        }
     }
 }
