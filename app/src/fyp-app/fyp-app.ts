@@ -4,15 +4,12 @@ import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-card/paper-card.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
-import { TextMarker } from "codemirror";
 import { css, customElement, html, LitElement, property, TemplateResult } from "lit-element";
 import "../console/console";
 import { FYPConsole } from "../console/console";
 import "../editor/editor";
 import { FYPEditor } from "../editor/editor";
-import { DisplayEngine } from "../engine/engine";
-import { ExecCtx } from "../engine/execCtx";
-import { RuntimeError } from "setanta/node_build/error";
+import { RuntimeComponent } from "../engine/runtimecomp";
 
 // Add possible vendor prefix fullscreen functions to HTMLElement
 declare global {
@@ -24,7 +21,7 @@ declare global {
 }
 
 @customElement("fyp-app")
-class FypApp extends LitElement {
+class FypApp extends RuntimeComponent {
 
     static get styles() {
         return css`
@@ -139,12 +136,7 @@ class FypApp extends LitElement {
     }
     @property({type: String}) public title = "Setanta";
     @property({type: String}) public content = "";
-
-    public activeCtx: ExecCtx | null = null;
-
-    private marks: TextMarker[] = [];
-
-    @property({type: Boolean, attribute: false})private running: boolean = false;
+    @property({type: Boolean, attribute: false})public running: boolean = false;
 
     public render(): TemplateResult {
         return html`
@@ -190,80 +182,9 @@ class FypApp extends LitElement {
     `;
     }
 
-    public clearMarks() {
-        this.marks.forEach((mark) => mark.clear());
-        this.marks = [];
-    }
-
-    public stopCode(e: Event) {
-        if (this.activeCtx) {
-            this.activeCtx.stop();
-        }
-    }
-
     public handleKeyDown(e: KeyboardEvent) {
         if (this.activeCtx) {
             this.activeCtx.handleKeyDown(e);
-        }
-    }
-
-    public async runCode(e: Event) {
-        if (this.activeCtx && this.activeCtx.running()) {
-            return;
-        }
-        this.fixCanvas();
-        this.clearMarks();
-        const ctx = this.stage.getContext("2d");
-        if (ctx === null) {
-            throw new Error("Canvas not supported"); // TODO → Gaeilge
-        }
-        ctx.lineWidth = 10;  // Start with line width 10
-
-        const program = this.editor.content;
-
-        const engine = new DisplayEngine(this.stage.width, this.stage.height, ctx);
-
-        const write = (msg: string) => {
-            this.console.writeOut(msg).then(() => this.console.scrollDown());
-        };
-
-        const exec = new ExecCtx(write, engine);
-
-        this.activeCtx = exec;
-
-        this.stage.focus();
-
-        this.running = true;
-        try {
-            const err = await exec.run(program);
-            if (err) {
-                const line = err.pos.line;
-                const ch = err.pos.offset;
-                if (this.editor.editor) {
-                    const mrk = this.editor.editor.markText(
-                        {line: line - 1, ch: ch - 1},
-                        {line: line - 1, ch},
-                        {className: "syntax-error"});
-                    this.marks.push(mrk);
-                }
-                alert(`Eisceacht ar líne ${line}: Ag súil le: ${err.expmatches}`);
-            }
-        } catch(e) {
-            if(e instanceof RuntimeError && e.start && e.end && this.editor.editor){
-                const mrk = this.editor.editor.markText(
-                    {
-                        line: e.start.line - 1,
-                        ch: e.start.offset
-                    },
-                    {
-                        line: e.end.line - 1,
-                        ch: e.end.offset
-                    }, {className: "syntax-error"});
-                this.marks.push(mrk);
-            }
-            this.console.writeError(e);
-        } finally {
-            this.running = false;
         }
     }
 
@@ -286,21 +207,6 @@ class FypApp extends LitElement {
         } else {
             alert(text);
         }
-    }
-
-    private consoleWrite(e: CustomEvent) {
-        const inp = e.detail.value;
-        if (this.activeCtx) {
-            this.activeCtx.write(inp);
-        }
-    }
-
-    private fixCanvas(): void {
-        const cw = this.stage.clientWidth;
-        const ch = this.stage.clientHeight;
-        const fac = 750;
-        this.stage.height = fac;
-        this.stage.width = Math.floor(fac * (cw / ch));
     }
 
     private async startInFullscreen(e: Event) {
