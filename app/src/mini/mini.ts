@@ -19,6 +19,9 @@ interface PaperTabs extends HTMLElement {
 class MiniEditor extends RuntimeComponent {
 
     @property({type: Boolean}) public running = false;
+    @property({type: String}) public initial = `scríobh('Dia duit')
+dath@stáitse('dearg')
+ciorcal@stáitse(100, 100, 50)`;
 
     static get styles() {
         return css`
@@ -66,6 +69,7 @@ class MiniEditor extends RuntimeComponent {
                 width: 100%;
                 height: 100%;
                 position: absolute;
+                visibility: hidden;
             }
             #console {
                 height: 100%;
@@ -89,7 +93,7 @@ class MiniEditor extends RuntimeComponent {
                         <paper-tab><b>Stáitse / <i>Stage</i></b></paper-tab>
                     </paper-tabs>
                 </div>
-                <fyp-editor startcontent="scríobh('Dia duit')" id="editor" hidebuttons>
+                <fyp-editor startcontent="${this.initial}" id="editor" hidebuttons>
                 </fyp-editor>
                 <div id="other">
                     <fyp-console id="console"
@@ -126,19 +130,16 @@ class MiniEditor extends RuntimeComponent {
     // not correctly initialised and doesn't draw correctly.
     private tabSelect(e: Event) {
         const sel = this.tabs.selected;
-        if(sel === 0) { // Selected Consól
-            // hide stage
-            this.stage.style.visibility = "hidden";
-            // show console
-            this.console.style.visibility = "visible";
-        } else if (sel === 1){ // Selected stáitse.
-            // We don't just use "else" because tabs.selected is a string on initial
-            // rendering
-
+        if(sel === 1) { // Selected stáitse
             // hide console
             this.console.style.visibility = "hidden";
             // show stage
             this.stage.style.visibility = "visible";
+        } else {
+            // hide stage
+            this.stage.style.visibility = "hidden";
+            // show console
+            this.console.style.visibility = "visible";
         }
     }
 }
