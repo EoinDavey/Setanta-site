@@ -66,6 +66,9 @@ export class FYPConsole extends LitElement {
 .error iron-icon {
     margin-right: 1rem;
 }
+.no-shrink {
+    flex-shrink: 0;
+}
         `;
     }
 
@@ -104,7 +107,7 @@ export class FYPConsole extends LitElement {
 
     public writeError(e: Error) {
         const rep: string = (e instanceof RuntimeError) ? e.msg : e.toString();
-        this.lines.push(html`<div class="error"><iron-icon icon="icons:error-outline"></iron-icon>${rep}</div>`);
+        this.lines.push(html`<div class="error"><iron-icon class="no-shrink" icon="icons:error-outline"></iron-icon>${rep}</div>`);
         return this.requestUpdate();
     }
 
