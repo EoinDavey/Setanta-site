@@ -2,7 +2,8 @@ import { css, customElement, html, LitElement, property, TemplateResult } from "
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/paper-button/paper-button.js";
-import { RuntimeError } from "setanta/node_build/error";
+import { syntaxErrString, RuntimeError } from "setanta/node_build/error";
+import { SyntaxErr } from "setanta/node_build/gen_parser";
 
 interface PaperInput extends HTMLElement {
     value: string;
@@ -105,9 +106,17 @@ export class FYPConsole extends LitElement {
         return this.requestUpdate();
     }
 
+    public writeSyntaxErr(e: SyntaxErr) {
+        this.pushErrorMsg(syntaxErrString(e));
+    }
+
     public writeError(e: Error) {
         const rep: string = (e instanceof RuntimeError) ? e.msg : e.toString();
-        this.lines.push(html`<div class="error"><iron-icon class="no-shrink" icon="icons:error-outline"></iron-icon>${rep}</div>`);
+        this.pushErrorMsg(rep);
+    }
+
+    private pushErrorMsg(msg: string) {
+        this.lines.push(html`<div class="error"><iron-icon class="no-shrink" icon="icons:error-outline"></iron-icon>${msg}</div>`);
         return this.requestUpdate();
     }
 

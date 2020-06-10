@@ -81,7 +81,7 @@ export abstract class RuntimeComponent extends LitElement {
                         {className: "syntax-error"});
                     this.marks.push(mrk);
                 }
-                alert(`Eisceacht ar líne ${line}: Ag súil le: ${err.expmatches}`);
+                this.console.writeSyntaxErr(err);
             }
         } catch(e) {
             if(e instanceof RuntimeError && e.start && e.end && this.editor.editor){
