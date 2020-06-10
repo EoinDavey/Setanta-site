@@ -93,7 +93,9 @@ ciorcal@stáitse(100, 100, 50)`;
                         <paper-tab><b>Stáitse / <i>Stage</i></b></paper-tab>
                     </paper-tabs>
                 </div>
-                <fyp-editor startcontent="${this.initial}" id="editor" hidebuttons>
+                <fyp-editor id="editor" hidebuttons
+                    startcontent="${this.initial}"
+                    @fyp-run="${this.runCode}">
                 </fyp-editor>
                 <div id="other">
                     <fyp-console id="console"
