@@ -3,6 +3,9 @@ const webpack = require('webpack')
 const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
+    watchOptions: {
+        ignored: /node_modules/
+    },
     entry: {
         editor: './jsbuild/fyp-app/fyp-app.js',
         splash: './jsbuild/splash/splash.js',

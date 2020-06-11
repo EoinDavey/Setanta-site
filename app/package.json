@@ -21,11 +21,11 @@
     "@types/codemirror": "0.0.96",
     "@webcomponents/webcomponentsjs": "^2.4.3",
     "codemirror": "^5.54.0",
-    "lit-element": "^2.3.1"
+    "lit-element": "^2.3.1",
+    "setanta": "^0.6.0"
   },
   "devDependencies": {
     "copy-webpack-plugin": "^5.1.1",
-    "setanta": "^0.5.0",
     "tslint": "^6.1.2",
     "typescript": "^3.9.5",
     "webpack": "^4.43.0",

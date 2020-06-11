@@ -1,11 +1,23 @@
 import * as Asserts from "setanta/node_build/asserts";
 import { STOP } from "setanta/node_build/consts";
 import { callFunc, goTéacs, ObjIntfWrap, Value } from "setanta/node_build/values";
+import { Context } from "setanta/node_build/ctx";
 import { DisplayEngine } from "./engine";
 
+function readPromise(ctx: Context,
+    setWriteWait: (fn: (s: string)=>void) => void): Promise<string|null> {
+    return new Promise((acc, rej) => {
+        ctx.addRejectFn(rej);
+        setWriteWait((s: string) => {
+            ctx.removeRejectFn(rej);
+            acc(s)
+        });
+    });
+}
+
 export function genBuiltins(display: DisplayEngine, writeFn: (s: string) => void,
-                            setWriteWait: (fn: (s: string) => void) => void): [string[], Value][] {
-    const builtins: [string[], Value][] = [
+    setWriteWait: (fn: (s: string) => void) => void): (ctx: Context) => [string[], Value][] {
+        return (ctx: Context) => [
         [
             ["scríobh", "scriobh"],
             {
@@ -26,9 +38,7 @@ export function genBuiltins(display: DisplayEngine, writeFn: (s: string) => void
                 arity: () => 1,
                 call: (args: Value[]): Promise<Value> => {
                     writeFn(goTéacs(args[0]));
-                    return new Promise((r) => {
-                        setWriteWait(r);
-                    });
+                    return readPromise(ctx, setWriteWait);
                 },
             },
         ],
@@ -38,9 +48,7 @@ export function genBuiltins(display: DisplayEngine, writeFn: (s: string) => void
                 ainm: "léigh",
                 arity: () => 0,
                 call: (args): Promise<Value> => {
-                    return new Promise((r) => {
-                        setWriteWait(r);
-                    });
+                    return readPromise(ctx, setWriteWait);
                 },
             },
         ],
@@ -154,5 +162,4 @@ export function genBuiltins(display: DisplayEngine, writeFn: (s: string) => void
             },
         ],
     ];
-    return builtins;
 }
