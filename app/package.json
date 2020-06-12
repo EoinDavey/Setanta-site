@@ -3,13 +3,14 @@
   "description": "Final year project",
   "scripts": {
     "setup": "npm install",
-    "build": "tsc && webpack",
+    "build": "./build-tut.sh && tsc && webpack",
     "lint-all": "tslint --project . -c tslint.json --force",
-    "clean": "rm -rf jsbuild && rm -rf dist",
+    "clean": "rm -rf jsbuild dist tutout",
     "test": "tslint --project . -c tslint.json",
     "local": "GOOGLE_APPLICATION_CREDENTIALS=\"google-creds.json\" dev_appserver.py --port=8081  app.yaml",
     "local-light": "tsc && webpack-dev-server",
-    "diff": "git diff -- . ':(exclude)package-lock.json'"
+    "diff": "git diff -- . ':(exclude)package-lock.json'",
+    "build-tut": "./buildtut.sh"
   },
   "dependencies": {
     "@polymer/iron-icon": "^3.0.1",

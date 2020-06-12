@@ -1,0 +1,8 @@
+from: markdown
+to: html5
+standalone: true
+
+include-in-header: ["tut/header.html"]
+
+css:
+    - main.css

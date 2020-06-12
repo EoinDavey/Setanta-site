@@ -30,7 +30,8 @@ module.exports = {
                 from: "node_modules/@webcomponents/webcomponentsjs/",
                 to: path.resolve(__dirname, "dist/node_modules/@webcomponents/webcomponentsjs/")
             },
-            { from: "assets/", to: path.resolve(__dirname, "dist/assets") }
+            { from: "assets/", to: path.resolve(__dirname, "dist/assets") },
+            { from: "tutout/", to: path.resolve(__dirname, "dist/tut") }
         ]),
     ]
 };

@@ -3,4 +3,5 @@
 /templates/index.tmpl
 /testbuild/
 /dist/
+/tutout/
 google-creds.json

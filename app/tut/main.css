@@ -1,0 +1,20 @@
+body {
+    margin: 0px;
+    --theme-primary: #2e7d32;
+    --theme-primary-light: #60ad5e;
+    --theme-primary-dark: #005005;
+    --theme-accent: #651fff;
+    --theme-accent-light: #a256ff;
+    --theme-text-primary: #212121;
+    --theme-text-secondary: #757575;
+    --theme-divider: #BDBDBD;
+    background: whitesmoke;
+}
+html {
+    font-family: Roboto, sans-serif;
+    color: var(--theme-text-primary);
+}
+.editor-wrapper {
+    width: 40rem;
+    height: 20rem;
+}
