@@ -33,6 +33,7 @@ export class FYPConsole extends LitElement {
     height: 3rem;
 }
 #list {
+    color: var(--console-text-colour, black);
     overflow: auto;
     flex-grow: 1;
     margin-left: 8px;

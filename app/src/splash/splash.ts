@@ -1,4 +1,8 @@
 import { css, customElement, html, LitElement, TemplateResult } from "lit-element";
+import "../mini/mini";
+import "@polymer/iron-icons/iron-icons";
+import "@polymer/iron-icon/iron-icon";
+import "@polymer/iron-icons/av-icons.js";
 
 @customElement("setanta-splash")
 class Splash extends LitElement {
@@ -13,20 +17,32 @@ class Splash extends LitElement {
             top: 0px;
             left: 0px;
             background-color: var(--offwhite);
-            height: 100vh;
-            width: 100vw;
+            height: 200vh;
+            width: 100%;
+        }
+        .wrapped {
+            height: calc(100vh - 2 * 64px - 2px);
+            border: 1px solid var(--theme-primary);
+            border-radius: 1rem;
+            margin: 64px;
+            background-color: white;
         }
         #top-page {
             display: flex;
             flex-direction: column;
-            height: calc(100vh - 2 * 64px - 2px);
             align-items: center;
             justify-content: center;
-            background-color: white;
             color: white;
-            border: 1px solid var(--theme-primary);
-            border-radius: 1rem;
-            margin: 64px;
+        }
+        h4 {
+            text-align: center;
+        }
+        #bottom-page {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: calc(2 * 64px) 64px 0px 64px;
         }
         #heading {
             font-size: 5rem;
@@ -103,6 +119,33 @@ class Splash extends LitElement {
             width: 8rem;
             grid-area: logo;
         }
+        #editor-wrapper {
+            margin-bottom: 1rem;
+            height: 15rem;
+            width: 40rem;
+        }
+        #bottom-page {
+            position: relative;
+        }
+        #try-button {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-top: 1rem;
+        }
+        #try-button:hover {
+            cursor: pointer;
+        }
+        #down-arrow {
+            height: 3rem;
+            width: 3rem;
+            color: var(--theme-accent);
+        }
+        .play-icon {
+            border-radius: 100%;
+            background-color: var(--theme-accent);
+            color: white;
+        }
         @media (max-width: 600px) {
             #header-wrapper {
                 display: flex;
@@ -127,7 +170,7 @@ class Splash extends LitElement {
     public render(): TemplateResult {
         return html`
         <div id="main">
-            <div id="top-page">
+            <div id="top-page" class="wrapped">
                 <div id="header-wrapper">
                     <img src="/assets/logo.svg"/ id="logo"><h1 id="heading" >Setanta</h1>
                     <h4 id="subtitle">An teanga ríomhchlárúcháin <span class="gaeilge">as Gaeilge</span></h4>
@@ -144,8 +187,41 @@ class Splash extends LitElement {
                         <span class="bearla">Open the editor</span>
                     </a>
                 </div>
+                <div id="try-button" class="button" @click="${this.scrollDown}">
+                    <iron-icon id="down-arrow" icon="icons:arrow-downward">
+                    </iron-icon>
+                    <div>
+                        Trial gearr
+                        <hr/>
+                        <span class="bearla">Quick try</span>
+                    </div>
+                </div>
+            </div>
+            <div id="bottom-page" class="wrapped">
+                <h4>Cliceáil ar <iron-icon class="play-icon" icon="av:play-arrow"></iron-icon> chun an ríomhchlár a thosnú
+                <hr/>
+                <i>Click on <iron-icon class="play-icon" icon="av:play-arrow"></iron-icon> to start the program</i></h4>
+                <div id="editor-wrapper">
+                    <mini-editor id="mini"></mini-editor>
+                </div>
+                <div id="buttons" class="horizontal-wrap">
+                    <a class="button" href="https://docs.try-setanta.ie">
+                        <span>Foghlaim Setanta</span>
+                        <hr/>
+                        <span class="bearla">Learn Setanta</span>
+                    </a>
+                    <a class="button" href="/editor">
+                        <span>Oscail an éagarthóir</span>
+                        <hr/>
+                        <span class="bearla">Open the editor</span>
+                    </a>
+                </div>
             </div>
         </div>
     `;
+    }
+    private scrollDown() {
+        const ht = this.shadowRoot!.getElementById("main")!.scrollHeight;
+        window.scrollTo(0, ht);
     }
 }
