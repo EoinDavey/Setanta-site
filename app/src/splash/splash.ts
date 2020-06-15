@@ -120,9 +120,22 @@ class Splash extends LitElement {
             grid-area: logo;
         }
         #editor-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        #aspect-wrapper {
+            position: relative;
+            width: 100%;
+            height: 0px;
+            padding-bottom: 50%;
             margin-bottom: 1rem;
-            height: 15rem;
-            width: 40rem;
+        }
+        .aspect {
+            width: 50%;
+            min-width: 35rem;
         }
         #bottom-page {
             position: relative;
@@ -147,6 +160,15 @@ class Splash extends LitElement {
             color: white;
         }
         @media (max-width: 600px) {
+            #main {
+                height: 100vh;
+            }
+            #try-button {
+                display: none;
+            }
+            #bottom-page {
+                display: none;
+            }
             #header-wrapper {
                 display: flex;
                 flex-direction: column;
@@ -201,8 +223,12 @@ class Splash extends LitElement {
                 <h4>Cliceáil ar <iron-icon class="play-icon" icon="av:play-arrow"></iron-icon> chun an ríomhchlár a thosnú
                 <hr/>
                 <i>Click on <iron-icon class="play-icon" icon="av:play-arrow"></iron-icon> to start the program</i></h4>
-                <div id="editor-wrapper">
-                    <mini-editor id="mini"></mini-editor>
+                <div class="aspect">
+                    <div id="aspect-wrapper">
+                        <div id="editor-wrapper">
+                            <mini-editor id="mini"></mini-editor>
+                        </div>
+                    </div>
                 </div>
                 <div id="buttons" class="horizontal-wrap">
                     <a class="button" href="https://docs.try-setanta.ie">
