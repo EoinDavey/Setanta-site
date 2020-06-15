@@ -10,6 +10,7 @@ module.exports = {
         editor: './jsbuild/fyp-app/fyp-app.js',
         splash: './jsbuild/splash/splash.js',
         mini: './jsbuild/mini/mini.js',
+        tut: './jsbuild/tut/tut.js'
     },
     output: {
         filename: '[name].js',

@@ -35,37 +35,34 @@ $for(include-before)$
 $include-before$
 $endfor$
 $if(toc)$
-<nav id="$idprefix$TOC" role="doc-toc">
-<div id="heading-wrapper">
-    <img id="logo" src="/assets/logo.svg"></img>
-    <h1 id="heading">Setanta</h1>
-</div>
-$if(toc-title)$
-<h2 id="$idprefix$toc-title">$toc-title$</h2>
-$endif$
-<h2 id="contents-text">Contents</h2>
-$table-of-contents$
-</nav>
-$endif$
-<div id="body-wrap">
+<tut-template>
+    <nav slot="toc" id="$idprefix$TOC" role="doc-toc">
+        $if(toc-title)$
+        <h2 id="$idprefix$toc-title">$toc-title$</h2>
+        $endif$
+        $table-of-contents$
+    </nav>
+    $endif$
+    <div slot="body" id="body-slot-wrap">
 $if(title)$
-<header id="title-block-header">
-<h1 class="title">$title$</h1>
+        <header id="title-block-header">
+        <h1 class="title">$title$</h1>
 $if(subtitle)$
-<p class="subtitle">$subtitle$</p>
+        <p class="subtitle">$subtitle$</p>
 $endif$
 $for(author)$
-<p class="author">$author$</p>
+        <p class="author">$author$</p>
 $endfor$
 $if(date)$
-<p class="date">$date$</p>
+        <p class="date">$date$</p>
 $endif$
-</header>
+        </header>
 $endif$
 $body$
-</div>
+    </div>
 $for(include-after)$
 $include-after$
 $endfor$
+</tut-template>
 </body>
 </html>
