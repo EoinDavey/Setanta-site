@@ -76,6 +76,17 @@ ciorcal@stáitse(100, 100, 50)`;
                 width: 100%;
                 position: absolute;
             }
+            @media (max-width: 600px) {
+                #outer {
+                    grid-template-columns: minmax(0,1fr);
+                    grid-template-rows: 3rem minmax(0, 1fr) 3rem minmax(0, 1fr);
+                    grid-template-areas:
+                        'top-bar-left'
+                        'editor'
+                        'top-bar-right'
+                        'other';
+                }
+            }
         `;
     }
 

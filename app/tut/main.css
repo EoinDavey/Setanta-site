@@ -30,17 +30,27 @@ html {
     left: 0;
     overflow-x: hidden;
 }
-#TOC ul {
-    list-style-type: none;
-    padding: 0 0 0 10px;
+#TOC > ul {
+    margin-right: 8px;
+}
+#TOC li {
+    margin: 8px 0 8px 0;
 }
 #TOC a {
     font-size: 1.25rem;
-    text-decoration: underline;
+    text-decoration: none;
     color: white;
+    display: block;
+    padding: 2px 0 2px 8px;
+    border-radius: 10px;
+}
+#TOC a:hover {
+    background-color: var(--theme-primary-dark);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 #body-wrap {
-    margin-left: calc(var(--nav-width) + 1rem);
+    margin-left: var(--nav-width);
+    padding-left: 1rem;
 }
 .centerer {
     display: flex;
@@ -58,9 +68,25 @@ html {
 #heading {
     font-size: 3rem;
     color: var(--theme-primary-dark);
-    margin: 0;
+    margin: 0 0 0 8px;
 }
 #logo {
     height: 3rem;
     width: 3rem;
+}
+#contents-text {
+    margin: 8px 0 0 0;
+    padding: 0 0 8px 0;
+    text-align: center;
+    border-bottom: 2px solid var(--theme-accent);
+}
+@media (max-width: 600px) {
+    #TOC {
+        height: inherit;
+        width: 100%;
+        position: static;
+    }
+    #body-wrap {
+        margin-left: 0;
+    }
 }
