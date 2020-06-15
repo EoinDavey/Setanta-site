@@ -4,10 +4,10 @@ BEGIN {
 {
     if ($0 ~ /^{{{$/) {
         block = 2;
-        print "<div class=\"editor-wrapper\"><mini-editor initial=\"";
+        print "<div class=\"centerer\"><div class=\"editor-wrapper\"><mini-editor initial=\"";
     } else if ($0 ~ /^}}}$/) {
         block = 0;
-        print "\"></mini-editor></div>\n";
+        print "\"></mini-editor></div></div>\n";
     } else if(block != 0) {
         $0 = escapeHTML($0);
         if (block == 1)
