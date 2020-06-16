@@ -1,6 +1,7 @@
 import { css, customElement, html, LitElement, TemplateResult } from "lit-element";
 import "@polymer/paper-icon-button/paper-icon-button";
 import "@polymer/iron-icons/iron-icons";
+import "./tooltip";
 import "../mini/mini";
 
 @customElement("tut-template")

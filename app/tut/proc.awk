@@ -15,7 +15,8 @@ BEGIN {
         print;
         block = 1;
     } else {
-        print $0 "\n";
+        a = gensub(/\[\[(.*)\|(.*)\]\]/, "<tut-tooltip alt=\"\\2\">\\1</tut-tooltip>", "g", $0)
+        print a "\n";
     }
 }
 function escapeHTML(t) {
