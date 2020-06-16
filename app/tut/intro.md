@@ -1,5 +1,5 @@
 ---
-title: Intro
+title: Setanta Tutorial Introduction
 ---
 
 ## Setanta Editors

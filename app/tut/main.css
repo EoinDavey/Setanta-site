@@ -24,9 +24,9 @@ html {
     list-style-type: none;
 }
 #TOC ul li:before { /* the custom styled bullets */
-  background-color: var(--theme-primary-dark);
-  border-radius: 50%;
-  content: "";
+  color: var(--theme-primary-dark);
+  content: "᚛";
+  font-weight: 900;
   display: inline-block;
   margin-right: 0.5rem;
   margin-bottom: 2px;
@@ -46,6 +46,10 @@ html {
     border: 1px solid var(--theme-accent);
     background-color: var(--offwhite);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+#TOC ul > li > ul {
+    border-left: 1px dashed var(--theme-primary);
+    margin-left: 0.25rem;
 }
 .centerer {
     display: flex;
