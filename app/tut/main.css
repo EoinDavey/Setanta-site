@@ -76,3 +76,8 @@ section.level2 > h2 {
     padding: 8px;
     margin: 8px 0 8px 0;
 }
+.play {
+    background-color: var(--theme-accent);
+    color: white;
+    border-radius: 100%;
+}

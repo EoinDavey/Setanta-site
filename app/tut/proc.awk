@@ -15,7 +15,7 @@ BEGIN {
         print;
         block = 1;
     } else {
-        a = gensub(/\[\[(.*)\|(.*)\]\]/, "<tut-tooltip alt=\"\\2\">\\1</tut-tooltip>", "g", $0)
+        a = gensub(/\[\[([^|]*)\|([^|]*)\]\]/, "<tut-tooltip alt=\"\\2\">\\1</tut-tooltip>", "g", $0)
         print a "\n";
     }
 }

@@ -1,6 +1,7 @@
 import { css, customElement, html, LitElement, TemplateResult } from "lit-element";
 import "@polymer/paper-icon-button/paper-icon-button";
-import "@polymer/iron-icons/iron-icons";
+import "@polymer/iron-icon/iron-icon";
+import "@polymer/iron-icons/av-icons.js";
 import "./tooltip";
 import "../mini/mini";
 
