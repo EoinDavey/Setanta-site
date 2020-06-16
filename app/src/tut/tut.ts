@@ -9,15 +9,17 @@ class Tut extends LitElement {
     static get styles() {
         return css`
 #body-wrap {
-    margin-left: var(--nav-width);
+    margin-left: calc(var(--nav-width) + 8px);
     padding-left: 1rem;
 }
 #sidebar {
     z-index: 1;
-    background-color: var(--theme-primary);
-    color: white;
-    height: 100%;
+    background-color: white;
+    border-radius: 10px;
+    height: calc(100% - 2 * 8px);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     width: var(--nav-width);
+    margin: 8px;
     position: fixed;
     top: 0;
     left: 0;
@@ -30,7 +32,6 @@ class Tut extends LitElement {
     justify-content: center;
     align-items: center;
     padding-top: 10px;
-    background-color: whitesmoke;
 }
 #heading {
     font-size: 3rem;
@@ -47,10 +48,12 @@ class Tut extends LitElement {
     justify-content: space-between;
     align-items: center;
     border-bottom: 2px solid var(--theme-accent);
+    border-top: 2px solid var(--theme-accent);
 }
 #contents-text {
     margin: 8px 0 0 16px;
     padding: 0 0 8px 0;
+    color: var(--theme-text-primary);
     text-align: center;
     flex-grow: 1;
 }
@@ -64,11 +67,12 @@ class Tut extends LitElement {
 @media (max-width: 600px) {
     #sidebar {
         height: inherit;
-        width: 100%;
+        width: calc(100% - 2 * 8px);
         position: static;
     }
     #body-wrap {
         margin-left: 0;
+        padding: 0 8px 0 8px;
     }
     #menu-button {
         display: inline-block;

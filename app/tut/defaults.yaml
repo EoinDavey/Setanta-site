@@ -9,3 +9,4 @@ css:
 
 table-of-contents: true
 template: "tut/template.html"
+section-divs: true

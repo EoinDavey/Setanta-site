@@ -9,6 +9,7 @@ body {
     --theme-text-secondary: #757575;
     --theme-divider: #BDBDBD;
     --nav-width: 18rem;
+    --offwhite: #f5f5f5;
     background: whitesmoke;
 }
 html {
@@ -19,26 +20,55 @@ html {
     width: 40rem;
     height: 20rem;
 }
-#TOC > ul {
-    margin-right: 8px;
+#TOC ul {
+    list-style-type: none;
 }
-#TOC li {
-    margin: 8px 0 8px 0;
+#TOC ul li:before { /* the custom styled bullets */
+  background-color: var(--theme-primary-dark);
+  border-radius: 50%;
+  content: "";
+  display: inline-block;
+  margin-right: 0.5rem;
+  margin-bottom: 2px;
+  height: 0.5rem;
+  width: 0.5rem;
 }
 #TOC a {
     font-size: 1.25rem;
     text-decoration: none;
-    color: white;
-    display: block;
-    padding: 2px 0 2px 8px;
+    padding: 2px 8px 2px 8px;
     border-radius: 10px;
+    border: 1px solid transparent;
+    color: var(--theme-text-primary);
+    display: inline-block;
 }
 #TOC a:hover {
-    background-color: var(--theme-primary-dark);
+    border: 1px solid var(--theme-accent);
+    background-color: var(--offwhite);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 .centerer {
     display: flex;
     flex-direction: row;
     justify-content: center;
+}
+section.level2 {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    padding: 8px;
+    margin: 8px 0 8px 0;
+}
+section.level2 > h2 {
+    text-align: center;
+    border-bottom: 1px solid var(--theme-divider);
+}
+#title-block-header {
+    text-align: center;
+    color: var(--theme-primary);
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    padding: 8px;
+    margin: 8px 0 8px 0;
 }
