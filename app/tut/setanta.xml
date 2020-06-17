@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE language SYSTEM "language.dtd">
+<language name="setanta" version="1" author="Eoin Davey">
+  <highlighting>
+    <list name="keywords">
+        <item>seo</item>
+        <item>tuis</item>
+        <item>le</item>
+        <item>bris</item>
+        <item>idir</item>
+        <item>chun-cinn</item>
+        <item>toradh</item>
+        <item>nuair-a</item>
+        <item>gniomh</item>
+        <item>gníomh</item>
+        <item>má</item>
+        <item>ma</item>
+        <item>nó</item>
+        <item>no</item>
+        <item>creatlach</item>
+    </list>
+    <list name="builtins">
+        <item>scríobh</item>
+        <item>scriobh</item>
+        <item>fad</item>
+        <item>thar</item>
+        <item>cuid</item>
+        <item>mata</item>
+        <item>codladh</item>
+        <item>stáitse</item>
+        <item>staitse</item>
+    </list>
+    <contexts>
+      <context attribute="Normal Text" lineEndContext="#stay" name="Normal">
+          <keyword attribute="Keyword" context="#stay" String="keywords"/>
+          <keyword attribute="Builtin Function" context="#stay" String="builtins"/>
+          <Float attribute="Number" context="#stay"/>
+          <StringDetect attribute="Comment" String="&gt;--" context="Comment"/>
+          <DetectChar attribute="String" context="QuotString" char="&quot;"/>
+          <DetectChar attribute="String" context="'String" char="'"/>
+      </context>
+      <context attribute="Comment" lineEndContext="#pop" name="Comment">
+          <StringDetect attribute="Comment" String="--&lt;" context="#pop"/>
+      </context>
+      <context attribute="String" lineEndContext="#stay" name="QuotString">
+          <DetectChar attribute="String" context="#pop" char="&quot;"/>
+      </context>
+      <context attribute="String" lineEndContext="#stay" name="'String">
+          <DetectChar attribute="String" context="#pop" char="'"/>
+      </context>
+    </contexts>
+    <itemDatas>
+        <itemData name="Normal Text" defStyleNum="dsNormal" spellChecking="false"/>
+        <itemData name="Keyword" defStyleNum="dsKeyword" spellChecking="false"/>
+        <itemData name="Builtin Function" defStyleNum="dsBuiltIn" spellChecking="false"/>
+        <itemData name="Number" defStyleNum="dsFloat" spellChecking="false"/>
+        <itemData name="Comment" defStyleNum="dsComment"/>
+        <itemData name="String" defStyleNum="dsString"/>
+    </itemDatas>
+  </highlighting>
+  <general>
+    <comments>
+    </comments>
+  </general>
+</language>
