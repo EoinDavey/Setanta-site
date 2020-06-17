@@ -81,3 +81,16 @@ section.level2 > h2 {
     color: white;
     border-radius: 100%;
 }
+figure {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+}
+figure > img {
+    max-width: 100%;
+}
+figure > figcaption {
+    border-bottom: 2px solid var(--theme-divider);
+    margin-bottom: 4px;
+}

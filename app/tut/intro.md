@@ -39,6 +39,10 @@ ainm := ceist("Cad is ainm duit?")
 scríobh("Dia duit", ainm)
 }}}
 
+### Demo 
+
+![Entering your name](assets/intro-name.gif)
+
 ## The Stage
 
 Each [[editor|eagarthóir]] has 2 tabs you can switch between. One that shows the console, and another that shows the [[stage|stáitse]].

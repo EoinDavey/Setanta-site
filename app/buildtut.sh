@@ -11,3 +11,4 @@ for f in tut/*.css; do
     fname=$(basename $f)
     cp $f tutout/$fname
 done;
+cp -r tut/assets tutout/assets
