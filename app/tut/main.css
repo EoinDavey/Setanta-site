@@ -17,7 +17,8 @@ html {
     color: var(--theme-text-primary);
 }
 .editor-wrapper {
-    width: 40rem;
+    max-width: 100%;
+    width: 50rem;
     height: 20rem;
 }
 #TOC ul {

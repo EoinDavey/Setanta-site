@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 if [ ! -d "tutout/" ]; then
-    mkdir tutout
+    mkdir -p tutout/assets
 fi
 for f in tut/*.md; do
     fname=$(basename -s .md $f)
@@ -11,4 +11,4 @@ for f in tut/*.css; do
     fname=$(basename $f)
     cp $f tutout/$fname
 done;
-cp -r tut/assets tutout/assets
+cp -r tut/assets/* tutout/assets/.

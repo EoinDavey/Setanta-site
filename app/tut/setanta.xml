@@ -34,6 +34,7 @@
       <context attribute="Normal Text" lineEndContext="#stay" name="Normal">
           <keyword attribute="Keyword" context="#stay" String="keywords"/>
           <keyword attribute="Builtin Function" context="#stay" String="builtins"/>
+          <Int attribute="Number" context="#stay"/>
           <Float attribute="Number" context="#stay"/>
           <StringDetect attribute="Comment" String="&gt;--" context="Comment"/>
           <DetectChar attribute="String" context="QuotString" char="&quot;"/>
