@@ -12,3 +12,4 @@ template: "tut/template.html"
 section-divs: true
 shift-heading-level-by: 1
 syntax-definition: "tut/setanta.xml"
+highlight-style: "tut/style.theme"

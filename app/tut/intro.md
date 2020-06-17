@@ -56,7 +56,7 @@ You should see a [[red circle|ciorcal dearg]].
 
 # Test snippet
 
-```setanta
+```{.setanta .numberLines}
 má creatlach 0.3 scríobh
 "string"
 'string two'
