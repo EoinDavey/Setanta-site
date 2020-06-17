@@ -42,7 +42,7 @@ html {
     color: var(--theme-text-primary);
     display: inline-block;
 }
-#TOC a:hover {
+#TOC a:hover, #bottom-next-link:hover {
     border: 1px solid var(--theme-accent);
     background-color: var(--offwhite);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
@@ -56,7 +56,7 @@ html {
     flex-direction: row;
     justify-content: center;
 }
-section.level2 {
+section.level2, #bottom-next-link {
     background: white;
     border-radius: 10px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
@@ -93,4 +93,26 @@ figure > img {
 figure > figcaption {
     border-bottom: 2px solid var(--theme-divider);
     margin-bottom: 4px;
+}
+.next-page-link {
+    display: flex !important;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 8px;
+}
+.next-page-link iron-icon {
+    color: var(--theme-primary);
+    margin-left: 1rem;
+}
+.next-subtitle {
+    color: var(--theme-text-secondary);
+    font-size: 1rem;
+}
+#bottom-next-link {
+    font-size: 1.5em;
+    text-decoration: none;
+    color: var(--theme-text-primary);
+    border: 1px solid transparent;
 }

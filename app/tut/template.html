@@ -41,6 +41,15 @@ $if(toc)$
         <h2 id="$idprefix$toc-title">$toc-title$</h2>
         $endif$
         $table-of-contents$
+        $if(next)$
+        <a class="next-page-link" href="$next$.html"><div>Next Page
+        $if(next-text)$
+        <div class="next-subtitle">$next-text$</div>
+        $endif$
+        </div>
+        <iron-icon icon="icons:arrow-forward"></iron-icon>
+        </a>
+        $endif$
     </nav>
     $endif$
     <div slot="body" id="body-slot-wrap">
@@ -59,6 +68,15 @@ $endif$
         </header>
 $endif$
 $body$
+        $if(next)$
+        <a id="bottom-next-link" class="next-page-link" href="$next$.html"><div>Next page
+        $if(next-text)$
+        <div class="next-subtitle">$next-text$</div>
+        $endif$
+        </div>
+        <iron-icon icon="icons:arrow-forward"></iron-icon>
+        </a>
+        $endif$
     </div>
 $for(include-after)$
 $include-after$

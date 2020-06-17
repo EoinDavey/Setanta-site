@@ -1,5 +1,7 @@
 ---
 title: Setanta Tutorial Introduction
+next: what-is-programming
+next-text: What is programming?
 ---
 
 # Following this tutorial
@@ -57,6 +59,10 @@ ciorcal@stáitse(200, 200, 100)
 }}}
 
 You should see a [[red circle|ciorcal dearg]].
+
+# Let's get started!
+
+Now that you've seen how to use the editors and translations, it's time to get started learning Setanta. You can move onto the next section by clicking the "Next Page" link in the contents panel, or by clicking the "Next Page" button at the bottom of the page.
 
 # Test snippet
 
