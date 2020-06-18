@@ -29,6 +29,9 @@
         <item>codladh</item>
         <item>stáitse</item>
         <item>staitse</item>
+        <item>uas</item>
+        <item>íos</item>
+        <item>ios</item>
     </list>
     <contexts>
       <context attribute="Normal Text" lineEndContext="#stay" name="Normal">
@@ -39,6 +42,7 @@
           <StringDetect attribute="Comment" String="&gt;--" context="Comment"/>
           <DetectChar attribute="String" context="QuotString" char="&quot;"/>
           <DetectChar attribute="String" context="'String" char="'"/>
+          <DetectChar attribute="Operator" context="#stay" char="@"/>
       </context>
       <context attribute="Comment" lineEndContext="#pop" name="Comment">
           <StringDetect attribute="Comment" String="--&lt;" context="#pop"/>
@@ -57,10 +61,10 @@
         <itemData name="Number" defStyleNum="dsFloat" spellChecking="false"/>
         <itemData name="Comment" defStyleNum="dsComment"/>
         <itemData name="String" defStyleNum="dsString"/>
+        <itemData name="Operator" defStyleNum="dsOperator"/>
     </itemDatas>
   </highlighting>
   <general>
-    <comments>
-    </comments>
+      <keywords additionalDeliminator="@"/>
   </general>
 </language>
