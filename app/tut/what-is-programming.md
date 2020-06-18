@@ -115,14 +115,14 @@ scríobh(bia)
 
 ## Challenge
 
-Change this code so that it writes [[`"ispíní"`|sausages]] on the console:
+Change this code so that it writes [[`"bainne"`{.setanta}|milk]] on the console:
 
 {{{
 bia := "sceallóga"
 scríobh(bia)
 }}}
 
-[[Click here for the answer|Change the first line to bia := &quot;ispíní&quot;]]
+[[Click here for the answer|Change the first line to bia := &quot;bainne&quot;]]
 
 # What's next?
 

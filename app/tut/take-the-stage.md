@@ -2,4 +2,4 @@
 title: Take the stage!
 ---
 
-# Actions
+# Lights, Camera Actions!

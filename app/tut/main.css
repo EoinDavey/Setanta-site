@@ -23,6 +23,12 @@ html {
 }
 #TOC ul {
     list-style-type: none;
+    flex-shrink: 0;
+}
+#TOC li {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
 }
 #TOC ul li:before { /* the custom styled bullets */
   color: var(--theme-primary-dark);
@@ -30,12 +36,11 @@ html {
   font-weight: 900;
   display: inline-block;
   margin-right: 0.5rem;
-  margin-bottom: 2px;
-  height: 0.5rem;
-  width: 0.5rem;
+  flex-shrink: 0;
 }
 #TOC a {
     font-size: 1.25rem;
+    max-width: calc(0.7 * var(--nav-width));
     text-decoration: none;
     padding: 2px 8px 2px 8px;
     border-radius: 10px;
