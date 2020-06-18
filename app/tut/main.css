@@ -102,6 +102,7 @@ figure > figcaption {
 }
 .next-page-link {
     display: flex !important;
+    max-width: 100% !important;
     flex-direction: row;
     justify-content: center;
     align-items: center;
