@@ -82,6 +82,8 @@ biggest := uas(3, 2)
 scríobh(biggest)
 }}}
 
+*Note that we could also write `scríobh(uas(3, 2))`{.setanta}, using the result of `uas`{.setanta} as the argument for `scríobh`{.setanta} directly*
+
 ### Example from before
 
 In our first intro to *Setanta* we saw this code:
@@ -118,7 +120,7 @@ Let's take at our first stage action "[[`ciorcal`{.setanta}|circle]]" which tran
 ciorcal@stáitse
 ```
 
-We'll see why we have to add the "`@stáitse`{.setanta}" part later on.
+We'll see why we have to add the "`@stáitse`{.setanta}" part [[later on|níos déanaí]].
 
 Try this code out:
 
@@ -127,3 +129,47 @@ ciorcal@stáitse(200, 200, 50)
 }}}
 
 **Remember that you can use the tabs to switch between the console and the stage**.
+
+You should see that this code drew a [[black circle|ciorcal dubh]] on the stage.
+
+![Drawing a black circle](assets/circle-black.gif)
+
+To understand what the arguments "`(200, 200, 50)`{.setanta}" mean, we'll take a look at [[coordinates|comhordanáidí]].
+
+## Coordinates
+
+Coordinates are a [[pair of numbers|péire uimhreacha]] that describe a [[point|pointe]] on the stage. Every point is described by a unique pair of numbers. For example, the top-left corner is the point (0, 0).
+
+The first number in the pair tells you how far to the [[right|ar dheis]] the point is, and the second number tells you how far [[down|síos]].
+
+E.g. The point (10, 20) can be found by starting in the top-left, moving 10 units to the right, and 20 units down.
+
+We call the horizontal [[direction|treo]] the "x" direction, and the vertical direction the "y" direction.
+
+When we call the `ciorcal` action, we pass in three arguments. The first is the "x" coordinate of the [[center|lár]] of the circle, the second is the "y" coordinate of the center, and the final argument is the [[radius|ga]]. So when we called `ciorcal@stáitse(200, 200, 50)`{.setanta} we were asking the *Setanta* interpreter to draw a circle on the stage, with the center at (200, 200) and radius 50.
+
+![Circle coords](assets/circle-coords.png)
+
+## Colours
+
+What if want to use different [[colours|dathanna]]? Luckily *Setanta* has an action just for that!
+
+The "[[`dath`|colour]]" action can be used to change the colour of the [[pen|peann]]. As with the `ciorcal` action we call it with `dath@stáitse`{.setanta}. The `dath` action takes 1 argument, the colour you want to change to.
+
+```{.setanta .numberLines}
+dath@stáitse("dearg")
+dath@stáitse("buí")
+```
+
+By changing our earlier code to first change the colour to [[green|glas]], we get a green circle instead:
+
+{{{s
+dath@stáitse("glas")
+ciorcal@stáitse(200, 200, 50)
+}}}
+
+The `dath` action accepts colours in Irish and English, but also [HTML colour codes](https://htmlcolorcodes.com/)
+
+## Other actions
+
+You're not just limited to drawing circles! *Setanta* has a host of other actions to allow you to draw other shapes. We'll see more of them throughout the tutorial, but if you'd like to see the [[full list|liosta iomlán]] you can find it in [English here](https://docs.try-setanta.ie/en-docs/stage) or [in Irish here](https://docs.try-setanta.ie/ga-docs/st%C3%A1itse).
