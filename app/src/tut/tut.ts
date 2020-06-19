@@ -29,6 +29,7 @@ class Tut extends LitElement {
     transition: 0.5s;
 }
 #heading-wrapper {
+    text-decoration: none;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -86,10 +87,10 @@ class Tut extends LitElement {
     public render(): TemplateResult {
         return html`
         <div id="sidebar">
-            <div id="heading-wrapper">
+            <a id="heading-wrapper" href="/">
                 <img id="logo" src="/assets/logo.svg"></img>
                 <h1 id="heading">Setanta</h1>
-            </div>
+            </a>
             <div id="contents-hdr-wrap">
                 <h2 id="contents-text">Contents</h2>
                 <paper-icon-button id="menu-button" icon="icons:menu" @click="${this.toggleToc}">
