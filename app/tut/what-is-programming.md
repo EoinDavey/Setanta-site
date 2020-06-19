@@ -49,6 +49,23 @@ Change the text "Put your text here" to something else and run the code. See if 
 
 ![Changing scríobh text](assets/change-scriobh-text.gif)
 
+### What if I can't type "í"?
+**_Setanta_ understands that you might not know how to type fadas (áéíóú), so all of *Setanta*s built-in actions and keywords work just as well without the fadas.**
+
+Try replacing `scríobh`{.setanta} with `scriobh`{.setanta} (no fada) in the code above and you'll see that it still works.
+
+### What if I want to use a double quotes (") in my text?
+
+You have two options to use a double quote in your text, the first is to "escape" the double quote with a "`\`" symbol, like this:
+
+```{.setanta .numberLines}
+"This text has \"double quotes\" in it"
+```
+
+The second option is to use single quotes (') to define your text, like this:
+```{.setanta .numberLines}
+'This text has "double quotes" in it'
+```
 ## Calculations
 
 We've seen that *Setanta* can write text, but we can do much more than that. [[For example|Mar shampla]], *Setanta* can do [[calculations|áirimh]] for you! Run this code and see how *Setanta* does all the [[maths|matamaitic]] for you.

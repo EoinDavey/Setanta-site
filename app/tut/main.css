@@ -87,6 +87,9 @@ section.level2 > h2 {
     color: white;
     border-radius: 100%;
 }
+.clear {
+    color: var(--theme-accent);
+}
 figure {
     display: flex;
     flex-direction: column-reverse;

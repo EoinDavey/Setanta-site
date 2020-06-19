@@ -41,6 +41,8 @@ ainm := ceist("Cad is ainm duit?")
 scríobh("Dia duit", ainm)
 }}}
 
+Click on the <iron-icon class="clear" icon="icons:clear"></iron-icon> button to clear the console.
+
 ### Demo 
 
 ![Entering your name](assets/intro-name.gif)
@@ -59,6 +61,8 @@ ciorcal@stáitse(200, 200, 100)
 }}}
 
 You should see a [[red circle|ciorcal dearg]].
+
+![Red Circle](assets/circle-red.gif)
 
 # Let's get started!
 
