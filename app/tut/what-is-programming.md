@@ -11,7 +11,7 @@ Before we start [[learning|ag foghlaim]] how to write and use *Setanta*, we shou
 
 [[Computers|Ríomhairí]] today are very [[smart|cliste]], they can do calculations no human could ever do in their head, and in the blink of an eye. However, computers need a lot of [[help|cabhair]], and programming is how we help them.
 
-When we write programs, we write down [[instructions|treoracha]] for the computer to follow. The computer will read our instructions and follow them exactly.
+When we write programs, we write down [[instructions|treoracha]] for the computer to [[follow|leanúint]]. The computer will read our instructions and follow them exactly.
 
 ### What's a programming language?
 
@@ -56,13 +56,13 @@ Try replacing `scríobh`{.setanta} with `scriobh`{.setanta} (no fada) in the cod
 
 ### What if I want to use a double quotes (") in my text?
 
-You have two options to use a double quote in your text, the first is to "escape" the double quote with a "`\`" symbol, like this:
+You have two [[options|roghanna]] to use a double quote in your text, the first is to "[[escape|éalaigh]]" the double quote by writing "`\"`", like this:
 
 ```{.setanta .numberLines}
 "This text has \"double quotes\" in it"
 ```
 
-The second option is to use single quotes (') to define your text, like this:
+The [[second option|dara rogha]] is to use single quotes (') to define your text, like this:
 ```{.setanta .numberLines}
 'This text has "double quotes" in it'
 ```
@@ -87,6 +87,19 @@ You can also use [[brackets|lúibíní]] to build up [[complicated|casta]] expre
 
 You can also use numbers with decimal points, such as `1.2`{.setanta} or `123.4`{.setanta}
 
+## Comments
+
+[[Sometimes|Uaireanta]] we want to write things in our programs that we don't want the computer to try and understand.
+Often these are just little [[notes|notaí]] to ourselves, or [[explanations|mínithe]] of what something does.
+
+[[Luckily|Ar an dea-uair]] there's a way to do this. If we write "`>--`{.setanta}" anywhere in the program, anything we write after it on the same line will be ignored by the computer. We call these entries [[comments|tráchtanna]]. Here's an example:
+
+{{{
+scríobh("Write me")
+>-- The computer will ignore this :o
+}}}
+
+The computer only [[pays attention|tugann aird ar]] to the first line, and ignores the second.
 
 # Combining Instructions
 
@@ -98,16 +111,16 @@ codladh(2000)
 scríobh("After sleeping")
 }}}
 
-If you run this code, it will first print "Before sleeping", then it will pause for 2 seconds and print "After sleeping". This is because we used the [[`codladh`{.setanta}|sleep]] action.  "Codladh" translates into English as "sleep". We use `codladh`{.setanta} when we want the computer to wait for a while before moving on to the next instruction.
+If you run this code, it will first print "[[Before sleeping|Roimh chodladh]]", then it will pause for 2 seconds and print "[[After sleeping|Tar éis codlata]]". This is because we used the [[`codladh`{.setanta}|sleep]] action.  "Codladh" translates into English as "sleep". We use `codladh`{.setanta} when we want the computer to [[wait|fán]] for a while before moving on to the next instruction.
 
 The `codladh`{.setanta} action takes a number of milliseconds (in this case 2000), and when the computer reaches the `codladh`{.setanta} instruction, it will wait for that many milliseconds before proceeding.
 
 The steps the computer takes are:
 
-1. Read the first line "`scríobh("Before sleeping")`{.setanta}" and write "Before sleeping" on the console as instructed.
-2. Read the second line "`codladh(2000)`{.setanta}" and sleep for 2000 milliseconds (2 seconds).
+1. [[Read|Léigh]] the first line "`scríobh("Before sleeping")`{.setanta}" and write "Before sleeping" on the console as instructed.
+2. Read the second line "`codladh(2000)`{.setanta}" and sleep for 2000 [[milliseconds|milleasoicindí]] (2 [[seconds|soicindí]]).
 3. Read the third line "`scríobh("After sleeping")`{.setanta}" and write "After sleeping" on the console.
-4. Finished.
+4. [[Finished|Críochnaithe]].
 
 # Variables
 
