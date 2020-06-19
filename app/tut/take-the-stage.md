@@ -1,5 +1,7 @@
 ---
 title: Take the stage!
+next: decision-time
+next-text: It's decision time
 ---
 
 # Lights, Camera Actions!
