@@ -2,9 +2,13 @@ BEGIN {
     ORS=""
 }
 {
-    if ($0 ~ /^{{{$/) {
+    if ($0 ~ /^{{{/) {
         block = 2;
-        print "<div class=\"centerer\"><div class=\"editor-wrapper\"><mini-editor initial=\"";
+        if ($0 ~ /^{{{s$/) {
+            print "<div class=\"centerer\"><div class=\"editor-wrapper\"><mini-editor stageopen initial=\"";
+        } else {
+            print "<div class=\"centerer\"><div class=\"editor-wrapper\"><mini-editor initial=\"";
+        }
     } else if ($0 ~ /^}}}$/) {
         block = 0;
         print "\"></mini-editor></div></div>\n";

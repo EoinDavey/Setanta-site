@@ -8,7 +8,7 @@
     "clean": "rm -rf jsbuild dist tutout",
     "test": "tslint --project . -c tslint.json",
     "local": "GOOGLE_APPLICATION_CREDENTIALS=\"google-creds.json\" dev_appserver.py --port=8081  app.yaml",
-    "local-light": "tsc && webpack-dev-server",
+    "local-light": "tsc && webpack-dev-server --host=0.0.0.0",
     "diff": "git diff -- . ':(exclude)package-lock.json'",
     "build-tut": "./buildtut.sh"
   },

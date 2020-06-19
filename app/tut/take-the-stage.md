@@ -122,7 +122,7 @@ We'll see why we have to add the "`@stáitse`{.setanta}" part later on.
 
 Try this code out:
 
-{{{
+{{{s
 ciorcal@stáitse(200, 200, 50)
 }}}
 
