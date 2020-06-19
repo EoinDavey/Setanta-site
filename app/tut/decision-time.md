@@ -78,6 +78,8 @@ On line 6 we filled in `scríobh("Dia duit", ainm)`{.setanta} as the code to run
 
 To test your [[understanding|tuiscint]], try and change the following program so that it writes "[[Chocolate is the best|Is é seacláid an ceann is fearr]]" if the user says "[[Chocolate|Seacláid]]" is their favourite food, but says "[[I love that food|Is aoibhinn liom an bia sin]]" if they say something else.
 
+**Remember that *Setanta* doesn't require you to type the fadas, so you can type `ma`{.setanta} or `no`{.setanta} if you need to**
+
 {{{
 fav_food := ceist("What's your favourite food?")
 
@@ -115,3 +117,35 @@ scríobh(100 <replace-me> 20 * 6 - 18 * (2 * 1/2))
 [[Click here to see the answer|scríobh(100 &lt; 20 * 6 - 18 * (2 * 1/2))]].
 
 You should see that the code prints "fíor", which is correct.
+
+# Chaining
+
+You can combine `má`{.setanta} and `nó`{.setanta} into one statement to chain together `má`{.setanta} statements. This allows you to check different conditions one after the other, with the first successful check being executed.
+
+For example; Here is some code that asks the user for their [[age|aois]], and tells them if they are an [[adult|duine fásta]], a [[teenager|déagóir]] or a [[child|páiste]]. 
+
+{{{
+aois := go_uimh(ceist("Cén aois thú?"))
+
+má aois > 18 {
+    scríobh("Is duine fásta thú")
+} nó má aois >= 13 {
+    scríobh("Is déagóir thú")
+} nó {
+    scríobh("Is páiste thú")
+}
+}}}
+
+Try it out with some different ages, try an adult age, a teenager age and a child's age!
+
+## Explained
+
+There are a few things to notice about that program. First thing we should explain is the first line. We used the `go_uimh` action, which we haven't seen before.
+
+`go_uimh` is shorthand for "[[go uimhir|to number]]" which means "to number". This action takes text and converts it to a number. In our case, the `ceist` action returns the text the user typed. We need to turn it into a number so that we can compare it with 18 and 13 to decide if they are an adult, a teenager or a child. In our case, the `ceist` action returns the text the user typed. We need to turn it into a number so that we can compare it with 18 and 13 to decide if they are an adult, a teenager or a child.
+
+After the user has given us their age, it gets stored in the `aois` variable, and the computer moves on to the `má`{.setanta} statement.
+
+1. First it checks if `aois` is greater than 18. If it is, it will write [[`"Is duine fásta thú"`{.setanta}|You're an adult]] and then skip to the end of the statement.
+2. If the first check failed, the computer will try the next check, which is checking if `aois` is greater than *or equal to* 13. If that's true then it will write [[`"Is déagóir thú"`{.setanta}|You're a teenager]] and skip to the end of the statement.
+3. Finally if both of those checks failed, then the user must be younger than 13, so it prints [[`"Is páiste thú"`{.setanta}|You're a child]].
