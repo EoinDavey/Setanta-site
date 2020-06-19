@@ -86,7 +86,7 @@ fav_food := ceist("What's your favourite food?")
 scríobh("I love that food")
 }}}
 
-**TODO**
+[[Click here to see the answer |má fav_food == &quot;Chocolate&quot; { scríobh(&quot;Chocolate is the best&quot;) } nó { scríobh(&quot;I love that food&quot;) }]]
 
 # Comparisons
 
