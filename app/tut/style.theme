@@ -4,6 +4,13 @@
     "line-number-color": "#aaaaaa",
     "line-number-background-color": null,
     "text-styles": {
+        "Other": {
+            "text-color": "#221199",
+            "background-color": null,
+            "bold": false,
+            "italic": false,
+            "underline": false
+        },
         "String": {
             "text-color": "#aa1111",
             "background-color": null,

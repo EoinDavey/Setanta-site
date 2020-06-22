@@ -33,10 +33,19 @@
         <item>íos</item>
         <item>ios</item>
     </list>
+    <list name="values">
+        <item>fíor</item>
+        <item>fior</item>
+        <item>bréag</item>
+        <item>breag</item>
+        <item>neamhní</item>
+        <item>neamhni</item>
+    </list>
     <contexts>
       <context attribute="Normal Text" lineEndContext="#stay" name="Normal">
           <keyword attribute="Keyword" context="#stay" String="keywords"/>
           <keyword attribute="Builtin Function" context="#stay" String="builtins"/>
+          <keyword attribute="Value Literal" context="#stay" String="values"/>
           <Int attribute="Number" context="#stay"/>
           <Float attribute="Number" context="#stay"/>
           <StringDetect attribute="Comment" String="&gt;--" context="Comment"/>
@@ -59,6 +68,7 @@
         <itemData name="Normal Text" defStyleNum="dsNormal" spellChecking="false"/>
         <itemData name="Keyword" defStyleNum="dsKeyword" spellChecking="false"/>
         <itemData name="Builtin Function" defStyleNum="dsBuiltIn" spellChecking="false"/>
+        <itemData name="Value Literal" defStyleNum="dsOthers" spellChecking="false"/>
         <itemData name="Number" defStyleNum="dsFloat" spellChecking="false"/>
         <itemData name="Comment" defStyleNum="dsComment"/>
         <itemData name="String" defStyleNum="dsString"/>
