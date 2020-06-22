@@ -21,7 +21,7 @@ When we use an action, we say we are [["calling"|ag glaoch ar]] it. Remember how
 scríobh("Write me on the console")
 ```
 
-When the *Setanta* interpreter reads `scríobh("Write me on the console")`{.setanta} it knows to call the `scríobh` action, and to pass it the text `"Write me on the console"`{.setanta}.
+When the *Setanta* interpreter reads "`scríobh("Write me on the console")`{.setanta}" it knows to call the `scríobh`{.setanta} action, and to pass it the text `"Write me on the console"`{.setanta}.
 
 The text in the brackets is called an [[*argument*|argóint]]. In the code above, the text `"Write me on the console"`{.setanta} is the argument to `scríobh`{.setanta}.
 
@@ -38,7 +38,7 @@ causing the program to sleep for 2 seconds.
 
 Some actions in *Setanta* can take more than 1 argument. When we pass in more than 1 argument we use a [[comma|camóg]] ("`,`") to separate them.
 
-For example: The `scríobh`{.setanta} action can take as many arguments as we want, and it will write them all out with a [[space|spás]] in between them. Try it out here:
+For example: The `scríobh`{.setanta} action can take as many arguments as we want, and it will write them all out with a [[space|spás]] [[in between them|eatarthu]]. Try it out here:
 
 {{{
 scríobh("First-argument", "second-argument")
