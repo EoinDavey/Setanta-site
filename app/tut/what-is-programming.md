@@ -87,6 +87,14 @@ You can also use [[brackets|lúibíní]] to build up [[complicated|casta]] expre
 
 You can also use numbers with decimal points, such as `1.2`{.setanta} or `123.4`{.setanta}
 
+### Adding text
+
+We can also use the `+` operator to add two pieces of text together. Try it out:
+
+{{{
+scríobh("Dia" + " Duit")
+}}}
+
 ## Comments
 
 [[Sometimes|Uaireanta]] we want to write things in our programs that we don't want the computer to try and understand.
@@ -100,6 +108,12 @@ scríobh("Write me")
 }}}
 
 The computer only [[pays attention|tugann aird ar]] to the first line, and ignores the second.
+
+Comments usually go until the end of the line, but we can end a comment early by typing "`--<`", these comments are called *inline comments*.
+
+```{.setanta .numberLines}
+scríobh(1 + >-- Inline comment --< 2)
+```
 
 # Combining Instructions
 
@@ -128,6 +142,8 @@ One of the most [[important|tábhachtach]] abilities that a computer has is [[me
 
 A variable is like a container that we can put a value inside. We can name the container and use the name when we want to refer to the container.
 
+## Making variables
+
 To make a new variable we use the "`:=`{.setanta}" symbol. For example
 
 ```{.setanta .numberLines}
@@ -142,6 +158,39 @@ Try it out now!
 bia := "sceallóga"
 scríobh(bia)
 }}}
+
+## Updating variables
+
+When you make a variable, it's value is not fixed forever. You can change the value of the variable throughout your program. When we want to change the value of a variable we use a single equals sign (`=`). This is different from the `:=` symbol used to make a new variable.
+
+Try running this program here:
+
+{{{
+>-- Make a variable "ainm" with the value "Setanta"
+ainm := "Setanta"
+scríobh(ainm)
+>-- Change the value of "ainm" to be "Cú Chulainn"
+ainm = "Cú Chulainn"
+scríobh(ainm)
+}}}
+
+Notice how the first time `ainm` is printed, the value is `"Setanta"`{.setanta}, but the second time it is `"Cú Chulainn"`{.setanta}. This is because the value of the variable has been changed.
+
+We can actually make reference to the old value of a variable when we update a variable. Take a look at this code:
+
+{{{
+x := 2
+x = x + 10
+scríobh(x)
+}}}
+
+When this code is ran it writes 12 on the console.
+
+### Explanation
+
+1. The first line creates a new variable called `x`, with the value 2.
+2. The second line tries to update `x` with a new value, which it gets by calculating `x + 10`{.setanta}. This evaluates to 12 because the current value of `x` is 2. We then store this new value of 12 into the variable `x`.
+3. The third line then writes the value of `x` on the console, which is now 12.
 
 ## Challenge
 
