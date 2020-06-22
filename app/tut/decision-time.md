@@ -1,5 +1,6 @@
 ---
 title: It's decision time
+next: lists
 ---
 
 # Lets make a choice.
@@ -90,7 +91,15 @@ scríobh("I love that food")
 
 [[Click here to see the answer |má fav_food == &quot;Chocolate&quot; { scríobh(&quot;Chocolate is the best&quot;) } nó { scríobh(&quot;I love that food&quot;) }]]
 
-# Comparisons
+# Booleans
+
+*Setanta* has two special values, called **booleans** (named after George Boole who was professor of Mathematics at University College Cork). Those values are [[`fíor`{.setanta}|true]] and `bréag`{.setanta}. (As usual you can ignore the fadas and type `fior`{.setanta} or `breag`{.setanta})
+
+"[[`fíor`{.setanta}|true]]" translates as "true" and "`bréag`{.setanta}" is short for "[[bréagach|false]]" which translates as "false".
+
+The results of expressions like `x == "Setanta"`{.setanta} are booleans.
+
+## Comparisons
 
 We used the `==` operator to check equality in our earlier example, but we can do much more.
 
@@ -105,6 +114,16 @@ We used the `==` operator to check equality in our earlier example, but we can d
 `>=`        Check if the left value is greater *or equal to* the right.
 `<=`        Check if the left value is less *or equal to* the right.
 
+Using these operators gives `fíor`{.setanta} if the check is true, and `bréag`{.setanta} if the check is false.
+
+Try running this code:
+
+{{{
+scríobh(5 <= 3)
+}}}
+
+You can see that it prints "bréag" on the console. This is because 5 is not less than or equal to 3.
+
 ## Challenge
 
 Here is some partially filled out *Setanta* code. [[Replace|Athchuir]] the "&lt;replace-me&gt;" text with the [[correct|ceart]] operator to check if `100`{.setanta} is less than
@@ -117,6 +136,64 @@ scríobh(100 <replace-me> 20 * 6 - 18 * (2 * 1/2))
 [[Click here to see the answer|scríobh(100 &lt; 20 * 6 - 18 * (2 * 1/2))]].
 
 You should see that the code prints "fíor", which is correct.
+
+## And/Or/Not
+
+What if we want to check more than [[one thing|rud amháin]], for example, what if we want to check if an age is either greater than 20, or less than 10. How do we combine checks?
+
+We do this with three [[powerful|cumhachtach]] operators called "[[and|agus]]" (`&`), "[[or|nó]]" (`|`) and "[[not|]]" (`!`).
+
+### And
+
+The `&` operator is the "and" operator. It returns `fíor`{.setanta} if both sides are true. For example:
+
+{{{
+scríobh("hello" == "hello" & 5 > 2)
+scríobh("hello" == "hello" & 5 > 6)
+scríobh("hello" == "goodbye" & 5 > 2)
+scríobh("hello" == "goodbye" & 5 > 6)
+}}}
+
+If you run this code you will see that it prints "fíor", then "bréag" and then "bréag" again.
+
+This is because:
+
+1. On the first line, both `"hello" == "hello"`{.setanta} **and** `5 > 2`{.setanta} are true, so the result is true (`fíor`{.setanta}).
+2. On the second line, `"hello" == "hello"`{.setanta} is still true, but, `5 > 6`{.setanta} is not true. So the result is false (`bréag`{.setanta}).
+3. On the third line, `"hello" == "goodbye"`{.setanta} is not true. So we know both sides aren't true, and the result must be `bréag`{.setanta} again.
+4. On the third line, `"hello" == "goodbye"`{.setanta} is not true and `5 > 6`{.setanta} is not true. So we know both sides aren't true, and the result must be `bréag`{.setanta} again.
+
+### Or
+
+The `|` operator is the "or" operator. It returns `fíor`{.setanta} if either side is true. For example:
+
+{{{
+scríobh("hello" == "hello" | 5 > 2)
+scríobh("hello" == "hello" | 5 > 6)
+scríobh("hello" == "goodbye" | 5 > 2)
+scríobh("hello" == "goodbye" | 5 > 6)
+}}}
+
+If you run this code you'll see that it prints "fíor", then "fíor", then "fíor", and finally "bréag".
+
+This is because:
+
+1. On the first line, both `"hello" == "hello"`{.setanta} and `5 > 2`{.setanta} are true, so the result is true (`fíor`{.setanta}).
+2. On the second line, `"hello" == "hello"`{.setanta} is true, and `5 > 6`{.setanta} is false. But as at least one of them is true, the final answer is `fíor`{.setanta}.
+3. On the third line, `"hello" == "goodbye"`{.setanta} is false, and `5 > 2`{.setanta} is true. But as at least one of them is true, the final answer is `fíor`{.setanta}.
+4. On the fourth line, `"hello" == "goodbye"`{.setanta} is false, and `5 > 6`{.setanta} is false. As neither of them are true, the final answer is `bréag`{.setanta}.
+
+### Not
+
+The [[final|deireanach]] operator for booleans we'll look at is the "not" (`!`{.setanta}) operator. The `!` operator is very simple. It takes a boolean and inverts it. So `!fíor`{.setanta} is `bréag`{.setanta} and `!bréag`{.setanta} is `fíor`{.setanta}.
+
+We can use this to check that something is false:
+
+{{{
+má !(6 > 10) {
+    scríobh("6 is not greater than 10")
+}
+}}}
 
 # Chaining
 
@@ -148,4 +225,4 @@ After the user has given us their age, it gets stored in the `aois` variable, an
 
 1. First it checks if `aois` is greater than 18. If it is, it will write [[`"Is duine fásta thú"`{.setanta}|You're an adult]] and then skip to the end of the statement.
 2. If the first check failed, the computer will try the next check, which is checking if `aois` is greater than *or equal to* 13. If that's true then it will write [[`"Is déagóir thú"`{.setanta}|You're a teenager]] and skip to the end of the statement.
-3. Finally if both of those checks failed, then the user must be younger than 13, so it prints [[`"Is páiste thú"`{.setanta}|You're a child]].
+3. Finally if both of those checks failed, then the user must be [[younger|níos óige]] than 13, so it prints [[`"Is páiste thú"`{.setanta}|You're a child]].
