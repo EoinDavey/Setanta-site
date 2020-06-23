@@ -20,6 +20,15 @@ scríobh([1, 2, 3])
 
 [[Click here to see the answer.|scríobh([1, 2, 3, 4])]]
 
+In that example [[we saw|chonaiceamar]] a list of numbers, but you can make a list out of whatever you like! Text, numbers, booleans, other lists, you name it. You can even mix and match in the same list.
+
+```{.setanta .numberLines}
+[1, 2, 3] >-- Numbers
+["Hello", "Goodbye"] >-- Text
+[["List", "inside"], ["a", "list"]] >-- Lists of lists
+[10, fíor, "Dia duit"] >-- Mix up the types
+```
+
 ## Joining lists
 
 Lists can be [[joined together|ceangailte le chéile]] with the "`+`" operator, just like text and numbers.
@@ -89,6 +98,15 @@ scríobh(fad@[1, 2, 3])
 }}}
 
 *([[We will see|feicfimid]] what the "@" symbol does in the future)*
+
+This can be very useful if we want to get the [[*last* element|ball deireanach]] of the list. Remember that this will be at index `fad@our_list - 1`. Try it out here:
+
+{{{
+>-- Create a new list called "x"
+x := ["Setanta", "is", "fun"]
+>-- Access the last element (index fad@x - 1)
+scríobh(x[fad@x - 1])
+}}}
 
 # Loop-de-loop
 
