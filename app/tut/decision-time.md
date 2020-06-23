@@ -1,6 +1,7 @@
 ---
 title: It's decision time
 next: lists
+next-text: Lists 's loops
 ---
 
 # Lets make a choice.
