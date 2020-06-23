@@ -162,3 +162,81 @@ This continues for 2, 3 and 4.
 Finally after *Setanta* runs the code for `4`{.setanta} it increases the value of `i` to `5`{.setanta}. Now however it checks if `i` is equal to the finish value, and this time it is. This tells *Setanta* that we are finished, so it exits the loop and continues on to the next statement.
 
 The next statement is `scríobh("Finished")`{.setanta}, so it writes "Finished" on the console. This is the last statement so the program finishes.
+
+## List print
+
+Now that we can use *le idir* loops, we can use them to loop over each element of a list with ease. Try this code out:
+
+{{{
+my_list := [1, 2, 3, 4, 5]
+le i idir (0, fad@my_list) {
+    scríobh(my_list[i])
+}
+}}}
+
+This code prints out every element of a list. It does this by using a *le idir* loop from 0 up to the length of the list, using the loop variable to access the list elements and using `scríobh`{.setanta} to write them on the console.
+
+## List sum
+
+Let's explore how we could [[add up|suimigh]] all the elements of a list of numbers. We should start with our code from before to loop over all the element of the list
+
+```{.setanta .numberLines}
+>-- Start with some list
+my_list := [11, 12, 13, 14, 15]
+
+>-- Use le idir loop to loop over the elements
+le i idir (0, fad@my_list) {
+}
+```
+
+Now we can make a new variable to store the [[sum|suim]] of the elements. This variable starts out with the value 0.
+
+```{.setanta .numberLines}
+>-- Start with some list
+my_list := [11, 12, 13, 14, 15]
+
+>-- A variable to store the sum of the elements.
+sum := 0
+
+>-- Use le idir loop to loop over the elements
+le i idir (0, fad@my_list) {
+}
+```
+
+Then for each element of the list we can add it's value to the sum with `sum = sum + my_list[i]`{.setanta}
+
+```{.setanta .numberLines}
+>-- Start with some list
+my_list := [11, 12, 13, 14, 15]
+
+>-- A variable to store the sum of the elements.
+sum := 0
+
+>-- Use le idir loop to loop over the elements
+le i idir (0, fad@my_list) {
+    sum = sum + my_list[i]
+}
+```
+
+Now we just add our final line `scríobh(sum)`{.setanta} to write the sum of the list on the console. Try out the final code!
+
+{{{
+>-- Start with some list
+my_list := [11, 12, 13, 14, 15]
+
+>-- A variable to store the sum of the elements.
+sum := 0
+
+>-- Use le idir loop to loop over the elements
+le i idir (0, fad@my_list) {
+    sum = sum + my_list[i]
+}
+
+scríobh(sum)
+}}}
+
+### Bonus shorthand
+
+We used `sum = sum + my_list[i]` to add `my_list[i]` to the sum variable. *Setanta* has a shorthand for this common problem, the `+=` operator. We can just write `sum += my_list[i]` to add `my_list[i]` to the sum.
+
+There is also `*=`, `-=` and `/=` for [[multiplication|iolrú]], [[subtraction|dealú]] and [[division|roinnt]] respectively.
