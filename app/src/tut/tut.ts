@@ -28,6 +28,8 @@ class Tut extends LitElement {
     left: 0;
     overflow-x: hidden;
     transition: 0.5s;
+    display: flex;
+    flex-direction: column;
 }
 #heading-wrapper {
     text-decoration: none;
@@ -36,6 +38,7 @@ class Tut extends LitElement {
     justify-content: center;
     align-items: center;
     padding-top: 10px;
+    flex: none;
 }
 #heading {
     font-size: 3rem;
@@ -53,6 +56,12 @@ class Tut extends LitElement {
     align-items: center;
     border-bottom: 2px solid var(--theme-accent);
     border-top: 2px solid var(--theme-accent);
+    flex: none;
+}
+#toc-wrap {
+    flex-grow: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 #contents-text {
     margin: 8px 0 0 16px;
