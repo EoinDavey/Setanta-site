@@ -76,6 +76,6 @@
     </itemDatas>
   </highlighting>
   <general>
-      <keywords additionalDeliminator="@"/>
+      <keywords additionalDeliminator="@" weakDeliminator="-"/>
   </general>
 </language>
