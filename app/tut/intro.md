@@ -64,6 +64,10 @@ You should see a [[red circle|ciorcal dearg]].
 
 ![Red Circle](assets/circle-red.gif)
 
+# try-setanta.ie/editor
+
+The editors that we'll use in the tutorial are small versions of the try-setanta.ie main editor. If you'd like to try out your code on a bigger screen, or save your code and share it with others, you should visit [try-setanta.ie/editor](https://try-setanta.ie/editor).
+
 # Let's get started!
 
 Now that you've seen how to use the editors and translations, it's time to get started learning Setanta. You can move onto the next section by clicking the "Next Page" link in the contents panel, or by clicking the "Next Page" button at the bottom of the page.
