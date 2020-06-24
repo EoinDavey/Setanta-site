@@ -245,6 +245,8 @@ There is also `*=`, `-=` and `/=` for [[multiplication|iolrú]], [[subtraction|d
 
 Let's combine what we've seen before with our [[new knowledge|eolas nua]] and make some [[art|ealaín]]. Let's make a program where the user can input a number of circles that they would like, and the program will [[randomly|go randamach]] [[draw|tarraing]] that many circles all over the stage, with random [[positions|áiteanna]] and [[sizes|méideanna]].
 
+![Let's draw some circles](assets/circle-art.png)
+
 There are a few new actions and values we'll have to look at before we start.
 
 ## Random
