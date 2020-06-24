@@ -1,7 +1,7 @@
 ---
 title: Lists 'n Loops
 next: nuair-a
-next-text: Stop when I say so
+next-text: In the Loop
 ---
 
 # Lists
