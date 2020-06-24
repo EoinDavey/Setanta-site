@@ -15,10 +15,15 @@
 
 # Src files
 /src/
+/tut/
 /demos/
 /jsbuild/
 /node_modules/
 /test/
+
+# Build files
+/tutout/
+/assets/
 
 # Binaries for programs and plugins
 *.exe
