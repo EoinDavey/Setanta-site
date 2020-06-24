@@ -77,3 +77,124 @@ nuair-a fíor {
     coladh(2000)
 }
 }}}
+
+# Nesting
+
+Loops can contain any code you like, including other loops! These are known as [[*nested loops*|lúba neadaithe]].
+
+Each time the outer loop does one loop, the inner loop will run until it's finished. This can be used to get some complicated behaviour.
+
+## Example
+
+Let's look at the simplest example of nested loops, one loop inside the other:
+
+{{{
+le i idir (0, 3) {
+    le j idir (0, 3) {
+        scríobh("Outer:", i, "Inner:", j)
+    }
+}
+}}}
+
+Both of these loops start at 0 and run up to 3. Each iteration of the inner loop prints out the current value of `i`, the outer loop variable, and `j`, the inner loop variable.
+
+If you run the code you will see that the inner loop goes through each of it's values (0, 1, and 2) for each value of the outer loop.
+
+## Colour cycle
+
+This technique can be used for many things. For example, say we have a list of colours, and a list of sizes, we can draw a circle of each colour, and each size by using nested loops.
+
+Let's start with our list of colours and one *le idir* loop to loop through the colours:
+
+```{.setanta .numberLines}
+colours := ["glas", "buí", "bándearg", "gorm"]
+
+>-- Outer loop loops through the colours
+le i idir (0, fad@colours) {
+    colour := colours[i]
+
+    >-- Change colour
+    dath@stáitse(colour)
+}
+```
+
+Now we can add our list of sizes, let's use 3 sizes, 50, 100 and 200. We put in an inner loop that loops through the sizes.
+
+```{.setanta .numberLines}
+colours := ["glas", "buí", "bándearg", "gorm"]
+
+sizes := [50, 100, 200]
+
+>-- Outer loop loops through the colours
+le i idir (0, fad@colours) {
+    colour := colours[i]
+
+    >-- Change colour
+    dath@stáitse(colour)
+
+    >-- Inner loop loops through the sizes
+    le j idir (0, fad@sizes) {
+        size := sizes[j]
+    }
+}
+```
+
+**We are careful here to use different names for the loop variables (`i` and `j`) so that we can refer to them at the same time**.
+
+Now inside the inner loop we have access to a size and a colour. Let's use the `glan@stáitse`{.setanta} action the clear the stage ("[[glan|clean]]" translates as "clean"), then draw a circle of that size.
+
+Where do we draw the circle? Let's use `fadX@stáitse`  and `fadY@stáitse` to get the mid point of the stage. To find the middle we should divide by 2.
+
+```{.setanta .numberLines}
+colours := ["glas", "buí", "bándearg", "gorm"]
+
+sizes := [50, 100, 200]
+
+>-- Outer loop loops through the colours
+le i idir (0, fad@colours) {
+    colour := colours[i]
+
+    >-- Change colour
+    dath@stáitse(colour)
+
+    >-- Inner loop loops through the sizes
+    le j idir (0, fad@sizes) {
+        size := sizes[j]
+
+        >-- Clear the stage
+        glan@stáitse()
+
+        >-- Draw the circle at the midpoint with radius `size`
+        ciorcal@stáitse(fadX@stáitse / 2, fadY@stáitse / 2, size)
+    }
+}
+```
+
+The final step we should take is to wait (sleep) for a short time before moving on to the next circle. This is just to leave the circles on the screen long enough for us to see them. We just add a call to `coladh`{.setanta} to the inner loop, after we draw the circle.
+
+{{{s
+colours := ["glas", "buí", "bándearg", "gorm"]
+
+sizes := [50, 100, 200]
+
+>-- Outer loop loops through the colours
+le i idir (0, fad@colours) {
+    colour := colours[i]
+
+    >-- Change colour
+    dath@stáitse(colour)
+
+    >-- Inner loop loops through the sizes
+    le j idir (0, fad@sizes) {
+        size := sizes[j]
+
+        >-- Clear the stage
+        glan@stáitse()
+
+        >-- Draw the circle at the midpoint with radius `size`
+        ciorcal@stáitse(fadX@stáitse / 2, fadY@stáitse / 2, size)
+
+        coladh(400)
+    }
+}
+}}}
