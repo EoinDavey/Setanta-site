@@ -399,3 +399,69 @@ scríobh(list)
 }}}
 
 This code is much simpler and works exactly the same as before!
+
+# Keep Going!
+
+In contrast to the `bris`{.setanta} statement, *Setanta* has another keyword called `chun-cinn`{.setanta}. "chun cinn" translates roughly as "forward". Unlike `bris`{.setanta} which exits the loop completely, `chun-cinn`{.setanta} leaves the current iteration of the loop, and moves on to the next.
+
+Check out this code:
+
+{{{s
+colours := ["buí", "gorm", "dubh", "dearg", "bandearg", "glas"]
+
+le i idir (0, fad@colours) {
+    colour := colours[i]
+
+    >-- Switch colour
+    dath@stáitse(colour)
+
+    >-- Get random coordinates
+    x := randUimh@mata(0, fadX@stáitse)
+    y := randUimh@mata(0, fadY@stáitse)
+
+    >-- Draw circle
+    ciorcal@stáitse(x, y, 100)
+}
+}}}
+
+That program has a list of colours, and for each colour it draws a circle randomly on the stage of that colour.
+
+What if we want to skip the colours who's name begins with a "g"? We could wrap the whole inside of the loop in a big `má`{.setanta} statement, but that would be a bit messy.
+
+We can instead use the `chun-cinn`{.setanta} statement to skip to the next colour if the current colour begins with a "g".
+
+We can access elements of strings using their index just like we did with lists, by using square brackets (`[ ]`). To check if the name of the colour starts with "g" we just check if `colour[0] == "g"`{.setanta}, because 0 is the index of the first letter.
+
+Lets add the following check to the start of our loop:
+
+```{.setanta .numberLines}
+má colour[0] == "g" {
+    chun-cinn
+}
+```
+
+That will cause *Setanta* to stop and move on to the next iteration if the colour starts with "g". Try it out:
+
+{{{s
+colours := ["buí", "gorm", "dubh", "dearg", "bandearg", "glas"]
+
+le i idir (0, fad@colours) {
+    colour := colours[i]
+
+    má colour[0] == "g" {
+        chun-cinn
+    }
+
+    >-- Switch colour
+    dath@stáitse(colour)
+
+    >-- Get random coordinates
+    x := randUimh@mata(0, fadX@stáitse)
+    y := randUimh@mata(0, fadY@stáitse)
+
+    >-- Draw circle
+    ciorcal@stáitse(x, y, 100)
+}
+}}}
+
+As you can see by running the code, all the "g" colours ("glas", "gorm") are gone!
