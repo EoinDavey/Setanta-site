@@ -10,7 +10,7 @@ So far in *Setanta* we've only been using text and numbers in our programs. Thes
 
 What if we want to deal with more than one piece of text, or more than one number. That's where **[[lists|liostaí]]** come in. Lists, unsurprisingly, allow us to [[store|stóráil]] values in a [[list|liosta]].
 
-## How to make a list
+## Making lists
 
 Lists are created with [[square brackets|lúibíní cearnach]] (`[, ]`) around the outside and commas (`,`) to [[separate|scar]] the [[elements|baill]] of the list, for example: `[100, 200, 300]`{.setanta} is a list with 3 elements. 100 is the first element, 200 is the second, and 300 is the last element. `[]` is an empty list.
 
@@ -242,6 +242,24 @@ scríobh(sum)
 We used `sum = sum + my_list[i]` to add `my_list[i]` to the sum variable. *Setanta* has a shorthand for this common problem, the `+=` operator. We can just write `sum += my_list[i]` to add `my_list[i]` to the sum.
 
 There is also `*=`, `-=` and `/=` for [[multiplication|iolrú]], [[subtraction|dealú]] and [[division|roinnt]] respectively.
+
+## Step Up
+
+A *le idir* loop can also accept a third number, positioned after the start and finish values. This value [[increases|méadaíonn]] the size of the [[*step*|céim]]. Usually the loop variable is increased by 1 on every iteration, however by including a third number you can specify a custom size to increase by:
+
+For example:
+
+{{{
+le i idir (0, 10, 2) {
+    scríobh(i)
+}
+}}}
+
+This loop starts at 0 and increases by 2 instead of 1 each time.
+
+### Bonus Tip
+
+*If the start value is smaller than the finish value, the loop will [[decrease|laghdaíonn]] by 1 each time, instead of increasing*.
 
 # Circle Art
 
