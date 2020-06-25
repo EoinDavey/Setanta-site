@@ -203,9 +203,9 @@ le i idir (0, fad@colours) {
 
 # Stop!
 
-Let's say we want to write a program that will let the user type in a list of text until they say "stop", then we'll print the list back to them.
+Let's say we want to write a program that will let the user [[type|clóscríobh]] in a list of text until they say "[[stop|stop]]", then we'll print the list back to them.
 
-We can use the [[`léigh`|read]] action (meaning "read") to read user input. Let's start out with a `nuair-a fíor`{.setanta} loop. We'll see how to exit the loop later.
+We can use the [[`léigh`|read]] action (meaning "read") to read user [[input|ionchur]]. Let's start out with a `nuair-a fíor`{.setanta} loop. We'll see how to [[exit|imigh]] the loop later.
 
 ```{.setanta .numberLines}
 >-- Create an empty list
@@ -221,13 +221,13 @@ nuair-a fíor {
 }
 ```
 
-This program will forever keep asking the user for input, then add that input into the `list`.
+This program will [[forever|go deo]] keep [[asking|ag fiafraí]] the user for input, then add that input into the `list`.
 
 We'd like to exit the loop when the user says "Stop", how do we do that?
 
 ## DIY
 
-One way we can do it is by using a condition in our `nuair-a`{.setanta} loop. We'll make a new variable called `keep_going`, that starts out equal to `fíor` ("true"). We'll use this variable as the condition.
+One way we can do it is by using a condition in our `nuair-a`{.setanta} loop. We'll make a new [[variable|athróg]] called [[`keep_going`|lean ar aghaidh]], that starts out equal to `fíor` ("true"). We'll use this variable as the condition.
 
 ```{.setanta .numberLines}
 >-- Create an empty list
@@ -244,9 +244,9 @@ nuair-a keep_going {
 }
 ```
 
-This program will keep looping while `keep_going` is `fíor`{.setanta}. Therefore we can stop the loop by changing the value of `keep_going` when the user inputs "Stop".
+This program will keep looping while `keep_going` is `fíor`{.setanta}. Therefore we can stop the loop by changing the [[value|luach]] of `keep_going` when the user inputs "Stop".
 
-Let's use a `má`{.setanta} statement to check if they've said "Stop".
+Let's use a `má`{.setanta} statement to [[check|seiceáil]] if they've said "Stop".
 
 ```{.setanta .numberLines}
 >-- Create an empty list
@@ -269,7 +269,7 @@ nuair-a keep_going {
 }
 ```
 
-Now we can tell *Setanta* to change `keep_going` to `bréag`{.setanta} ("false") when they say "Stop" by adding `keep_going = bréag`{.setanta} inside the `má`{.setanta} statement.
+Now we can tell *Setanta* to [[change|athraigh]] `keep_going` to `bréag`{.setanta} ("false") when they say "Stop" by adding `keep_going = bréag`{.setanta} inside the `má`{.setanta} statement.
 
 ```{.setanta .numberLines}
 >-- Create an empty list
@@ -295,7 +295,7 @@ nuair-a keep_going {
 
 Now let's add a line to write the list after the loop is finished, (`scríobh(list)`{.setanta}).
 
-You can try out the program and see that it works: Run the program and enter a few words into the console, then enter "Stop" and you'll see that the program stops and prints the list.
+You can try out the program and see that it works: Run the program and enter [[a few words|cúpla focail]] into the console, then enter "Stop" and you'll see that the program stops and prints the list.
 
 {{{
 >-- Create an empty list
@@ -328,7 +328,7 @@ Here's a GIF of it in action:
 
 That code worked, but it was very messy! Surely there's an easier way. Lucky for us, there is. Setanta includes a special keyword called "[[`bris`{.setanta}|break]]". "Bris" translates as "Break", and it allows us to **break** out of a loop.
 
-When *Setanta* reads the `bris`{.setanta} keyword inside a loop it stops what it's doing, and leaves the loop immediately.
+When *Setanta* reads the `bris`{.setanta} keyword inside a loop it stops what it's doing, and leaves the loop [[immediately|láithreach]].
 
 Try it out here:
 
@@ -342,7 +342,9 @@ le i idir (0, 10) {
 }
 }}}
 
-Running this code we see that it writes "0", "1", "2", "3" and "4". Why does it stop at 4? The outer loop goes from 0 to 10. The secret lies in the `má`{.setanta} statement on line 3. It checks if `i` is equal to 5, and if it is it executes the `bris`{.setanta} statement, causing the computer to immediately stop what it's doing and leave the loop.
+Running this code we see that it writes "0", "1", "2", "3" and "4". Why does it stop at 4? The outer loop goes from 0 to 10.
+
+The [[secret|rún]] lies in the `má`{.setanta} statement on line 3. It checks if `i` is equal to 5, and if it is it executes the `bris`{.setanta} statement, causing the computer to immediately stop what it's doing and leave the loop.
 
 ### Challenge
 
@@ -352,7 +354,7 @@ Move the `scríobh(i)`{.setanta} line so that it also prints "5".
 
 ### Let's fix our old code
 
-This was the code we wrote earlier:
+This was the code [[we wrote earlier|a scríobhamar níos déanaí]]:
 
 ```{.setanta .numberLines}
 >-- Create an empty list
@@ -398,11 +400,11 @@ nuair-a fíor {
 scríobh(list)
 }}}
 
-This code is much simpler and works exactly the same as before!
+This code is much simpler and works [[exactly|díreach]] the same as before!
 
 # Keep Going!
 
-In contrast to the `bris`{.setanta} statement, *Setanta* has another keyword called `chun-cinn`{.setanta}. "chun cinn" translates roughly as "forward". Unlike `bris`{.setanta} which exits the loop completely, `chun-cinn`{.setanta} leaves the current iteration of the loop, and moves on to the next.
+In contrast to the `bris`{.setanta} statement, *Setanta* has another keyword called `chun-cinn`{.setanta}. "chun cinn" translates roughly as "forward". Unlike `bris`{.setanta} which exits the loop completely, `chun-cinn`{.setanta} leaves the current iteration of the loop, and moves on to the [[next|chéad cheann eile]].
 
 Check out this code:
 
@@ -426,11 +428,11 @@ le i idir (0, fad@colours) {
 
 That program has a list of colours, and for each colour it draws a circle randomly on the stage of that colour.
 
-What if we want to skip the colours who's name begins with a "g"? We could wrap the whole inside of the loop in a big `má`{.setanta} statement, but that would be a bit messy.
+What if we want to [[skip|léim]] the colours who's name [[begins|tosaíonn]] with a "g"? We could wrap the whole inside of the loop in a big `má`{.setanta} statement, but that would be a bit [[messy|míshlachtmhar]].
 
 We can instead use the `chun-cinn`{.setanta} statement to skip to the next colour if the current colour begins with a "g".
 
-We can access elements of strings using their index just like we did with lists, by using square brackets (`[ ]`). To check if the name of the colour starts with "g" we just check if `colour[0] == "g"`{.setanta}, because 0 is the index of the first letter.
+We can access elements of strings using their index just like we did with lists, by using square brackets (`[ ]`). To check if the name of the colour starts with "g" we just check if `colour[0] == "g"`{.setanta}, because 0 is the index of the first [[letter|litir]].
 
 Lets add the following check to the start of our loop:
 
@@ -464,4 +466,4 @@ le i idir (0, fad@colours) {
 }
 }}}
 
-As you can see by running the code, all the "g" colours ("glas", "gorm") are gone!
+As you can see by running the code, all the "g" colours ("[[glas|green]]", "[[gorm|blue]]") are [[gone|imithe]]!
