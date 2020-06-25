@@ -172,6 +172,8 @@ le i idir (0, fad@colours) {
 
 The final step we should take is to wait (sleep) for a short time before moving on to the next circle. This is just to [[leave|fág]] the circles on the screen long enough for us to see them. We just add a call to `coladh`{.setanta} to the inner loop, after we draw the circle.
 
+Let's try it out:
+
 {{{s
 colours := ["glas", "buí", "bándearg", "gorm"]
 
@@ -198,3 +200,124 @@ le i idir (0, fad@colours) {
     }
 }
 }}}
+
+# Stop!
+
+Let's say we want to write a program that will let the user type in a list of text until they say "stop", then we'll print the list back to them.
+
+We can use the [[`léigh`|read]] action (meaning "read") to read user input. Let's start out with a `nuair-a fíor`{.setanta} loop. We'll see how to exit the loop later.
+
+```{.setanta .numberLines}
+>-- Create an empty list
+list := []
+
+>-- Loop forever
+nuair-a fíor {
+    >-- Read from the console with léigh
+    text := léigh()
+
+    >-- Add `text` to the end of the list
+    list += [text]
+}
+```
+
+This program will forever keep asking the user for input, then add that input into the `list`.
+
+We'd like to exit the loop when the user says "Stop", how do we do that?
+
+## DIY
+
+One way we can do it is by using a condition in our `nuair-a`{.setanta} loop. We'll make a new variable called `keep_going`, that starts out equal to `fíor` ("true"). We'll use this variable as the condition.
+
+```{.setanta .numberLines}
+>-- Create an empty list
+list := []
+
+keep_going := fíor
+
+nuair-a keep_going {
+    >-- Read from the console with léigh
+    text := léigh()
+
+    >-- Add `text` to the end of the list
+    list += [text]
+}
+```
+
+This program will keep looping while `keep_going` is `fíor`{.setanta}. Therefore we can stop the loop by changing the value of `keep_going` when the user inputs "Stop".
+
+Let's use a `má`{.setanta} statement to check if they've said "Stop".
+
+```{.setanta .numberLines}
+>-- Create an empty list
+list := []
+
+keep_going := fíor
+
+nuair-a keep_going {
+    >-- Read from the console with léigh
+    text := léigh()
+
+    má text == "Stop" {
+        >-- They said "Stop"
+    } nó {
+        >-- They didn't say "Stop".
+
+        >-- Add `text` to the end of the list
+        list += [text]
+    }
+}
+```
+
+Now we can tell *Setanta* to change `keep_going` to `bréag`{.setanta} ("false") when they say "Stop" by adding `keep_going = bréag`{.setanta} inside the `má`{.setanta} statement.
+
+```{.setanta .numberLines}
+>-- Create an empty list
+list := []
+
+keep_going := fíor
+
+nuair-a keep_going {
+    >-- Read from the console with léigh
+    text := léigh()
+
+    má text == "Stop" {
+        >-- They said "Stop"
+        keep_going = bréag
+    } nó {
+        >-- They didn't say "Stop".
+
+        >-- Add `text` to the end of the list
+        list += [text]
+    }
+}
+```
+
+Now let's add a line to write the list after the loop is finished, (`scríobh(list)`{.setanta}).
+
+You can try out the program and see that it works: Run the program and enter a few words into the console, then enter "Stop" and you'll see that the program stops and prints the list.
+
+{{{
+>-- Create an empty list
+list := []
+
+keep_going := fíor
+
+nuair-a keep_going {
+    >-- Read from the console with léigh
+    text := léigh()
+
+    má text == "Stop" {
+        >-- They said "Stop"
+        keep_going = bréag
+    } nó {
+        >-- They didn't say "Stop".
+
+        >-- Add `text` to the end of the list
+        list += [text]
+    }
+}
+scríobh(list)
+}}}
+
+## A Better Way
