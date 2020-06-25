@@ -4,7 +4,13 @@ next: what-is-programming
 next-text: What is programming?
 ---
 
-# Following this tutorial
+# Welcome!
+
+**_Welcome to the *Setanta* tutorial!_**
+
+[[We hope|Tá súil againn]] you're ready to learn all about [[programming|ríomhchlárú]], [[Irish|Gaeilge]] and how they go hand in hand.
+
+There's just a few things to cover before you're [[ready|réidh]] to start!
 
 ## Translations
 
