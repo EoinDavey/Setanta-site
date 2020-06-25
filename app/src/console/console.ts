@@ -71,6 +71,10 @@ export class FYPConsole extends LitElement {
 .no-shrink {
     flex-shrink: 0;
 }
+.alt {
+    text-align: right;
+    color: var(--theme-text-secondary);
+}
         `;
     }
 
@@ -100,6 +104,11 @@ export class FYPConsole extends LitElement {
 
     public clearHistory() {
         this.lines = [];
+    }
+
+    public writeAlt(msg: string) {
+        this.lines.push(html`<p class="alt">${msg}</p>`);
+        return this.requestUpdate();
     }
 
     public writeOut(msg: string) {
@@ -135,6 +144,7 @@ export class FYPConsole extends LitElement {
                         value: val,
                     },
                 }));
+                this.writeAlt(val);
                 inp.value = "";
             }
         }
