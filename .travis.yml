@@ -23,5 +23,3 @@ deploy:
     project: final-year-project-257911
     skip_cleanup: true
     no_promote: true
-    on:
-        tags: true
