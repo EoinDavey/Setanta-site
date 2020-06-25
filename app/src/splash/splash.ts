@@ -220,9 +220,9 @@ class Splash extends LitElement {
                 </div>
             </div>
             <div id="bottom-page" class="wrapped">
-                <h4>Cliceáil ar <iron-icon class="play-icon" icon="av:play-arrow"></iron-icon> chun an ríomhchlár a thosnú
+                <h4>Cliceáil ar <iron-icon class="play-icon" icon="av:play-arrow"></iron-icon> thíos chun an ríomhchlár a thosnú
                 <hr/>
-                <i>Click on <iron-icon class="play-icon" icon="av:play-arrow"></iron-icon> to start the program</i></h4>
+                <i>Click on <iron-icon class="play-icon" icon="av:play-arrow"></iron-icon> below to start the program</i></h4>
                 <div class="aspect">
                     <div id="aspect-wrapper">
                         <div id="editor-wrapper">
