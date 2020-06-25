@@ -325,3 +325,77 @@ Here's a GIF of it in action:
 ![It works!](assets/bris-diy-demo.gif)
 
 ## A Better Way
+
+That code worked, but it was very messy! Surely there's an easier way. Lucky for us, there is. Setanta includes a special keyword called "[[`bris`{.setanta}|break]]". "Bris" translates as "Break", and it allows us to **break** out of a loop.
+
+When *Setanta* reads the `bris`{.setanta} keyword inside a loop it stops what it's doing, and leaves the loop immediately.
+
+Try it out here:
+
+{{{
+>-- Loop from 0 to 10
+le i idir (0, 10) {
+    má i == 5 {
+        bris
+    }
+    scríobh(i)
+}
+}}}
+
+Running this code we see that it writes "0", "1", "2", "3" and "4". Why does it stop at 4? The outer loop goes from 0 to 10. The secret lies in the `má`{.setanta} statement on line 3. It checks if `i` is equal to 5, and if it is it executes the `bris`{.setanta} statement, causing the computer to immediately stop what it's doing and leave the loop.
+
+### Challenge
+
+Move the `scríobh(i)`{.setanta} line so that it also prints "5".
+
+[[Click here to see the answer|Move the scríobh(i) line above the má statement]]
+
+### Let's fix our old code
+
+This was the code we wrote earlier:
+
+```{.setanta .numberLines}
+>-- Create an empty list
+list := []
+
+keep_going := fíor
+
+nuair-a keep_going {
+    >-- Read from the console with léigh
+    text := léigh()
+
+    má text == "Stop" {
+        >-- They said "Stop"
+        keep_going = bréag
+    } nó {
+        >-- They didn't say "Stop".
+
+        >-- Add `text` to the end of the list
+        list += [text]
+    }
+}
+scríobh(list)
+```
+
+Now we can get rid of all that messy logic with `keep_going` and replace it all with a single `bris`{.setanta} statement! Check it out:
+
+{{{
+>-- Create an empty list
+list := []
+
+nuair-a fíor {
+    >-- Read from the console with léigh
+    text := léigh()
+
+    má text == "Stop" {
+        >-- If they said Stop, leave the loop
+        bris
+    }
+
+    >-- Add `text` to the end of the list
+    list += [text]
+}
+scríobh(list)
+}}}
+
+This code is much simpler and works exactly the same as before!
