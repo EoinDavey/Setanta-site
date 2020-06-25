@@ -110,6 +110,20 @@ x := ["Setanta", "is", "fun"]
 scríobh(x[fad@x - 1])
 }}}
 
+## Text vs lists
+
+Text can be thought of as a list of [[characters|carachtair]]. You can use the same methods as lists to access the letters in text, and to get the length of a piece of text.
+
+E.g.
+
+{{{
+>-- Write the length of "hello"
+scríobh(fad@"hello")
+
+>-- Write the first letter of "dia duit"
+scríobh("dia duit"[0])
+}}}
+
 # Loop-de-loop
 
 Now that we have our lists, what can we do with them. The main tool that we will use with lists are called "[[loops|lúba]]".
