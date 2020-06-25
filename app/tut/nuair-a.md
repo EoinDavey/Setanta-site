@@ -320,4 +320,8 @@ nuair-a keep_going {
 scríobh(list)
 }}}
 
+Here's a GIF of it in action:
+
+![It works!](assets/bris-diy-demo.gif)
+
 ## A Better Way
