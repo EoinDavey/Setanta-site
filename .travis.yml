@@ -19,7 +19,7 @@ before_deploy:
 
 deploy:
     provider: gae
-    config: app/dev.yaml
+    config: dev.yaml
     version: dev
     keyfile: gae-keys.json
     project: final-year-project-257911
