@@ -1,5 +1,7 @@
 ---
 title: In the Loop
+next: action
+next-text: Time for Action
 ---
 
 # Nuair-a loops

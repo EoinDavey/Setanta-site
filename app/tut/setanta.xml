@@ -46,6 +46,7 @@
           <keyword attribute="Keyword" context="#stay" String="keywords"/>
           <keyword attribute="Builtin Function" context="#stay" String="builtins"/>
           <keyword attribute="Value Literal" context="#stay" String="values"/>
+          <DetectIdentifier />
           <Int attribute="Number" context="#stay"/>
           <Float attribute="Number" context="#stay"/>
           <StringDetect attribute="Comment" String="&gt;--" context="Comment"/>
