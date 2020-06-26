@@ -2,7 +2,7 @@ runtime: go111
 
 main: ./go/server/main.go
 
-service: dev
+service: dev-env
 
 handlers:
     - url: /$
