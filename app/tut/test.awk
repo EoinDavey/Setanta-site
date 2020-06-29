@@ -37,4 +37,5 @@ END {
             exit 1
         }
     }
+    print "All links OK"
 }

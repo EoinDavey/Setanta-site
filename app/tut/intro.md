@@ -1,5 +1,5 @@
 ---
-title: Setanta Tutorial Introduction
+title: Tutorial Introduction
 next: what-is-programming
 next-text: What is programming?
 ---

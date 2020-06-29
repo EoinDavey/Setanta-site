@@ -47,7 +47,17 @@ $if(toc)$
         <div class="next-subtitle">$next-text$</div>
         $endif$
         </div>
-        <iron-icon icon="icons:arrow-forward"></iron-icon>
+        <iron-icon class="next" icon="icons:arrow-forward"></iron-icon>
+        </a>
+        $endif$
+        $if(prev)$
+        <a class="next-page-link" href="$prev$.html">
+        <iron-icon class="prev" icon="icons:arrow-back"></iron-icon><!--
+        --><div>Prev Page
+        $if(prev-text)$
+        <div class="next-subtitle">$prev-text$</div>
+        $endif$
+        </div>
         </a>
         $endif$
     </nav>
@@ -68,15 +78,27 @@ $endif$
         </header>
 $endif$
 $body$
+        <div id="bottom-nav">
+        $if(prev)$
+        <a id="bottom-prev-link" class="next-page-link bottom-link" href="$prev$.html">
+        <iron-icon class="prev" icon="icons:arrow-back"></iron-icon>
+        <div>Prev page
+        $if(prev-text)$
+        <div class="next-subtitle">$prev-text$</div>
+        $endif$
+        </div>
+        </a>
+        $endif$
         $if(next)$
-        <a id="bottom-next-link" class="next-page-link" href="$next$.html"><div>Next page
+        <a id="bottom-next-link" class="next-page-link bottom-link" href="$next$.html"><div>Next page
         $if(next-text)$
         <div class="next-subtitle">$next-text$</div>
         $endif$
         </div>
-        <iron-icon icon="icons:arrow-forward"></iron-icon>
+        <iron-icon class="next" icon="icons:arrow-forward"></iron-icon>
         </a>
         $endif$
+        </div>
     </div>
 $for(include-after)$
 $include-after$

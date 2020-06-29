@@ -3,7 +3,7 @@ title: What is programming?
 next: take-the-stage
 next-text: Take the Stage!
 prev: intro
-prev-text: Setanta Tutorial Introduction
+prev-text: Tutorial Introduction
 ---
 # Programming is...
 
