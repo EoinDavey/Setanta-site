@@ -1,5 +1,7 @@
 ---
 title: Time for Action
+prev: nuair-a
+prev-text: In the Loop
 ---
 
 # Less talk more action 

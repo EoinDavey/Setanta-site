@@ -1,7 +1,9 @@
 ---
 title: In the Loop
 next: action
+prev: lists
 next-text: Time for Action
+prev-text: Lists 'n Loops
 ---
 
 # Nuair-a loops

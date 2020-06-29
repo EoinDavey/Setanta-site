@@ -2,6 +2,8 @@
 title: Lists 'n Loops
 next: nuair-a
 next-text: In the Loop
+prev: decision-time
+prev-text: It's decision time
 ---
 
 # Lists

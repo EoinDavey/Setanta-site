@@ -1,7 +1,9 @@
 ---
-title: Take the stage!
+title: Take the Stage!
 next: decision-time
 next-text: It's decision time
+prev: what-is-programming
+prev-text: What is programming?
 ---
 
 # Lights, Camera Actions!
