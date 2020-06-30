@@ -22,7 +22,7 @@ export function defineMode(CodeMirror) {
         {regex: /-?[0-9]+(?:\.[0-9]+)?/i,
          token: "number"},
         {regex: /[-+\/*=<>!]+/, token: "operator"},
-        {regex: /[a-zA-ZáéíóúÁÉÍÓÚ][0-9a-zA-ZáéíóúÁÉÍÓÚ$]*/, token: "variable"},
+        {regex: /[a-zA-ZáéíóúÁÉÍÓÚ_][0-9a-zA-ZáéíóúÁÉÍÓÚ_]*/, token: "variable"},
         {regex: /[\{\[\(]/, indent: true},
         {regex: /[\}\]\)]/, dedent: true},
         //{regex: /\/(?:[^\\]|\\.)*?\//, token: "variable-3"},
