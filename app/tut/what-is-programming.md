@@ -117,7 +117,7 @@ Comments usually go until the end of the line, but we can end a comment early by
 scríobh(1 + >-- Inline comment --< 2)
 ```
 
-# Combining Instructions
+# Combo Time
 
 When the computer is following the instructions in our *Setanta* program. It starts at the top and works its way down the list. This means if we want to do one instruction after the other, all we have to do is put it on the next line. Check out this code:
 
