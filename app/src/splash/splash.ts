@@ -111,8 +111,11 @@ class Splash extends LitElement {
             justify-content: center;
             align-content: center;
         }
-        #buttons a:last-child {
+        .buttons a {
             margin-left: 10px;
+        }
+        .buttons a:first-child {
+            margin-left: 0px;
         }
         #logo {
             height: 8rem;
@@ -181,12 +184,35 @@ class Splash extends LitElement {
             #heading {
                 font-size: 3rem;
             }
-            #buttons a:last-child {
+            .buttons a {
                 margin-left: 0px;
                 margin-top: 10px;
             }
+            .buttons a:first-child {
+                margin-top: 0px;
+            }
         }
         `
+    }
+
+    private buttons(): TemplateResult {
+        return html`<div class="buttons horizontal-wrap">
+    <a class="button" href="/tut/intro.html">
+        <span>Foghlaim Setanta</span>
+        <hr/>
+        <span class="bearla">Learn Setanta</span>
+    </a>
+    <a class="button" href="/editor">
+        <span>Oscail an éagarthóir</span>
+        <hr/>
+        <span class="bearla">Open the editor</span>
+    </a>
+    <a class="button" href="https://docs.try-setanta.ie">
+        <span>Léigh na doiciméid</span>
+        <hr/>
+        <span class="bearla">Read the docs</span>
+    </a>
+</div>`;
     }
 
     public render(): TemplateResult {
@@ -197,18 +223,7 @@ class Splash extends LitElement {
                     <img src="/assets/logo.svg"/ id="logo"><h1 id="heading" >Setanta</h1>
                     <h4 id="subtitle">An teanga ríomhchlárúcháin <span class="gaeilge">as Gaeilge</span></h4>
                 </div>
-                <div id="buttons" class="horizontal-wrap">
-                    <a class="button" href="https://docs.try-setanta.ie">
-                        <span>Foghlaim Setanta</span>
-                        <hr/>
-                        <span class="bearla">Learn Setanta</span>
-                    </a>
-                    <a class="button" href="/editor">
-                        <span>Oscail an éagarthóir</span>
-                        <hr/>
-                        <span class="bearla">Open the editor</span>
-                    </a>
-                </div>
+                ${this.buttons()}
                 <div id="try-button" class="button" @click="${this.scrollDown}">
                     <iron-icon id="down-arrow" icon="icons:arrow-downward">
                     </iron-icon>
@@ -230,21 +245,9 @@ class Splash extends LitElement {
                         </div>
                     </div>
                 </div>
-                <div id="buttons" class="horizontal-wrap">
-                    <a class="button" href="https://docs.try-setanta.ie">
-                        <span>Foghlaim Setanta</span>
-                        <hr/>
-                        <span class="bearla">Learn Setanta</span>
-                    </a>
-                    <a class="button" href="/editor">
-                        <span>Oscail an éagarthóir</span>
-                        <hr/>
-                        <span class="bearla">Open the editor</span>
-                    </a>
-                </div>
+                ${this.buttons()}
             </div>
-        </div>
-    `;
+        </div>`;
     }
     private scrollDown() {
         const ht = this.shadowRoot!.getElementById("main")!.scrollHeight;
