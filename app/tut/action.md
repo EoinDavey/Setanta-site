@@ -34,20 +34,22 @@ gníomh <action name> ( <list of argument names> ) {
 }
 ```
 
+Writing a `gníomh`{.setanta} statement like this [[creates|cruthaíonn]] a new action with the name we supplied. When you call the action with some arguments, the arguments are assigned to [[variables|athróga]] with the names we gave in the `<list of argument names>`, then the code between the curly braces `{ }` is executed. (This code is called the [[body of the action|corp an gnímh]]).
+
 Here is a quick example: Let's make an action called `say_hello`, `say_hello` will take no arguments, and write "Hey" on the console.
 
 ```{.setanta .numberLines}
-gníomh say_hello () {
+gníomh say_hello() {
     scríobh("Hey")
 }
 ```
 
-As you can see we have filled in `say_hello` as the action name, the list of arguments is [[empty|folamh]], and the action code is `scríobh("Hey")`{.setanta}.
+As you can see we have filled in `say_hello` as the action name, the list of arguments is [[empty|folamh]], and the body of the action is `scríobh("Hey")`{.setanta}.
 
 We call this new action with `say_hello()`. Let's try it out!
 
 {{{
-gníomh say_hello () {
+gníomh say_hello() {
     scríobh("Hey")
 }
 
