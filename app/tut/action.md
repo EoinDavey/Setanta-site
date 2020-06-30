@@ -233,3 +233,20 @@ scríobh(return_1())
 }}}
 
 As you can see, `"Setanta is fun"`{.setanta} is not written on the console. This is because the `scríobh`{.setanta} call was never reached.
+
+## Challenge
+
+Try and create an action called `max_3` that takes in 3 arguments, `a`, `b` and `c` and returns the biggest of the 3.
+
+For example the result of `max_3(10, 20, 30)`{.setanta} should be 30.
+
+{{{
+gníomh max_3(a, b, c) {
+    >-- Fill me in
+}
+
+>-- Should write 30
+scríobh(max_3(10, 20, 30))
+}}}
+
+[Click here to see a full answer](https://try-setanta.ie/editor/EhEKBlNjcmlwdBCAgICgxo-UCg){target="_blank"}.
