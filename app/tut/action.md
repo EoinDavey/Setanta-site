@@ -175,4 +175,61 @@ gníomh rand_circs(>-- Args here --<) {
 }
 }}}
 
-[Click here to open a solution in the main editor](https://try-setanta.ie/editor/EhEKBlNjcmlwdBCAgIDAjsqDCg){target="_blank"}
+[Click here to see a solution](https://try-setanta.ie/editor/EhEKBlNjcmlwdBCAgIDAjsqDCg){target="_blank"}
+
+# Results
+
+Now that we've seen how to make our own [[actions|gníomhartha]], we can see how to make our actions have [[results|torthaí]].
+
+We will use the keyword "[[`toradh`{.setanta}|result]]", meaning "result"
+
+The syntax for a `toradh`{.setanta} statement is simple. It's just:
+
+```{.setanta .numberLines}
+toradh < expression >
+```
+
+To set a value as the result of the action (called "returning" the value), you simply put `toradh`{.setanta} in front of the value.
+
+For example, "`toradh 1`{.setanta}", "`toradh ["a", "b", "c"]`{.setanta}".
+
+When the *Setanta* interpreter reads a `toradh`{.setanta} statement, it stops executing the function immediately, and returns the given value.
+
+## Simple example
+
+Here's an action called `return_1` that just returns `1`{.setanta} as it's result, and doesn't do anything else.
+
+```{.setanta .numberLines}
+gníomh return_1() {
+    toradh 1
+}
+```
+
+Look what happens when we call `scríobh(return_1())`{.setanta}
+
+{{{
+gníomh return_1() {
+    toradh 1
+}
+
+scríobh(return_1())
+}}}
+
+"1" is written on the console, this is because `1`{.setanta} was the result of the call to `return_1()`.
+
+### Important note
+
+It's important to note that when a `toradh`{.setanta} statement is reached, the execution of the function is stopped, and the result is returned immediately.
+
+If we add `scríobh("Setanta is fun")`{.setanta} after the `toradh`{.setanta} statement in our `return_1` action, we can see that it will not be called:
+
+{{{
+gníomh return_1() {
+    toradh 1
+    scríobh("Setanta is fun")
+}
+
+scríobh(return_1())
+}}}
+
+As you can see, `"Setanta is fun"`{.setanta} is not written on the console. This is because the `scríobh`{.setanta} call was never reached.
