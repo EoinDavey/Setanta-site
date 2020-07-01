@@ -23,7 +23,7 @@
     "@webcomponents/webcomponentsjs": "^2.4.3",
     "codemirror": "^5.54.0",
     "lit-element": "^2.3.1",
-    "setanta": "^0.6.0"
+    "setanta": "^0.6.1"
   },
   "devDependencies": {
     "copy-webpack-plugin": "^5.1.1",
