@@ -21,8 +21,10 @@ BEGIN {
 END {
     for (f in titles) {
         nxt = nexts[f]
-        if (nxt == "")
+        if (nxt == "") {
+            end++
             continue
+        }
         print f, "=>", nxt
         if (f != prevs[nxt]) {
             print "ERR: Prev of", nxt, "is not", f
@@ -36,6 +38,10 @@ END {
             print "ERR: Prev-text of", nxt, "is not", "\"" titles[f] "\""
             exit 1
         }
+    }
+    if (end > 1) {
+        print "ERR: Too many end nodes"
+        exit 1
     }
     print "All links OK"
 }
