@@ -6,6 +6,11 @@ import "@polymer/iron-icons/av-icons.js";
 import "./tooltip";
 import "../mini/mini";
 
+// Declare type for the paper-tabs element
+interface PaperTabs extends HTMLElement {
+    selected: number;
+}
+
 @customElement("tut-template")
 class Tut extends LitElement {
 
@@ -59,7 +64,7 @@ class Tut extends LitElement {
     flex: none;
 }
 #toc-wrap {
-    flex-grow: auto;
+    flex-grow: 1;
     overflow-x: hidden;
     overflow-y: auto;
 }
@@ -76,6 +81,44 @@ class Tut extends LitElement {
     flex-grow: 0;
     flex-basis: 1;
     display: none;
+}
+paper-tabs {
+    --paper-tabs-selection-bar-color: var(--theme-accent);
+}
+paper-tab {
+    --paper-tab-ink: var(--theme-accent);
+}
+#all-toc {
+    display: none;
+    list-style-type: none;
+}
+#all-toc li {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+#all-toc li:before { /* the custom styled bullets */
+  color: var(--theme-primary-dark);
+  content: "᚛";
+  font-weight: 900;
+  display: inline-block;
+  margin-right: 0.5rem;
+  flex-shrink: 0;
+}
+#all-toc a {
+    font-size: 1.25rem;
+    max-width: calc(0.7 * var(--nav-width));
+    text-decoration: none;
+    padding: 2px 8px 2px 8px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    color: var(--theme-text-primary);
+    display: inline-block;
+}
+#all-toc a:hover {
+    border: 1px solid var(--theme-accent);
+    background-color: var(--offwhite);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 @media (max-width: 600px) {
     #sidebar {
@@ -106,14 +149,48 @@ class Tut extends LitElement {
                 <paper-icon-button id="menu-button" icon="icons:menu" @click="${this.toggleToc}">
                 </paper-icon-button>
             </div>
+            <paper-tabs id="tabs" selected="0" @iron-select="${this.tabSelect}">
+                <paper-tab><b>This Page</b></paper-tab>
+                <paper-tab><b>All</b></paper-tab>
+            </paper-tabs>
             <div id="toc-wrap">
                 <slot id="tocslot" name="toc">
+                </slot>
+                <ul id="all-toc">
+                    ${this.allPages()}
+                </ul>
             </div>
-            </slot>
         </div>
         <div id="body-wrap">
             <slot name="body"></slot>
         </div>`;
+    }
+
+    private allPages() {
+        return ['test'].map(x => html`<li><a>${x}</a></li>`);
+    }
+
+    private get tabs(): PaperTabs {
+        return this.shadowRoot!.getElementById("tabs")! as PaperTabs;
+    }
+
+    private get tocslot() {
+        return this.shadowRoot!.getElementById("tocslot")!
+    }
+
+    private get alltoc() {
+        return this.shadowRoot!.getElementById("all-toc")!
+    }
+
+    private tabSelect(e: Event) {
+        const sel = this.tabs.selected;
+        if(sel === 1) { // Selected all
+            this.tocslot.style.display = "none";
+            this.alltoc.style.display = "block";
+        } else if (sel === 0) {
+            this.tocslot.style.display = "block";
+            this.alltoc.style.display = "none";
+        }
     }
 
     private toggleToc() {
