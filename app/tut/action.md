@@ -14,7 +14,7 @@ But, we don't always have to depend on the actions that come with *Setanta*, we 
 
 Actions are things like `scríobh`{.setanta} and `coladh`{.setanta}. Actions take [[**arguments**|argóintí]] and use them to perform some action.
 
-You call an action by using [[brackets|lúibíní]] `( )` and placing the arguments inside the brackets.
+You [[call|glaoigh ar]] an action by using [[brackets|lúibíní]] `( )` and placing the arguments inside the brackets.
 
 e.g: `scríobh("Dia duit")`{.setanta}, `ciorcal@stáitse(100, 100, 100)`{.setanta}, `léigh()`{.setanta}
 
@@ -195,11 +195,11 @@ To set a value as the result of the action (called "returning" the value), you s
 
 For example, "`toradh 1`{.setanta}", "`toradh ["a", "b", "c"]`{.setanta}".
 
-When the *Setanta* interpreter reads a `toradh`{.setanta} statement, it stops executing the function immediately, and returns the given value.
+When the *Setanta* interpreter reads a `toradh`{.setanta} statement, it stops executing the function [[immediately|láithreach]], and returns the given value.
 
 ## Simple example
 
-Here's an action called `return_1` that just returns `1`{.setanta} as it's result, and doesn't do anything else.
+Here's an action called `return_1` that just returns `1`{.setanta} as it's result, and [[doesn't do anything else|Ní dheanann sé aon rud eile]].
 
 ```{.setanta .numberLines}
 gníomh return_1() {
@@ -207,7 +207,7 @@ gníomh return_1() {
 }
 ```
 
-Look what happens when we call `scríobh(return_1())`{.setanta}
+Look [[what happens|cad a tharlaíonn]] when we call `scríobh(return_1())`{.setanta}
 
 {{{
 gníomh return_1() {
@@ -221,7 +221,7 @@ scríobh(return_1())
 
 ### Important note
 
-It's important to note that when a `toradh`{.setanta} statement is reached, the execution of the function is stopped, and the result is returned immediately.
+It's [[important|tábhachtach]] to note that when a `toradh`{.setanta} statement is reached, the execution of the function is stopped, and the result is returned immediately.
 
 If we add `scríobh("Setanta is fun")`{.setanta} after the `toradh`{.setanta} statement in our `return_1` action, we can see that it will not be called:
 
@@ -234,11 +234,11 @@ gníomh return_1() {
 scríobh(return_1())
 }}}
 
-As you can see, `"Setanta is fun"`{.setanta} is not written on the console. This is because the `scríobh`{.setanta} call was never reached.
+As you can see, `"Setanta is fun"`{.setanta} is not written on the console. This is [[because|mar]] the `scríobh`{.setanta} call was never [[reached|sroichte]].
 
 ## Challenge
 
-Try and create an action called `max_3` that takes in 3 arguments, `a`, `b` and `c` and returns the biggest of the 3.
+Try and create an action called `max_3` that takes in 3 arguments, `a`, `b` and `c` and returns the [[biggest|ceann is mó]] of the 3.
 
 For example the result of `max_3(10, 20, 30)`{.setanta} should be 30.
 
