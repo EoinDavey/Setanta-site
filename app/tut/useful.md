@@ -188,3 +188,9 @@ including the second).
 
 e.g. `cuid@"hello"(1, 4)`{.setanta} returns `"ell"`{.setanta} because the text between index 1 and
 index 4 is `"ell"`{.setanta}
+
+## go_liosta
+
+`go_liosta` (meaning "to list") is an action that returns a list of the characters of the text.
+
+e.g. `go_liosta("Setanta")`{.setanta} returns `["S", "e", "t", "a", "n", "t", "a"]`{.setanta}.
