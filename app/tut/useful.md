@@ -122,3 +122,69 @@ Here is a quick list of actions and values you can access: Don't worry if you do
 | `atan` | Inverse tangent    | `atan@mata(0)`{.setanta} |
 | `rand` | Random number from 0 to 1 | `rand@mata()`{.setanta} |
 | `randUimh` | Random whole number in some range | `randUimh@mata(5, 10)`{.setanta} |
+
+# Text Tips
+
+The only operations and actions we've seen so far with text have been using `+` to add two pieces
+of text together, using `fad`{.setanta} to get the length of the text, and using square brackets
+(`[ ]`) to access (index) specific letters.
+
+There is much more we can do with text though! Let's look at some useful actions.
+
+## go_téacs
+
+Use `go_téacs` to convert any value to a text representation. `go_téacs` translates as "to text".
+
+For example `go_téacs([1, 2, 3]) == "[1, 2, 3]"`{.setanta} and `go_téacs(scríobh) == "< gníomh
+scríobh >"`{.setanta}
+
+## Athchuir
+
+Athchuir translates as "replace". You can use the `athchuir` action to replace parts of text with
+another piece of text. For example you could replace every sad face (":(") in a piece of text with a happy face (":)").
+
+If you remember how we had to use the `@` symbol to use `fad`{.setanta} to get the length of the
+text (`fad@"hey" == 3`{.setanta}), we also have to use the `@` symbol to use `athchuir`.
+
+Check out some examples:
+
+{{{
+our_text := "Hello :("
+>-- Replace each ":(" in `our_text` with ":)"
+scríobh(athchuir@our_text(":(", ":)"))
+
+>-- Replace the "Hello" with "Goodbye"
+scríobh(athchuir@our_text("Hello", "Goodbye"))
+}}}
+
+## Roinn
+
+"Roinn" means "split" or "divide". We can use the `roinn` action to split up a piece of text at
+certain points. For example we could use `roinn` with commas to divide up a comma separated list like `"Setanta,
+is, fun"`{.setanta} into the list `["Setanta", "is", "fun"]`{.setanta}. Or we could use `roinn` with
+spaces to separate a sentence into a list of words.
+
+Try it out:
+
+{{{
+>-- Ask the user for their full name
+full_name := ceist("Enter your full name: ")
+
+>-- Use roinn to split the text into pieces
+names := roinn@full_name(" ")
+
+>-- Access the first and second elements of the `names` list
+scríobh("Your first name is:", names[0])
+scríobh("Your second name is:", names[1])
+}}}
+
+![Full name demo](assets/full-name.gif)
+
+## Cuid
+
+"Cuid" means "part" or "piece", and the `cuid` action allows us to extract a piece of text. We give
+the action 2 positions as arguments, and it returns the text between those 2 positions (not
+including the second).
+
+e.g. `cuid@"hello"(1, 4)`{.setanta} returns `"ell"`{.setanta} because the text between index 1 and
+index 4 is `"ell"`{.setanta}
