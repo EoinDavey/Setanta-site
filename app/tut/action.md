@@ -1,5 +1,7 @@
 ---
 title: Time for Action
+next: useful
+next-text: Some Useful Actions
 prev: nuair-a
 prev-text: In the Loop
 ---
