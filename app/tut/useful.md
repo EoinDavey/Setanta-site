@@ -131,14 +131,14 @@ of text together, using `fad`{.setanta} to get the [[length|fad]] of the text, a
 
 There is much more we can do with text though! Let's look at some useful actions.
 
-## go_téacs
+## go_téacs / To Text
 
 Use `go_téacs` to [[convert|athraigh]] any [[value|luach]] to a text representation. "[[go téacs|to text]]" translates as "to text".
 
 For example `go_téacs([1, 2, 3]) == "[1, 2, 3]"`{.setanta} and `go_téacs(scríobh) == "< gníomh
 scríobh >"`{.setanta}
 
-## Athchuir
+## Athchuir / Replace
 
 [[Athchuir|Replace]] translates as "replace". You can use the `athchuir` action to replace parts of text with
 another piece of text. For example you could replace every [[sad|brónach]] face (":(") in a piece of text with a [[happy|sona]] face (":)").
@@ -157,7 +157,7 @@ scríobh(athchuir@our_text(":(", ":)"))
 scríobh(athchuir@our_text("Hello", "Goodbye"))
 }}}
 
-## Roinn
+## Roinn / Split
 
 "[[Roinn|Split]]" means "split" or "divide". We can use the `roinn` action to split up a [[piece|píosa]] of text at
 [[certain points|pointí áirithe]]. For example we could use `roinn` with [[commas|camóga]] to divide up a comma separated list like `"Setanta,
@@ -180,17 +180,44 @@ scríobh("Your second name is:", names[1])
 
 ![Full name demo](assets/full-name.gif)
 
-## Cuid
+## Cuid / Part
 
-"[[Cuid|Part]]" means "part" or "piece", and the `cuid` action allows us to [[extract|bain as]] a piece of text. We give
-the action 2 [[positions|áiteanna]] as [[arguments|argóintí]], and it returns the text [[between|idir]] those 2 positions (not
-including the second).
+"[[Cuid|Part]]" means "part" or "piece", and the `cuid` action allows us to [[extract|bain as]] a
+piece of text. We give the action 2 [[positions|áiteanna]] as [[arguments|argóintí]], and it returns
+the text [[between|idir]] those 2 positions (not including the second).
 
 e.g. `cuid@"hello"(1, 4)`{.setanta} returns `"ell"`{.setanta} because the text between index 1 and
 index 4 is `"ell"`{.setanta}
 
-## go_liosta
+## go_liosta/ To List
 
-`go_liosta` (meaning "to list") is an action that returns a list of the [[characters|carachtair]] of the text.
+`go_liosta` (meaning "to list") is an action that returns a list of the [[characters|carachtair]]
+of the text.
 
 e.g. `go_liosta("Setanta")`{.setanta} returns `["S", "e", "t", "a", "n", "t", "a"]`{.setanta}.
+
+# List Tips
+
+Lists share many of the same actions as text including `fad` and `cuid`. But they also have the
+following actions available.
+
+## Sórtáil / Sort
+
+"[[Sórtaíl|Sort]]" translates as "sort", the `sórtáil` action sorts a list into
+[[increasing|méadaitheach]] order.
+
+For example: `sórtáil@[1, 3, 2]`{.setanta} returns `[1, 2, 3]`{.setanta}.
+
+**_NB: Sorting is done in place. i.e. the list will be changed when `sórtáil` is called_**
+
+## Nasc / Join
+
+"[[Nasc|Join]]" translates as "join". The `nasc` action can be used to turn a list into text,
+joining the [[elements|baill]] together with some piece of text. This text is passed in as an argument.
+
+For example: `nasc@[1, 2, 3](", ")`{.setanta} returns `"1, 2, 3"`{.setanta}
+
+# The Docs
+
+If you need to [[look up|cuardach]] these actions and values, or want to see what else is available, you can find
+the [[whole list|liosta iomlán]] on [docs.try-setanta.ie](https://docs.try-setanta.ie).
