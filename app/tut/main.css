@@ -27,16 +27,16 @@ html {
     overflow-x: hidden;
     overflow-y: auto;
 }
-#TOC ul {
+#TOC ul, #all-toc {
     list-style-type: none;
     flex-shrink: 0;
 }
-#TOC li {
+#TOC li, #all-toc li {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
 }
-#TOC ul li:before { /* the custom styled bullets */
+#TOC ul li:before, #all-toc li:before { /* the custom styled bullets */
   color: var(--theme-primary-dark);
   content: "᚛";
   font-weight: 900;
@@ -44,7 +44,7 @@ html {
   margin-right: 0.5rem;
   flex-shrink: 0;
 }
-#TOC a {
+#TOC a, #all-toc a {
     font-size: 1.25rem;
     max-width: calc(0.7 * var(--nav-width));
     text-decoration: none;
@@ -54,12 +54,12 @@ html {
     color: var(--theme-text-primary);
     display: inline-block;
 }
-#TOC a:hover {
+#TOC a:hover, #all-toc a:hover {
     border: 1px solid var(--theme-accent);
     background-color: var(--offwhite);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
-#TOC ul > li > ul {
+#TOC ul > li > ul, #all-toc > li > ul {
     border-left: 1px dashed var(--theme-primary);
     margin-left: 0.25rem;
 }

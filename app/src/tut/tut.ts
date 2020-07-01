@@ -88,37 +88,8 @@ paper-tabs {
 paper-tab {
     --paper-tab-ink: var(--theme-accent);
 }
-#all-toc {
+#all-toc-slot {
     display: none;
-    list-style-type: none;
-}
-#all-toc li {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-}
-#all-toc li:before { /* the custom styled bullets */
-  color: var(--theme-primary-dark);
-  content: "᚛";
-  font-weight: 900;
-  display: inline-block;
-  margin-right: 0.5rem;
-  flex-shrink: 0;
-}
-#all-toc a {
-    font-size: 1.25rem;
-    max-width: calc(0.7 * var(--nav-width));
-    text-decoration: none;
-    padding: 2px 8px 2px 8px;
-    border-radius: 10px;
-    border: 1px solid transparent;
-    color: var(--theme-text-primary);
-    display: inline-block;
-}
-#all-toc a:hover {
-    border: 1px solid var(--theme-accent);
-    background-color: var(--offwhite);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 @media (max-width: 600px) {
     #sidebar {
@@ -156,9 +127,8 @@ paper-tab {
             <div id="toc-wrap">
                 <slot id="tocslot" name="toc">
                 </slot>
-                <ul id="all-toc">
-                    ${this.allPages()}
-                </ul>
+                <slot id="all-toc-slot" name="all-toc">
+                </slot>
             </div>
         </div>
         <div id="body-wrap">
@@ -179,7 +149,7 @@ paper-tab {
     }
 
     private get alltoc() {
-        return this.shadowRoot!.getElementById("all-toc")!
+        return this.shadowRoot!.getElementById("all-toc-slot")!
     }
 
     private tabSelect(e: Event) {
