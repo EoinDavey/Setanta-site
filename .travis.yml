@@ -19,10 +19,20 @@ before_deploy:
       -in gae-keys.json.enc -out gae-keys.json -d
 
 deploy:
-    provider: gae
-    config: dev.yaml
-    version: dev
-    keyfile: gae-keys.json
-    project: final-year-project-257911
-    skip_cleanup: true
-    on: dev
+    - provider: gae
+      config: app.yaml
+      version: dev
+      keyfile: gae-keys.json
+      project: final-year-project-257911
+      skip_cleanup: true
+      on:
+          branch: master
+          tags: true
+
+    - provider: gae
+      config: dev.yaml
+      version: dev
+      keyfile: gae-keys.json
+      project: final-year-project-257911
+      skip_cleanup: true
+      on: dev
