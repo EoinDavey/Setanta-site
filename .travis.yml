@@ -35,4 +35,5 @@ deploy:
       keyfile: gae-keys.json
       project: final-year-project-257911
       skip_cleanup: true
-      on: dev
+      on:
+          all_branches: true

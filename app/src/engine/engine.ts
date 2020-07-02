@@ -69,6 +69,17 @@ export class DisplayEngine {
         const y1 = Asserts.assertNumber(args[1]);
         const x2 = Asserts.assertNumber(args[2]);
         const y2 = Asserts.assertNumber(args[3]);
+        this.ctx.strokeRect(x1, y1, x2, y2);
+        return Promise.resolve(null);
+    }
+
+    // arity: 4; args[0]: number, args[1]: number, args[2]: number, args[3]: number
+    // draws rectangle at position (args[0], args[1]) with width args[2] and height args[3]
+    public drawFullRect(args: Value[]): Promise<Value> {
+        const x1 = Asserts.assertNumber(args[0]);
+        const y1 = Asserts.assertNumber(args[1]);
+        const x2 = Asserts.assertNumber(args[2]);
+        const y2 = Asserts.assertNumber(args[3]);
         this.ctx.fillRect(x1, y1, x2, y2);
         return Promise.resolve(null);
     }
