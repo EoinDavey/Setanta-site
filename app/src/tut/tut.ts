@@ -3,6 +3,8 @@ import "@polymer/paper-icon-button/paper-icon-button";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icon/iron-icon";
 import "@polymer/iron-icons/av-icons.js";
+import "@polymer/paper-tabs/paper-tabs.js";
+import "@polymer/paper-tabs/paper-tab.js";
 import "./tooltip";
 import "../mini/mini";
 
@@ -90,6 +92,9 @@ paper-tab {
 }
 #all-toc-slot {
     display: none;
+}
+#tabs {
+    flex-shrink: 0;
 }
 @media (max-width: 600px) {
     #sidebar {
