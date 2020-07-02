@@ -102,6 +102,13 @@ export abstract class RuntimeComponent extends LitElement {
         }
     }
 
+    protected handleKeyDown(e: KeyboardEvent) {
+        if (this.activeCtx) {
+            this.activeCtx.handleKeyDown(e);
+            e.preventDefault();
+        }
+    }
+
     protected stopCode(e: Event) {
         if (this.activeCtx) {
             this.activeCtx.stop();

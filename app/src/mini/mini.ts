@@ -113,7 +113,8 @@ ciorcal@stáitse(100, 100, 50)`;
                     <fyp-console id="console"
                     @setanta-console-enter="${this.consoleWrite}">
                     </fyp-console>
-                    <canvas id="stage" width="1000" height="750"></canvas>
+                    <canvas id="stage" width="1000" height="750"
+                    tabindex="0" @keydown="${this.handleKeyDown}"></canvas>
                 </div>
             </paper-card>`;
     }

@@ -182,12 +182,6 @@ class FypApp extends RuntimeComponent {
     `;
     }
 
-    public handleKeyDown(e: KeyboardEvent) {
-        if (this.activeCtx) {
-            this.activeCtx.handleKeyDown(e);
-        }
-    }
-
     public async saveCode(e: Event) {
         const program = this.editor.content;
         const data = {
