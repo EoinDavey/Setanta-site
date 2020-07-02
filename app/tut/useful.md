@@ -1,5 +1,7 @@
 ---
 title: Some Useful Actions
+next: game-time
+next-text: Game Time!
 prev: action
 prev-text: Time for Action
 ---
