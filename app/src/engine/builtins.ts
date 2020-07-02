@@ -78,6 +78,13 @@ export function genBuiltins(display: DisplayEngine, writeFn: (s: string) => void
                         call: (args: Value[]) => display.drawRect(args),
                     },
                 ],
+                [["dronLán"],
+                    {
+                        ainm: "dronLán",
+                        arity: () => 4,
+                        call: (args: Value[]) => display.drawFullRect(args),
+                    },
+                ],
                 [["líne", "line"],
                     {
                         ainm: "líne",
