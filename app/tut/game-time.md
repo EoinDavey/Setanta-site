@@ -155,6 +155,8 @@ Now we can tell *Setanta* to use this action with the keyboard by passing it to 
 `méarchlár`{.setanta} action by calling `méarchlár(key_control)`{.setanta}. Let's add that to our
 program.
 
+*Run this program, press the arrow keys on your keyboard and then check the console*.
+
 {{{s
 paddle_height := 20
 paddle_width := fadX@stáitse // 5
@@ -173,6 +175,69 @@ gníomh draw_stage() {
 
 gníomh key_control(key) {
     scríobh(key)
+}
+
+méarchlár(key_control)
+
+>-- Loop forever
+nuair-a fíor {
+    >-- Call the draw_stage action
+    draw_stage()
+
+    >-- Sleep for a few milliseconds
+    codladh(10)
+}
+}}}
+
+You should see that "ArrowRight", "ArrowLeft", "ArrowDown" or "ArrowUp" have been printed in your
+console. We can change the code in the `key_control` action to behave differently depending on what
+key was pressed.
+
+Let's add a new variable called `paddle_speed` to control how far to move the paddle when the user
+presses an arrow key. I'll start with a value of 50 as I think it works well.
+
+Then we can change the code in the `key_control` action to change the `paddle_x` variable to move
+the paddle left and right depending on the key that was pressed:
+
+```{.setanta .numberLines}
+gníomh key_control(key) {
+    má key == "ArrowLeft" {
+        paddle_x -= paddle_speed
+    } nó má key == "ArrowRight" {
+        paddle_x += paddle_speed
+    }
+}
+```
+
+As you can see if the left arrow is pressed we decrease the x coordinate, and if the right arrow is
+pressed we increase the x coordinate.
+
+Try out the code now: The paddle should move when you press the arrow keys!
+
+{{{s
+paddle_height := 20
+paddle_width := fadX@stáitse // 5
+
+paddle_x := 0
+paddle_y := fadY@stáitse - paddle_height
+
+paddle_speed := 50
+
+gníomh draw_stage() {
+    >-- Clear the stage
+    glan@stáitse()
+
+    dath@stáitse("dearg") >-- Red pen
+
+    dronLán@stáitse(paddle_x, paddle_y, paddle_width, paddle_height)
+}
+
+gníomh key_control(key) {
+    má key == "ArrowLeft" {
+        paddle_x -= paddle_speed
+    } nó má key == "ArrowRight" {
+        paddle_x += paddle_speed
+    }
 }
 
 méarchlár(key_control)
