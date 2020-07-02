@@ -21,68 +21,11 @@ var (
 
 const projectID = "final-year-project-257911"
 const kind = "Script"
-const defaultContent = `>-- ###########
->-- # Gaeilge #
->-- ###########
+const defaultContent = `>-- Cliceáil "Foghlaim" chun Setanta a fhoghlaim
+>-- nó scríobh do ríomhchlár Setanta anseo
 
->-- Téigh go dtí https://docs.try-setanta.ie nó cliceáil "Foghlaim" chun Setanta a fhoghlaim
-
->-- Brúigh ar an cnaipe tosaigh chun an ríomhchlár sampla a tosnú
-
->-- ###########
->-- # English #
->-- ###########
-
->-- Go to https://docs.try-setanta.ie or click "Foghlaim" to learn Setanta
-
->-- Click on the start button to start the example program
-
-Í := íos(fadX@stáitse, fadY@stáitse)*0.9
-I := 0.85 * Í
-
-dx := (fadX@stáitse - I)/2
-dy := (fadY@stáitse - I)/2
-
-lthd@stáitse(20)
-
-r := I/2
-
-t := [
-    [r + r * sin@mata(pi@mata / 3) + dx, r - r * cos@mata(pi@mata / 3) + dy],
-    [r - r * sin@mata(pi@mata / 3) + dx, r - r * cos@mata(pi@mata / 3) + dy],
-    [r + dx, I + dy]
-]
-t += [t[0]]
-
-le i idir (1, fad(t)) {
-    dfx := t[i][0] - t[i-1][0]
-    dfy := t[i][1] - t[i-1][1]
-    le j idir (1, 51) {
-    	líne@stáitse(t[i-1][0], t[i-1][1], t[i-1][0] + (j/50) * dfx, t[i-1][1] + (j/50) * dfy)
-        codladh(10)
-	}
-}
-cruth@stáitse(t)
-
-rngs := [[1/2, 7/6], [11/6, 1/2], [7/6, 11/6]]
-
-dath@stáitse('#651fff')
-
-le i idir (0, 3) {
-    le j idir (1, 51) {
-		píosaCiorcal@stáitse(t[i][0], t[i][1], r, rngs[i][0]*pi@mata, (rngs[i][0] + (4*j/300))*pi@mata, bréag)
-        codladh(10)
-    }
-}
-
-le i idir (0, Í/2, 2) {
-	dath@stáitse('#388E3C')
-	ciorcalLán@stáitse(r + dx, r + dy, i)
-    dath@stáitse('#651fff')
-    le i idir (0, 3)
-    	píosaCiorcal@stáitse(t[i][0], t[i][1], r, rngs[i][0]*pi@mata, rngs[i][1]*pi@mata, bréag)
-    codladh(1)
-}`
+>-- Click "Foghlaim" to learn Setanta
+>-- or write your Setanta program here`;
 
 type Entry struct {
 	Content string `datastore:",noindex"`
