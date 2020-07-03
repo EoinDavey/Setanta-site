@@ -129,7 +129,7 @@ nuair-a fíor {
 **[[Don't forget|Ná dean dearmad]] to [[press|brúigh ar]] <iron-icon class="play" icon="av:stop"></iron-icon> to stop the program
 otherwise it will go [[forever|go deo]]!**
 
-You should see a small red paddle being drawn at the bottom of the stage.
+You should see a [[small|beag]] red paddle being drawn at the bottom of the stage.
 
 ## Move the Paddle
 
@@ -211,7 +211,7 @@ gníomh key_control(key) {
 }
 ```
 
-As you can see if the left arrow is pressed we [[decrease|laghdaigh] the x coordinate, and if the right arrow is
+As you can see if the left arrow is pressed we [[decrease|laghdaigh]] the x coordinate, and if the right arrow is
 pressed we [[increase|méadaigh]] the x coordinate.
 
 Try out the code now: The paddle should move when you press the arrow keys!
@@ -253,3 +253,383 @@ nuair-a fíor {
     codladh(10)
 }
 }}}
+
+# The Ball
+
+Next let's add a [[ball|liathróid]] to [[bounce|preab]] around the stage. Just like with the paddle we'll add 2 new
+variables for the x and y coordinates of the ball, `ball_x` and `ball_y`, let's start the ball in
+the top left corner (0, 0).
+
+Let's add another variable for the [[radius|ga]] of the ball, `ball_rad`, and start it with a value of 30.
+
+[[Finally|Faoi dheireadh]] then we need two more variables to control the [[direction|treo]] the ball is [[moving|ag dul]] in. We call
+these `ball_dx` and `ball_dy`. `ball_dx` is the change of the ball in the x direction, and `ball_dy`
+is the change in the y direction. We'll start with a value of 2 for each, meaning the ball will
+start off moving [[diagonally|fiarthrasna]] towards the bottom right.
+
+```{.setanta .numberLines}
+ball_x := 0
+ball_y := 0
+
+ball_rad := 40
+
+ball_dx := 2
+ball_dy := 2
+```
+
+## Draw the Ball
+
+Let's add the [[logic|loighic]] to draw the ball to our `draw_stage` action. We'll switch the colour of the pen
+to [[blue|gorm]] ("gorm"), and use the `ciorcalLán` (meaning "[[full circle|ciorcal lán]]") to draw the ball.
+
+```{.setanta .numberLines}
+gníomh draw_stage() {
+    >-- Clear the stage
+    glan@stáitse()
+
+    dath@stáitse("dearg") >-- Red pen
+
+    >-- Draw paddle
+    dronLán@stáitse(paddle_x, paddle_y, paddle_width, paddle_height)
+
+    dath@stáitse("gorm") >-- Blue pen
+
+    >-- Draw ball
+    ciorcalLán@stáitse(ball_x, ball_y, ball_rad)
+}
+```
+
+## Ball Movement
+
+We want the ball to move, let's make a new action called `update_ball` that will be called in our
+draw loop. We should use this action to move the ball a [[tiny|beag bídeach]] amount (`ball_dx` and `ball_dy`
+specifically).
+
+```{.setanta .numberLines}
+gníomh update_ball() {
+    ball_x += ball_dx
+    ball_y += ball_dy
+}
+```
+
+Now we include a call to `update_ball` into our draw loop
+
+```{.setanta .numberLines}
+>-- Loop forever
+nuair-a fíor {
+    >-- Call the draw_stage action
+    draw_stage()
+
+    >-- Update ball
+    update_ball()
+
+    >-- Sleep for a few milliseconds
+    codladh(10)
+}
+```
+ 
+Let's run the code we have so far:
+
+{{{s
+paddle_height := 20
+paddle_width := fadX@stáitse // 5
+
+paddle_x := 0
+paddle_y := fadY@stáitse - paddle_height
+
+paddle_speed := 50
+
+ball_x := 0
+ball_y := 0
+
+ball_rad := 40
+
+ball_dx := 2
+ball_dy := 2
+
+gníomh draw_stage() {
+    >-- Clear the stage
+    glan@stáitse()
+
+    dath@stáitse("dearg") >-- Red pen
+
+    >-- Draw paddle
+    dronLán@stáitse(paddle_x, paddle_y, paddle_width, paddle_height)
+
+    dath@stáitse("gorm") >-- Blue pen
+
+    >-- Draw ball
+    ciorcalLán@stáitse(ball_x, ball_y, ball_rad)
+}
+
+gníomh update_ball() {
+    ball_x += ball_dx
+    ball_y += ball_dy
+}
+
+gníomh key_control(key) {
+    má key == "ArrowLeft" {
+        paddle_x -= paddle_speed
+    } nó má key == "ArrowRight" {
+        paddle_x += paddle_speed
+    }
+}
+
+méarchlár(key_control)
+
+>-- Loop forever
+nuair-a fíor {
+    >-- Call the draw_stage action
+    draw_stage()
+
+    >-- Update ball
+    update_ball()
+
+    >-- Sleep for a few milliseconds
+    codladh(10)
+}
+}}}
+
+![No collisions!](assets/no-collision-game.gif)
+
+Oh no! The ball just flies off the screen! This is because we haven't programmed in what the ball
+should do when it hits the paddle or the [[walls|ballaí]]. Let's do that now.
+
+## Bounce
+
+To add bouncing logic we should change our `update_ball` action. Let's start with the walls and
+we'll do the paddle logic after.
+
+Before we [[update|nuashonraigh]] the balls position, we can [[check|seiceáil]] if it will go past each of the walls, and if it
+will we should turn it around.
+
+For example, if the x coordinate is going to be [[less than|níos lú ná]] 0, then it will have gone past the
+left wall, so we should [[turn|cas]] the ball around in the x direction. Similarly if the x coordinate is
+[[greater than|níos mó ná]] `fadX@stáitse` we should turn the ball around in the x direction. If the y coordinate
+is less than 0, then the ball is going off the top side so we should change it's y direction.
+
+Let's put two new variables in our `update_ball` action called `pred_x` and `pred_y`, these will be
+the [[predicted position|an suíomh atá tuartha]] of the ball, then we can use these values to check if it's going to go over
+an edge.
+
+```{.setanta .numberLines}
+gníomh update_ball() {
+    >-- Predicted coordinates
+    pred_x := ball_x + ball_dx
+    pred_y := ball_y + ball_dy
+
+    >-- We'll do our bounce logic here
+
+
+    >-- After bounce checks, update ball position
+    ball_x += ball_dx
+    ball_y += ball_dy
+}
+```
+
+Now we [[insert|cuir isteach]] our checks if the predicted positions are over an edge. To change the direction of the
+ball in the `x` direction we want to make `ball_dx` equal to it's [[negative|diúltach]]. The same can be done
+with `ball_dy`.
+
+When the ball goes over the bottom edge, the game is [[over|thart]]. We can use the `stop` action to
+completely stop the program.
+
+```{.setanta .numberLines}
+gníomh update_ball() {
+    >-- Predicted coordinates
+    pred_x := ball_x + ball_dx
+    pred_y := ball_y + ball_dy
+
+    má pred_x < 0 {
+        >-- Gone over the left edge
+        >-- Change ball_dx direction
+        ball_dx = -ball_dx
+    }
+    má pred_x > fadX@stáitse {
+        >-- Gone over the right edge
+        >-- Change ball_dx direction
+        ball_dx = -ball_dx
+    }
+    má pred_y < 0 {
+        >-- Gone over the top edge
+        >-- Change ball_dy direction
+        ball_dy = -ball_dy
+    }
+    má pred_y > fadY@stáitse {
+        >-- Gone over the bottom edge
+        scríobh("GAME OVER")
+        stop()
+    }
+
+    >-- After bounce checks, update ball position
+    ball_x += ball_dx
+    ball_y += ball_dy
+}
+```
+
+## Paddle Bounce
+
+Now that we've taken care of the top, left and right edges, we need to take care of the paddle.
+
+When we detect that the ball is going to go past the paddle, we can do an [[additional|breise]] check to see if
+the paddle is under the ball by checking if the `ball_x` is [[between|idir]] `paddle_x` and `paddle_x +
+paddle_width`.
+
+If the ball has touched the paddle we can turn it around as if it hit a wall.
+
+```{.setanta .numberLines}
+gníomh update_ball() {
+    >-- Predicted coordinates
+    pred_x := ball_x + ball_dx
+    pred_y := ball_y + ball_dy
+
+    má pred_x < 0 {
+        >-- Gone over the left edge
+        >-- Change ball_dx direction
+        ball_dx = -ball_dx
+    }
+    má pred_x > fadX@stáitse {
+        >-- Gone over the right edge
+        >-- Change ball_dx direction
+        ball_dx = -ball_dx
+    }
+    má pred_y < 0 {
+        >-- Gone over the top edge
+        >-- Change ball_dy direction
+        ball_dy = -ball_dy
+    }
+    má pred_y > fadY@stáitse {
+        >-- Gone over the bottom edge
+        scríobh("GAME OVER")
+        stop()
+    }
+
+    má pred_y > paddle_y {
+        >-- Ball gone past paddle_y
+        >-- Check if paddle is underneath
+        má pred_x >= paddle_x & pred_x <= paddle_x + paddle_width {
+            >-- Turn ball_dy around
+            ball_dy = -ball_dy
+        }
+    }
+
+    >-- After bounce checks, update ball position
+    ball_x += ball_dx
+    ball_y += ball_dy
+}
+```
+
+Let's try it out!
+
+{{{s
+paddle_height := 20
+paddle_width := fadX@stáitse // 5
+
+paddle_x := 0
+paddle_y := fadY@stáitse - paddle_height
+
+paddle_speed := 50
+
+ball_x := 0
+ball_y := 0
+
+ball_rad := 40
+
+ball_dx := 2
+ball_dy := 2
+
+gníomh draw_stage() {
+    >-- Clear the stage
+    glan@stáitse()
+
+    dath@stáitse("dearg") >-- Red pen
+
+    >-- Draw paddle
+    dronLán@stáitse(paddle_x, paddle_y, paddle_width, paddle_height)
+
+    dath@stáitse("gorm") >-- Blue pen
+
+    >-- Draw ball
+    ciorcalLán@stáitse(ball_x, ball_y, ball_rad)
+}
+
+gníomh update_ball() {
+    >-- Predicted coordinates
+    pred_x := ball_x + ball_dx
+    pred_y := ball_y + ball_dy
+
+    má pred_x < 0 {
+        >-- Gone over the left edge
+        >-- Change ball_dx direction
+        ball_dx = -ball_dx
+    }
+    má pred_x > fadX@stáitse {
+        >-- Gone over the right edge
+        >-- Change ball_dx direction
+        ball_dx = -ball_dx
+    }
+    má pred_y < 0 {
+        >-- Gone over the top edge
+        >-- Change ball_dy direction
+        ball_dy = -ball_dy
+    }
+    má pred_y > fadY@stáitse {
+        >-- Gone over the bottom edge
+        scríobh("GAME OVER")
+        stop()
+    }
+
+    má pred_y > paddle_y {
+        >-- Ball gone past paddle_y
+        >-- Check if paddle is underneath
+        má pred_x >= paddle_x & pred_x <= paddle_x + paddle_width {
+            >-- Turn ball_dy around
+            ball_dy = -ball_dy
+        }
+    }
+
+    >-- After bounce checks, update ball position
+    ball_x += ball_dx
+    ball_y += ball_dy
+}
+
+gníomh key_control(key) {
+    má key == "ArrowLeft" {
+        paddle_x -= paddle_speed
+    } nó má key == "ArrowRight" {
+        paddle_x += paddle_speed
+    }
+}
+
+méarchlár(key_control)
+
+>-- Loop forever
+nuair-a fíor {
+    >-- Call the draw_stage action
+    draw_stage()
+
+    >-- Update ball
+    update_ball()
+
+    >-- Sleep for a few milliseconds
+    codladh(10)
+}
+}}}
+
+
+![It works!](assets/collisions-game-simple.gif)
+
+Ta-Da! [[It works|Oibríonn sé]]. The ball bounces around off the walls and the paddle, but the game ends if the ball
+goes over the bottom edge.
+
+# Challenge
+
+There are lots of changes we could make to our game to make it [[better|níos fearr]]. Here's just a few things you
+could try:
+
+- Try and keep [[score|scór]], the score increases with every bounce off the paddle. Print the score when the
+  game is over
+- Implement a [[lives|saolta]] [[system|córas]]. The [[player|imreoir]] starts with some amount of lives and each time the ball
+  bounces off the bottom [[they lose|cailleann siad]] a life.
+- The collisions are currently calculated with the center of the ball `ball_x, ball_y`. Add or
+  subtract the radius of the ball to make the collisions work with the edge of the ball instead.
