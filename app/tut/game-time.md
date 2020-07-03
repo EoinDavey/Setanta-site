@@ -10,6 +10,8 @@ Let's combine all our [[knowledge|eolas]], with some new [[actions|gníomhartha]
 or *Breakout*. We'll have a [[paddle|slacán]] on the [[bottom|bun]] of the [[stage|stáitse]] that we have to move back and forth
 to catch a [[bouncing ball|liathróid ag preabadh]].
 
+![Bounce game](assets/game-screenshot.png)
+
 # Draw Loop
 
 To [[control|smachtaigh]] the [[graphics|grafaicí]] for our game, we'll use something called a "draw loop". A [[draw|tarraing]] loop is a
