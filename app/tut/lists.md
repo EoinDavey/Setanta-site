@@ -287,7 +287,7 @@ There are a few new actions and values we'll have to look at before we start.
 
 ## Random
 
-First lets see how do we generate a random number? Lucky for us *Setanta* has 2 actions that can do that for us, `rand` and `randUimhir`. These are maths functions so we access them with `rand@mata`{.setanta} and `randUimh@mata`{.setanta}. (Once again, we'll see what the @ does in the future).
+First lets see how do we generate a random number? Lucky for us *Setanta* has 2 actions that can do that for us, `rand` and `randUimhir`. These are maths actions so we access them with `rand@mata`{.setanta} and `randUimh@mata`{.setanta}. (Once again, we'll see what the @ does in the future).
 
 - `rand` returns a random number between 0 and 1, not necessarily a [[whole number|slánuimhir]] e.g. 0.5, 0.333 etc.
 - `randUimh` takes two arguments and returns a random whole number between those 2. e.g. `randUimh(3, 6)`{.setanta} will return one of 3, 4 or 5 with equal [[probability|dóchúlacht]] (it doesn't include the upper bound).

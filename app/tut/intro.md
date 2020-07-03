@@ -8,13 +8,14 @@ next-text: What is programming?
 
 **_Welcome to the *Setanta* tutorial!_**
 
-[[We hope|Tá súil againn]] you're ready to learn all about [[programming|ríomhchlárú]], [[Irish|Gaeilge]] and how they go hand in hand.
+[[We hope|Tá súil againn]] you're ready to learn all about [[programming|ríomhchlárú]], [[Irish|Gaeilge]] and how they go [[hand in hand|lámh i lámh]].
 
 There's just a few things to cover before you're [[ready|réidh]] to start!
 
 ## Translations
 
-If you see a word with an underline like [[this|you found me]], it's a word with a translation.
+If you see a word with an underline like [[this|you found me]], it's a word with a
+[[translation|aistriúchán]].
 Hover over or click on the word to see it's translation. [[Try it out!|Bain triail as!]].
 
 ## Setanta Editors
@@ -26,8 +27,8 @@ Throughout this [[tutorial|teagasc]] you will find *Setanta* [[editors|eagarthó
 scríobh("Dia duit!")
 }}}
 
-Editors are where we can write *Setanta* programs. We type a [[program|ríomhchlár]] into the box on the left, and we press <iron-icon class="play" icon="av:play-arrow"></iron-icon> to start it.
-The results of the program will be shown on the right.
+Editors are where we can write *Setanta* programs. We type a [[program|ríomhchlár]] into the [[box|bosca]] [[on the left|ar chlé]], and we press <iron-icon class="play" icon="av:play-arrow"></iron-icon> to start it.
+The [[results|torthaí]] of the program will be shown [[on the right|ar dheis]].
 
 Press the <iron-icon class="play" icon="av:play-arrow"></iron-icon> [[button|cnaipe]] to run the [[code|cód]].
 You should see [["Dia duit!"|&quot;Hello!&quot;]] on the right hand side.

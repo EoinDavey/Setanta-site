@@ -67,7 +67,7 @@ scríobh("Setanta is fun!")
 
 Some actions in *Setanta* return a value after they are called. We call this value the [[result|toradh]] of the action.
 
-To see what I mean, here's a quick example. *Setanta* has a function called "[[`uas`{.setanta}|max]]". "uas" is short for "[[uasmhéid|maximum]]" which translates into English as "maximum".
+To see what I mean, here's a quick example. *Setanta* has an action called "[[`uas`{.setanta}|max]]". "uas" is short for "[[uasmhéid|maximum]]" which translates into English as "maximum".
 
 So what does `uas`{.setanta} do? `uas`{.setanta} is an action that takes 2 numbers as arguments and returns the maximum.
 

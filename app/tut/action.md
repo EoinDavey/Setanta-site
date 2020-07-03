@@ -26,7 +26,7 @@ e.g: `aois := ceist("Cén aois thú")`{.setanta}
 
 # Gníomh Statements
 
-To make [[our own action|ár ngníomh féin]] we use the [[`gníomh`{.setanta}|action]] keyword. "gníomh", unsurprisingly translates as "action". We define the name of our action, what arguments it takes and the code to execute when we call the action. We'll see how to make your function have a [[result|toradh]] later.
+To make [[our own action|ár ngníomh féin]] we use the [[`gníomh`{.setanta}|action]] keyword. "gníomh", unsurprisingly translates as "action". We define the name of our action, what arguments it takes and the code to execute when we call the action. We'll see how to make your action have a [[result|toradh]] later.
 
 The syntax for a `gníomh`{.setanta} statement is:
 
@@ -197,7 +197,7 @@ To set a value as the result of the action (called "returning" the value), you s
 
 For example, "`toradh 1`{.setanta}", "`toradh ["a", "b", "c"]`{.setanta}".
 
-When the *Setanta* interpreter reads a `toradh`{.setanta} statement, it stops executing the function [[immediately|láithreach]], and returns the given value.
+When the *Setanta* interpreter reads a `toradh`{.setanta} statement, it stops executing the action [[immediately|láithreach]], and returns the given value.
 
 ## Simple example
 
@@ -223,7 +223,7 @@ scríobh(return_1())
 
 ### Important note
 
-It's [[important|tábhachtach]] to note that when a `toradh`{.setanta} statement is reached, the execution of the function is stopped, and the result is returned immediately.
+It's [[important|tábhachtach]] to note that when a `toradh`{.setanta} statement is reached, the execution of the action is stopped, and the result is returned immediately.
 
 If we add `scríobh("Setanta is fun")`{.setanta} after the `toradh`{.setanta} statement in our `return_1` action, we can see that it will not be called:
 

@@ -11,7 +11,7 @@ Before we start [[learning|ag foghlaim]] how to write and use *Setanta*, we shou
 
 > [[What is programming|Cad é ríomhchlarú]]?
 
-[[Computers|Ríomhairí]] today are very [[smart|cliste]], they can do calculations no human could ever do in their head, and in the blink of an eye. However, computers need a lot of [[help|cabhair]], and programming is how we help them.
+[[Computers|Ríomhairí]] today are very [[smart|cliste]], they can do calculations no human could ever do in their head, and in the [[blink of an eye|i bhfaiteadh na súl]]. However, computers need a lot of [[help|cabhair]], and programming is how we help them.
 
 When we write programs, we write down [[instructions|treoracha]] for the computer to [[follow|leanúint]]. The computer will read our instructions and follow them exactly.
 
@@ -70,7 +70,7 @@ The [[second option|dara rogha]] is to use single quotes (') to define your text
 ```
 ## Calculations
 
-We've seen that *Setanta* can write text, but we can do much more than that. [[For example|Mar shampla]], *Setanta* can do [[calculations|áirimh]] for you! Run this code and see how *Setanta* does all the [[maths|matamaitic]] for you.
+We've seen that *Setanta* can write text, but we can do much more than that. [[For example|Mar shampla]], *Setanta* can do [[calculations|áirimh]] for you! Run this code and see how *Setanta* does all the [[maths|matamaitic]] for you. *Setanta* will calculate the [[answer|freagair]] of "`28 + 36 * 2`{.setanta}" and write it on the console.
 
 {{{
 scríobh("Answer:", 28 + 36 * 2)
@@ -91,7 +91,7 @@ You can also use numbers with decimal points, such as `1.2`{.setanta} or `123.4`
 
 ### Adding text
 
-We can also use the `+` operator to add two pieces of text together. Try it out:
+We can also use the `+` operator to add two pieces of text [[together|le chéile]]. Try it out:
 
 {{{
 scríobh("Dia" + " Duit")
