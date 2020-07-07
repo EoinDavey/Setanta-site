@@ -33,7 +33,7 @@ In the following code we saw before, `2000`{.setanta} is the argument to `codlad
 codladh(2000)
 ```
 
-When this code is ran, the computer passes `2000`{.setanta} to the `codladh` action and then calls it,
+When this code is run, the computer passes `2000`{.setanta} to the `codladh` action and then calls it,
 causing the program to sleep for 2 seconds.
 
 ### Multiple Arguments

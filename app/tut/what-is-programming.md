@@ -186,7 +186,7 @@ x = x + 10
 scríobh(x)
 }}}
 
-When this code is ran it writes 12 on the console.
+When this code is run it writes 12 on the console.
 
 ### Explanation
 
