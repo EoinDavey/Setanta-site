@@ -78,9 +78,16 @@ export function genBuiltins(display: DisplayEngine, writeFn: (s: string) => void
                         call: (args: Value[]) => display.drawRect(args),
                     },
                 ],
-                [["dronLán"],
+                [["dronLán"], // DEPRECATED
                     {
                         ainm: "dronLán",
+                        arity: () => 4,
+                        call: (args: Value[]) => display.drawFullRect(args),
+                    },
+                ],
+                [["dron_lán"],
+                    {
+                        ainm: "dron_lán",
                         arity: () => 4,
                         call: (args: Value[]) => display.drawFullRect(args),
                     },
@@ -99,9 +106,16 @@ export function genBuiltins(display: DisplayEngine, writeFn: (s: string) => void
                         call: (args: Value[]) => display.drawCirc(args),
                     },
                 ],
-                [["ciorcalLán", "ciorcalLan"],
+                [["ciorcalLán", "ciorcalLan"], // DEPRECATED
                     {
-                        ainm: "líne",
+                        ainm: "ciorcalLán",
+                        arity: () => 3,
+                        call: (args: Value[]) => display.drawFullCirc(args),
+                    },
+                ],
+                [["ciorcal_lán", "ciorcal_lan"],
+                    {
+                        ainm: "ciorcal_lán",
                         arity: () => 3,
                         call: (args: Value[]) => display.drawFullCirc(args),
                     },
@@ -113,30 +127,58 @@ export function genBuiltins(display: DisplayEngine, writeFn: (s: string) => void
                         call: (args: Value[]) => display.drawShape(args),
                     },
                 ],
-                [["cruthLán", "cruthLan"],
+                [["cruthLán", "cruthLan"], // DEPRECATED
                     {
                         ainm: "cruthLán",
                         arity: () => 1,
                         call: (args: Value[]) => display.drawShapeFull(args),
                     },
                 ],
-                [["píosaCiorcal", "piosaCiorcal"],
+                [["cruth_lán", "cruth_lan"],
+                    {
+                        ainm: "cruth_lán",
+                        arity: () => 1,
+                        call: (args: Value[]) => display.drawShapeFull(args),
+                    },
+                ],
+                [["píosaCiorcal", "piosaCiorcal"], // DEPRECATED
                     {
                         ainm: "píosaCiorcal",
                         arity: () => 6,
                         call: (args: Value[]) => display.drawArc(args),
                     },
                 ],
-                [["píosaCiorcalLán", "piosaCiorcalLan"],
+                [["píosa_ciorcal", "piosa_ciorcal"],
+                    {
+                        ainm: "píosa_ciorcal",
+                        arity: () => 6,
+                        call: (args: Value[]) => display.drawArc(args),
+                    },
+                ],
+                [["píosaCiorcalLán", "piosaCiorcalLan"], // DEPRECATED
                     {
                         ainm: "píosaCiorcalLán",
                         arity: () => 6,
                         call: (args: Value[]) => display.drawArcFull(args),
                     },
                 ],
-                [["glanDron"],
+                [["píosa_ciorcal_lán", "píosa_ciorcal_lan", "piosa_ciorcal_lán", "piosa_ciorcal_lan"],
+                    {
+                        ainm: "píosa_ciorcal_lán",
+                        arity: () => 6,
+                        call: (args: Value[]) => display.drawArcFull(args),
+                    },
+                ],
+                [["glanDron"], // DEPRECATED
                     {
                         ainm: "glanDron",
+                        arity: () => 4,
+                        call: (args: Value[]) => display.clearRect(args),
+                    },
+                ],
+                [["glan_dron"],
+                    {
+                        ainm: "glan_dron",
                         arity: () => 4,
                         call: (args: Value[]) => display.clearRect(args),
                     },
