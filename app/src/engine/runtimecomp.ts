@@ -109,6 +109,20 @@ export abstract class RuntimeComponent extends LitElement {
         }
     }
 
+    protected handleMouseDown(e: MouseEvent) {
+        if (this.activeCtx) {
+            const bound_rect = this.stage.getBoundingClientRect();
+            const h = bound_rect.bottom - bound_rect.top;
+            const w = bound_rect.right - bound_rect.left;
+            const x = (e.clientX - bound_rect.left)/w;
+            const y = (e.clientY - bound_rect.top)/h;
+            // We pass in the *relative* positions to the height and width
+            // of the stage
+            this.activeCtx.handleMouseDown(x, y);
+            e.preventDefault();
+        }
+    }
+
     protected stopCode(e: Event) {
         if (this.activeCtx) {
             this.activeCtx.stop();

@@ -168,5 +168,23 @@ export function genBuiltins(display: DisplayEngine, writeFn: (s: string) => void
                 },
             },
         ],
+        [
+            ["luch_síos", "luch_sios"],
+            {
+                ainm: "luch_síos",
+                arity: () => 1,
+                call: (args: Value[]): Promise<Value> => {
+                    const f = Asserts.assertCallable(args[0]);
+                    display.registerMouseDownHandler((x: number, y: number) => {
+                        return callFunc(f, [x, y]).catch((err) => {
+                            if (err !== STOP) {
+                                return Promise.reject(err);
+                            }
+                        });
+                    });
+                    return Promise.resolve(null);
+                },
+            },
+        ],
     ];
 }

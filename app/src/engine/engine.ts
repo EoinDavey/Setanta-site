@@ -38,10 +38,15 @@ export class DisplayEngine {
         this.ctx = ctx;
     }
 
-    public keyFn: (code: string) => void = (s: string) => undefined;
+    public keyFn: (code: string) => void = () => undefined;
+    public mouseDownFn: (x: number, y: number) => void = () => undefined;
 
     public registerKeyHandler(fn: (code: string) => void) {
         this.keyFn = fn;
+    }
+
+    public registerMouseDownHandler(fn: (x: number, y: number) => void) {
+        this.mouseDownFn = fn;
     }
 
     // arity: 1; args[0]: string

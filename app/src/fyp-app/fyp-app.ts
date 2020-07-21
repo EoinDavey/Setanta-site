@@ -161,7 +161,10 @@ class FypApp extends RuntimeComponent {
         <div id='container'>
             <paper-card id="stage-card">
                 <div class="card-content">
-                    <canvas id='stage' width="1000" height="750" tabindex="0" @keydown="${this.handleKeyDown}"></canvas>
+                    <canvas id='stage' width="1000" height="750"
+                    tabindex="0" @keydown="${this.handleKeyDown}"
+                    @mousedown="${this.handleMouseDown}"
+                    ></canvas>
                 </div>
             </paper-card>
             <paper-card id="editor-card">
