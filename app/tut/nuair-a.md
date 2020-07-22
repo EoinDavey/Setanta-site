@@ -415,6 +415,7 @@ Check out this code:
 {{{s
 colours := ["buí", "gorm", "dubh", "dearg", "bandearg", "glas"]
 
+>-- Loop over each colour
 le i idir (0, fad@colours) {
     colour := colours[i]
 
@@ -422,8 +423,8 @@ le i idir (0, fad@colours) {
     dath@stáitse(colour)
 
     >-- Get random coordinates
-    x := randUimh@mata(0, fadX@stáitse)
-    y := randUimh@mata(0, fadY@stáitse)
+    x := slánuimh_rand@mata(0, fadX@stáitse)
+    y := slánuimh_rand@mata(0, fadY@stáitse)
 
     >-- Draw circle
     ciorcal@stáitse(x, y, 100)
@@ -451,6 +452,7 @@ That will cause *Setanta* to stop and move on to the next iteration if the colou
 {{{s
 colours := ["buí", "gorm", "dubh", "dearg", "bandearg", "glas"]
 
+>-- Loop over each colour
 le i idir (0, fad@colours) {
     colour := colours[i]
 
@@ -462,8 +464,8 @@ le i idir (0, fad@colours) {
     dath@stáitse(colour)
 
     >-- Get random coordinates
-    x := randUimh@mata(0, fadX@stáitse)
-    y := randUimh@mata(0, fadY@stáitse)
+    x := slánuimh_rand@mata(0, fadX@stáitse)
+    y := slánuimh_rand@mata(0, fadY@stáitse)
 
     >-- Draw circle
     ciorcal@stáitse(x, y, 100)

@@ -95,7 +95,7 @@ scríobh(5 // 2)
 
 ## Maths actions
 
-[[Earlier|Níos luaithe]] in the tutorial we got lots of use out of `rand@mata`{.setanta} and `randUimh@mata`{.setanta} to get [[random|randamach]] numbers. However, those are not the only maths actions we have.
+[[Earlier|Níos luaithe]] in the tutorial we got lots of use out of `rand@mata`{.setanta} and `slánuimh_rand@mata`{.setanta} to get [[random|randamach]] numbers. However, those are not the only maths actions we have.
 
 Here is a quick [[list|liosta]] of actions and [[values|luachanna]] you can access: Don't worry if you don't know what some of the actions do. They're [[available|ar fáil]] for anyone who needs them.
 
@@ -124,7 +124,7 @@ Here is a quick [[list|liosta]] of actions and [[values|luachanna]] you can acce
 | `acos` | Inverse cosine | `acos@mata(pi@mata)`{.setanta} |
 | `atan` | Inverse tangent    | `atan@mata(0)`{.setanta} |
 | `rand` | Random number from 0 to 1 | `rand@mata()`{.setanta} |
-| `randUimh` | Random whole number in some range | `randUimh@mata(5, 10)`{.setanta} |
+| `slánuimh_rand` | Random whole number in some range | `slánuimh_rand@mata(5, 10)`{.setanta} |
 
 # Text Tips
 
