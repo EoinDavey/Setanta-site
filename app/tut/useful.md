@@ -73,10 +73,11 @@ gníomh is_prime(x) {
 }
 
 uimhir := go_uimh(ceist("Enter a number"))
-má is_prime(uimhir)
+má is_prime(uimhir) {
     scríobh(uimhir, "is prime")
-nó
+} nó {
     scríobh(uimhir, "is not prime")
+}
 }}}
 
 ### Integer division
