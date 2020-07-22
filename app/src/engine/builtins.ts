@@ -190,6 +190,7 @@ export function genBuiltins(display: DisplayEngine, writeFn: (s: string) => void
                         call: (args: Value[]) => display.clear(args),
                     },
                 ],
+                // MOUSE DOWN event handler
                 [["luch", "luch"],
                     {
                         ainm: "luch",
@@ -207,9 +208,28 @@ export function genBuiltins(display: DisplayEngine, writeFn: (s: string) => void
                         },
                     },
                 ],
+                // KEY DOWN event handler
+                [["méarchlár", "méarchlar", "mearchlár", "mearchlar"],
+                    {
+                        ainm: "méarchlár",
+                        arity: () => 1,
+                        call: (args: Value[]): Promise<Value> => {
+                            const f = Asserts.assertCallable(args[0]);
+                            display.registerKeyHandler((code: string) => {
+                                return callFunc(f, [code]).catch((err) => {
+                                    if (err !== STOP) {
+                                        return Promise.reject(err);
+                                    }
+                                });
+                            });
+                            return Promise.resolve(null);
+                        },
+                    },
+                ],
             ]),
         ],
         [
+            // DEPRECATED
             ["méarchlár", "méarchlar", "mearchlár", "mearchlar"],
             {
                 ainm: "méarchlár",
