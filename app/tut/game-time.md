@@ -194,8 +194,11 @@ nuair-a fíor {
 }}}
 
 You should see that "ArrowRight", "ArrowLeft", "ArrowDown" or "ArrowUp" have been printed in your
-console. We can change the code in the `key_control` action to behave differently depending on what
+console. Each key you press has a name that describes it, we can check the name of the key that was pressed in the `key_control` action to behave differently depending on what
 key was pressed.
+
+**Note that the name of the keys are in English, this is because these names don't come from
+_Setanta_, they come from the browser**.
 
 Let's add a [[new|nua]] variable called `paddle_speed` to control the [[speed|luas]] of the paddle (how far to move the paddle when the user
 presses an arrow key). I'll start with a value of 50 as I think it works well.
