@@ -469,6 +469,6 @@ le i idir (0, n_circles) {
 
 ### Challenge
 
-Switch to using `ciorcalLán@stáitse`{.setanta} instead of `ciorcal`{.setanta}, what happens?
+Switch to using `ciorcal_lán@stáitse`{.setanta} instead of `ciorcal`{.setanta}, what happens?
 
-(Hint: "[[Lán|Full]]" means "full" in English).
+(Hint: "[[lán|full]]" means "full" in English).
