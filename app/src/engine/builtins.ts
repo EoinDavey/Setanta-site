@@ -195,17 +195,7 @@ export function genBuiltins(display: DisplayEngine, writeFn: (s: string) => void
                     {
                         ainm: "luch",
                         arity: () => 1,
-                        call: (args: Value[]): Promise<Value> => {
-                            const f = Asserts.assertCallable(args[0]);
-                            display.registerMouseDownHandler((x: number, y: number) => {
-                                return callFunc(f, [x, y]).catch((err) => {
-                                    if (err !== STOP) {
-                                        return Promise.reject(err);
-                                    }
-                                });
-                            });
-                            return Promise.resolve(null);
-                        },
+                        call: (args: Value[]) => display.registerMouseDownHandler(args),
                     },
                 ],
                 // KEY DOWN event handler
@@ -213,17 +203,7 @@ export function genBuiltins(display: DisplayEngine, writeFn: (s: string) => void
                     {
                         ainm: "méarchlár",
                         arity: () => 1,
-                        call: (args: Value[]): Promise<Value> => {
-                            const f = Asserts.assertCallable(args[0]);
-                            display.registerKeyHandler((code: string) => {
-                                return callFunc(f, [code]).catch((err) => {
-                                    if (err !== STOP) {
-                                        return Promise.reject(err);
-                                    }
-                                });
-                            });
-                            return Promise.resolve(null);
-                        },
+                        call: (args: Value[]) => display.registerKeyHandler(args),
                     },
                 ],
             ]),
@@ -234,17 +214,7 @@ export function genBuiltins(display: DisplayEngine, writeFn: (s: string) => void
             {
                 ainm: "méarchlár",
                 arity: () => 1,
-                call: (args: Value[]): Promise<Value> => {
-                    const f = Asserts.assertCallable(args[0]);
-                    display.registerKeyHandler((code: string) => {
-                        return callFunc(f, [code]).catch((err) => {
-                            if (err !== STOP) {
-                                return Promise.reject(err);
-                            }
-                        });
-                    });
-                    return Promise.resolve(null);
-                },
+                call: (args: Value[]) => display.registerKeyHandler(args),
             },
         ],
     ];

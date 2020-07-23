@@ -1,7 +1,8 @@
 import * as Asserts from "setanta/node_build/asserts";
-import { Value } from "setanta/node_build/values";
+import { callFunc, Value } from "setanta/node_build/values";
 import { ExecCtx } from "./execCtx";
 import { CanvasCtx } from "./types";
+import { STOP } from "setanta/node_build/consts";
 
 const colourMap: Map<string, string> = new Map([
     ["ban", "white"],
@@ -41,12 +42,32 @@ export class DisplayEngine {
     public keyFn: (code: string) => void = () => undefined;
     public mouseDownFn: (x: number, y: number) => void = () => undefined;
 
-    public registerKeyHandler(fn: (code: string) => void) {
+    // arity: 1; args[0]: (string) => null;
+    public registerKeyHandler(args: Value[]): Promise<Value> {
+        const f = Asserts.assertCallable(args[0]);
+        const fn = (code: string) => {
+            return callFunc(f, [code]).catch((err) => {
+                if (err !== STOP) {
+                    return Promise.reject(err);
+                }
+            });
+        };
         this.keyFn = fn;
+        return Promise.resolve(null);
     }
 
-    public registerMouseDownHandler(fn: (x: number, y: number) => void) {
+    // arity: 1; args[0]: (number, number) => null;
+    public registerMouseDownHandler(args: Value[]) {
+        const f = Asserts.assertCallable(args[0]);
+        const fn = (x: number, y: number) => {
+            return callFunc(f, [x, y]).catch((err) => {
+                if (err !== STOP) {
+                    return Promise.reject(err);
+                }
+            });
+        };
         this.mouseDownFn = fn;
+        return Promise.resolve(null);
     }
 
     // arity: 1; args[0]: string
