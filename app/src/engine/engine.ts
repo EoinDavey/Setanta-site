@@ -39,13 +39,14 @@ export class DisplayEngine {
         this.ctx = ctx;
     }
 
-    public keyFn: (code: string) => void = () => undefined;
+    public keyDownFn: (code: string) => void = () => undefined;
+    public keyUpFn: (code: string) => void = () => undefined;
     public mouseDownFn: (x: number, y: number) => void = () => undefined;
     public mouseUpFn: (x: number, y: number) => void = () => undefined;
     public mouseMoveFn: (x: number, y: number) => void = () => undefined;
 
     // arity: 1; args[0]: (string) => null;
-    public registerKeyHandler(args: Value[]): Promise<Value> {
+    public registerKeyDownHandler(args: Value[]): Promise<Value> {
         const f = Asserts.assertCallable(args[0]);
         const fn = (code: string) => {
             return callFunc(f, [code]).catch((err) => {
@@ -54,7 +55,21 @@ export class DisplayEngine {
                 }
             });
         };
-        this.keyFn = fn;
+        this.keyDownFn = fn;
+        return Promise.resolve(null);
+    }
+
+    // arity: 1; args[0]: (string) => null;
+    public registerKeyUpHandler(args: Value[]): Promise<Value> {
+        const f = Asserts.assertCallable(args[0]);
+        const fn = (code: string) => {
+            return callFunc(f, [code]).catch((err) => {
+                if (err !== STOP) {
+                    return Promise.reject(err);
+                }
+            });
+        };
+        this.keyUpFn = fn;
         return Promise.resolve(null);
     }
 

@@ -109,6 +109,13 @@ export abstract class RuntimeComponent extends LitElement {
         }
     }
 
+    protected handleKeyUp(e: KeyboardEvent) {
+        if (this.activeCtx) {
+            this.activeCtx.handleKeyUp(e);
+            e.preventDefault();
+        }
+    }
+
     protected handleMouseDown(e: MouseEvent) {
         if (this.activeCtx) {
             // We pass in the *relative* positions to the height and width

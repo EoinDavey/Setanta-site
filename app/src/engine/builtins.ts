@@ -219,7 +219,15 @@ export function genBuiltins(display: DisplayEngine, writeFn: (s: string) => void
                     {
                         ainm: "méarchlár",
                         arity: () => 1,
-                        call: (args: Value[]) => display.registerKeyHandler(args),
+                        call: (args: Value[]) => display.registerKeyDownHandler(args),
+                    },
+                ],
+                // KEY UP event handler
+                [["méarchlár_suas", "méarchlar_suas", "mearchlár_suas", "mearchlar_suas"],
+                    {
+                        ainm: "méarchlár_suas",
+                        arity: () => 1,
+                        call: (args: Value[]) => display.registerKeyUpHandler(args),
                     },
                 ],
             ]),
@@ -230,7 +238,7 @@ export function genBuiltins(display: DisplayEngine, writeFn: (s: string) => void
             {
                 ainm: "méarchlár",
                 arity: () => 1,
-                call: (args: Value[]) => display.registerKeyHandler(args),
+                call: (args: Value[]) => display.registerKeyDownHandler(args),
             },
         ],
     ];

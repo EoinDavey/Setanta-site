@@ -19,7 +19,11 @@ export class ExecCtx {
     }
 
     public handleKeyDown(e: KeyboardEvent) {
-        this.display.keyFn(e.key);
+        this.display.keyDownFn(e.key);
+    }
+
+    public handleKeyUp(e: KeyboardEvent) {
+        this.display.keyUpFn(e.key);
     }
 
     // Takes relative x and y positions
