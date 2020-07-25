@@ -83,7 +83,7 @@ Before we draw our paddle, we should [[clear|glan]] the stage of any [[old|sean]
 After we clear the stage we can [[change|athraigh]] the [[colour|dath]], I'd like to draw a [[red|dearg]] paddle, so I'll type
 `dath@stáitse("dearg")`{.setanta} to change the colour to "dearg" (red).
 
-Now we can draw our paddle! We can use the `dronLán@stáitse` action (short for "dronuilleog lán" meaning "[[full rectangle|dronuilleog lán]]") to draw a
+Now we can draw our paddle! We can use the `dron_lán@stáitse` action (short for "dronuilleog lán" meaning "[[full rectangle|dronuilleog lán]]") to draw a
 rectangle. We need to give it 4 [[arguments|argóintí]], the x [[coordinate|comhordanáid]], the y coordinate, the width and the
 height.
 
@@ -96,7 +96,7 @@ gníomh draw_stage() {
 
     dath@stáitse("dearg") >-- Red pen
 
-    dronLán@stáitse(paddle_x, paddle_y, paddle_width, paddle_height)
+    dron_lán@stáitse(paddle_x, paddle_y, paddle_width, paddle_height)
 }
 ```
 
@@ -115,7 +115,7 @@ gníomh draw_stage() {
 
     dath@stáitse("dearg") >-- Red pen
 
-    dronLán@stáitse(paddle_x, paddle_y, paddle_width, paddle_height)
+    dron_lán@stáitse(paddle_x, paddle_y, paddle_width, paddle_height)
 }
 
 >-- Loop forever
@@ -174,7 +174,7 @@ gníomh draw_stage() {
 
     dath@stáitse("dearg") >-- Red pen
 
-    dronLán@stáitse(paddle_x, paddle_y, paddle_width, paddle_height)
+    dron_lán@stáitse(paddle_x, paddle_y, paddle_width, paddle_height)
 }
 
 gníomh key_control(key) {
@@ -194,8 +194,11 @@ nuair-a fíor {
 }}}
 
 You should see that "ArrowRight", "ArrowLeft", "ArrowDown" or "ArrowUp" have been printed in your
-console. We can change the code in the `key_control` action to behave differently depending on what
+console. Each key you press has a name that describes it, we can check the name of the key that was pressed in the `key_control` action to behave differently depending on what
 key was pressed.
+
+**Note that the name of the keys are in English, this is because these names don't come from
+_Setanta_, they come from the browser**.
 
 Let's add a [[new|nua]] variable called `paddle_speed` to control the [[speed|luas]] of the paddle (how far to move the paddle when the user
 presses an arrow key). I'll start with a value of 50 as I think it works well.
@@ -233,7 +236,7 @@ gníomh draw_stage() {
 
     dath@stáitse("dearg") >-- Red pen
 
-    dronLán@stáitse(paddle_x, paddle_y, paddle_width, paddle_height)
+    dron_lán@stáitse(paddle_x, paddle_y, paddle_width, paddle_height)
 }
 
 gníomh key_control(key) {
@@ -282,7 +285,7 @@ ball_dy := 2
 ## Draw the Ball
 
 Let's add the [[logic|loighic]] to draw the ball to our `draw_stage` action. We'll switch the colour of the pen
-to [[blue|gorm]] ("gorm"), and use the `ciorcalLán` (meaning "[[full circle|ciorcal lán]]") to draw the ball.
+to [[blue|gorm]] ("gorm"), and use the `ciorcal_lán` (meaning "[[full circle|ciorcal lán]]") to draw the ball.
 
 ```{.setanta .numberLines}
 gníomh draw_stage() {
@@ -292,12 +295,12 @@ gníomh draw_stage() {
     dath@stáitse("dearg") >-- Red pen
 
     >-- Draw paddle
-    dronLán@stáitse(paddle_x, paddle_y, paddle_width, paddle_height)
+    dron_lán@stáitse(paddle_x, paddle_y, paddle_width, paddle_height)
 
     dath@stáitse("gorm") >-- Blue pen
 
     >-- Draw ball
-    ciorcalLán@stáitse(ball_x, ball_y, ball_rad)
+    ciorcal_lán@stáitse(ball_x, ball_y, ball_rad)
 }
 ```
 
@@ -356,12 +359,12 @@ gníomh draw_stage() {
     dath@stáitse("dearg") >-- Red pen
 
     >-- Draw paddle
-    dronLán@stáitse(paddle_x, paddle_y, paddle_width, paddle_height)
+    dron_lán@stáitse(paddle_x, paddle_y, paddle_width, paddle_height)
 
     dath@stáitse("gorm") >-- Blue pen
 
     >-- Draw ball
-    ciorcalLán@stáitse(ball_x, ball_y, ball_rad)
+    ciorcal_lán@stáitse(ball_x, ball_y, ball_rad)
 }
 
 gníomh update_ball() {
@@ -547,12 +550,12 @@ gníomh draw_stage() {
     dath@stáitse("dearg") >-- Red pen
 
     >-- Draw paddle
-    dronLán@stáitse(paddle_x, paddle_y, paddle_width, paddle_height)
+    dron_lán@stáitse(paddle_x, paddle_y, paddle_width, paddle_height)
 
     dath@stáitse("gorm") >-- Blue pen
 
     >-- Draw ball
-    ciorcalLán@stáitse(ball_x, ball_y, ball_rad)
+    ciorcal_lán@stáitse(ball_x, ball_y, ball_rad)
 }
 
 gníomh update_ball() {

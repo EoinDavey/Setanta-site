@@ -1,7 +1,8 @@
 import * as Asserts from "setanta/node_build/asserts";
-import { Value } from "setanta/node_build/values";
+import { callFunc, Value } from "setanta/node_build/values";
 import { ExecCtx } from "./execCtx";
 import { CanvasCtx } from "./types";
+import { STOP } from "setanta/node_build/consts";
 
 const colourMap: Map<string, string> = new Map([
     ["ban", "white"],
@@ -38,10 +39,75 @@ export class DisplayEngine {
         this.ctx = ctx;
     }
 
-    public keyFn: (code: string) => void = (s: string) => undefined;
+    public keyDownFn: (code: string) => Promise<Value> = () => Promise.resolve(null);
+    public keyUpFn: (code: string) => Promise<Value> = () => Promise.resolve(null);
+    public mouseUpFn: (x: number, y: number) => Promise<Value> = () => Promise.resolve(null);
+    public mouseDownFn: (x: number, y: number) => Promise<Value> = () => Promise.resolve(null);
+    public mouseMoveFn: (x: number, y: number) => Promise<Value> = () => Promise.resolve(null);
 
-    public registerKeyHandler(fn: (code: string) => void) {
-        this.keyFn = fn;
+    // arity: 1; args[0]: (string) => null;
+    public registerKeyDownHandler(args: Value[]): Promise<Value> {
+        const f = Asserts.assertCallable(args[0]);
+        const fn = (code: string) => {
+            return callFunc(f, [code])
+                .catch(err => err !== STOP
+                    ? Promise.reject(err)
+                    : Promise.resolve(null));
+        };
+        this.keyDownFn = fn;
+        return Promise.resolve(null);
+    }
+
+    // arity: 1; args[0]: (string) => null;
+    public registerKeyUpHandler(args: Value[]): Promise<Value> {
+        const f = Asserts.assertCallable(args[0]);
+        const fn = (code: string) => {
+            return callFunc(f, [code])
+                .catch(err => err !== STOP
+                    ? Promise.reject(err)
+                    : Promise.resolve(null));
+        };
+        this.keyUpFn = fn;
+        return Promise.resolve(null);
+    }
+
+    // arity: 1; args[0]: (number, number) => null;
+    public registerMouseDownHandler(args: Value[]) {
+        const f = Asserts.assertCallable(args[0]);
+        const fn = (x: number, y: number) => {
+            return callFunc(f, [x, y])
+                .catch(err => err !== STOP
+                    ? Promise.reject(err)
+                    : Promise.resolve(null));
+        };
+        this.mouseDownFn = fn;
+        return Promise.resolve(null);
+    }
+
+    // arity: 1; args[0]: (number, number) => null;
+    public registerMouseUpHandler(args: Value[]) {
+        const f = Asserts.assertCallable(args[0]);
+        const fn = (x: number, y: number) => {
+            return callFunc(f, [x, y])
+                .catch(err => err !== STOP
+                    ? Promise.reject(err)
+                    : Promise.resolve(null));
+        };
+        this.mouseUpFn = fn;
+        return Promise.resolve(null);
+    }
+
+    // arity: 1; args[0]: (number, number) => null;
+    public registerMouseMoveHandler(args: Value[]) {
+        const f = Asserts.assertCallable(args[0]);
+        const fn = (x: number, y: number) => {
+            return callFunc(f, [x, y])
+                .catch(err => err !== STOP
+                    ? Promise.reject(err)
+                    : Promise.resolve(null));
+        };
+        this.mouseMoveFn = fn;
+        return Promise.resolve(null);
     }
 
     // arity: 1; args[0]: string

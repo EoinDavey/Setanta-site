@@ -114,7 +114,13 @@ ciorcal@stáitse(100, 100, 50)`;
                     @setanta-console-enter="${this.consoleWrite}">
                     </fyp-console>
                     <canvas id="stage" width="1000" height="750"
-                    tabindex="0" @keydown="${this.handleKeyDown}"></canvas>
+                    tabindex="0"
+                    @keydown="${this.handleKeyDown}"
+                    @keyup="${this.handleKeyUp}"
+                    @mousedown="${this.handleMouseDown}"
+                    @mouseup="${this.handleMouseUp}"
+                    @mousemove="${this.handleMouseMove}"
+                    ></canvas>
                 </div>
             </paper-card>`;
     }

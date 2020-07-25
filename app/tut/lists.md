@@ -287,15 +287,19 @@ There are a few new actions and values we'll have to look at before we start.
 
 ## Random
 
-First lets see how do we generate a random number? Lucky for us *Setanta* has 2 actions that can do that for us, `rand` and `randUimhir`. These are maths actions so we access them with `rand@mata`{.setanta} and `randUimh@mata`{.setanta}. (Once again, we'll see what the @ does in the future).
+First lets see how do we generate a random number? Lucky for us *Setanta* has 2 actions that can do that for us, `rand` and `slánuimh_rand`. These are maths actions so we access them with `rand@mata`{.setanta} and `slánuimh_rand@mata`{.setanta}. (Once again, we'll see what the @ does in the future).
+
 
 - `rand` returns a random number between 0 and 1, not necessarily a [[whole number|slánuimhir]] e.g. 0.5, 0.333 etc.
-- `randUimh` takes two arguments and returns a random whole number between those 2. e.g. `randUimh(3, 6)`{.setanta} will return one of 3, 4 or 5 with equal [[probability|dóchúlacht]] (it doesn't include the upper bound).
+- `slánuimh_rand` takes two arguments and returns a random [[whole number|slánuimhir]] between those 2. e.g. `slánuimh_rand(3, 5)`{.setanta} will return one of 3, 4 or 5 with equal [[probability|dóchúlacht]]..
+
+The names of these actions are `rand` and `slánuimh_rand` because "rand" is short for "randamach"
+meaning "[[random|randamach]]" and "slánuimh" is short for "slánuimhir" which means [[whole number|slánuimhir]].
 
 Try out this code a few times:
 
 {{{
-scríobh(randUimh@mata(0, 100))
+scríobh(slánuimh_rand@mata(0, 100))
 }}}
 
 You should get different numbers from 0 to 99 each time.
@@ -335,14 +339,14 @@ le i idir (0, n_circles) {
 
 (*We've named our loop variable `i`, but we won't be using it in the loop*)
 
-To draw a circle randomly, we want to pick a random X coordinate, a random Y coordinate, and a random radius. We can uses `fadX` and `fadY` to get the [[bounds|teorainn]] of the stage, and `randUimh` to generate a random number in that range by using `randUimh@mata(0, fadX@stáitse)`{.setanta} and `randUimh@mata(0, fadY@stáitse)`{.setanta}
+To draw a circle randomly, we want to pick a random X coordinate, a random Y coordinate, and a random radius. We can uses `fadX` and `fadY` to get the [[bounds|teorainn]] of the stage, and `slánuimh_rand` to generate a random number in that range by using `slánuimh_rand@mata(0, fadX@stáitse)`{.setanta} and `slánuimh_rand@mata(0, fadY@stáitse)`{.setanta}
 
 ```{.setanta .numberLines}
 n_circles := go_uimh(ceist("How many circles? "))
 
 le i idir (0, n_circles) {
-    randx := randUimh@mata(0, fadX@stáitse)
-    randy := randUimh@mata(0, fadY@stáitse)
+    randx := slánuimh_rand@mata(0, fadX@stáitse)
+    randy := slánuimh_rand@mata(0, fadY@stáitse)
 }
 ```
 
@@ -352,9 +356,9 @@ We'll just use 50 to 100 as a range for our radius, as we don't want them [[too 
 n_circles := go_uimh(ceist("How many circles? "))
 
 le i idir (0, n_circles) {
-    randx := randUimh@mata(0, fadX@stáitse)
-    randy := randUimh@mata(0, fadY@stáitse)
-    randr := randUimh@mata(50, 100)
+    randx := slánuimh_rand@mata(0, fadX@stáitse)
+    randy := slánuimh_rand@mata(0, fadY@stáitse)
+    randr := slánuimh_rand@mata(50, 100)
 }
 ```
 
@@ -364,9 +368,9 @@ Now that we've picked random coordinates and size, all that's left is to draw th
 n_circles := go_uimh(ceist("How many circles? "))
 
 le i idir (0, n_circles) {
-    randx := randUimh@mata(0, fadX@stáitse)
-    randy := randUimh@mata(0, fadY@stáitse)
-    randr := randUimh@mata(50, 100)
+    randx := slánuimh_rand@mata(0, fadX@stáitse)
+    randy := slánuimh_rand@mata(0, fadY@stáitse)
+    randr := slánuimh_rand@mata(50, 100)
     ciorcal@stáitse(randx, randy, randr)
 }
 ```
@@ -377,9 +381,9 @@ Try running the code! You'll have to type in how many circles you want, then swi
 n_circles := go_uimh(ceist("How many circles? "))
 
 le i idir (0, n_circles) {
-    randx := randUimh@mata(0, fadX@stáitse)
-    randy := randUimh@mata(0, fadY@stáitse)
-    randr := randUimh@mata(50, 100)
+    randx := slánuimh_rand@mata(0, fadX@stáitse)
+    randy := slánuimh_rand@mata(0, fadY@stáitse)
+    randr := slánuimh_rand@mata(50, 100)
     ciorcal@stáitse(randx, randy, randr)
 }
 }}}
@@ -396,16 +400,16 @@ colours := ["dearg", "buí", "gorm", "glas"]
 n_circles := go_uimh(ceist("How many circles? "))
 
 le i idir (0, n_circles) {
-    randx := randUimh@mata(0, fadX@stáitse)
-    randy := randUimh@mata(0, fadY@stáitse)
-    randr := randUimh@mata(50, 100)
+    randx := slánuimh_rand@mata(0, fadX@stáitse)
+    randy := slánuimh_rand@mata(0, fadY@stáitse)
+    randr := slánuimh_rand@mata(50, 100)
     ciorcal@stáitse(randx, randy, randr)
 }
 ```
 
 I chose "dearg", "buí", "gorm" and "glas". Now when before we draw a circle, we can switch to a random colour from our list.
 
-To pick a random colour we want to pick a random element from the list. We can do this by picking a random index using `randUimh` and the length of the list (`fad`). This gives us `index := randUimh@mata(0, fad@colours)`{.setanta}.
+To pick a random colour we want to pick a random element from the list. We can do this by picking a random index using `slánuimh_rand`, we want any index between the first (0) and the last (`fad@colours - 1`{.setanta}). This gives us `index := slánuimh_rand@mata(0, fad@colours - 1)`{.setanta}.
 
 ```{.setanta .numberLines}
 colours := ["dearg", "buí", "gorm", "glas"]
@@ -413,11 +417,11 @@ colours := ["dearg", "buí", "gorm", "glas"]
 n_circles := go_uimh(ceist("How many circles? "))
 
 le i idir (0, n_circles) {
-    randx := randUimh@mata(0, fadX@stáitse)
-    randy := randUimh@mata(0, fadY@stáitse)
-    randr := randUimh@mata(50, 100)
+    randx := slánuimh_rand@mata(0, fadX@stáitse)
+    randy := slánuimh_rand@mata(0, fadY@stáitse)
+    randr := slánuimh_rand@mata(50, 100)
 
-    rand_index := randUimh@mata(0, fad@colours)
+    rand_index := slánuimh_rand@mata(0, fad@colours - 1)
 
     ciorcal@stáitse(randx, randy, randr)
 }
@@ -431,11 +435,11 @@ colours := ["dearg", "buí", "gorm", "glas"]
 n_circles := go_uimh(ceist("How many circles? "))
 
 le i idir (0, n_circles) {
-    randx := randUimh@mata(0, fadX@stáitse)
-    randy := randUimh@mata(0, fadY@stáitse)
-    randr := randUimh@mata(50, 100)
+    randx := slánuimh_rand@mata(0, fadX@stáitse)
+    randy := slánuimh_rand@mata(0, fadY@stáitse)
+    randr := slánuimh_rand@mata(50, 100)
 
-    rand_index := randUimh@mata(0, fad@colours)
+    rand_index := slánuimh_rand@mata(0, fad@colours - 1)
 
     dath@stáitse(colours[rand_index])
 
@@ -451,11 +455,11 @@ colours := ["dearg", "buí", "gorm", "glas"]
 n_circles := go_uimh(ceist("How many circles? "))
 
 le i idir (0, n_circles) {
-    randx := randUimh@mata(0, fadX@stáitse)
-    randy := randUimh@mata(0, fadY@stáitse)
-    randr := randUimh@mata(50, 100)
+    randx := slánuimh_rand@mata(0, fadX@stáitse)
+    randy := slánuimh_rand@mata(0, fadY@stáitse)
+    randr := slánuimh_rand@mata(50, 100)
 
-    rand_index := randUimh@mata(0, fad@colours)
+    rand_index := slánuimh_rand@mata(0, fad@colours - 1)
 
     dath@stáitse(colours[rand_index])
 
@@ -469,6 +473,6 @@ le i idir (0, n_circles) {
 
 ### Challenge
 
-Switch to using `ciorcalLán@stáitse`{.setanta} instead of `ciorcal`{.setanta}, what happens?
+Switch to using `ciorcal_lán@stáitse`{.setanta} instead of `ciorcal`{.setanta}, what happens?
 
-(Hint: "[[Lán|Full]]" means "full" in English).
+(Hint: "[[lán|full]]" means "full" in English).

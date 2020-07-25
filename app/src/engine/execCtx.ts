@@ -19,7 +19,32 @@ export class ExecCtx {
     }
 
     public handleKeyDown(e: KeyboardEvent) {
-        this.display.keyFn(e.key);
+        return this.display.keyDownFn(e.key);
+    }
+
+    public handleKeyUp(e: KeyboardEvent) {
+        return this.display.keyUpFn(e.key);
+    }
+
+    // Takes relative x and y positions
+    public handleMouseDown(x: number, y: number) {
+        // We multiply the relative positions by the height
+        // and width to get absolute positions
+        return this.display.mouseDownFn(x * this.display.sizeX, y * this.display.sizeY);
+    }
+
+    // Takes relative x and y positions
+    public handleMouseUp(x: number, y: number) {
+        // We multiply the relative positions by the height
+        // and width to get absolute positions
+        return this.display.mouseUpFn(x * this.display.sizeX, y * this.display.sizeY);
+    }
+
+    // Takes relative x and y positions
+    public handleMouseMove(x: number, y: number) {
+        // We multiply the relative positions by the height
+        // and width to get absolute positions
+        return this.display.mouseMoveFn(x * this.display.sizeX, y * this.display.sizeY);
     }
 
     public stop() {

@@ -104,7 +104,49 @@ export abstract class RuntimeComponent extends LitElement {
 
     protected handleKeyDown(e: KeyboardEvent) {
         if (this.activeCtx) {
-            this.activeCtx.handleKeyDown(e);
+            this.activeCtx.handleKeyDown(e)
+                .catch(err => this.console.writeError(err));
+            e.preventDefault();
+        }
+    }
+
+    protected handleKeyUp(e: KeyboardEvent) {
+        if (this.activeCtx) {
+            this.activeCtx.handleKeyUp(e)
+                .catch(err => this.console.writeError(err));
+            e.preventDefault();
+        }
+    }
+
+    protected handleMouseDown(e: MouseEvent) {
+        if (this.activeCtx) {
+            // We pass in the *relative* positions to the height and width
+            // of the stage
+            const [x, y] = this.getCanvasRelativeCoords(e);
+            this.activeCtx.handleMouseDown(x, y)
+                .catch(err => this.console.writeError(err));
+            e.preventDefault();
+        }
+    }
+
+    protected handleMouseUp(e: MouseEvent) {
+        if (this.activeCtx) {
+            // We pass in the *relative* positions to the height and width
+            // of the stage
+            const [x, y] = this.getCanvasRelativeCoords(e);
+            this.activeCtx.handleMouseUp(x, y)
+                .catch(err => this.console.writeError(err));
+            e.preventDefault();
+        }
+    }
+
+    protected handleMouseMove(e: MouseEvent) {
+        if (this.activeCtx) {
+            // We pass in the *relative* positions to the height and width
+            // of the stage
+            const [x, y] = this.getCanvasRelativeCoords(e);
+            this.activeCtx.handleMouseMove(x, y)
+                .catch(err => this.console.writeError(err));
             e.preventDefault();
         }
     }
@@ -113,5 +155,15 @@ export abstract class RuntimeComponent extends LitElement {
         if (this.activeCtx) {
             this.activeCtx.stop();
         }
+    }
+
+    // Get the relative coordinates of the mouse click event on the canvas.
+    private getCanvasRelativeCoords(e: MouseEvent): [number, number] {
+        const boundRect = this.stage.getBoundingClientRect();
+        const h = boundRect.bottom - boundRect.top;
+        const w = boundRect.right - boundRect.left;
+        const x = (e.clientX - boundRect.left)/w;
+        const y = (e.clientY - boundRect.top)/h;
+        return [x, y];
     }
 }
