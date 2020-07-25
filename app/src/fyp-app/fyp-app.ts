@@ -165,6 +165,7 @@ class FypApp extends RuntimeComponent {
                     tabindex="0" @keydown="${this.handleKeyDown}"
                     @mousedown="${this.handleMouseDown}"
                     @mouseup="${this.handleMouseUp}"
+                    @mousemove="${this.handleMouseMove}"
                     ></canvas>
                 </div>
             </paper-card>

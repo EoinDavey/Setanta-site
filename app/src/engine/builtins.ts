@@ -201,9 +201,17 @@ export function genBuiltins(display: DisplayEngine, writeFn: (s: string) => void
                 // MOUSE UP event handler
                 [["luch_suas"],
                     {
-                        ainm: "luch",
+                        ainm: "luch_suas",
                         arity: () => 1,
                         call: (args: Value[]) => display.registerMouseUpHandler(args),
+                    },
+                ],
+                // MOUSE MOVE event handler
+                [["luch_bog"],
+                    {
+                        ainm: "luch_bog",
+                        arity: () => 1,
+                        call: (args: Value[]) => display.registerMouseMoveHandler(args),
                     },
                 ],
                 // KEY DOWN event handler

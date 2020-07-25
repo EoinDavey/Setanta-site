@@ -117,6 +117,7 @@ ciorcal@stáitse(100, 100, 50)`;
                     tabindex="0" @keydown="${this.handleKeyDown}"
                     @mousedown="${this.handleMouseDown}"
                     @mouseup="${this.handleMouseUp}"
+                    @mousemove="${this.handleMouseMove}"
                     ></canvas>
                 </div>
             </paper-card>`;

@@ -36,6 +36,13 @@ export class ExecCtx {
         this.display.mouseUpFn(x * this.display.sizeX, y * this.display.sizeY);
     }
 
+    // Takes relative x and y positions
+    public handleMouseMove(x: number, y: number) {
+        // We multiply the relative positions by the height
+        // and width to get absolute positions
+        this.display.mouseMoveFn(x * this.display.sizeX, y * this.display.sizeY);
+    }
+
     public stop() {
         this.halt = true;
         if (this.interpreter) {

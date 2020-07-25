@@ -129,6 +129,15 @@ export abstract class RuntimeComponent extends LitElement {
         }
     }
 
+    protected handleMouseMove(e: MouseEvent) {
+        if (this.activeCtx) {
+            // We pass in the *relative* positions to the height and width
+            // of the stage
+            const [x, y] = this.getCanvasRelativeCoords(e);
+            this.activeCtx.handleMouseMove(x, y);
+            e.preventDefault();
+        }
+    }
 
     protected stopCode(e: Event) {
         if (this.activeCtx) {
