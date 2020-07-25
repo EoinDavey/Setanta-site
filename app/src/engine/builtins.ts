@@ -1,6 +1,6 @@
 import * as Asserts from "setanta/node_build/asserts";
 import { STOP } from "setanta/node_build/consts";
-import { callFunc, goTéacs, ObjIntfWrap, Value } from "setanta/node_build/values";
+import { goTéacs, ObjIntfWrap, Value } from "setanta/node_build/values";
 import { Context } from "setanta/node_build/ctx";
 import { DisplayEngine } from "./engine";
 

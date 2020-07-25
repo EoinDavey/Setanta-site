@@ -104,14 +104,16 @@ export abstract class RuntimeComponent extends LitElement {
 
     protected handleKeyDown(e: KeyboardEvent) {
         if (this.activeCtx) {
-            this.activeCtx.handleKeyDown(e);
+            this.activeCtx.handleKeyDown(e)
+                .catch(err => this.console.writeError(err));
             e.preventDefault();
         }
     }
 
     protected handleKeyUp(e: KeyboardEvent) {
         if (this.activeCtx) {
-            this.activeCtx.handleKeyUp(e);
+            this.activeCtx.handleKeyUp(e)
+                .catch(err => this.console.writeError(err));
             e.preventDefault();
         }
     }
@@ -121,7 +123,8 @@ export abstract class RuntimeComponent extends LitElement {
             // We pass in the *relative* positions to the height and width
             // of the stage
             const [x, y] = this.getCanvasRelativeCoords(e);
-            this.activeCtx.handleMouseDown(x, y);
+            this.activeCtx.handleMouseDown(x, y)
+                .catch(err => this.console.writeError(err));
             e.preventDefault();
         }
     }
@@ -131,7 +134,8 @@ export abstract class RuntimeComponent extends LitElement {
             // We pass in the *relative* positions to the height and width
             // of the stage
             const [x, y] = this.getCanvasRelativeCoords(e);
-            this.activeCtx.handleMouseUp(x, y);
+            this.activeCtx.handleMouseUp(x, y)
+                .catch(err => this.console.writeError(err));
             e.preventDefault();
         }
     }
@@ -141,7 +145,8 @@ export abstract class RuntimeComponent extends LitElement {
             // We pass in the *relative* positions to the height and width
             // of the stage
             const [x, y] = this.getCanvasRelativeCoords(e);
-            this.activeCtx.handleMouseMove(x, y);
+            this.activeCtx.handleMouseMove(x, y)
+                .catch(err => this.console.writeError(err));
             e.preventDefault();
         }
     }
