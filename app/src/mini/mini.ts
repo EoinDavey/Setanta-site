@@ -116,6 +116,7 @@ ciorcal@stáitse(100, 100, 50)`;
                     <canvas id="stage" width="1000" height="750"
                     tabindex="0" @keydown="${this.handleKeyDown}"
                     @mousedown="${this.handleMouseDown}"
+                    @mouseup="${this.handleMouseUp}"
                     ></canvas>
                 </div>
             </paper-card>`;

@@ -41,6 +41,7 @@ export class DisplayEngine {
 
     public keyFn: (code: string) => void = () => undefined;
     public mouseDownFn: (x: number, y: number) => void = () => undefined;
+    public mouseUpFn: (x: number, y: number) => void = () => undefined;
 
     // arity: 1; args[0]: (string) => null;
     public registerKeyHandler(args: Value[]): Promise<Value> {
@@ -67,6 +68,20 @@ export class DisplayEngine {
             });
         };
         this.mouseDownFn = fn;
+        return Promise.resolve(null);
+    }
+
+    // arity: 1; args[0]: (number, number) => null;
+    public registerMouseUpHandler(args: Value[]) {
+        const f = Asserts.assertCallable(args[0]);
+        const fn = (x: number, y: number) => {
+            return callFunc(f, [x, y]).catch((err) => {
+                if (err !== STOP) {
+                    return Promise.reject(err);
+                }
+            });
+        };
+        this.mouseUpFn = fn;
         return Promise.resolve(null);
     }
 

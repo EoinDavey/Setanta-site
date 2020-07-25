@@ -111,21 +111,38 @@ export abstract class RuntimeComponent extends LitElement {
 
     protected handleMouseDown(e: MouseEvent) {
         if (this.activeCtx) {
-            const boundRect = this.stage.getBoundingClientRect();
-            const h = boundRect.bottom - boundRect.top;
-            const w = boundRect.right - boundRect.left;
-            const x = (e.clientX - boundRect.left)/w;
-            const y = (e.clientY - boundRect.top)/h;
             // We pass in the *relative* positions to the height and width
             // of the stage
+            const [x, y] = this.getCanvasRelativeCoords(e);
             this.activeCtx.handleMouseDown(x, y);
             e.preventDefault();
         }
     }
 
+    protected handleMouseUp(e: MouseEvent) {
+        if (this.activeCtx) {
+            // We pass in the *relative* positions to the height and width
+            // of the stage
+            const [x, y] = this.getCanvasRelativeCoords(e);
+            this.activeCtx.handleMouseUp(x, y);
+            e.preventDefault();
+        }
+    }
+
+
     protected stopCode(e: Event) {
         if (this.activeCtx) {
             this.activeCtx.stop();
         }
+    }
+
+    // Get the relative coordinates of the mouse click event on the canvas.
+    private getCanvasRelativeCoords(e: MouseEvent): [number, number] {
+        const boundRect = this.stage.getBoundingClientRect();
+        const h = boundRect.bottom - boundRect.top;
+        const w = boundRect.right - boundRect.left;
+        const x = (e.clientX - boundRect.left)/w;
+        const y = (e.clientY - boundRect.top)/h;
+        return [x, y];
     }
 }
