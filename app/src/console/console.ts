@@ -75,6 +75,9 @@ export class FYPConsole extends LitElement {
     text-align: right;
     color: var(--theme-text-secondary);
 }
+p {
+    white-space: pre;
+}
         `;
     }
 
