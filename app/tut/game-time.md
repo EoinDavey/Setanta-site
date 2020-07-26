@@ -155,7 +155,7 @@ gníomh key_control(key) {
 ```
 
 Now we can tell *Setanta* to use this action with the keyboard by passing it to the
-`méarchlár`{.setanta} action by calling `méarchlár(key_control)`{.setanta}. Let's add that to our
+`méarchlár@stáitse`{.setanta} action by calling `méarchlár@stáitse(key_control)`{.setanta}. Let's add that to our
 program.
 
 *Run this program, press the [[arrow|saighead]] keys on your keyboard and then check the
@@ -181,7 +181,7 @@ gníomh key_control(key) {
     scríobh(key)
 }
 
-méarchlár(key_control)
+méarchlár@stáitse(key_control)
 
 >-- Loop forever
 nuair-a fíor {
@@ -247,7 +247,7 @@ gníomh key_control(key) {
     }
 }
 
-méarchlár(key_control)
+méarchlár@stáitse(key_control)
 
 >-- Loop forever
 nuair-a fíor {
@@ -380,7 +380,7 @@ gníomh key_control(key) {
     }
 }
 
-méarchlár(key_control)
+méarchlár@stáitse(key_control)
 
 >-- Loop forever
 nuair-a fíor {
@@ -606,7 +606,7 @@ gníomh key_control(key) {
     }
 }
 
-méarchlár(key_control)
+méarchlár@stáitse(key_control)
 
 >-- Loop forever
 nuair-a fíor {
