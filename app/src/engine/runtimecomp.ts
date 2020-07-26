@@ -84,28 +84,34 @@ export abstract class RuntimeComponent extends LitElement {
                 this.console.writeSyntaxErr(err);
             }
         } catch(e) {
-            if(e instanceof RuntimeError && e.start && e.end && this.editor.editor){
-                const mrk = this.editor.editor.markText(
-                    {
-                        line: e.start.line - 1,
-                        ch: e.start.offset
-                    },
-                    {
-                        line: e.end.line - 1,
-                        ch: e.end.offset
-                    }, {className: "syntax-error"});
-                this.marks.push(mrk);
-            }
-            this.console.writeError(e);
+            this.displayRuntimeError(e);
         } finally {
             this.running = false;
         }
     }
 
+    protected displayRuntimeError(e: Error) {
+        if(e instanceof RuntimeError && e.start && e.end && this.editor.editor){
+            const mrk = this.editor.editor.markText(
+                {
+                    line: e.start.line - 1,
+                    ch: e.start.offset
+                },
+                {
+                    line: e.end.line - 1,
+                    ch: e.end.offset
+                }, {className: "syntax-error"});
+            this.marks.push(mrk);
+        }
+        this.console.writeError(e);
+        if(this.activeCtx)
+            this.activeCtx.stop();
+    }
+
     protected handleKeyDown(e: KeyboardEvent) {
         if (this.activeCtx) {
             this.activeCtx.handleKeyDown(e)
-                .catch(err => this.console.writeError(err));
+                .catch(err => this.displayRuntimeError(err));
             e.preventDefault();
         }
     }
@@ -113,7 +119,7 @@ export abstract class RuntimeComponent extends LitElement {
     protected handleKeyUp(e: KeyboardEvent) {
         if (this.activeCtx) {
             this.activeCtx.handleKeyUp(e)
-                .catch(err => this.console.writeError(err));
+                .catch(err => this.displayRuntimeError(err));
             e.preventDefault();
         }
     }
@@ -124,7 +130,7 @@ export abstract class RuntimeComponent extends LitElement {
             // of the stage
             const [x, y] = this.getCanvasRelativeCoords(e);
             this.activeCtx.handleMouseDown(x, y)
-                .catch(err => this.console.writeError(err));
+                .catch(err => this.displayRuntimeError(err));
             e.preventDefault();
         }
     }
@@ -135,7 +141,7 @@ export abstract class RuntimeComponent extends LitElement {
             // of the stage
             const [x, y] = this.getCanvasRelativeCoords(e);
             this.activeCtx.handleMouseUp(x, y)
-                .catch(err => this.console.writeError(err));
+                .catch(err => this.displayRuntimeError(err));
             e.preventDefault();
         }
     }
@@ -146,7 +152,7 @@ export abstract class RuntimeComponent extends LitElement {
             // of the stage
             const [x, y] = this.getCanvasRelativeCoords(e);
             this.activeCtx.handleMouseMove(x, y)
-                .catch(err => this.console.writeError(err));
+                .catch(err => this.displayRuntimeError(err));
             e.preventDefault();
         }
     }
