@@ -6,24 +6,25 @@ prev-text: Game Time!
 
 # Mouse Events
 
-*Setanta* doesn't just limit you to using the keyboard for your programs, you can use the
-[[mouse|luch]] too! Let's use the *Setanta* mouse events to make a program that lets us draw on the
-stage with our mouse.
+*Setanta* doesn't just limit you to using the keyboard for your programs, [[you can|is féidir leat]] use the
+[[mouse|luch]] too! Let's use the *Setanta* mouse [[events|eachtraí]] to make a program that
+lets us [[draw|tarraing]] on the stage with our mouse.
 
 ![Demo](assets/paint-demo.gif)
 
-
 ## The Events
 
-There are three different types of mouse events we can listen for: Mouse down, Mouse move
-and mouse up.
+There are three [[different types|cineálacha difriúil]] of mouse events
+we can [[listen|éist]] for: Mouse [[down|síos]], Mouse [[move|bog]] and mouse [[up|suas]].
 
-- **Mouse down**: Mouse down events are triggered when the mouse click is pressed on the stage.
-- **Mouse move**: Mouse move events are triggered when the mouse is moved over the stage.
+- **Mouse down**: Mouse down events are triggered when the mouse click is [[pressed|brúite]] on
+  the [[stage|stáitse]].
+- **Mouse move**: Mouse move events are triggered
+  [[when the mouse is moved|nuair a bhogtar an luch]] over the stage.
 - **Mouse up**: Mouse up events are triggered when the mouse click is released.
 
 *Setanta* provides 3 different actions that we can use to listen for these events. Just like the
-`méarchlár@stáitse` action let us listen for keyboard presses.
+`méarchlár@stáitse` action let us listen for [[keyboard|méarchlár]] presses.
 
 ## The Strategy
 
@@ -32,12 +33,13 @@ released yet. Then when the mouse is moved we will draw on the stage.
 
 # Listeners
 
-Let's make our listener actions. We'll call these `éist_síos`, `éist_suas` and `éist_bog`. "Éist"
-translates as "listen", "síos" means down, "suas" means up, and "bog" means move, so `éist_síos`
-will be our action for mouse down events, `éist_suas` will be our action for mouse up events, and
-`éist_bog` will be our action for mouse move events.
+Let's make our [[listener|éisteoir]] actions. We'll call these `éist_síos`, `éist_suas` and `éist_bog`. "Éist"
+translates as [["listen"|"éist"]], "síos" means [[down|síos]], "suas" means [[up|suas]],
+and "bog" means [[move|bog]], so `éist_síos` will be our action for mouse down
+events, `éist_suas` will be our action for mouse up events, and `éist_bog` will be our action for
+mouse move events.
 
-Each of these listener actions should take two arguments, `x` and `y`. These are the `x` and `y`
+Each of these listener actions should take two [[arguments|argóintí]], `x` and `y`. These are the `x` and `y`
 positions that the event happened at.
 
 ```{.setanta .numberLines}
@@ -57,6 +59,8 @@ gníomh éist_bog(x, y) {
 The actions that actually tell *Setanta* to use actions with the mouse events are called
 `luch@stáitse`{.setanta} for the mouse down event, `luch_suas@stáitse`{.setanta} for the mouse up event and
 `luch_bog@stáitse`{.setanta} for the mouse move event.
+
+`luch` means "mouse", `luch_suas` means "mouse up", and `luch_bog` means "mouse move".
 
 We call these actions and pass them our listener actions to make _Setanta_ call them when the mouse
 events happen.
@@ -82,9 +86,9 @@ luch_bog@stáitse(éist_bog)
 
 ## Let's Test
 
-Let's add some code to the `éist_síos` action to draw a circle on the stage
-console when the mouse is pressed. We are given the `x` and `y` positions when `éist_síos` is
-called, so we can use them as the center of the circle.
+Let's add some code to the `éist_síos` action to draw a [[circle|ciorcal]] on the stage
+console when the mouse is pressed. We are given the `x` and `y` [[positions|suíomh]] when `éist_síos` is
+called, so we can use them as the [[center|lár]] of the circle.
 
 {{{s
 gníomh éist_síos(x, y) {
@@ -111,17 +115,17 @@ luch_bog@stáitse(éist_bog)
 
 ## What went wrong?
 
-If you look carefully at the <iron-icon class="play" icon="av:play-arrow"></iron-icon> button you'll
+If you look [[carefully|go cúramach]] at the <iron-icon class="play" icon="av:play-arrow"></iron-icon> [[button|cnaipe]] you'll
 see why. It never changes to a <iron-icon class="play" icon="av:stop"></iron-icon> button. This is
-because the program starts and finishes almost immediately. It made our new actions, told *Setanta* to use them when the mouse
+because the program [[starts|tosaíonn] and [[finishes|críochnaíonn]] almost [[immediately|láithreach]]. It made our new actions, told *Setanta* to use them when the mouse
 is pressed, but then it finished, so the program was stopped. _We didn't get time to click on the
 stage_.
 
 ## The Fix
 
-We need to stop the *Setanta* program from finishing until we press the <iron-icon class="play" icon="av:stop"></iron-icon> button.
-We can use the "`fán`{.setanta}" (meaning "wait") action to do this. When you call `fán()`{.setanta}, *Setanta* will
-stop and wait. It's like calling `codladh`{.setanta} to sleep for an infinite time. If we add a call to
+We need to stop the *Setanta* program from finishing until [[we press|brúimid]] the <iron-icon class="play" icon="av:stop"></iron-icon> button.
+We can use the "`fán`{.setanta}" (meaning [["wait"|"fán"]]) action to do this. When you call `fán()`{.setanta}, *Setanta* will
+stop and wait. It's like calling `codladh`{.setanta} to [[sleep|codladh]] for an [[infinite|éigríochta]] time. If we add a call to
 `fán`{.setanta}
 at the end of our program it will work now!
 
@@ -149,14 +153,14 @@ fán()
 
 # Is it pressed?
 
-Now it's time to think about tracking whether the mouse is pressed or not. Let's add a variable at the top of the program called "`brúite`" (which means "pressed"), this variable will store whether the
-mouse is currently pressed down or not.
+Now it's time to think about tracking whether the mouse is pressed or not. Let's add a [[variable|athróg]] at the top of the program called "`brúite`" (which means "pressed"), this variable will store whether the
+mouse is [[currently|faoi láthair]] pressed down or not.
 
-When the mouse is clicked down, we should make this value true (`fíor`{.setanta}), and when it's
-released we should change it to false (`bréag`{.setanta}).
+When the mouse is clicked down, we should make this value [[true|fíor]] (`fíor`{.setanta}), and when it's
+released we should change it to [[false|bréagach]] (`bréag`{.setanta}).
 
 The `éist_síos` action will be called when the mouse is clicked, so we should make `brúite` true in
-there. The `éist_suas` action will be called when the mouse is release, so we should make `brúite`
+there. The `éist_suas` action will be called when the mouse is released, so we should make `brúite`
 false in that action.
 
 ```{.setanta .numberLines}
@@ -196,7 +200,7 @@ gníomh éist_bog(x, y) {
 }
 ```
 
-Try it out! Run the program then click and drag your mouse across the stage.
+Try it out! Run the program then [[click|cliceáil]] and [[drag|tarraing]] your mouse [[across|trasna]] the stage.
 
 {{{s
 >--  Is the mouse pressed?
@@ -230,13 +234,13 @@ fán()
 The circles is a cool effect! But it's not what we're looking for. The last step is to make it draw
 lines when the mouse is moved.
 
-When the mouse move event is triggered, we are given the new position of the mouse, we need to keep
-track of the old position ourselves. We can do this with 2 variables, `x_roimhe` and `y_roimhe`.
+When the mouse move event is triggered, we are given the [[new|nua]] position of the mouse, we need to keep
+track of the [[old|sean]] position [[ourselves|muid féin]]. We can do this with 2 variables, `x_roimhe` and `y_roimhe`.
 These are short for "`x` roimhe seo" and "`y` roimhe seo", which means "previous x" and "previous
 y".
 
 We add `x_roimhe := 0`{.setanta} and `y_roimhe := 0`{.setanta} to the top of the program. (_The
-initial values can be anything we like, they'll be updated straight away`)_.
+[[initial|céad]] values can be anything we like, they'll be updated straight away`)_.
 
 Now the start of our program looks like:
 
@@ -249,9 +253,9 @@ y_roimhe := 0
 brúite := bréag
 ```
 
-Every time the mouse moves (and is pressed) we draw a line from the old position to the new position,
-then update the variables to the new position. We can draw a line using the `líne@stáitse`{.setanta}
-action. "`líne`" translates as "line". `líne@stáitse`{.setanta} takes 4 arguments: `x1`, `y1`, `x2`
+[[Every time|Gach uair]] the mouse moves (and is pressed) we draw a [[line|líne]] from the old position to the new position,
+then [[update|nuashonraigh]] the [[variables|athróga]] to the new position. We can draw a line using the `líne@stáitse`{.setanta}
+action. "`líne`" translates as "[[line|líne]]". `líne@stáitse`{.setanta} takes 4 arguments: `x1`, `y1`, `x2`
 and `y2`. It then draws a line from (`x1`, `y1`) to (`x2`, `y2`).
 
 Now we change our `éist_bog` action to draw the line from (`x_roimhe`, `y_roimhe`) to (`x`, `y`),
