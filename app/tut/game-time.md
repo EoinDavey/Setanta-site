@@ -1,5 +1,7 @@
 ---
 title: Game Time!
+next: lets-paint
+next-text: Let's Paint
 prev: useful
 prev-text: Some Useful Actions
 ---
