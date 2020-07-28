@@ -6,7 +6,7 @@ prev: take-the-stage
 prev-text: Take the Stage!
 ---
 
-# Lets make a choice.
+# Let's make a choice.
 
 So far all the programs that we've written always do the same thing.
 The code starts at the top and works its way to the bottom. If we want to write programs that are more interesting we need to allow our code to make decisions.
