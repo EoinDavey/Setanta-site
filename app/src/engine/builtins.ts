@@ -63,8 +63,10 @@ export function genBuiltins(display: DisplayEngine, writeFn: (s: string) => void
         [
             ["stáitse", "staitse"],
             new ObjIntfWrap("stáitse", [
-                [["fadX"], display.sizeX],
-                [["fadY"], display.sizeY],
+                [["fadX"], display.sizeX], // DEPRECATED
+                [["fadY"], display.sizeY], // DEPRECATED
+                [["fad_x"], display.sizeX],
+                [["fad_y"], display.sizeY],
                 [["dath"],
                     {
                         ainm: "dath",
