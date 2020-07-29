@@ -308,13 +308,13 @@ You should get different numbers from 0 to 99 each time.
 
 If we want to place circles randomly on the stage, we'll need to know how big it is.
 
-We can access the width and height by accessing the values `fadX@stáitse`{.setanta} and `fadY@stáitse`{.setanta}.
+We can access the width and height by accessing the values `fad_x@stáitse`{.setanta} and `fad_y@stáitse`{.setanta}.
 
 Try running this code:
 
 {{{
-scríobh("X length", fadX@stáitse)
-scríobh("Y length", fadY@stáitse)
+scríobh("X length", fad_x@stáitse)
+scríobh("Y length", fad_y@stáitse)
 }}}
 
 If you resize your window you might get different results.
@@ -339,14 +339,14 @@ le i idir (0, n_circles) {
 
 (*We've named our loop variable `i`, but we won't be using it in the loop*)
 
-To draw a circle randomly, we want to pick a random X coordinate, a random Y coordinate, and a random radius. We can uses `fadX` and `fadY` to get the [[bounds|teorainn]] of the stage, and `slánuimh_rand` to generate a random number in that range by using `slánuimh_rand@mata(0, fadX@stáitse)`{.setanta} and `slánuimh_rand@mata(0, fadY@stáitse)`{.setanta}
+To draw a circle randomly, we want to pick a random X coordinate, a random Y coordinate, and a random radius. We can uses `fad_x` and `fad_y` to get the [[bounds|teorainn]] of the stage, and `slánuimh_rand` to generate a random number in that range by using `slánuimh_rand@mata(0, fad_x@stáitse)`{.setanta} and `slánuimh_rand@mata(0, fad_y@stáitse)`{.setanta}
 
 ```{.setanta .numberLines}
 n_circles := go_uimh(ceist("How many circles? "))
 
 le i idir (0, n_circles) {
-    randx := slánuimh_rand@mata(0, fadX@stáitse)
-    randy := slánuimh_rand@mata(0, fadY@stáitse)
+    randx := slánuimh_rand@mata(0, fad_x@stáitse)
+    randy := slánuimh_rand@mata(0, fad_y@stáitse)
 }
 ```
 
@@ -356,8 +356,8 @@ We'll just use 50 to 100 as a range for our radius, as we don't want them [[too 
 n_circles := go_uimh(ceist("How many circles? "))
 
 le i idir (0, n_circles) {
-    randx := slánuimh_rand@mata(0, fadX@stáitse)
-    randy := slánuimh_rand@mata(0, fadY@stáitse)
+    randx := slánuimh_rand@mata(0, fad_x@stáitse)
+    randy := slánuimh_rand@mata(0, fad_y@stáitse)
     randr := slánuimh_rand@mata(50, 100)
 }
 ```
@@ -368,8 +368,8 @@ Now that we've picked random coordinates and size, all that's left is to draw th
 n_circles := go_uimh(ceist("How many circles? "))
 
 le i idir (0, n_circles) {
-    randx := slánuimh_rand@mata(0, fadX@stáitse)
-    randy := slánuimh_rand@mata(0, fadY@stáitse)
+    randx := slánuimh_rand@mata(0, fad_x@stáitse)
+    randy := slánuimh_rand@mata(0, fad_y@stáitse)
     randr := slánuimh_rand@mata(50, 100)
     ciorcal@stáitse(randx, randy, randr)
 }
@@ -381,8 +381,8 @@ Try running the code! You'll have to type in how many circles you want, then swi
 n_circles := go_uimh(ceist("How many circles? "))
 
 le i idir (0, n_circles) {
-    randx := slánuimh_rand@mata(0, fadX@stáitse)
-    randy := slánuimh_rand@mata(0, fadY@stáitse)
+    randx := slánuimh_rand@mata(0, fad_x@stáitse)
+    randy := slánuimh_rand@mata(0, fad_y@stáitse)
     randr := slánuimh_rand@mata(50, 100)
     ciorcal@stáitse(randx, randy, randr)
 }
@@ -400,8 +400,8 @@ colours := ["dearg", "buí", "gorm", "glas"]
 n_circles := go_uimh(ceist("How many circles? "))
 
 le i idir (0, n_circles) {
-    randx := slánuimh_rand@mata(0, fadX@stáitse)
-    randy := slánuimh_rand@mata(0, fadY@stáitse)
+    randx := slánuimh_rand@mata(0, fad_x@stáitse)
+    randy := slánuimh_rand@mata(0, fad_y@stáitse)
     randr := slánuimh_rand@mata(50, 100)
     ciorcal@stáitse(randx, randy, randr)
 }
@@ -417,8 +417,8 @@ colours := ["dearg", "buí", "gorm", "glas"]
 n_circles := go_uimh(ceist("How many circles? "))
 
 le i idir (0, n_circles) {
-    randx := slánuimh_rand@mata(0, fadX@stáitse)
-    randy := slánuimh_rand@mata(0, fadY@stáitse)
+    randx := slánuimh_rand@mata(0, fad_x@stáitse)
+    randy := slánuimh_rand@mata(0, fad_y@stáitse)
     randr := slánuimh_rand@mata(50, 100)
 
     rand_index := slánuimh_rand@mata(0, fad@colours - 1)
@@ -435,8 +435,8 @@ colours := ["dearg", "buí", "gorm", "glas"]
 n_circles := go_uimh(ceist("How many circles? "))
 
 le i idir (0, n_circles) {
-    randx := slánuimh_rand@mata(0, fadX@stáitse)
-    randy := slánuimh_rand@mata(0, fadY@stáitse)
+    randx := slánuimh_rand@mata(0, fad_x@stáitse)
+    randy := slánuimh_rand@mata(0, fad_y@stáitse)
     randr := slánuimh_rand@mata(50, 100)
 
     rand_index := slánuimh_rand@mata(0, fad@colours - 1)
@@ -455,8 +455,8 @@ colours := ["dearg", "buí", "gorm", "glas"]
 n_circles := go_uimh(ceist("How many circles? "))
 
 le i idir (0, n_circles) {
-    randx := slánuimh_rand@mata(0, fadX@stáitse)
-    randy := slánuimh_rand@mata(0, fadY@stáitse)
+    randx := slánuimh_rand@mata(0, fad_x@stáitse)
+    randy := slánuimh_rand@mata(0, fad_y@stáitse)
     randr := slánuimh_rand@mata(50, 100)
 
     rand_index := slánuimh_rand@mata(0, fad@colours - 1)

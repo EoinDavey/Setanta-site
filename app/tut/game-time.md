@@ -54,24 +54,24 @@ Let's add the following code to the [[top|barr]] of the [[program|ríomhchlár]]
 
 ```{.setanta .numberLines}
 paddle_height := 20
-paddle_width := fadX@stáitse // 5
+paddle_width := fad_x@stáitse // 5
 ```
 
 Now we can make 2 more variables, `paddle_x` and `paddle_y`, these are the x and y
 [[coordinates|comhordnáidí]] of
 the paddle. [[Specifically|Go sonrach]] the [[top right corner|cúinne ag an mbarr ar dheis]]. We want to start with the paddle in the bottom [[left|ar chlé]]
 of the stage, so let's set `paddle_x` to be `0`{.setanta}. To get the paddle on the bottom you
-might be tempted to set `paddle_y` to be `fadY@stáitse` (the height of the stage), but this won't
+might be tempted to set `paddle_y` to be `fad_y@stáitse` (the height of the stage), but this won't
 work, we need to subtract the paddle height to account for [[how tall|cé chomh hard]] the paddle is.
 
 Now our variables at the top of the program look like this:
 
 ```{.setanta .numberLines}
 paddle_height := 20
-paddle_width := fadX@stáitse // 5
+paddle_width := fad_x@stáitse // 5
 
 paddle_x := 0
-paddle_y := fadY@stáitse - paddle_height
+paddle_y := fad_y@stáitse - paddle_height
 ```
 
 ## Draw the Paddle
@@ -106,10 +106,10 @@ Let's try out our program now:
 
 {{{s
 paddle_height := 20
-paddle_width := fadX@stáitse // 5
+paddle_width := fad_x@stáitse // 5
 
 paddle_x := 0
-paddle_y := fadY@stáitse - paddle_height
+paddle_y := fad_y@stáitse - paddle_height
 
 gníomh draw_stage() {
     >-- Clear the stage
@@ -165,10 +165,10 @@ program.
 
 {{{s
 paddle_height := 20
-paddle_width := fadX@stáitse // 5
+paddle_width := fad_x@stáitse // 5
 
 paddle_x := 0
-paddle_y := fadY@stáitse - paddle_height
+paddle_y := fad_y@stáitse - paddle_height
 
 gníomh draw_stage() {
     >-- Clear the stage
@@ -225,10 +225,10 @@ Try out the code now: The paddle should move when you press the arrow keys!
 
 {{{s
 paddle_height := 20
-paddle_width := fadX@stáitse // 5
+paddle_width := fad_x@stáitse // 5
 
 paddle_x := 0
-paddle_y := fadY@stáitse - paddle_height
+paddle_y := fad_y@stáitse - paddle_height
 
 paddle_speed := 50
 
@@ -339,10 +339,10 @@ Let's run the code we have so far:
 
 {{{s
 paddle_height := 20
-paddle_width := fadX@stáitse // 5
+paddle_width := fad_x@stáitse // 5
 
 paddle_x := 0
-paddle_y := fadY@stáitse - paddle_height
+paddle_y := fad_y@stáitse - paddle_height
 
 paddle_speed := 50
 
@@ -412,7 +412,7 @@ will we should turn it around.
 
 For example, if the x coordinate is going to be [[less than|níos lú ná]] 0, then it will have gone past the
 left wall, so we should [[turn|cas]] the ball around in the x direction. Similarly if the x coordinate is
-[[greater than|níos mó ná]] `fadX@stáitse` we should turn the ball around in the x direction. If the y coordinate
+[[greater than|níos mó ná]] `fad_x@stáitse` we should turn the ball around in the x direction. If the y coordinate
 is less than 0, then the ball is going off the top side so we should change it's y direction.
 
 Let's put two new variables in our `update_ball` action called `pred_x` and `pred_y`, these will be
@@ -452,7 +452,7 @@ gníomh update_ball() {
         >-- Change ball_dx direction
         ball_dx = -ball_dx
     }
-    má pred_x > fadX@stáitse {
+    má pred_x > fad_x@stáitse {
         >-- Gone over the right edge
         >-- Change ball_dx direction
         ball_dx = -ball_dx
@@ -462,7 +462,7 @@ gníomh update_ball() {
         >-- Change ball_dy direction
         ball_dy = -ball_dy
     }
-    má pred_y > fadY@stáitse {
+    má pred_y > fad_y@stáitse {
         >-- Gone over the bottom edge
         scríobh("GAME OVER")
         stop()
@@ -495,7 +495,7 @@ gníomh update_ball() {
         >-- Change ball_dx direction
         ball_dx = -ball_dx
     }
-    má pred_x > fadX@stáitse {
+    má pred_x > fad_x@stáitse {
         >-- Gone over the right edge
         >-- Change ball_dx direction
         ball_dx = -ball_dx
@@ -505,7 +505,7 @@ gníomh update_ball() {
         >-- Change ball_dy direction
         ball_dy = -ball_dy
     }
-    má pred_y > fadY@stáitse {
+    má pred_y > fad_y@stáitse {
         >-- Gone over the bottom edge
         scríobh("GAME OVER")
         stop()
@@ -530,10 +530,10 @@ Let's try it out!
 
 {{{s
 paddle_height := 20
-paddle_width := fadX@stáitse // 5
+paddle_width := fad_x@stáitse // 5
 
 paddle_x := 0
-paddle_y := fadY@stáitse - paddle_height
+paddle_y := fad_y@stáitse - paddle_height
 
 paddle_speed := 50
 
@@ -570,7 +570,7 @@ gníomh update_ball() {
         >-- Change ball_dx direction
         ball_dx = -ball_dx
     }
-    má pred_x > fadX@stáitse {
+    má pred_x > fad_x@stáitse {
         >-- Gone over the right edge
         >-- Change ball_dx direction
         ball_dx = -ball_dx
@@ -580,7 +580,7 @@ gníomh update_ball() {
         >-- Change ball_dy direction
         ball_dy = -ball_dy
     }
-    má pred_y > fadY@stáitse {
+    má pred_y > fad_y@stáitse {
         >-- Gone over the bottom edge
         scríobh("GAME OVER")
         stop()
