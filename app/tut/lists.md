@@ -287,7 +287,7 @@ There are a few new actions and values we'll have to look at before we start.
 
 ## Random
 
-First lets see how do we generate a random number? Lucky for us *Setanta* has 2 actions that can do that for us, `rand` and `slánuimh_rand`. These are maths actions so we access them with `rand@mata`{.setanta} and `slánuimh_rand@mata`{.setanta}. (Once again, we'll see what the @ does in the future).
+First let's see how do we generate a random number? Lucky for us *Setanta* has 2 actions that can do that for us, `rand` and `slánuimh_rand`. These are maths actions so we access them with `rand@mata`{.setanta} and `slánuimh_rand@mata`{.setanta}. (Once again, we'll see what the @ does in the future).
 
 
 - `rand` returns a random number between 0 and 1, not necessarily a [[whole number|slánuimhir]] e.g. 0.5, 0.333 etc.
@@ -390,7 +390,7 @@ le i idir (0, n_circles) {
 
 ### Switch up the colours
 
-It's a bit boring having all the circles be the same colour. Lets switch it up using lists!
+It's a bit boring having all the circles be the same colour. Let's switch it up using lists!
 
 Let's make a list of colours we'd like to see and put it at the top of the program.
 

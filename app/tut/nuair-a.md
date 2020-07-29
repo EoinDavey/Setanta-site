@@ -439,7 +439,7 @@ We can instead use the `chun-cinn`{.setanta} statement to skip to the next colou
 
 We can access elements of strings using their index just like we did with lists, by using square brackets (`[ ]`). To check if the name of the colour starts with "g" we just check if `colour[0] == "g"`{.setanta}, because 0 is the index of the first [[letter|litir]].
 
-Lets add the following check to the start of our loop:
+Let's add the following check to the start of our loop:
 
 ```{.setanta .numberLines}
 má colour[0] == "g" {
