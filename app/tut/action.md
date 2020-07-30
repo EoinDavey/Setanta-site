@@ -76,7 +76,7 @@ the radius given as an argument. We'll call the action `mid_circle`.
 Let's start with some code to draw a circle in the middle with radius 100, and
 we'll see how to change this to be an argument after.
 
-We use `fadX@stáitse`{.setanta} and `fadY@stáitse`{.setanta} to get the
+We use `fad_x@stáitse`{.setanta} and `fad_y@stáitse`{.setanta} to get the
 midpoints and use `ciorcal@stáitse`{.setanta} to draw the circle.
 
 ```{.setanta .numberLines}
@@ -85,8 +85,8 @@ gníomh mid_circle() {
     dath@stáitse("gorm")
 
     >-- Get midpoint
-    mid_x := fadX@stáitse / 2
-    mid_y := fadY@stáitse / 2
+    mid_x := fad_x@stáitse / 2
+    mid_y := fad_y@stáitse / 2
 
     >-- Draw the circle
     ciorcal@stáitse(mid_x, mid_y, 100)
@@ -101,8 +101,8 @@ gníomh mid_circle() {
     dath@stáitse("gorm")
 
     >-- Get midpoint
-    mid_x := fadX@stáitse / 2
-    mid_y := fadY@stáitse / 2
+    mid_x := fad_x@stáitse / 2
+    mid_y := fad_y@stáitse / 2
 
     >-- Draw the circle
     ciorcal@stáitse(mid_x, mid_y, 100)
@@ -117,8 +117,8 @@ between the brackets `( )` in the defining line of the action:
 
 ```{.setanta .numberLines}
 gníomh mid_circle(radius) {
-    mid_x := fadX@stáitse / 2
-    mid_y := fadY@stáitse / 2
+    mid_x := fad_x@stáitse / 2
+    mid_y := fad_y@stáitse / 2
     ciorcal@stáitse(mid_x, mid_y, 100)
 }
 ```
@@ -128,8 +128,8 @@ use the argument. So let's replace the 100 value with `radius`.
 
 ```{.setanta .numberLines}
 gníomh mid_circle(radius) {
-    mid_x := fadX@stáitse / 2
-    mid_y := fadY@stáitse / 2
+    mid_x := fad_x@stáitse / 2
+    mid_y := fad_y@stáitse / 2
     ciorcal@stáitse(mid_x, mid_y, radius)
 }
 ```
@@ -139,8 +139,8 @@ let's try calling it with `200`{.setanta} (`mid_circle(200)`{.setanta}).
 
 {{{s
 gníomh mid_circle(radius) {
-    mid_x := fadX@stáitse / 2
-    mid_y := fadY@stáitse / 2
+    mid_x := fad_x@stáitse / 2
+    mid_y := fad_y@stáitse / 2
     ciorcal@stáitse(mid_x, mid_y, radius)
 }
 
@@ -152,8 +152,8 @@ need to write out all that code again.
 
 {{{s
 gníomh mid_circle(radius) {
-    mid_x := fadX@stáitse / 2
-    mid_y := fadY@stáitse / 2
+    mid_x := fad_x@stáitse / 2
+    mid_y := fad_y@stáitse / 2
     ciorcal@stáitse(mid_x, mid_y, radius)
 }
 

@@ -147,7 +147,7 @@ le i idir (0, fad@colours) {
 
 Now inside the inner loop we have access to a size and a colour. Let's use the `glan@stáitse`{.setanta} action the clear the stage ("[[glan|clean]]" translates as "clean"), then draw a circle of that size.
 
-Where do we draw the circle? Let's use `fadX@stáitse`  and `fadY@stáitse` to get the [[mid-point|lárphointe]] of the stage. To find the [[middle|lár]] we should divide by 2.
+Where do we draw the circle? Let's use `fad_x@stáitse`  and `fad_y@stáitse` to get the [[mid-point|lárphointe]] of the stage. To find the [[middle|lár]] we should divide by 2.
 
 ```{.setanta .numberLines}
 colours := ["glas", "buí", "bándearg", "gorm"]
@@ -169,7 +169,7 @@ le i idir (0, fad@colours) {
         glan@stáitse()
 
         >-- Draw the circle at the midpoint with radius `size`
-        ciorcal@stáitse(fadX@stáitse / 2, fadY@stáitse / 2, size)
+        ciorcal@stáitse(fad_x@stáitse / 2, fad_y@stáitse / 2, size)
     }
 }
 ```
@@ -198,7 +198,7 @@ le i idir (0, fad@colours) {
         glan@stáitse()
 
         >-- Draw the circle at the midpoint with radius `size`
-        ciorcal@stáitse(fadX@stáitse / 2, fadY@stáitse / 2, size)
+        ciorcal@stáitse(fad_x@stáitse / 2, fad_y@stáitse / 2, size)
 
         coladh(400)
     }
@@ -423,8 +423,8 @@ le i idir (0, fad@colours) {
     dath@stáitse(colour)
 
     >-- Get random coordinates
-    x := slánuimh_rand@mata(0, fadX@stáitse)
-    y := slánuimh_rand@mata(0, fadY@stáitse)
+    x := slánuimh_rand@mata(0, fad_x@stáitse)
+    y := slánuimh_rand@mata(0, fad_y@stáitse)
 
     >-- Draw circle
     ciorcal@stáitse(x, y, 100)
@@ -464,8 +464,8 @@ le i idir (0, fad@colours) {
     dath@stáitse(colour)
 
     >-- Get random coordinates
-    x := slánuimh_rand@mata(0, fadX@stáitse)
-    y := slánuimh_rand@mata(0, fadY@stáitse)
+    x := slánuimh_rand@mata(0, fad_x@stáitse)
+    y := slánuimh_rand@mata(0, fad_y@stáitse)
 
     >-- Draw circle
     ciorcal@stáitse(x, y, 100)
