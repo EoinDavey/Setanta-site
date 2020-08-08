@@ -43,14 +43,6 @@ export function genBuiltins(display: DisplayEngine, writeFn: (s: string) => void
             },
         ],
         [
-            ["fán", "fan"],
-            {
-                ainm: "fán",
-                arity: () => 0,
-                call: () => new Promise<null>((_, rej) => ctx.addRejectFn(rej))
-            }
-        ],
-        [
             ["léigh", "leigh"],
             {
                 ainm: "léigh",

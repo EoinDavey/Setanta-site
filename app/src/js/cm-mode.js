@@ -16,7 +16,7 @@ export function defineMode(CodeMirror) {
             token: ["def", null, "variable-2", null, "variable-3", null]},
         {regex: /(?:seo|tuis|le|bris|idir|chun-cinn|toradh|nuair-a|gn[ií]omh)\b/,
          token: "keyword"},
-        {regex: /(?:scr[ií]obh|f[aá]n|fad|thar|cuid|mata|codladh|st[aá]itse)\b/, token: "builtin"},
+        {regex: /(?:scr[ií]obh|fan|fad|thar|cuid|mata|codladh|st[aá]itse)\b/, token: "builtin"},
         {regex: /(?:m[áa]|n[oó])(?![a-záéíóú_])/, token: "keyword"},
         {regex: /(?:f[ií]or|br[eé]ag|neamhn[ií])(?![a-záéóíú_])/, token: "atom"},
         {regex: /-?[0-9]+(?:\.[0-9]+)?/i,

@@ -124,9 +124,9 @@ stage_.
 ## The Fix
 
 We need to stop the *Setanta* program from finishing until [[we press|brúimid]] the <iron-icon class="play" icon="av:stop"></iron-icon> button.
-We can use the "`fán`{.setanta}" (meaning [["wait"|"fán"]]) action to do this. When you call `fán()`{.setanta}, *Setanta* will
+We can use the "`fan`{.setanta}" (meaning [["wait"|"fan"]]) action to do this. When you call `fan()`{.setanta}, *Setanta* will
 stop and wait. It's like calling `codladh`{.setanta} to [[sleep|codladh]] for an [[infinite|éigríochta]] time. If we add a call to
-`fán`{.setanta}
+`fan`{.setanta}
 at the end of our program it will work now!
 
 {{{s
@@ -146,7 +146,7 @@ gníomh éist_bog(x, y) {
 luch@stáitse(éist_síos)
 luch_suas@stáitse(éist_suas)
 luch_bog@stáitse(éist_bog)
-fán()
+fan()
 }}}
 
 **Now it works!**
@@ -183,7 +183,7 @@ gníomh éist_bog(x, y) {
 luch@stáitse(éist_síos)
 luch_suas@stáitse(éist_suas)
 luch_bog@stáitse(éist_bog)
-fán()
+fan()
 ```
 
 Let's add logic to `éist_bog` to draw a circle when the mouse is moved if the mouse is being pressed
@@ -224,7 +224,7 @@ gníomh éist_bog(x, y) {
 luch@stáitse(éist_síos)
 luch_suas@stáitse(éist_suas)
 luch_bog@stáitse(éist_bog)
-fán()
+fan()
 }}}
 
 ![Circle drawing](assets/paint-circles.gif)
@@ -301,5 +301,5 @@ gníomh éist_bog(x, y) {
 luch@stáitse(éist_síos)
 luch_suas@stáitse(éist_suas)
 luch_bog@stáitse(éist_bog)
-fán()
+fan()
 }}}
