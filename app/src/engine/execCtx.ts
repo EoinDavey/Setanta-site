@@ -2,14 +2,14 @@ import * as Asserts from "setanta/node_build/asserts";
 import { RuntimeError } from "setanta/node_build/error";
 import { Parser } from "setanta/node_build/gen_parser";
 import { Interpreter } from "setanta/node_build/i10r";
-import { callFunc, goTéacs, ObjIntfWrap, Value } from "setanta/node_build/values";
+import { ObjIntfWrap, Value, callFunc, goTéacs } from "setanta/node_build/values";
 import { genBuiltins } from "./builtins";
 import { DisplayEngine } from "./engine";
 
 export class ExecCtx {
     private writeFn: (x: string) => void;
     private display: DisplayEngine;
-    private halt: boolean = true;
+    private halt = true;
     private interpreter: Interpreter | null = null;
     private currentWriteWait: ((s: string) => void) | null = null;
 

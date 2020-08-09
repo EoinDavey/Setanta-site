@@ -95,11 +95,11 @@ export abstract class RuntimeComponent extends LitElement {
             const mrk = this.editor.editor.markText(
                 {
                     line: e.start.line - 1,
-                    ch: e.start.offset
+                    ch: e.start.offset,
                 },
                 {
                     line: e.end.line - 1,
-                    ch: e.end.offset
+                    ch: e.end.offset,
                 }, {className: "syntax-error"});
             this.marks.push(mrk);
         }
@@ -168,8 +168,8 @@ export abstract class RuntimeComponent extends LitElement {
         const boundRect = this.stage.getBoundingClientRect();
         const h = boundRect.bottom - boundRect.top;
         const w = boundRect.right - boundRect.left;
-        const x = (e.clientX - boundRect.left)/w;
-        const y = (e.clientY - boundRect.top)/h;
+        const x = (e.clientX - boundRect.left) / w;
+        const y = (e.clientY - boundRect.top) / h;
         return [x, y];
     }
 }

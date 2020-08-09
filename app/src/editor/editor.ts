@@ -1,4 +1,4 @@
-import { css, customElement, html, LitElement, property, TemplateResult } from "lit-element";
+import { LitElement, TemplateResult, css, customElement, html, property } from "lit-element";
 import * as CodeMirror from 'codemirror';
 import 'codemirror/addon/mode/simple';
 import { defineMode } from '../js/cm-mode.js';
@@ -447,7 +447,7 @@ span.CodeMirror-selectedtext { background: none; }
             this.fireRunEvent();
     }
 
-    private fireFullscreenStartEvent() { this.fireEvent("fyp-fullscreen-start") }
+    private fireFullscreenStartEvent() { this.fireEvent("fyp-fullscreen-start"); }
     private fireSaveEvent() { this.fireEvent("fyp-save"); }
     private fireRunEvent() { this.fireEvent("fyp-run"); }
     private fireStopEvent() { this.fireEvent("fyp-stop"); }
@@ -469,7 +469,7 @@ span.CodeMirror-selectedtext { background: none; }
             });
             this.editor.setValue(this.startcontent);
             this.editor.setOption("extraKeys", {
-                "Ctrl-Enter": (cm) => this.fireRunEvent()
+                "Ctrl-Enter": (cm) => this.fireRunEvent(),
             });
         }
     }

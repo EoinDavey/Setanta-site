@@ -1,4 +1,4 @@
-import { css, customElement, html, property, TemplateResult } from "lit-element";
+import { TemplateResult, css, customElement, html, property } from "lit-element";
 import { FYPEditor } from "../editor/editor";
 import "../editor/editor";
 import { FYPConsole } from "../console/console";

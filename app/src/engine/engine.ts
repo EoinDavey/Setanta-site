@@ -1,5 +1,5 @@
 import * as Asserts from "setanta/node_build/asserts";
-import { callFunc, Value } from "setanta/node_build/values";
+import { Value, callFunc } from "setanta/node_build/values";
 import { ExecCtx } from "./execCtx";
 import { CanvasCtx } from "./types";
 import { STOP } from "setanta/node_build/consts";

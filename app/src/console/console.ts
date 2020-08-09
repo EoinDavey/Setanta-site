@@ -1,8 +1,8 @@
-import { css, customElement, html, LitElement, property, TemplateResult } from "lit-element";
+import { LitElement, TemplateResult, css, customElement, html, property } from "lit-element";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/paper-button/paper-button.js";
-import { syntaxErrString, RuntimeError } from "setanta/node_build/error";
+import { RuntimeError, syntaxErrString } from "setanta/node_build/error";
 import { SyntaxErr } from "setanta/node_build/gen_parser";
 
 interface PaperInput extends HTMLElement {

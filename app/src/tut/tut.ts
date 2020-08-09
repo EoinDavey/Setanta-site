@@ -1,4 +1,4 @@
-import { css, customElement, html, LitElement, TemplateResult } from "lit-element";
+import { LitElement, TemplateResult, css, customElement, html } from "lit-element";
 import "@polymer/paper-icon-button/paper-icon-button";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icon/iron-icon";
@@ -150,11 +150,11 @@ paper-tab {
     }
 
     private get tocslot() {
-        return this.shadowRoot!.getElementById("tocslot")!
+        return this.shadowRoot!.getElementById("tocslot")!;
     }
 
     private get alltoc() {
-        return this.shadowRoot!.getElementById("all-toc-slot")!
+        return this.shadowRoot!.getElementById("all-toc-slot")!;
     }
 
     private tabSelect(e: Event) {

@@ -1,10 +1,10 @@
-import { css, customElement, html, LitElement, property, TemplateResult } from "lit-element";
+import { LitElement, TemplateResult, css, customElement, html, property } from "lit-element";
 
 @customElement("tut-tooltip")
 class Tooltip extends LitElement {
 
     @property({type: String}) public alt = "";
-    private open: boolean = false;
+    private open = false;
 
     static get styles() {
         return css`

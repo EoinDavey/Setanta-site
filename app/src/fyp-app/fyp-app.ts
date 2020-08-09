@@ -4,7 +4,7 @@ import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-card/paper-card.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
-import { css, customElement, html, LitElement, property, TemplateResult } from "lit-element";
+import { LitElement, TemplateResult, css, customElement, html, property } from "lit-element";
 import "../console/console";
 import { FYPConsole } from "../console/console";
 import "../editor/editor";
@@ -136,7 +136,7 @@ class FypApp extends RuntimeComponent {
     }
     @property({type: String}) public title = "Setanta";
     @property({type: String}) public content = "";
-    @property({type: Boolean, attribute: false})public running: boolean = false;
+    @property({type: Boolean, attribute: false})public running = false;
 
     public render(): TemplateResult {
         return html`

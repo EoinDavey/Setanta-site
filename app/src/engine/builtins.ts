@@ -1,6 +1,6 @@
 import * as Asserts from "setanta/node_build/asserts";
 import { STOP } from "setanta/node_build/consts";
-import { goTéacs, ObjIntfWrap, Value } from "setanta/node_build/values";
+import { ObjIntfWrap, Value, goTéacs } from "setanta/node_build/values";
 import { Context } from "setanta/node_build/ctx";
 import { DisplayEngine } from "./engine";
 
@@ -10,7 +10,7 @@ function readPromise(ctx: Context,
         ctx.addRejectFn(rej);
         setWriteWait((s: string) => {
             ctx.removeRejectFn(rej);
-            acc(s)
+            acc(s);
         });
     });
 }

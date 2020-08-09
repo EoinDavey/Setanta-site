@@ -1,4 +1,4 @@
-import { css, customElement, html, LitElement, TemplateResult } from "lit-element";
+import { LitElement, TemplateResult, css, customElement, html } from "lit-element";
 import "../mini/mini";
 import "@polymer/iron-icons/iron-icons";
 import "@polymer/iron-icon/iron-icon";
@@ -192,7 +192,7 @@ class Splash extends LitElement {
                 margin-top: 0px;
             }
         }
-        `
+        `;
     }
 
     private buttons(): TemplateResult {
