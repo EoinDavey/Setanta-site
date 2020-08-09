@@ -4,9 +4,8 @@
   "scripts": {
     "setup": "npm install",
     "build": "./buildtut.sh && tsc && webpack",
-    "lint-all": "tslint --project . -c tslint.json --force",
     "clean": "rm -rf jsbuild dist tutout",
-    "test": "tslint --project . -c tslint.json && cd tut/ && awk -f scripts/test.awk *.md",
+    "test": "cd tut/ && awk -f scripts/test.awk *.md",
     "local": "GOOGLE_APPLICATION_CREDENTIALS=\"google-creds.json\" dev_appserver.py --port=8081  app.yaml",
     "local-light": "tsc && webpack-dev-server --host=0.0.0.0",
     "diff": "git diff -- . ':(exclude)package-lock.json'",
@@ -27,7 +26,6 @@
   },
   "devDependencies": {
     "copy-webpack-plugin": "^5.1.1",
-    "tslint": "^6.1.2",
     "typescript": "^3.9.5",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11",
