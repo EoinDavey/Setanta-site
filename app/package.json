@@ -5,7 +5,7 @@
     "setup": "npm install",
     "build": "./buildtut.sh && tsc && webpack",
     "clean": "rm -rf jsbuild dist tutout",
-    "test": "cd tut/ && awk -f scripts/test.awk *.md",
+    "test": "eslint --ext .ts,.js --max-warnings=0 src/ && cd tut/ && awk -f scripts/test.awk *.md",
     "local": "GOOGLE_APPLICATION_CREDENTIALS=\"google-creds.json\" dev_appserver.py --port=8081  app.yaml",
     "local-light": "tsc && webpack-dev-server --host=0.0.0.0",
     "diff": "git diff -- . ':(exclude)package-lock.json'",

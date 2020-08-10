@@ -8,8 +8,8 @@ export function defineMode(CodeMirror) {
         // Rules are matched in the order in which they appear, so there is
         // no ambiguity between this one and the one above
         {regex: />--((?!--<).)*(--<|$)/, token: "comment"},
-        {regex: /'([^\'\\]|(\\.))*'/, token: "string"},
-        {regex: /"([^\"\\]|(\\.))*"/, token: "string"},
+        {regex: /'([^'\\]|(\\.))*'/, token: "string"},
+        {regex: /"([^"\\]|(\\.))*"/, token: "string"},
         {regex: /(creatlach)(\s+)([a-zA-ZáéíóúÁÉÍÓÚ_]+)/,
             token: ["def", null, "variable-2"]},
         {regex: /(gn[ií]omh)(\s+)([a-zA-ZáéíóúÁÉÍÓÚ_]+)(\()(.*)(\))/,
@@ -21,10 +21,10 @@ export function defineMode(CodeMirror) {
         {regex: /(?:f[ií]or|br[eé]ag|neamhn[ií])(?![a-záéóíú_])/, token: "atom"},
         {regex: /-?[0-9]+(?:\.[0-9]+)?/i,
          token: "number"},
-        {regex: /[-+\/*=<>!]+/, token: "operator"},
+        {regex: /[-+/*=<>!]+/, token: "operator"},
         {regex: /[a-zA-ZáéíóúÁÉÍÓÚ_][0-9a-zA-ZáéíóúÁÉÍÓÚ_]*/, token: "variable"},
-        {regex: /[\{\[\(]/, indent: true},
-        {regex: /[\}\]\)]/, dedent: true},
+        {regex: /[{[(]/, indent: true},
+        {regex: /[}\])]/, dedent: true},
         //{regex: /\/(?:[^\\]|\\.)*?\//, token: "variable-3"},
         //// A next property will cause the mode to move to a different state
         //{regex: /\/\*/, token: "comment", next: "comment"},

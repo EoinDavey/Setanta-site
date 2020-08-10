@@ -14,6 +14,9 @@ interface PaperTabs extends HTMLElement {
 }
 
 @customElement("tut-template")
+// Disable no-unused-vars because eslint can't tell that it is used by
+// the @custom-element decorator.
+/* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 class Tut extends LitElement {
 
     static get styles() {
@@ -145,19 +148,34 @@ paper-tab {
         return ['test'].map(x => html`<li><a>${x}</a></li>`);
     }
 
+    private getShadowRoot() {
+        if(this.shadowRoot)
+            return this.shadowRoot;
+        throw new Error("Níl aon shadowRoot lé fáil");
+    }
+
     private get tabs(): PaperTabs {
-        return this.shadowRoot!.getElementById("tabs")! as PaperTabs;
+        const tbs = this.getShadowRoot().getElementById("tabs");
+        if(tbs)
+            return tbs as PaperTabs;
+        throw new Error("Theip air tabs a fháil");
     }
 
     private get tocslot() {
-        return this.shadowRoot!.getElementById("tocslot")!;
+        const ts = this.getShadowRoot().getElementById("tocslot");
+        if(ts)
+            return ts;
+        throw new Error("Theip air tocslot a fháil");
     }
 
     private get alltoc() {
-        return this.shadowRoot!.getElementById("all-toc-slot")!;
+        const ts = this.getShadowRoot().getElementById("all-toc-slot");
+        if(ts)
+            return ts;
+        throw new Error("Theip air all-toc-slot a fháil");
     }
 
-    private tabSelect(e: Event) {
+    private tabSelect() {
         const sel = this.tabs.selected;
         if(sel === 1) { // Selected all
             this.tocslot.style.display = "none";
@@ -169,7 +187,7 @@ paper-tab {
     }
 
     private toggleToc() {
-        const tocwrap = this.shadowRoot!.getElementById("toc-wrap");
+        const tocwrap = this.getShadowRoot().getElementById("toc-wrap");
         if(tocwrap === null)
             return;
         if(tocwrap.style.height === "0px")

@@ -1,6 +1,9 @@
 import { LitElement, TemplateResult, css, customElement, html, property } from "lit-element";
 
 @customElement("tut-tooltip")
+// Disable no-unused-vars because eslint can't tell that it is used by
+// the @custom-element decorator.
+/* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 class Tooltip extends LitElement {
 
     @property({type: String}) public alt = "";

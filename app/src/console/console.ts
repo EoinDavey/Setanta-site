@@ -1,4 +1,4 @@
-import { LitElement, TemplateResult, css, customElement, html, property } from "lit-element";
+import { CSSResult, LitElement, TemplateResult, css, customElement, html, property } from "lit-element";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/paper-button/paper-button.js";
@@ -12,7 +12,7 @@ interface PaperInput extends HTMLElement {
 @customElement("fyp-console")
 export class FYPConsole extends LitElement {
 
-    static get styles() {
+    static get styles(): CSSResult  {
         return css`
 #input {
     margin: 0;
@@ -81,6 +81,12 @@ p {
         `;
     }
 
+    private getShadowRoot() {
+        if(this.shadowRoot === null)
+            throw new Error("Failed to access shadowRoot");
+        return this.shadowRoot;
+    }
+
     @property({type: Array})
     public lines: TemplateResult[] = [];
 
@@ -100,30 +106,32 @@ p {
         </div>`;
     }
 
-    public scrollDown() {
-        const list = this.shadowRoot!.getElementById("list")!;
+    public scrollDown(): void {
+        const list = this.getShadowRoot().getElementById("list");
+        if(list === null)
+            throw new Error("Failed to scroll down");
         list.scrollTop = list.scrollHeight;
     }
 
-    public clearHistory() {
+    public clearHistory(): void {
         this.lines = [];
     }
 
-    public writeAlt(msg: string) {
+    public writeAlt(msg: string): Promise<unknown> {
         this.lines.push(html`<p class="alt">${msg}</p>`);
         return this.requestUpdate();
     }
 
-    public writeOut(msg: string) {
+    public writeOut(msg: string): Promise<unknown> {
         this.lines.push(html`<p>${msg}</p>`);
         return this.requestUpdate();
     }
 
-    public writeSyntaxErr(e: SyntaxErr) {
+    public writeSyntaxErr(e: SyntaxErr): void {
         this.pushErrorMsg(syntaxErrString(e));
     }
 
-    public writeError(e: Error) {
+    public writeError(e: Error): void {
         const rep: string = (e instanceof RuntimeError) ? e.msg : e.toString();
         this.pushErrorMsg(rep);
     }
@@ -136,7 +144,7 @@ p {
     private keyPress(e: KeyboardEvent) {
         if (e.charCode === 13) {
             // 13 is charCode for Enter
-            const elm = this.shadowRoot!.getElementById("input");
+            const elm = this.getShadowRoot().getElementById("input");
             if (elm) {
                 const inp = elm as PaperInput;
                 const val = inp.value;

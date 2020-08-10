@@ -5,6 +5,9 @@ import "@polymer/iron-icon/iron-icon";
 import "@polymer/iron-icons/av-icons.js";
 
 @customElement("setanta-splash")
+// Disable no-unused-vars because eslint can't tell that it is used by
+// the @custom-element decorator.
+/* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 class Splash extends LitElement {
 
     static get styles() {
@@ -250,7 +253,13 @@ class Splash extends LitElement {
         </div>`;
     }
     private scrollDown() {
-        const ht = this.shadowRoot!.getElementById("main")!.scrollHeight;
+        const sr = this.shadowRoot;
+        if(sr === null)
+            throw new Error("Theip air shadowRoot a fháil");
+        const main = sr.getElementById("main");
+        if(main === null)
+            throw new Error("Theip air main a fháil");
+        const ht = main.scrollHeight;
         window.scrollTo(0, ht);
     }
 }

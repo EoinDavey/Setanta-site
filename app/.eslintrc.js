@@ -1,12 +1,8 @@
 module.exports = {
     root: true,
     parser: '@typescript-eslint/parser',
-    plugins: [
-        '@typescript-eslint',
-    ],
     extends: [
         'eslint:recommended',
-        'plugin:@typescript-eslint/recommended',
     ],
     rules: {
         "eqeqeq": ["error", "always"],
@@ -36,4 +32,11 @@ module.exports = {
         "no-var": "error",
         "prefer-const": "warn",
     },
+    overrides: [
+        {
+            files: ["*.ts"],
+            plugins: ["@typescript-eslint"],
+            extends: ['plugin:@typescript-eslint/recommended'],
+        },
+    ],
 };

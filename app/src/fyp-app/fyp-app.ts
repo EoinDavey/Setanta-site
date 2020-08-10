@@ -4,7 +4,7 @@ import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-card/paper-card.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
-import { LitElement, TemplateResult, css, customElement, html, property } from "lit-element";
+import { CSSResult, TemplateResult, css, customElement, html, property } from "lit-element";
 import "../console/console";
 import { FYPConsole } from "../console/console";
 import "../editor/editor";
@@ -21,9 +21,12 @@ declare global {
 }
 
 @customElement("fyp-app")
+// Disable no-unused-vars because eslint can't tell that it is used by
+// the @custom-element decorator.
+/* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 class FypApp extends RuntimeComponent {
 
-    static get styles() {
+    static get styles(): CSSResult {
         return css`
             #top-bar {
                 background-color: var(--theme-primary);
@@ -123,17 +126,33 @@ class FypApp extends RuntimeComponent {
         `;
     }
 
+    private getShadowRoot() {
+        if(this.shadowRoot)
+            return this.shadowRoot;
+        throw new Error("Níl aon shadowRoot lé fáil");
+    }
+
     get stage(): HTMLCanvasElement {
-        return this.shadowRoot!.getElementById("stage")! as HTMLCanvasElement;
+        const st = this.getShadowRoot().getElementById("stage");
+        if(st)
+            return st as HTMLCanvasElement;
+        throw new Error("Theip air an stáitse a fháil");
     }
 
     get editor(): FYPEditor {
-        return this.shadowRoot!.getElementById("editor")! as FYPEditor;
+        const ed = this.getShadowRoot().getElementById("editor");
+        if(ed)
+            return ed as FYPEditor;
+        throw new Error("Theip air an éagarthóir a fháil");
     }
 
     get console(): FYPConsole {
-        return this.shadowRoot!.getElementById("console")! as FYPConsole;
+        const co = this.getShadowRoot().getElementById("console");
+        if(co)
+            return co as FYPConsole;
+        throw new Error("Theip air an consól a fháil");
     }
+
     @property({type: String}) public title = "Setanta";
     @property({type: String}) public content = "";
     @property({type: Boolean, attribute: false})public running = false;
@@ -189,7 +208,7 @@ class FypApp extends RuntimeComponent {
     `;
     }
 
-    public async saveCode(e: Event) {
+    public async saveCode() {
         const program = this.editor.content;
         const data = {
             content: program,
@@ -210,11 +229,13 @@ class FypApp extends RuntimeComponent {
         }
     }
 
-    private async startInFullscreen(e: Event) {
+    private async startInFullscreen() {
         if (this.activeCtx && this.activeCtx.running()) {
             return;
         }
-        const target = this.shadowRoot!.getElementById("stage-card")!;
+        const target = this.getShadowRoot().getElementById("stage-card");
+        if(target === null)
+            throw new Error("Theip air an stáitse a fháil");
         if(target.requestFullscreen) {
             await target.requestFullscreen();
         } else if(target.webkitRequestFullscreen) {
@@ -227,6 +248,6 @@ class FypApp extends RuntimeComponent {
             alert("Ní féidir leat an cód a thosaigh i lán-scáileán sa bhrabhsálaí seo");
             return;
         }
-        await this.runCode(e);
+        await this.runCode();
     }
 }

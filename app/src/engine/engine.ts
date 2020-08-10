@@ -1,6 +1,5 @@
 import * as Asserts from "setanta/node_build/asserts";
 import { Value, callFunc } from "setanta/node_build/values";
-import { ExecCtx } from "./execCtx";
 import { CanvasCtx } from "./types";
 import { STOP } from "setanta/node_build/consts";
 
@@ -22,11 +21,11 @@ const colourMap: Map<string, string> = new Map([
 ]);
 export class DisplayEngine {
 
-    public get sizeX() {
+    public get sizeX(): number {
         return this.sizeXHidden;
     }
 
-    public get sizeY() {
+    public get sizeY(): number {
         return this.sizeYHidden;
     }
     private sizeXHidden: number;
@@ -72,7 +71,7 @@ export class DisplayEngine {
     }
 
     // arity: 1; args[0]: (number, number) => null;
-    public registerMouseDownHandler(args: Value[]) {
+    public registerMouseDownHandler(args: Value[]): Promise<null> {
         const f = Asserts.assertCallable(args[0]);
         const fn = (x: number, y: number) => {
             return callFunc(f, [x, y])
@@ -85,7 +84,7 @@ export class DisplayEngine {
     }
 
     // arity: 1; args[0]: (number, number) => null;
-    public registerMouseUpHandler(args: Value[]) {
+    public registerMouseUpHandler(args: Value[]): Promise<null> {
         const f = Asserts.assertCallable(args[0]);
         const fn = (x: number, y: number) => {
             return callFunc(f, [x, y])
@@ -98,7 +97,7 @@ export class DisplayEngine {
     }
 
     // arity: 1; args[0]: (number, number) => null;
-    public registerMouseMoveHandler(args: Value[]) {
+    public registerMouseMoveHandler(args: Value[]): Promise<null> {
         const f = Asserts.assertCallable(args[0]);
         const fn = (x: number, y: number) => {
             return callFunc(f, [x, y])
@@ -238,7 +237,7 @@ export class DisplayEngine {
 
     // arity: 0;
     // clears the display
-    public clear(args: Value[]): Promise<Value> {
+    public clear(): Promise<Value> {
         this.ctx.clearRect(0, 0, this.sizeXHidden, this.sizeYHidden);
         return Promise.resolve(null);
     }
