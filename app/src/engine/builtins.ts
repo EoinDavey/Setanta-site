@@ -1,6 +1,4 @@
-import * as Asserts from "setanta/node_build/asserts";
-import { STOP } from "setanta/node_build/consts";
-import { goTéacs, ObjIntfWrap, Value } from "setanta/node_build/values";
+import { ObjIntfWrap, Value, goTéacs } from "setanta/node_build/values";
 import { Context } from "setanta/node_build/ctx";
 import { DisplayEngine } from "./engine";
 
@@ -10,7 +8,7 @@ function readPromise(ctx: Context,
         ctx.addRejectFn(rej);
         setWriteWait((s: string) => {
             ctx.removeRejectFn(rej);
-            acc(s)
+            acc(s);
         });
     });
 }
@@ -47,9 +45,7 @@ export function genBuiltins(display: DisplayEngine, writeFn: (s: string) => void
             {
                 ainm: "léigh",
                 arity: () => 0,
-                call: (args): Promise<Value> => {
-                    return readPromise(ctx, setWriteWait);
-                },
+                call: () => readPromise(ctx, setWriteWait),
             },
         ],
         [
@@ -189,7 +185,7 @@ export function genBuiltins(display: DisplayEngine, writeFn: (s: string) => void
                     {
                         ainm: "glan",
                         arity: () => 0,
-                        call: (args: Value[]) => display.clear(args),
+                        call: () => display.clear(),
                     },
                 ],
                 // MOUSE DOWN event handler

@@ -22,7 +22,7 @@ export abstract class RuntimeComponent extends LitElement {
     protected activeCtx: ExecCtx | null = null;
     protected marks: TextMarker[] = [];
 
-    protected consoleWrite(e: CustomEvent) {
+    protected consoleWrite(e: CustomEvent): void {
         const inp = e.detail.value;
         if (this.activeCtx) {
             this.activeCtx.write(inp);
@@ -37,12 +37,12 @@ export abstract class RuntimeComponent extends LitElement {
         this.stage.width = Math.floor(fac * (cw / ch));
     }
 
-    protected clearMarks() {
+    protected clearMarks(): void {
         this.marks.forEach((mark) => mark.clear());
         this.marks = [];
     }
 
-    protected async runCode(e: Event) {
+    protected async runCode(): Promise<void> {
         if (this.activeCtx && this.activeCtx.running()) {
             return;
         }
@@ -90,25 +90,27 @@ export abstract class RuntimeComponent extends LitElement {
         }
     }
 
-    protected displayRuntimeError(e: Error) {
+    protected displayRuntimeError(e: Error): void {
         if(e instanceof RuntimeError && e.start && e.end && this.editor.editor){
             const mrk = this.editor.editor.markText(
                 {
                     line: e.start.line - 1,
-                    ch: e.start.offset
+                    ch: e.start.offset,
                 },
                 {
                     line: e.end.line - 1,
-                    ch: e.end.offset
+                    ch: e.end.offset,
                 }, {className: "syntax-error"});
             this.marks.push(mrk);
         }
         this.console.writeError(e);
+
+        // TODO this shouldn't be here: doesn't belong
         if(this.activeCtx)
             this.activeCtx.stop();
     }
 
-    protected handleKeyDown(e: KeyboardEvent) {
+    protected handleKeyDown(e: KeyboardEvent): void {
         if (this.activeCtx) {
             this.activeCtx.handleKeyDown(e)
                 .catch(err => this.displayRuntimeError(err));
@@ -116,7 +118,7 @@ export abstract class RuntimeComponent extends LitElement {
         }
     }
 
-    protected handleKeyUp(e: KeyboardEvent) {
+    protected handleKeyUp(e: KeyboardEvent): void {
         if (this.activeCtx) {
             this.activeCtx.handleKeyUp(e)
                 .catch(err => this.displayRuntimeError(err));
@@ -124,7 +126,7 @@ export abstract class RuntimeComponent extends LitElement {
         }
     }
 
-    protected handleMouseDown(e: MouseEvent) {
+    protected handleMouseDown(e: MouseEvent): void {
         if (this.activeCtx) {
             // We pass in the *relative* positions to the height and width
             // of the stage
@@ -135,7 +137,7 @@ export abstract class RuntimeComponent extends LitElement {
         }
     }
 
-    protected handleMouseUp(e: MouseEvent) {
+    protected handleMouseUp(e: MouseEvent): void {
         if (this.activeCtx) {
             // We pass in the *relative* positions to the height and width
             // of the stage
@@ -146,7 +148,7 @@ export abstract class RuntimeComponent extends LitElement {
         }
     }
 
-    protected handleMouseMove(e: MouseEvent) {
+    protected handleMouseMove(e: MouseEvent): void {
         if (this.activeCtx) {
             // We pass in the *relative* positions to the height and width
             // of the stage
@@ -157,7 +159,7 @@ export abstract class RuntimeComponent extends LitElement {
         }
     }
 
-    protected stopCode(e: Event) {
+    protected stopCode(): void {
         if (this.activeCtx) {
             this.activeCtx.stop();
         }
@@ -168,8 +170,8 @@ export abstract class RuntimeComponent extends LitElement {
         const boundRect = this.stage.getBoundingClientRect();
         const h = boundRect.bottom - boundRect.top;
         const w = boundRect.right - boundRect.left;
-        const x = (e.clientX - boundRect.left)/w;
-        const y = (e.clientY - boundRect.top)/h;
+        const x = (e.clientX - boundRect.left) / w;
+        const y = (e.clientY - boundRect.top) / h;
         return [x, y];
     }
 }

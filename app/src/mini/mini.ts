@@ -1,4 +1,4 @@
-import { css, customElement, html, property, TemplateResult } from "lit-element";
+import { TemplateResult, css, customElement, html, property } from "lit-element";
 import { FYPEditor } from "../editor/editor";
 import "../editor/editor";
 import { FYPConsole } from "../console/console";
@@ -16,6 +16,9 @@ interface PaperTabs extends HTMLElement {
 }
 
 @customElement("mini-editor")
+// Disable no-unused-vars because eslint can't tell that it is used by
+// the @custom-element decorator.
+/* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 class MiniEditor extends RuntimeComponent {
 
     @property({type: Boolean}) public running = false;
@@ -125,18 +128,38 @@ ciorcal@stáitse(100, 100, 50)`;
             </paper-card>`;
     }
 
-    get editor(): FYPEditor {
-        return this.shadowRoot!.getElementById("editor")! as FYPEditor;
+    private getShadowRoot() {
+        if(this.shadowRoot)
+            return this.shadowRoot;
+        throw new Error("Níl aon shadowRoot lé fáil");
     }
-    get console(): FYPConsole {
-        return this.shadowRoot!.getElementById("console")! as FYPConsole;
-    }
+
     get stage(): HTMLCanvasElement {
-        return this.shadowRoot!.getElementById("stage")! as HTMLCanvasElement;
+        const st = this.getShadowRoot().getElementById("stage");
+        if(st)
+            return st as HTMLCanvasElement;
+        throw new Error("Theip air an stáitse a fháil");
+    }
+
+    get editor(): FYPEditor {
+        const ed = this.getShadowRoot().getElementById("editor");
+        if(ed)
+            return ed as FYPEditor;
+        throw new Error("Theip air an éagarthóir a fháil");
+    }
+
+    get console(): FYPConsole {
+        const co = this.getShadowRoot().getElementById("console");
+        if(co)
+            return co as FYPConsole;
+        throw new Error("Theip air an consól a fháil");
     }
 
     get tabs(): PaperTabs {
-        return this.shadowRoot!.getElementById("tabs")! as PaperTabs;
+        const tbs = this.getShadowRoot().getElementById("tabs");
+        if(tbs)
+            return tbs as PaperTabs;
+        throw new Error("Theip air tabs a fháil");
     }
 
     public firstUpdated() {
@@ -146,11 +169,11 @@ ciorcal@stáitse(100, 100, 50)`;
             this.showConsole();
     }
 
-    private toggleRun(e: Event) {
+    private toggleRun() {
         if(this.running)
-            this.stopCode(e);
+            this.stopCode();
         else
-            this.runCode(e);
+            this.runCode();
     }
 
     private showConsole() {
@@ -170,7 +193,7 @@ ciorcal@stáitse(100, 100, 50)`;
     // We use visibility css property with overlapping elements instead of
     // display = "none" because when the canvas has not yet been displayed, it's
     // not correctly initialised and doesn't draw correctly.
-    private tabSelect(e: Event) {
+    private tabSelect() {
         const sel = this.tabs.selected;
         if(sel === 1) // Selected stáitse
             this.showStage();
