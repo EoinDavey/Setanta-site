@@ -1,5 +1,7 @@
 ---
 title: Let's Paint
+next: outline
+next-text: Outlines
 prev: game-time
 prev-text: Game Time!
 ---
