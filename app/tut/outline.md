@@ -184,3 +184,242 @@ take a look at a quick example of why objects are useful.
 
 The setup is this: We want to write a program that will draw a square, print its area and its
 perimeter.
+
+To start, let's make an empty outline called "`Circle`", and make an action called "`makeCircle`" that
+will create an empty object, and fill in some details. We want to record the x-coordinate,
+y-coordinate, radius and colour of our circle.
+
+```{.setanta .numberLines}
+>-- Empty outline definition
+creatlach Circle {
+}
+
+>-- Action to make a circle object with x, y, radius and colour
+gníomh makeCircle(x, y, rad, colour) {
+    >-- Create blank circle
+    c := Circle()
+
+    >-- Set our parameters
+    x@c = x
+    y@c = y
+    rad@c = rad
+    colour@c = colour
+
+    >-- Return the circle
+    toradh c
+}
+```
+
+Now we can create three actions, one to draw the circle, one to get the area, and one to get the
+perimeter. **Each of these actions only needs to take one parameter, the circle**.
+
+```{.setanta .numberLines}
+>-- Draw the circle
+gníomh drawCirc(circ) {
+    >-- Set the colour
+    dath@stáitse(colour@circ)
+
+    >-- Draw the circle
+    ciorcal@stáitse(x@circ, y@circ, rad@circ)
+}
+
+>-- Return the area, area = pi * r^2
+gníomh getArea(circ) {
+    toradh pi@mata * rad@circ * rad@circ
+}
+
+>-- Return the perimeter, perimeter = 2 * pi * r
+gníomh getPerimeter(circ) {
+    toradh 2 * pi@mata * rad@circ
+}
+```
+
+Now we can use our `makeCircle` action to create a circle, and our three other actions to draw it,
+print the area and print the perimeter.
+
+```{.setanta .numberLines}
+c := makeCircle(100, 100, 50, "dearg")
+drawCirc(c)
+scríobh("Area is:", getArea(c))
+scríobh("Perimeter is:", getPerimeter(c))
+```
+
+Try out the whole program! Switch to the console to see the text output.
+
+{{{s
+>-- Empty outline definition
+creatlach Circle {
+}
+
+>-- Action to make a circle object with x, y, radius and colour
+gníomh makeCircle(x, y, rad, colour) {
+    >-- Create blank circle
+    c := Circle()
+
+    >-- Set our parameters
+    x@c = x
+    y@c = y
+    rad@c = rad
+    colour@c = colour
+
+    >-- Return the circle
+    toradh c
+}
+
+>-- Draw the circle
+gníomh drawCirc(circ) {
+    >-- Set the colour
+    dath@stáitse(colour@circ)
+
+    >-- Draw the circle
+    ciorcal@stáitse(x@circ, y@circ, rad@circ)
+}
+
+>-- Return the area, area = pi * r^2
+gníomh getArea(circ) {
+    toradh pi@mata * rad@circ * rad@circ
+}
+
+>-- Return the perimeter, perimeter = 2 * pi * r
+gníomh getPerimeter(circ) {
+    toradh 2 * pi@mata * rad@circ
+}
+
+c := makeCircle(100, 100, 50, "dearg")
+drawCirc(c)
+scríobh("Area is:", getArea(c))
+scríobh("Perimeter is:", getPerimeter(c))
+}}}
+
+## Behaviour
+
+This is nice pattern, but it's messy. Can we write this in a nicer way?
+
+This is where outline actions come in, we can move our actions like "`drawCirc`", "`getPerimeter`"
+and "`getArea`" into the definition of the outline.
+
+To do this we use the keyword "`seo`{.setanta}", which means "this". The "`seo`{.setanta}" keyword has a
+special function, when we use it in an outline action, it refers to whatever object made from that
+outline is calling the action.
+
+This is easier to see in practice. Let's change our "`drawCirc`" action into an outline action.
+First let's copy the action as-is into the outline definition. Our outline definition looks like
+this now:
+
+```{.setanta .numberLines}
+creatlach Circle {
+
+    >-- Draw the circle
+    gníomh drawCirc(circ) {
+        >-- Set the colour
+        dath@stáitse(colour@circ)
+
+        >-- Draw the circle
+        ciorcal@stáitse(x@circ, y@circ, rad@circ)
+    }
+}
+```
+
+Now we can get rid of the `circ` argument and we can use the "`seo`{.setanta}" keyword instead. We
+should also rename the action to just "`draw"`.
+
+```{.setanta .numberLines}
+creatlach Circle {
+
+    >-- Draw the circle
+    gníomh draw() {
+        >-- Set the colour
+        dath@stáitse(colour@seo)
+
+        >-- Draw the circle
+        ciorcal@stáitse(x@seo, y@seo, rad@seo)
+    }
+}
+```
+
+Now we can replace the `drawCirc(c)` call with `draw@circ()`, and *Setanta* will automatically make
+everywhere we said "`seo`{.setanta}" point to `circ`.
+
+Let's turn "`getArea`" and "`getPerimeter`" into outline actions too. We move them into the outline
+definition, get rid of the "`circ`" argument, and use `seo`{.setanta} instead.
+
+```{.setanta .numberLines}
+creatlach Circle {
+
+    >-- Draw the circle
+    gníomh draw() {
+        >-- Set the colour
+        dath@stáitse(colour@seo)
+
+        >-- Draw the circle
+        ciorcal@stáitse(x@seo, y@seo, rad@seo)
+    }
+
+    >-- Return the area, area = pi * r^2
+    gníomh getArea() {
+        toradh pi@mata * rad@seo * rad@seo
+    }
+
+    >-- Return the perimeter, perimeter = 2 * pi * r
+    gníomh getPerimeter() {
+        toradh 2 * pi@mata * rad@seo
+    }
+}
+```
+
+Now we can replace our calls to "`getArea`" and "`getPerimeter`" with this:
+
+```{.setanta .numberLines}
+c := makeCircle(100, 100, 50, "dearg")
+c@draw()
+scríobh("Area is:", c@getArea())
+scríobh("Perimeter is:", c@getPerimeter())
+```
+
+Try it out!:
+
+{{{s
+creatlach Circle {
+
+    >-- Draw the circle
+    gníomh draw() {
+        >-- Set the colour
+        dath@stáitse(colour@seo)
+
+        >-- Draw the circle
+        ciorcal@stáitse(x@seo, y@seo, rad@seo)
+    }
+
+    >-- Return the area, area = pi * r^2
+    gníomh getArea() {
+        toradh pi@mata * rad@seo * rad@seo
+    }
+
+    >-- Return the perimeter, perimeter = 2 * pi * r
+    gníomh getPerimeter() {
+        toradh 2 * pi@mata * rad@seo
+    }
+}
+
+>-- Action to make a circle object with x, y, radius and colour
+gníomh makeCircle(x, y, rad, colour) {
+    >-- Create blank circle
+    c := Circle()
+
+    >-- Set our parameters
+    x@c = x
+    y@c = y
+    rad@c = rad
+    colour@c = colour
+
+    >-- Return the circle
+    toradh c
+}
+
+c := makeCircle(100, 100, 50, "dearg")
+draw@c()
+scríobh("Area is:", getArea@c())
+scríobh("Perimeter is:", getPerimeter@c())
+}}}
+
+## Constructor
