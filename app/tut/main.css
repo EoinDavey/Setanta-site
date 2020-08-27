@@ -151,3 +151,10 @@ figure > figcaption {
     background-color: var(--offwhite);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
+
+/*inline source code*/
+p code {
+    padding: 2px;
+    border-radius: 5px;
+    border: 1px solid var(--theme-divider);
+}
