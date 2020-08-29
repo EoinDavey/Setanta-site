@@ -6,46 +6,47 @@ prev-text: Let's Paint
 
 # Objects
 
-It's finally time to find out what all the `@` symbols we've been using mean. We've seen `@` being
+It's finally time to find out what all the `@` [[symbols|siombailí]] we've been using mean. We've seen `@` being
 used a few times so far, in expressions like `ciorcal@stáitse`{.setanta} and
-`slánuimh_rand@mata`{.setanta}. To find out what it means, we have to talk about **objects**.
+`slánuimh_rand@mata`{.setanta}. To find out what it means, we have to talk about
+[[**objects**|oibiachtaí]].
 
 ## What are they?
 
-Objects can be thought of as a collection of values. An object can contain anything we want,
-numbers, text, actions etc. Each **member** of the object has a name, much like how variables have
-names.
+Objects can be thought of as a [[collection|bailiúchán]] of [[values|luachanna]]. An [[object|oibiacht]] can contain [[anything|aon rud]] we want,
+[[numbers|uimhreacha]], [[text|téacs]], [[actions|gníomhartha]] etc. Each [[**member**|ball]] of the object has a [[name|ainm]], much like how [[variables|athróga]] have
+[[names|ainmneacha]].
 
-For example we could have an object that represents a person. That object could have members called
-"`age`", "`address`" or "`favourite_colour`" that store the persons age, address or favourite
+[[For example|Mar shampla]] we could have an object that represents a [[person|duine]]. That object could have [[members|baill]] called
+[[`age`|aois]], [[`address`|seoladh]] or [[`favourite_colour`|dath is fearr liom]] that store the persons age, address or favourite
 colour.
 
-Objects can also have special behaviours that make them more useful to us, but we'll see more on
+Objects can also have [[special behaviours|iompair speisialta]] that make them more [[useful|úsáideach]] to us, but we'll see more on
 that soon.
 
-How do we use objects? To do that we have to use the "`@`" symbol.
+How do we use objects? To do that we have to use the "`@`" [[symbol|siombail]].
 
 ## What is "@"?
 
-When we want to access a member of an object, we use its name and the "`@`" symbol to do that. The
+When we want to access a member of an object, [[we use|úsáidimid]] its name and the "`@`" symbol to do that. The
 syntax is:
 
 ```
 <member name>@<object>
 ```
 
-Let's say we have an object in a variable called `tree`, and it has a member called `height` that
+Let's say we have an object in a [[variable|athróg]] called [[`tree`|ainm]], and it has a member called [[`height`|airde]] that
 contains its height. We would write `height@tree`{.setanta} to access it.
 
-When we write `ciorcal@stáitse`{.setanta} we are saying "Get the value with the name `ciorcal` from
-the `stáitse`{.setanta} object.", then we can call the action as normal (e.g.
+When we write `ciorcal@stáitse`{.setanta} we are saying "[[Get|Faigh]] the [[value|luach]] with the name `ciorcal` from
+the `stáitse`{.setanta} object.", then we can [[call|glaoigh ar]] the action as normal (e.g.
 `ciorcal@stáitse(200, 200, 100)`{.setanta}).
 
-We can split the expression `ciorcal@stáitse(200, 200, 100)`{.setanta} into two steps to see this
-more clearly. The first step will be getting the `ciorcal` action, and the second will be calling
+We can [[split|scar]] the expression `ciorcal@stáitse(200, 200, 100)`{.setanta} into [[two steps|dhá chéim]] to see this
+[[more clearly|níos soiléire]]. The [[first step|céad chéim]] will be getting the `ciorcal` [[action|gníomh]], and the [[second|dara]] will be calling
 the action.
 
-First we can use `ciorcal@stáitse`{.setanta} to get the `ciorcal` action, then we can save it in a
+[[First|Ar dtús]] we can use `ciorcal@stáitse`{.setanta} to get the `ciorcal` action, then we can save it in a
 variable, let's call that variable `ciorcal_action`{.setanta}.
 
 ```{.setanta .numberLines}
@@ -68,17 +69,17 @@ ciorcal_action(200, 200, 100)
 
 ## Creation
 
-We make an object by first creating something called an *outline*. Then we can use the outline to
-create objects. One outline can be used to create several objects.
+We make an object by [[first creating something|cruthaigh rud ar dtús]] called an [[*outline*|creatlach]]. Then we can use the outline to
+create objects. One outline can be used to create [[several|roinnt]] objects.
 
 For example, we can make an outline for an object that represents a person, then we can create a
-whole family of people by creating person objects from that outline.
+whole [[family|teaglach]] of people by creating person objects [[from that outline|ón gcreatlach sin]].
 
 # Outlines
 
-An outline is exactly what it sounds like, it's an outline of the structure of an object. When we
-make an outline we define the name of the outline, and a list of actions that define the objects
-behaviour.
+An outline is [[exactly|go díreach]] what it sounds like, it's an outline of the [[structure|struchtúr]] of an object. When we
+make an outline we [[define|sainigh]] the name of the outline, and a [[list|liosta]] of actions that define the objects
+[[behaviour|iompar]].
 
 We use the `creatlach`{.setanta} keyword to make an outline, "creatlach" is the Irish for "outline" (or "skeleton"). The syntax to make an outline is as follows:
 
@@ -89,7 +90,7 @@ creatlach <outline-name> {
 }
 ```
 
-For example, here's how we would create an outline called "`Simple`" that has no special behaviour.
+For example, here's how we would create an outline called [[`Simple`|simplí]] that has no special behaviour.
 
 ```{.setanta .numberLines}
 >-- New outline with no actions
@@ -97,8 +98,10 @@ creatlach Simple {
 }
 ```
 
-We can then make an object from the "`Simple`" outline by calling an action called "`Simple`" like
-so:
+This creates an action called `Simple`, that will create an object from the `Simple` outline and
+return it.
+
+We can then make an object from the "`Simple`" outline by calling `Simple` like so:
 
 ```{.setanta .numberLines}
 >-- New outline with no actions
@@ -445,7 +448,7 @@ action.
 
 ### Quick Example
 
-Let's see a quick example, we'll make a class called `Person`, and give it a constructor that takes
+Let's see a quick example, we'll make an outline called `Person`, and give it a constructor that takes
 one argument, `name`.
 
 ```{.setanta .numberLines}
