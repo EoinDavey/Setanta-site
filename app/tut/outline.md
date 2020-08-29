@@ -302,6 +302,10 @@ To do this we use the keyword "`seo`{.setanta}", which means "this". The "`seo`{
 special function, when we use it in an outline action, it refers to whatever object made from that
 outline is calling the action.
 
+When we create an object from an outline, that object is called an **instance** of that outline.
+When we use the `seo`{.setanta} keyword in a outline action, it refers to whatever instance of the
+outline is being used to call the action.
+
 This is easier to see in practice. Let's change our "`drawCirc`" action into an outline action.
 First let's copy the action as-is into the outline definition. Our outline definition looks like
 this now:
@@ -320,14 +324,13 @@ creatlach Circle {
 }
 ```
 
-Now we can get rid of the `circ` argument and we can use the "`seo`{.setanta}" keyword instead. We
-should also rename the action to just "`draw"`.
+Now we can get rid of the `circ` argument and we can use the "`seo`{.setanta}" keyword instead.
 
 ```{.setanta .numberLines}
 creatlach Circle {
 
     >-- Draw the circle
-    gníomh draw() {
+    gníomh drawCirc() {
         >-- Set the colour
         dath@stáitse(colour@seo)
 
@@ -337,11 +340,15 @@ creatlach Circle {
 }
 ```
 
-Now we can replace the `drawCirc(c)` call with `draw@circ()`, and *Setanta* will automatically make
-everywhere we said "`seo`{.setanta}" point to `circ`.
+Previously when we wanted to call `drawCirc` with a particular circle object `c`, we would write
+`drawCirc(c)`. Now that `drawCirc` is an outline action, we can write `drawCirc@c()` to call it.
+
+When we do this, because `c` is an instance of `Circle`, everywhere we used `seo`{.setanta}, it will
+point to `c`.
 
 Let's turn "`getArea`" and "`getPerimeter`" into outline actions too. We move them into the outline
-definition, get rid of the "`circ`" argument, and use `seo`{.setanta} instead.
+definition, get rid of the "`circ`" argument, and use `seo`{.setanta} instead. We should also rename
+`drawCirc` to just `draw`, to make it easier to read.
 
 ```{.setanta .numberLines}
 creatlach Circle {
@@ -375,6 +382,9 @@ c@draw()
 scríobh("Area is:", c@getArea())
 scríobh("Perimeter is:", c@getPerimeter())
 ```
+
+`getArea`, `getPerimeter` and `draw` are all outline actions, so Setanta will make the
+`seo`{.setanta} keyword point to `c`, because it is an instance of `Circle`.
 
 Try it out!:
 
@@ -423,3 +433,161 @@ scríobh("Perimeter is:", getPerimeter@c())
 }}}
 
 ## Constructor
+
+Outline actions are useful, but can we get rid of the need for the `makeCircle` action?
+
+Yes we can! *Setanta* let's you create a special outline action called a **constructor**. A
+constructor is an action that is called when an object is made from the outline.
+
+To make a constructor, you create an outline action with the name "nua", which means "new". Then
+when you create an object from that outline, the arguments you use are passed into the constructor
+action.
+
+### Quick Example
+
+Let's see a quick example, we'll make a class called `Person`, and give it a constructor that takes
+one argument, `name`.
+
+```{.setanta .numberLines}
+creatlach Person {
+    gníomh nua(name) {
+    }
+}
+```
+
+Let's add code into the constructor to write the `name` that's passed in:
+
+```{.setanta .numberLines}
+creatlach Person {
+    gníomh nua(name) {
+        scríobh("Created a person called", name)
+    }
+}
+```
+
+Now when we create a new person, you can pass in the name you want:
+
+```{.setanta .numberLines}
+creatlach Person {
+    gníomh nua(name) {
+        scríobh("Created a person called", name)
+    }
+}
+
+me := Person("Eoin")
+```
+
+Try it out! You'll see that `"Created a person called Eoin"`{.setanta} is written on the console.
+
+{{{
+creatlach Person {
+    gníomh nua(name) {
+        scríobh("Created a person called", name)
+    }
+}
+
+me := Person("Eoin")
+}}}
+
+### Circle Constructor
+
+Now we can get rid of our `makeCircle` action, and use a constructor instead. Let's create our
+constructor that takes the same arguments, `x`, `y`, `rad` and `colour`. We can use the
+`seo`{.setanta} keyword to store those arguments in the instance we are creating.
+
+```{.setanta .numberLines}
+gníomh nua(x, y, rad, colour) {
+    x@seo = x
+    y@seo = y
+    rad@seo = rad
+    colour@seo = colour
+}
+```
+
+Now we can totally get rid of the `makeCircle` action, and instead of creating `c` by writing:
+
+```{.setanta}
+c := makeCircle(100, 100, 50, "dearg")
+```
+
+we can write:
+
+```{.setanta}
+c := Circle(100, 100, 50, "dearg")
+```
+
+Our final program looks like this:
+
+```{.setanta .numberLines}
+creatlach Circle {
+
+    gníomh nua(x, y, rad, colour) {
+        x@seo = x
+        y@seo = y
+        rad@seo = rad
+        colour@seo = colour
+    }
+
+    >-- Draw the circle
+    gníomh draw() {
+        >-- Set the colour
+        dath@stáitse(colour@seo)
+
+        >-- Draw the circle
+        ciorcal@stáitse(x@seo, y@seo, rad@seo)
+    }
+
+    >-- Return the area, area = pi * r^2
+    gníomh getArea() {
+        toradh pi@mata * rad@seo * rad@seo
+    }
+
+    >-- Return the perimeter, perimeter = 2 * pi * r
+    gníomh getPerimeter() {
+        toradh 2 * pi@mata * rad@seo
+    }
+}
+
+c := Circle(100, 100, 50, "dearg")
+draw@c()
+scríobh("Area is:", getArea@c())
+scríobh("Perimeter is:", getPerimeter@c())
+```
+
+Let's give it a try!
+
+{{{s
+creatlach Circle {
+
+    gníomh nua(x, y, rad, colour) {
+        x@seo = x
+        y@seo = y
+        rad@seo = rad
+        colour@seo = colour
+    }
+
+    >-- Draw the circle
+    gníomh draw() {
+        >-- Set the colour
+        dath@stáitse(colour@seo)
+
+        >-- Draw the circle
+        ciorcal@stáitse(x@seo, y@seo, rad@seo)
+    }
+
+    >-- Return the area, area = pi * r^2
+    gníomh getArea() {
+        toradh pi@mata * rad@seo * rad@seo
+    }
+
+    >-- Return the perimeter, perimeter = 2 * pi * r
+    gníomh getPerimeter() {
+        toradh 2 * pi@mata * rad@seo
+    }
+}
+
+c := Circle(100, 100, 50, "dearg")
+draw@c()
+scríobh("Area is:", getArea@c())
+scríobh("Perimeter is:", getPerimeter@c())
+}}}
