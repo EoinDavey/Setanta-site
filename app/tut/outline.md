@@ -98,8 +98,8 @@ creatlach Simple {
 }
 ```
 
-This creates an action called `Simple`, that will create an object from the `Simple` outline and
-return it.
+[[This creates|Cruthaíonn é seo]] a new action called `Simple`. When you [[call|glaoigh ar]]
+`Simple`, it will create an object from the `Simple` outline and return it.
 
 We can then make an object from the "`Simple`" outline by calling `Simple` like so:
 
@@ -112,8 +112,9 @@ creatlach Simple {
 simple_object := Simple()
 ```
 
-The "`simple_object`" object is exactly as it sounds, simple. It doesn't have any member yet. Let's
-add a member called "`mem`" now with the value `"Our new member"`{.setanta}. The syntax is just like updating a variable:
+The "`simple_object`" object is exactly as it sounds, simple. It doesn't have any [[members|baill]]
+yet. Let's add a [[member|ball]] called "`mem`" [[now|anois]] with the [[value|luach]]
+`"Our new member"`{.setanta}. The syntax is just like [[updating|nuashonrú]] a [[variable|athróg]]:
 
 ```{.setanta .numberLines}
 >-- New outline with no actions
@@ -127,7 +128,7 @@ simple_object := Simple()
 mem@simple_object = "Our new member"
 ```
 
-Now we can use `mem@simple_object` to access the value we stored in that member.
+Now we can use `mem@simple_object` to [[access|faigh]] the value we stored in that member.
 
 ```{.setanta .numberLines}
 >-- New outline with no actions
@@ -144,7 +145,7 @@ mem@simple_object = "Our new member"
 scríobh(mem@simple_object)
 ```
 
-Try it out!
+[[Try it out!|Ban triail as!]]
 
 {{{
 >-- New outline with no actions
@@ -163,7 +164,7 @@ scríobh(mem@simple_object)
 
 ## Challenge
 
-Fill in the following code so that it prints "My age is \<your age\>". e.g. "My age is 18".
+Fill in the following [[code|cód]] so that it prints "My age is \<your age\>". e.g. "My age is 18".
 
 {{{
 >-- Create an empty outline called Person
@@ -182,15 +183,17 @@ me := Person()
 
 ## Why Objects?
 
-At this point you might be thinking "Why do we need objects? They seem just like variables". Lets
-take a look at a quick example of why objects are useful.
+At this point you might be [[thinking|ag ceapadh]] "Why do we need objects? They seem just like
+variables". Lets take a look at a [[quick example|sampla gearr]] of why objects are
+[[useful|úsáideach]].
 
-The setup is this: We want to write a program that will draw a square, print its area and its
-perimeter.
+The setup is this: We want to [[write|scríobh]] a [[program|ríomhchlár]] that will [[draw|tarraing]]
+a [[square|cearnóg]], print its [[area|achar]] and its [[perimeter|imlíne]].
 
-To start, let's make an empty outline called "`Circle`", and make an action called "`makeCircle`" that
-will create an empty object, and fill in some details. We want to record the x-coordinate,
-y-coordinate, radius and colour of our circle.
+[[To start|Chun tús a chur]], let's [[make|déan]] an [[empty|folamh]] outline [[called|darb ainm]]
+"`Circle`", and make an [[action|gníomh]] called "`makeCircle`" that will create an empty object,
+and fill in some [[details|sonraí]]. We want to [[record|taifead]] the x-coordinate, y-coordinate,
+[[radius|ga]] and [[colour|dath]] of our [[circle|ciorcal]].
 
 ```{.setanta .numberLines}
 >-- Empty outline definition
@@ -247,7 +250,8 @@ scríobh("Area is:", getArea(c))
 scríobh("Perimeter is:", getPerimeter(c))
 ```
 
-Try out the whole program! Switch to the console to see the text output.
+Try out the whole program! [[Switch|Athraigh]] to the [[console|consól]] to see the [[text|téacs]]
+[[output|aschur]].
 
 {{{s
 >-- Empty outline definition
@@ -296,16 +300,16 @@ scríobh("Perimeter is:", getPerimeter(c))
 
 ## Behaviour
 
-This is nice pattern, but it's messy. Can we write this in a nicer way?
+This is nice pattern, but it's [[messy|míshlachtmhar]]. Can we write this in a [[nicer|níos deise]] way?
 
 This is where outline actions come in, we can move our actions like "`drawCirc`", "`getPerimeter`"
-and "`getArea`" into the definition of the outline.
+and "`getArea`" into the [[definition|sainmhíniú]] of the outline.
 
-To do this we use the keyword "`seo`{.setanta}", which means "this". The "`seo`{.setanta}" keyword has a
-special function, when we use it in an outline action, it refers to whatever object made from that
-outline is calling the action.
+To do this we use the keyword "`seo`{.setanta}", which means [["this"|é seo]]. The "`seo`{.setanta}"
+keyword has a special [[function|feidhm]], when we use it in an outline action, it refers to
+whatever object made from that outline is calling the action.
 
-When we create an object from an outline, that object is called an **instance** of that outline.
+When we create an object from an outline, that object is called an [[**instance**|asc]] of that outline.
 When we use the `seo`{.setanta} keyword in a outline action, it refers to whatever instance of the
 outline is being used to call the action.
 
@@ -343,15 +347,17 @@ creatlach Circle {
 }
 ```
 
-Previously when we wanted to call `drawCirc` with a particular circle object `c`, we would write
-`drawCirc(c)`. Now that `drawCirc` is an outline action, we can write `drawCirc@c()` to call it.
+[[Previously|Roimhe seo]] when we wanted to call `drawCirc` with a particular circle object `c`,
+we would write `drawCirc(c)`. Now that `drawCirc` is an outline action, we can write
+`drawCirc@c()` to call it.
 
 When we do this, because `c` is an instance of `Circle`, everywhere we used `seo`{.setanta}, it will
 point to `c`.
 
-Let's turn "`getArea`" and "`getPerimeter`" into outline actions too. We move them into the outline
-definition, get rid of the "`circ`" argument, and use `seo`{.setanta} instead. We should also rename
-`drawCirc` to just `draw`, to make it easier to read.
+Let's turn "`getArea`" and "`getPerimeter`" into outline actions too. We [[move|bog]] them into the
+outline definition, get rid of the "`circ`" [[argument|argóint]], and use `seo`{.setanta} instead.
+We should also [[rename|athainmnigh]] `drawCirc` to just `draw`, to make it [[easier|níos éasca]] to
+read.
 
 ```{.setanta .numberLines}
 creatlach Circle {
@@ -439,17 +445,18 @@ scríobh("Perimeter is:", getPerimeter@c())
 
 Outline actions are useful, but can we get rid of the need for the `makeCircle` action?
 
-Yes we can! *Setanta* let's you create a special outline action called a **constructor**. A
-constructor is an action that is called when an object is made from the outline.
+[[Yes we can!|Is féidir linn!]] *Setanta* [[let's you|ligeann duit]] create a special outline action
+called a **constructor**. A [[constructor|cruthaitheoir]] is an action that is called when an object
+is made from the outline.
 
-To make a constructor, you create an outline action with the name "nua", which means "new". Then
-when you create an object from that outline, the arguments you use are passed into the constructor
-action.
+To make a constructor, you create an outline action with the name "nua", which means [["new"|nua]].
+Then when you create an object from that outline, the arguments you use are passed into the
+constructor action.
 
 ### Quick Example
 
 Let's see a quick example, we'll make an outline called `Person`, and give it a constructor that takes
-one argument, `name`.
+[[one argument|argóint amháin]], `name`.
 
 ```{.setanta .numberLines}
 creatlach Person {
@@ -458,7 +465,7 @@ creatlach Person {
 }
 ```
 
-Let's add code into the constructor to write the `name` that's passed in:
+Let's add code into the constructor to [[write|scríobh]] the `name` that's passed in:
 
 ```{.setanta .numberLines}
 creatlach Person {
@@ -468,7 +475,7 @@ creatlach Person {
 }
 ```
 
-Now when we create a new person, you can pass in the name you want:
+Now when we create a new [[person|duine]], you can pass in the name you want:
 
 ```{.setanta .numberLines}
 creatlach Person {
@@ -494,9 +501,10 @@ me := Person("Eoin")
 
 ### Circle Constructor
 
-Now we can get rid of our `makeCircle` action, and use a constructor instead. Let's create our
-constructor that takes the same arguments, `x`, `y`, `rad` and `colour`. We can use the
-`seo`{.setanta} keyword to store those arguments in the instance we are creating.
+Now we can get rid of our `makeCircle` action, and use a constructor [[instead|in ionad]]. Let's
+create our constructor that takes the same [[arguments|argóintí]], `x`, `y`, `rad` and `colour`. We
+can use the `seo`{.setanta} keyword to [[store|stóráil]] those arguments in the instance
+[[we are creating|atá á chruthú againn]]
 
 ```{.setanta .numberLines}
 gníomh nua(x, y, rad, colour) {
@@ -507,7 +515,8 @@ gníomh nua(x, y, rad, colour) {
 }
 ```
 
-Now we can totally get rid of the `makeCircle` action, and instead of creating `c` by writing:
+Now we can [[totally|go hiomlán]] get rid of the `makeCircle` action, and instead of creating `c` by
+writing:
 
 ```{.setanta}
 c := makeCircle(100, 100, 50, "dearg")
