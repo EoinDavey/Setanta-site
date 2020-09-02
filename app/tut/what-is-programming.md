@@ -127,7 +127,7 @@ codladh(2000)
 scríobh("After sleeping")
 }}}
 
-If you run this code, it will first print "[[Before sleeping|Roimh chodladh]]", then it will pause for 2 seconds and print "[[After sleeping|Tar éis codlata]]". This is because we used the [[`codladh`{.setanta}|sleep]] action.  "Codladh" translates into English as "sleep". We use `codladh`{.setanta} when we want the computer to [[wait|fán]] for a while before moving on to the next instruction.
+If you run this code, it will first print "[[Before sleeping|Roimh chodladh]]", then it will pause for 2 seconds and print "[[After sleeping|Tar éis codlata]]". This is because we used the [[`codladh`{.setanta}|sleep]] action.  "Codladh" translates into English as "sleep". We use `codladh`{.setanta} when we want the computer to [[wait|fan]] for a while before moving on to the next instruction.
 
 The `codladh`{.setanta} action takes a number of milliseconds (in this case 2000), and when the computer reaches the `codladh`{.setanta} instruction, it will wait for that many milliseconds before proceeding.
 

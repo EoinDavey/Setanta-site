@@ -1,4 +1,4 @@
-import { css, customElement, html, LitElement, property, TemplateResult } from "lit-element";
+import { CSSResult, LitElement, TemplateResult, css, customElement, html, property } from "lit-element";
 import * as CodeMirror from 'codemirror';
 import 'codemirror/addon/mode/simple';
 import { defineMode } from '../js/cm-mode.js';
@@ -18,7 +18,7 @@ export class FYPEditor extends LitElement {
         return "";
     }
 
-    static get styles() {
+    static get styles(): CSSResult {
         return css`
 /* BASICS */
 
@@ -440,14 +440,14 @@ span.CodeMirror-selectedtext { background: none; }
     `;
     }
 
-    public toggleRun() {
+    public toggleRun(): void {
         if(this.running)
             this.fireStopEvent();
         else
             this.fireRunEvent();
     }
 
-    private fireFullscreenStartEvent() { this.fireEvent("fyp-fullscreen-start") }
+    private fireFullscreenStartEvent() { this.fireEvent("fyp-fullscreen-start"); }
     private fireSaveEvent() { this.fireEvent("fyp-save"); }
     private fireRunEvent() { this.fireEvent("fyp-run"); }
     private fireStopEvent() { this.fireEvent("fyp-stop"); }
@@ -459,7 +459,7 @@ span.CodeMirror-selectedtext { background: none; }
         }));
     }
 
-    public firstUpdated(changedProperties: any) {
+    public firstUpdated(): void {
         if (this.shadowRoot) {
             const tx = this.shadowRoot.getElementById("editor") as HTMLTextAreaElement;
             this.editor = CodeMirror.fromTextArea(tx, {
@@ -469,7 +469,7 @@ span.CodeMirror-selectedtext { background: none; }
             });
             this.editor.setValue(this.startcontent);
             this.editor.setOption("extraKeys", {
-                "Ctrl-Enter": (cm) => this.fireRunEvent()
+                "Ctrl-Enter": () => this.fireRunEvent(),
             });
         }
     }

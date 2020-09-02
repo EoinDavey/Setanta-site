@@ -1,0 +1,42 @@
+module.exports = {
+    root: true,
+    parser: '@typescript-eslint/parser',
+    extends: [
+        'eslint:recommended',
+    ],
+    rules: {
+        "eqeqeq": ["error", "always"],
+        "no-promise-executor-return": "error",
+        "no-template-curly-in-string": "error",
+        "no-else-return": ["error", {allowElseIf: false}],
+        "no-eval": "error",
+        "no-implied-eval": "error",
+        "no-loop-func": "error",
+        "no-useless-concat": "error",
+        "no-shadow": "error",
+        "brace-style": ["warn", "1tbs", {allowSingleLine: true}],
+        "comma-spacing": "warn",
+        "key-spacing": "warn",
+        "semi": ["error", "always"],
+        "space-infix-ops": "warn",
+        "sort-imports": ["warn", {
+            ignoreCase: false,
+            ignoreMemberSort: false,
+            ignoreDeclarationSort: true,
+            memberSyntaxSortOrder: ["none", "single", "multiple", "all"],
+            allowSeparatedGroups: false,
+        }],
+        "arrow-spacing": "warn",
+        "comma-dangle": ["warn", "always-multiline"],
+        "comma-spacing": "warn",
+        "no-var": "error",
+        "prefer-const": "warn",
+    },
+    overrides: [
+        {
+            files: ["*.ts"],
+            plugins: ["@typescript-eslint"],
+            extends: ['plugin:@typescript-eslint/recommended'],
+        },
+    ],
+};

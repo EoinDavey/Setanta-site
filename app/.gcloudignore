@@ -12,18 +12,19 @@
 # below:
 .git
 .gitignore
+.eslintignore
 
 # Src files
 /src/
 /tut/
 /demos/
-/jsbuild/
 /node_modules/
 /test/
+/assets/
 
 # Build files
 /tutout/
-/assets/
+/jsbuild/
 
 # Binaries for programs and plugins
 *.exe
