@@ -47,24 +47,24 @@ We can [[split|scar]] the expression `ciorcal@stáitse(200, 200, 100)`{.setanta}
 the action.
 
 [[First|Ar dtús]] we can use `ciorcal@stáitse`{.setanta} to get the `ciorcal` action, then we can save it in a
-variable, let's call that variable `ciorcal_action`{.setanta}.
+variable, let's call that variable `gníomh_ciorcal`{.setanta}.
 
 ```{.setanta .numberLines}
-ciorcal_action := ciorcal@stáitse
+gníomh_ciorcal := ciorcal@stáitse
 ```
 
 Now we can call that action as before by writing:
 
 ```{.setanta .numberLines}
-ciorcal_action := ciorcal@stáitse
-ciorcal_action(200, 200, 100)
+gníomh_ciorcal := ciorcal@stáitse
+gníomh_ciorcal(200, 200, 100)
 ```
 
 Try it out to see that it works!:
 
 {{{s
-ciorcal_action := ciorcal@stáitse
-ciorcal_action(200, 200, 100)
+gníomh_ciorcal := ciorcal@stáitse
+gníomh_ciorcal(200, 200, 100)
 }}}
 
 ## Creation
@@ -90,76 +90,77 @@ creatlach <outline-name> {
 }
 ```
 
-For example, here's how we would create an outline called [[`Simple`|simplí]] that has no special behaviour.
+For example, here's how we would create an outline called `Simplí` that has no special behaviour.
+"Simplí" translates as "[[simple|simplí]]".
 
 ```{.setanta .numberLines}
 >-- New outline with no actions
-creatlach Simple {
+creatlach Simplí {
 }
 ```
 
-[[This creates|Cruthaíonn é seo]] a new action called `Simple`. When you [[call|glaoigh ar]]
-`Simple`, it will create an object from the `Simple` outline and return it.
+[[This creates|Cruthaíonn é seo]] a new action called `Simplí`. When you [[call|glaoigh ar]]
+`Simplí`, it will create an object from the `Simplí` outline and return it.
 
-We can then make an object from the "`Simple`" outline by calling `Simple` like so:
+We can then make an object from the "`Simplí`" outline by calling `Simplí` like so:
 
 ```{.setanta .numberLines}
 >-- New outline with no actions
-creatlach Simple {
+creatlach Simplí {
 }
 
->-- Create an object from the Simple outline
-simple_object := Simple()
+>-- Create an object from the Simplí outline
+oibiacht_simplí := Simplí()
 ```
 
-The "`simple_object`" object is exactly as it sounds, simple. It doesn't have any [[members|baill]]
-yet. Let's add a [[member|ball]] called "`mem`" [[now|anois]] with the [[value|luach]]
-`"Our new member"`{.setanta}. The syntax is just like [[updating|nuashonrú]] a [[variable|athróg]]:
+We created a new variable called "`oibiacht_simplí`" to store the object. "oibiacht simplí" means "simple object". This object is exactly as it sounds, simple. It doesn't have any [[members|baill]]
+yet. Let's add a [[member|ball]] called "`ball`" (meaning "member") [[now|anois]] with the [[value|luach]]
+`"Ár mball nua"`{.setanta} ("Our new member"). The syntax is just like [[updating|nuashonrú]] a [[variable|athróg]]:
 
 ```{.setanta .numberLines}
 >-- New outline with no actions
-creatlach Simple {
+creatlach Simplí {
 }
 
->-- Create an object from the Simple outline
-simple_object := Simple()
+>-- Create an object from the Simplí outline
+oibiacht_simplí := Simplí()
 
->-- Add a new member to simple_object
-mem@simple_object = "Our new member"
+>-- Add a new member to oibiacht_simplí
+ball@oibiacht_simplí = "Ár mball nua"
 ```
 
-Now we can use `mem@simple_object` to [[access|faigh]] the value we stored in that member.
+Now we can use `ball@oibiacht_simplí` to [[access|faigh]] the value we stored in that member.
 
 ```{.setanta .numberLines}
 >-- New outline with no actions
-creatlach Simple {
+creatlach Simplí {
 }
 
->-- Create an object from the Simple outline
-simple_object := Simple()
+>-- Create an object from the Simplí outline
+oibiacht_simplí := Simplí()
 
->-- Add a new member to simple_object
-mem@simple_object = "Our new member"
+>-- Add a new member to oibiacht_simplí
+ball@oibiacht_simplí = "Ár mball nua"
 
 >-- Access the member and write
-scríobh(mem@simple_object)
+scríobh(ball@oibiacht_simplí)
 ```
 
 [[Try it out!|Ban triail as!]]
 
 {{{
 >-- New outline with no actions
-creatlach Simple {
+creatlach Simplí {
 }
 
->-- Create an object from the Simple outline
-simple_object := Simple()
+>-- Create an object from the Simplí outline
+oibiacht_simplí := Simplí()
 
->-- Add a new member to simple_object
-mem@simple_object = "Our new member"
+>-- Add a new member to oibiacht_simplí
+ball@oibiacht_simplí = "Ár mball nua"
 
 >-- Access the member and write
-scríobh(mem@simple_object)
+scríobh(ball@oibiacht_simplí)
 }}}
 
 ## Challenge
@@ -191,63 +192,65 @@ The setup is this: We want to [[write|scríobh]] a [[program|ríomhchlár]] that
 a [[square|cearnóg]], print its [[area|achar]] and its [[perimeter|imlíne]].
 
 [[To start|Chun tús a chur]], let's [[make|déan]] an [[empty|folamh]] outline [[called|darb ainm]]
-"`Circle`", and make an [[action|gníomh]] called "`makeCircle`" that will create an empty object,
+[["`Ciorcal`"|Circle]], and make an [[action|gníomh]] called [["`déan_ciorcal`"|make circle]] that will create an empty object,
 and fill in some [[details|sonraí]]. We want to [[record|taifead]] the x-coordinate, y-coordinate,
-[[radius|ga]] and [[colour|dath]] of our [[circle|ciorcal]].
+[[radius|ga]] and [[colour|dath]] of our [[circle|ciorcal]]. We'll put these in members called `x`,
+`y`, `ga` and `dath`.
 
 ```{.setanta .numberLines}
 >-- Empty outline definition
-creatlach Circle {
+creatlach Ciorcal {
 }
 
 >-- Action to make a circle object with x, y, radius and colour
-gníomh makeCircle(x, y, rad, colour) {
+gníomh déan_ciorcal(x, y, ga, dath) {
     >-- Create blank circle
-    c := Circle()
+    c := Ciorcal()
 
     >-- Set our parameters
     x@c = x
     y@c = y
-    rad@c = rad
-    colour@c = colour
+    ga@c = ga
+    dath@c = dath
 
     >-- Return the circle
     toradh c
 }
 ```
 
-Now we can create three actions, one to draw the circle, one to get the area, and one to get the
-perimeter. **Each of these actions only needs to take one parameter, the circle**.
+Now we can create three actions, one to draw the circle, one to get the [[area|achar]], and one to get the
+[[perimeter|imlíne]]. We'll call these actions `tarraing`, `achar` and `imlíne`.
+**Each of these actions only needs to take one parameter, the circle**.
 
 ```{.setanta .numberLines}
 >-- Draw the circle
-gníomh drawCirc(circ) {
+gníomh tarraing(ciorc) {
     >-- Set the colour
-    dath@stáitse(colour@circ)
+    dath@stáitse(dath@ciorc)
 
     >-- Draw the circle
-    ciorcal@stáitse(x@circ, y@circ, rad@circ)
+    ciorcal@stáitse(x@ciorc, y@ciorc, ga@ciorc)
 }
 
 >-- Return the area, area = pi * r^2
-gníomh getArea(circ) {
-    toradh pi@mata * rad@circ * rad@circ
+gníomh achar(ciorc) {
+    toradh pi@mata * ga@ciorc * ga@ciorc
 }
 
 >-- Return the perimeter, perimeter = 2 * pi * r
-gníomh getPerimeter(circ) {
-    toradh 2 * pi@mata * rad@circ
+gníomh imlíne(ciorc) {
+    toradh 2 * pi@mata * ga@ciorc
 }
 ```
 
-Now we can use our `makeCircle` action to create a circle, and our three other actions to draw it,
+Now we can use our `déan_ciorcal` action to create a circle, and our three other actions to draw it,
 print the area and print the perimeter.
 
 ```{.setanta .numberLines}
-c := makeCircle(100, 100, 50, "dearg")
-drawCirc(c)
-scríobh("Area is:", getArea(c))
-scríobh("Perimeter is:", getPerimeter(c))
+c := déan_ciorcal(100, 100, 50, "dearg")
+tarraing(c)
+scríobh("Area is:", achar(c))
+scríobh("Perimeter is:", imlíne(c))
 ```
 
 Try out the whole program! [[Switch|Athraigh]] to the [[console|consól]] to see the [[text|téacs]]
@@ -255,55 +258,55 @@ Try out the whole program! [[Switch|Athraigh]] to the [[console|consól]] to see
 
 {{{s
 >-- Empty outline definition
-creatlach Circle {
+creatlach Ciorcal {
 }
 
 >-- Action to make a circle object with x, y, radius and colour
-gníomh makeCircle(x, y, rad, colour) {
+gníomh déan_ciorcal(x, y, ga, dath) {
     >-- Create blank circle
-    c := Circle()
+    c := Ciorcal()
 
     >-- Set our parameters
     x@c = x
     y@c = y
-    rad@c = rad
-    colour@c = colour
+    ga@c = ga
+    dath@c = dath
 
     >-- Return the circle
     toradh c
 }
 
 >-- Draw the circle
-gníomh drawCirc(circ) {
+gníomh tarraing(ciorc) {
     >-- Set the colour
-    dath@stáitse(colour@circ)
+    dath@stáitse(dath@ciorc)
 
     >-- Draw the circle
-    ciorcal@stáitse(x@circ, y@circ, rad@circ)
+    ciorcal@stáitse(x@ciorc, y@ciorc, ga@ciorc)
 }
 
 >-- Return the area, area = pi * r^2
-gníomh getArea(circ) {
-    toradh pi@mata * rad@circ * rad@circ
+gníomh achar(ciorc) {
+    toradh pi@mata * ga@ciorc * ga@ciorc
 }
 
 >-- Return the perimeter, perimeter = 2 * pi * r
-gníomh getPerimeter(circ) {
-    toradh 2 * pi@mata * rad@circ
+gníomh imlíne(ciorc) {
+    toradh 2 * pi@mata * ga@ciorc
 }
 
-c := makeCircle(100, 100, 50, "dearg")
-drawCirc(c)
-scríobh("Area is:", getArea(c))
-scríobh("Perimeter is:", getPerimeter(c))
+c := déan_ciorcal(100, 100, 50, "dearg")
+tarraing(c)
+scríobh("Area is:", achar(c))
+scríobh("Perimeter is:", imlíne(c))
 }}}
 
 ## Behaviour
 
 This is nice pattern, but it's [[messy|míshlachtmhar]]. Can we write this in a [[nicer|níos deise]] way?
 
-This is where outline actions come in, we can move our actions like "`drawCirc`", "`getPerimeter`"
-and "`getArea`" into the [[definition|sainmhíniú]] of the outline.
+This is where outline actions come in, we can move our actions like "`tarraing`", "`imlíne`"
+and "`achar`" into the [[definition|sainmhíniú]] of the outline.
 
 To do this we use the keyword "`seo`{.setanta}", which means [["this"|é seo]]. The "`seo`{.setanta}"
 keyword has a special [[function|feidhm]], when we use it in an outline action, it refers to
@@ -313,137 +316,135 @@ When we create an object from an outline, that object is called an [[**instance*
 When we use the `seo`{.setanta} keyword in a outline action, it refers to whatever instance of the
 outline is being used to call the action.
 
-This is easier to see in practice. Let's change our "`drawCirc`" action into an outline action.
+This is easier to see in practice. Let's change our "`tarraing`" action into an outline action.
 First let's copy the action as-is into the outline definition. Our outline definition looks like
 this now:
 
 ```{.setanta .numberLines}
-creatlach Circle {
+creatlach Ciorcal {
 
     >-- Draw the circle
-    gníomh drawCirc(circ) {
+    gníomh tarraing(ciorc) {
         >-- Set the colour
-        dath@stáitse(colour@circ)
+        dath@stáitse(dath@ciorc)
 
         >-- Draw the circle
-        ciorcal@stáitse(x@circ, y@circ, rad@circ)
+        ciorcal@stáitse(x@ciorc, y@ciorc, ga@ciorc)
     }
 }
 ```
 
-Now we can get rid of the `circ` argument and we can use the "`seo`{.setanta}" keyword instead.
+Now we can get rid of the `ciorc` argument and we can use the "`seo`{.setanta}" keyword instead.
 
 ```{.setanta .numberLines}
-creatlach Circle {
+creatlach Ciorcal {
 
     >-- Draw the circle
-    gníomh drawCirc() {
+    gníomh tarraing() {
         >-- Set the colour
-        dath@stáitse(colour@seo)
+        dath@stáitse(dath@seo)
 
         >-- Draw the circle
-        ciorcal@stáitse(x@seo, y@seo, rad@seo)
+        ciorcal@stáitse(x@seo, y@seo, ga@seo)
     }
 }
 ```
 
-[[Previously|Roimhe seo]] when we wanted to call `drawCirc` with a particular circle object `c`,
-we would write `drawCirc(c)`. Now that `drawCirc` is an outline action, we can write
-`drawCirc@c()` to call it.
+[[Previously|Roimhe seo]] when we wanted to call `tarraing` with a particular circle object `c`,
+we would write `tarraing(c)`. Now that `tarraing` is an outline action, we can write
+`tarraing@c()` to call it.
 
-When we do this, because `c` is an instance of `Circle`, everywhere we used `seo`{.setanta}, it will
+When we do this, because `c` is an instance of `Ciorcal`, everywhere we used `seo`{.setanta}, it will
 point to `c`.
 
-Let's turn "`getArea`" and "`getPerimeter`" into outline actions too. We [[move|bog]] them into the
-outline definition, get rid of the "`circ`" [[argument|argóint]], and use `seo`{.setanta} instead.
-We should also [[rename|athainmnigh]] `drawCirc` to just `draw`, to make it [[easier|níos éasca]] to
-read.
+Let's turn "`achar`" and "`imlíne`" into outline actions too. We [[move|bog]] them into the
+outline definition, get rid of the "`ciorc`" [[argument|argóint]], and use `seo`{.setanta} instead.
 
 ```{.setanta .numberLines}
-creatlach Circle {
+creatlach Ciorcal {
 
     >-- Draw the circle
-    gníomh draw() {
+    gníomh tarraing() {
         >-- Set the colour
-        dath@stáitse(colour@seo)
+        dath@stáitse(dath@seo)
 
         >-- Draw the circle
-        ciorcal@stáitse(x@seo, y@seo, rad@seo)
+        ciorcal@stáitse(x@seo, y@seo, ga@seo)
     }
 
     >-- Return the area, area = pi * r^2
-    gníomh getArea() {
-        toradh pi@mata * rad@seo * rad@seo
+    gníomh achar() {
+        toradh pi@mata * ga@seo * ga@seo
     }
 
     >-- Return the perimeter, perimeter = 2 * pi * r
-    gníomh getPerimeter() {
-        toradh 2 * pi@mata * rad@seo
+    gníomh imlíne() {
+        toradh 2 * pi@mata * ga@seo
     }
 }
 ```
 
-Now we can replace our calls to "`getArea`" and "`getPerimeter`" with this:
+Now we can replace our calls to "`achar`" and "`imlíne`" with this:
 
 ```{.setanta .numberLines}
-c := makeCircle(100, 100, 50, "dearg")
-c@draw()
-scríobh("Area is:", c@getArea())
-scríobh("Perimeter is:", c@getPerimeter())
+c := déan_ciorcal(100, 100, 50, "dearg")
+tarraing@c()
+scríobh("Area is:", achar@c())
+scríobh("Perimeter is:", imlíne@c())
 ```
 
-`getArea`, `getPerimeter` and `draw` are all outline actions, so Setanta will make the
-`seo`{.setanta} keyword point to `c`, because it is an instance of `Circle`.
+`achar`, `imlíne` and `draw` are all outline actions, so Setanta will make the
+`seo`{.setanta} keyword point to `c`, because it is an instance of `Ciorcal`.
 
 Try it out!:
 
 {{{s
-creatlach Circle {
+creatlach Ciorcal {
 
     >-- Draw the circle
-    gníomh draw() {
+    gníomh tarraing() {
         >-- Set the colour
-        dath@stáitse(colour@seo)
+        dath@stáitse(dath@seo)
 
         >-- Draw the circle
-        ciorcal@stáitse(x@seo, y@seo, rad@seo)
+        ciorcal@stáitse(x@seo, y@seo, ga@seo)
     }
 
     >-- Return the area, area = pi * r^2
-    gníomh getArea() {
-        toradh pi@mata * rad@seo * rad@seo
+    gníomh achar() {
+        toradh pi@mata * ga@seo * ga@seo
     }
 
     >-- Return the perimeter, perimeter = 2 * pi * r
-    gníomh getPerimeter() {
-        toradh 2 * pi@mata * rad@seo
+    gníomh imlíne() {
+        toradh 2 * pi@mata * ga@seo
     }
 }
 
 >-- Action to make a circle object with x, y, radius and colour
-gníomh makeCircle(x, y, rad, colour) {
+gníomh déan_ciorcal(x, y, ga, dath) {
     >-- Create blank circle
-    c := Circle()
+    c := Ciorcal()
 
     >-- Set our parameters
     x@c = x
     y@c = y
-    rad@c = rad
-    colour@c = colour
+    ga@c = ga
+    dath@c = dath
 
     >-- Return the circle
     toradh c
 }
 
-c := makeCircle(100, 100, 50, "dearg")
-draw@c()
-scríobh("Area is:", getArea@c())
-scríobh("Perimeter is:", getPerimeter@c())
+c := déan_ciorcal(100, 100, 50, "dearg")
+tarraing@c()
+scríobh("Area is:", achar@c())
+scríobh("Perimeter is:", imlíne@c())
 }}}
 
 ## Constructor
 
-Outline actions are useful, but can we get rid of the need for the `makeCircle` action?
+Outline actions are useful, but can we get rid of the need for the `déan_ciorcal` action?
 
 [[Yes we can!|Is féidir linn!]] *Setanta* [[let's you|ligeann duit]] create a special outline action
 called a **constructor**. A [[constructor|cruthaitheoir]] is an action that is called when an object
@@ -499,107 +500,107 @@ creatlach Person {
 me := Person("Eoin")
 }}}
 
-### Circle Constructor
+### Ciorcal Constructor
 
-Now we can get rid of our `makeCircle` action, and use a constructor [[instead|in ionad]]. Let's
-create our constructor that takes the same [[arguments|argóintí]], `x`, `y`, `rad` and `colour`. We
+Now we can get rid of our `déan_ciorcal` action, and use a constructor [[instead|in ionad]]. Let's
+create our constructor that takes the same [[arguments|argóintí]], `x`, `y`, `ga` and `dath`. We
 can use the `seo`{.setanta} keyword to [[store|stóráil]] those arguments in the instance
 [[we are creating|atá á chruthú againn]]
 
 ```{.setanta .numberLines}
-gníomh nua(x, y, rad, colour) {
+gníomh nua(x, y, ga, dath) {
     x@seo = x
     y@seo = y
-    rad@seo = rad
-    colour@seo = colour
+    ga@seo = ga
+    dath@seo = dath
 }
 ```
 
-Now we can [[totally|go hiomlán]] get rid of the `makeCircle` action, and instead of creating `c` by
+Now we can [[totally|go hiomlán]] get rid of the `déan_ciorcal` action, and instead of creating `c` by
 writing:
 
 ```{.setanta}
-c := makeCircle(100, 100, 50, "dearg")
+c := déan_ciorcal(100, 100, 50, "dearg")
 ```
 
 we can write:
 
 ```{.setanta}
-c := Circle(100, 100, 50, "dearg")
+c := Ciorcal(100, 100, 50, "dearg")
 ```
 
 Our final program looks like this:
 
 ```{.setanta .numberLines}
-creatlach Circle {
+creatlach Ciorcal {
 
-    gníomh nua(x, y, rad, colour) {
+    gníomh nua(x, y, ga, dath) {
         x@seo = x
         y@seo = y
-        rad@seo = rad
-        colour@seo = colour
+        ga@seo = ga
+        dath@seo = dath
     }
 
     >-- Draw the circle
-    gníomh draw() {
+    gníomh tarraing() {
         >-- Set the colour
-        dath@stáitse(colour@seo)
+        dath@stáitse(dath@seo)
 
         >-- Draw the circle
-        ciorcal@stáitse(x@seo, y@seo, rad@seo)
+        ciorcal@stáitse(x@seo, y@seo, ga@seo)
     }
 
     >-- Return the area, area = pi * r^2
-    gníomh getArea() {
-        toradh pi@mata * rad@seo * rad@seo
+    gníomh achar() {
+        toradh pi@mata * ga@seo * ga@seo
     }
 
     >-- Return the perimeter, perimeter = 2 * pi * r
-    gníomh getPerimeter() {
-        toradh 2 * pi@mata * rad@seo
+    gníomh imlíne() {
+        toradh 2 * pi@mata * ga@seo
     }
 }
 
-c := Circle(100, 100, 50, "dearg")
-draw@c()
-scríobh("Area is:", getArea@c())
-scríobh("Perimeter is:", getPerimeter@c())
+c := Ciorcal(100, 100, 50, "dearg")
+tarraing@c()
+scríobh("Area is:", achar@c())
+scríobh("Perimeter is:", imlíne@c())
 ```
 
 Let's give it a try!
 
 {{{s
-creatlach Circle {
+creatlach Ciorcal {
 
-    gníomh nua(x, y, rad, colour) {
+    gníomh nua(x, y, ga, dath) {
         x@seo = x
         y@seo = y
-        rad@seo = rad
-        colour@seo = colour
+        ga@seo = ga
+        dath@seo = dath
     }
 
     >-- Draw the circle
-    gníomh draw() {
+    gníomh tarraing() {
         >-- Set the colour
-        dath@stáitse(colour@seo)
+        dath@stáitse(dath@seo)
 
         >-- Draw the circle
-        ciorcal@stáitse(x@seo, y@seo, rad@seo)
+        ciorcal@stáitse(x@seo, y@seo, ga@seo)
     }
 
     >-- Return the area, area = pi * r^2
-    gníomh getArea() {
-        toradh pi@mata * rad@seo * rad@seo
+    gníomh achar() {
+        toradh pi@mata * ga@seo * ga@seo
     }
 
     >-- Return the perimeter, perimeter = 2 * pi * r
-    gníomh getPerimeter() {
-        toradh 2 * pi@mata * rad@seo
+    gníomh imlíne() {
+        toradh 2 * pi@mata * ga@seo
     }
 }
 
-c := Circle(100, 100, 50, "dearg")
-draw@c()
-scríobh("Area is:", getArea@c())
-scríobh("Perimeter is:", getPerimeter@c())
+c := Ciorcal(100, 100, 50, "dearg")
+tarraing@c()
+scríobh("Area is:", achar@c())
+scríobh("Perimeter is:", imlíne@c())
 }}}
