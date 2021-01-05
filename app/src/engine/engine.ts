@@ -44,9 +44,9 @@ export class DisplayEngine {
     public mouseDownFn: (x: number, y: number) => Promise<Value> = () => Promise.resolve(null);
     public mouseMoveFn: (x: number, y: number) => Promise<Value> = () => Promise.resolve(null);
 
-    // arity: 1; args[0]: (string) => null;
-    public registerKeyDownHandler(args: Value[]): Promise<Value> {
-        const f = Asserts.assertCallable(args[0]);
+    // arity: 1; f: (string) => null;
+    public registerKeyDownHandler([f]: Value[]): Promise<Value> {
+        Asserts.assertCallable(f);
         const fn = (code: string) => {
             return callFunc(f, [code])
                 .catch(err => err !== STOP
@@ -57,9 +57,9 @@ export class DisplayEngine {
         return Promise.resolve(null);
     }
 
-    // arity: 1; args[0]: (string) => null;
-    public registerKeyUpHandler(args: Value[]): Promise<Value> {
-        const f = Asserts.assertCallable(args[0]);
+    // arity: 1; f: (string) => null;
+    public registerKeyUpHandler([f]: Value[]): Promise<Value> {
+        Asserts.assertCallable(f);
         const fn = (code: string) => {
             return callFunc(f, [code])
                 .catch(err => err !== STOP
@@ -70,9 +70,9 @@ export class DisplayEngine {
         return Promise.resolve(null);
     }
 
-    // arity: 1; args[0]: (number, number) => null;
-    public registerMouseDownHandler(args: Value[]): Promise<null> {
-        const f = Asserts.assertCallable(args[0]);
+    // arity: 1; f: (number, number) => null;
+    public registerMouseDownHandler([f]: Value[]): Promise<null> {
+        Asserts.assertCallable(f);
         const fn = (x: number, y: number) => {
             return callFunc(f, [x, y])
                 .catch(err => err !== STOP
@@ -83,9 +83,9 @@ export class DisplayEngine {
         return Promise.resolve(null);
     }
 
-    // arity: 1; args[0]: (number, number) => null;
-    public registerMouseUpHandler(args: Value[]): Promise<null> {
-        const f = Asserts.assertCallable(args[0]);
+    // arity: 1; f: (number, number) => null;
+    public registerMouseUpHandler([f]: Value[]): Promise<null> {
+        Asserts.assertCallable(f);
         const fn = (x: number, y: number) => {
             return callFunc(f, [x, y])
                 .catch(err => err !== STOP
@@ -96,9 +96,9 @@ export class DisplayEngine {
         return Promise.resolve(null);
     }
 
-    // arity: 1; args[0]: (number, number) => null;
-    public registerMouseMoveHandler(args: Value[]): Promise<null> {
-        const f = Asserts.assertCallable(args[0]);
+    // arity: 1; f: (number, number) => null;
+    public registerMouseMoveHandler([f]: Value[]): Promise<null> {
+        Asserts.assertCallable(f);
         const fn = (x: number, y: number) => {
             return callFunc(f, [x, y])
                 .catch(err => err !== STOP
@@ -109,53 +109,53 @@ export class DisplayEngine {
         return Promise.resolve(null);
     }
 
-    // arity: 1; args[0]: string
+    // arity: 1; s: string
     // changes fill stye colour
-    public changeColour(args: Value[]): Promise<Value> {
-        const s: string = Asserts.assertTéacs(args[0]);
+    public changeColour([s]: Value[]): Promise<Value> {
+        Asserts.assertTéacs(s);
         const col = colourMap.get(s) || s;
         this.ctx.fillStyle = col;
         this.ctx.strokeStyle = col;
         return Promise.resolve(null);
     }
 
-    // arity: 1; args[0]: number
-    // change line width to args[0]
-    public changeWidth(args: Value[]): Promise<Value> {
-        const wth = Asserts.assertNumber(args[0]);
+    // arity: 1; wth: number
+    // change line width to wth
+    public changeWidth([wth]: Value[]): Promise<Value> {
+        Asserts.assertNumber(wth);
         this.ctx.lineWidth = wth;
         return Promise.resolve(null);
     }
 
-    // arity: 4; args[0]: number, args[1]: number, args[2]: number, args[3]: number
-    // draws rectangle at position (args[0], args[1]) with width args[2] and height args[3]
-    public drawRect(args: Value[]): Promise<Value> {
-        const x1 = Asserts.assertNumber(args[0]);
-        const y1 = Asserts.assertNumber(args[1]);
-        const x2 = Asserts.assertNumber(args[2]);
-        const y2 = Asserts.assertNumber(args[3]);
+    // arity: 4; x1: number, y1: number, x2: number, y2: number
+    // draws rectangle at position (x1, y1) with width x2 and height y2
+    public drawRect([x1, y1, x2, y2]: Value[]): Promise<Value> {
+        Asserts.assertNumber(x1);
+        Asserts.assertNumber(y1);
+        Asserts.assertNumber(x2);
+        Asserts.assertNumber(y2);
         this.ctx.strokeRect(x1, y1, x2, y2);
         return Promise.resolve(null);
     }
 
-    // arity: 4; args[0]: number, args[1]: number, args[2]: number, args[3]: number
-    // draws rectangle at position (args[0], args[1]) with width args[2] and height args[3]
-    public drawFullRect(args: Value[]): Promise<Value> {
-        const x1 = Asserts.assertNumber(args[0]);
-        const y1 = Asserts.assertNumber(args[1]);
-        const x2 = Asserts.assertNumber(args[2]);
-        const y2 = Asserts.assertNumber(args[3]);
+    // arity: 4; x1: number, y1: number, x2: number, y2: number
+    // draws rectangle at position (x1, y1) with width x2 and height y2
+    public drawFullRect([x1, y1, x2, y2]: Value[]): Promise<Value> {
+        Asserts.assertNumber(x1);
+        Asserts.assertNumber(y1);
+        Asserts.assertNumber(x2);
+        Asserts.assertNumber(y2);
         this.ctx.fillRect(x1, y1, x2, y2);
         return Promise.resolve(null);
     }
 
-    // arity: 4; args[0]: number, args[1]: number, args[2]: number, args[3]: number
-    // draws a line segment from (args[0], args[1]) to (args[2], args[3])
-    public drawLineSeg(args: Value[]): Promise<Value> {
-        const x1 = Asserts.assertNumber(args[0]);
-        const y1 = Asserts.assertNumber(args[1]);
-        const x2 = Asserts.assertNumber(args[2]);
-        const y2 = Asserts.assertNumber(args[3]);
+    // arity: 4; x1: number, y1: number, x2: number, y2: number
+    // draws a line segment from (x1, y1) to (x2, y2)
+    public drawLineSeg([x1, y1, x2, y2]: Value[]): Promise<Value> {
+        Asserts.assertNumber(x1);
+        Asserts.assertNumber(y1);
+        Asserts.assertNumber(x2);
+        Asserts.assertNumber(y2);
         this.ctx.beginPath();
         this.ctx.moveTo(x1, y1);
         this.ctx.lineTo(x2, y2);
@@ -163,49 +163,48 @@ export class DisplayEngine {
         return Promise.resolve(null);
     }
 
-    // arity: ; args[0]: number, args[1]: number, args[3]: number
-    public drawFullCirc(args: Value[]): Promise<Value> {
-        const x = Asserts.assertNumber(args[0]);
-        const y = Asserts.assertNumber(args[1]);
-        const r = Asserts.assertNumber(args[2]);
+    // arity: ; x: number, y: number, r: number
+    public drawFullCirc([x, y, r]: Value[]): Promise<Value> {
+        Asserts.assertNumber(x);
+        Asserts.assertNumber(y);
+        Asserts.assertNumber(r);
         this.ctx.beginPath();
         this.ctx.arc(x, y, r, 0, 2 * Math.PI);
         this.ctx.fill();
         return Promise.resolve(null);
     }
 
-    // arity: 3; args[0]: number, args[1]: number, args[3]: number
-    public drawCirc(args: Value[]): Promise<Value> {
-        const x = Asserts.assertNumber(args[0]);
-        const y = Asserts.assertNumber(args[1]);
-        const r = Asserts.assertNumber(args[2]);
+    // arity: 3; x: number, y: number, r: number
+    public drawCirc([x, y, r]: Value[]): Promise<Value> {
+        Asserts.assertNumber(x);
+        Asserts.assertNumber(y);
+        Asserts.assertNumber(r);
         this.ctx.beginPath();
         this.ctx.arc(x, y, r, 0, 2 * Math.PI);
         this.ctx.stroke();
         return Promise.resolve(null);
     }
 
-    // arity: 1, args[0]: list
+    // arity: 1, pts: list
     // Draws the shape given by the points in order in the list.
-    public drawShape(args: Value[]): Promise<Value> {
-        const pts = Asserts.assertLiosta(args[0]);
+    public drawShape([pts]: Value[]): Promise<Value> {
+        Asserts.assertLiosta(pts);
         this.drawShapePath(pts);
         this.ctx.stroke();
         return Promise.resolve(null);
     }
 
-    // arity: 1, args[0]: list
+    // arity: 1, pts: list
     // Draws the shape given by the points in order in the list.
     // Fills in internal area
-    public drawShapeFull(args: Value[]): Promise<Value> {
-        const pts = Asserts.assertLiosta(args[0]);
+    public drawShapeFull([pts]: Value[]): Promise<Value> {
+        Asserts.assertLiosta(pts);
         this.drawShapePath(pts);
         this.ctx.fill();
         return Promise.resolve(null);
     }
 
-    // arity: 6; args[0-6]: number
-    // x, y, rad, startAngle, endAngle, clockwise?
+    // arity: 6; x, y, rad, startAngle, endAngle, clockwise: number
     // Draws a filled in arc
     public drawArcFull(args: Value[]): Promise<Value> {
         this.ctx.beginPath();
@@ -214,8 +213,7 @@ export class DisplayEngine {
         return Promise.resolve(null);
     }
 
-    // arity: 6; args[0-6]: number
-    // x, y, rad, startAngle, endAngle, clockwise?
+    // arity: 6; x, y, rad, startAngle, endAngle, clockwise: number
     // Draws an arc
     public drawArc(args: Value[]): Promise<Value> {
         this.ctx.beginPath();
@@ -224,13 +222,13 @@ export class DisplayEngine {
         return Promise.resolve(null);
     }
 
-    // arity: 4; args[0]: number, args[1]: number, args[2]: number, args[3]: number
-    // clears rectangle at position (args[0], args[1]) with width args[2] and height args[3]
-    public clearRect(args: Value[]): Promise<Value> {
-        const x1 = Asserts.assertNumber(args[0]);
-        const y1 = Asserts.assertNumber(args[1]);
-        const x2 = Asserts.assertNumber(args[2]);
-        const y2 = Asserts.assertNumber(args[3]);
+    // arity: 4; x1: number, y1: number, x2: number, y2: number
+    // clears rectangle at position (x1, y1) with width x2 and height y2
+    public clearRect([x1, y1, x2, y2]: Value[]): Promise<Value> {
+        Asserts.assertNumber(x1);
+        Asserts.assertNumber(y1);
+        Asserts.assertNumber(x2);
+        Asserts.assertNumber(y2);
         this.ctx.clearRect(x1, y1, x2, y2);
         return Promise.resolve(null);
     }
@@ -242,23 +240,24 @@ export class DisplayEngine {
         return Promise.resolve(null);
     }
 
-    private arcPath(args: Value[]): Promise<Value> {
-        const x = Asserts.assertNumber(args[0]);
-        const y = Asserts.assertNumber(args[1]);
-        const radius = Asserts.assertNumber(args[2]);
-        const start = Asserts.assertNumber(args[3]);
-        const end = Asserts.assertNumber(args[4]);
-        const clockwise = Asserts.assertBool(args[5]);
+    private arcPath([x, y, radius, start, end, clockwise]: Value[]): Promise<Value> {
+        Asserts.assertNumber(x);
+        Asserts.assertNumber(y);
+        Asserts.assertNumber(radius);
+        Asserts.assertNumber(start);
+        Asserts.assertNumber(end);
+        Asserts.assertBool(clockwise);
         this.ctx.arc(x, y, radius, start, end, clockwise);
         return Promise.resolve(null);
     }
 
     private drawShapePath(pts: Value[]) {
         this.ctx.beginPath();
-        for (const i of pts) {
-            const pt = Asserts.assertLiosta(i);
-            const x = Asserts.assertNumber(pt[0]);
-            const y = Asserts.assertNumber(pt[1]);
+        for (const pt of pts) {
+            Asserts.assertLiosta(pt);
+            const [x, y] = pt;
+            Asserts.assertNumber(x);
+            Asserts.assertNumber(y);
             this.ctx.lineTo(x, y);
         }
         this.ctx.closePath();

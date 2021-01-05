@@ -14,10 +14,10 @@ function readPromise(ctx: Context,
 }
 
 export function genBuiltins(display: DisplayEngine, writeFn: (s: string) => void,
-    setWriteWait: (fn: (s: string) => void) => void): (ctx: Context) => [string[], Value][] {
+    setWriteWait: (fn: (s: string) => void) => void): (ctx: Context) => [string, Value][] {
         return (ctx: Context) => [
         [
-            ["scríobh", "scriobh"],
+            "scríobh",
             {
                 ainm: "scríobh",
                 arity: () => -1,
@@ -30,7 +30,7 @@ export function genBuiltins(display: DisplayEngine, writeFn: (s: string) => void
             },
         ],
         [
-            ["ceist"],
+            "ceist",
             {
                 ainm: "ceist",
                 arity: () => 1,
@@ -41,7 +41,7 @@ export function genBuiltins(display: DisplayEngine, writeFn: (s: string) => void
             },
         ],
         [
-            ["léigh", "leigh"],
+            "léigh",
             {
                 ainm: "léigh",
                 arity: () => 0,
@@ -49,7 +49,7 @@ export function genBuiltins(display: DisplayEngine, writeFn: (s: string) => void
             },
         ],
         [
-            ["stáitse", "staitse"],
+            "stáitse",
             new ObjIntfWrap("stáitse", [
                 [["fadX"], display.sizeX], // DEPRECATED
                 [["fadY"], display.sizeY], // DEPRECATED
@@ -232,7 +232,7 @@ export function genBuiltins(display: DisplayEngine, writeFn: (s: string) => void
         ],
         [
             // DEPRECATED
-            ["méarchlár", "méarchlar", "mearchlár", "mearchlar"],
+            "méarchlár",
             {
                 ainm: "méarchlár",
                 arity: () => 1,
