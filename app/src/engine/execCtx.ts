@@ -63,14 +63,15 @@ export class ExecCtx {
         }
     }
 
-    public async run(prog: string): Promise<SyntaxErr|undefined> {
+    public async run(prog: string): Promise<SyntaxErr[]> {
+        // TODO return static errors too
         const builtins = genBuiltins(this.display, this.writeFn,
             (fn) => { this.currentWriteWait = fn; });
 
         const p = new Parser(prog);
         const res = p.parse();
-        if (res.err)
-            return res.err;
+        if (res.errs.length > 0)
+            return res.errs;
         if (res.ast === null)
             return Promise.reject(new Error("Unknown parser error: serious failure"));
         const ast = res.ast;
@@ -82,5 +83,6 @@ export class ExecCtx {
         } finally {
             this.stop();
         }
+        return [];
     }
 }

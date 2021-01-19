@@ -3,7 +3,7 @@ import { FYPEditor } from "../editor/editor";
 import { TextMarker } from "codemirror";
 import { ExecCtx } from "../engine/execCtx";
 import { DisplayEngine } from "../engine/engine";
-import { RuntimeError } from "setanta/node_build/error";
+import { RuntimeError, StaticError } from "setanta/node_build/error";
 import { LitElement } from "lit-element";
 
 // RuntimeComponent is an abstract class that implements the core runtime
@@ -70,8 +70,8 @@ export abstract class RuntimeComponent extends LitElement {
 
         this.running = true;
         try {
-            const err = await exec.run(program);
-            if (err) {
+            const errs = await exec.run(program);
+            for(const err of errs) {
                 const line = err.pos.line;
                 const ch = err.pos.offset;
                 if (this.editor.editor) {
@@ -91,7 +91,9 @@ export abstract class RuntimeComponent extends LitElement {
     }
 
     protected displayRuntimeError(e: Error): void {
-        if(e instanceof RuntimeError && e.start && e.end && this.editor.editor){
+        if((e instanceof RuntimeError || e instanceof StaticError)
+            && e.start && e.end && this.editor.editor){
+
             const mrk = this.editor.editor.markText(
                 {
                     line: e.start.line - 1,
@@ -100,7 +102,9 @@ export abstract class RuntimeComponent extends LitElement {
                 {
                     line: e.end.line - 1,
                     ch: e.end.offset,
-                }, {className: "syntax-error"});
+                },
+                {className: "syntax-error"},
+            );
             this.marks.push(mrk);
         }
         this.console.writeError(e);
