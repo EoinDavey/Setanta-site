@@ -32,4 +32,4 @@ jobs:
           deliverables: dev.yaml
           version: dev
           promote: true
-          credentials: ${{ secrets.GCP_SA_KEY }}
+          credentials: ${{ secrets.GAE_SA_KEY }}
