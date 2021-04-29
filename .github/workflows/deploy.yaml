@@ -7,6 +7,9 @@ on:
 jobs:
   cd:
     runs-on: ubuntu-latest
+    defaults:
+       run:
+         working-directory: ./app
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js 12.x
@@ -22,7 +25,7 @@ jobs:
       uses: google-github-actions/deploy-appengine@d125194d3ed7c3b3a619cad9d6b422b39973f507
       with:
           project_id: final-year-project-257911
-          working_directory: app/
+          working_directory: ./app
           deliverables: dev.yaml
           version: dev
           promote: true
