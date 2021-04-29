@@ -19,7 +19,7 @@ jobs:
         registry-url: 'https://registry.npmjs.org'
     - run: npm ci
     - run: npm run test
-    - run: npm clean
+    - run: npm run clean
     - run: npm run build
     - name: Deploy to Dev
       uses: google-github-actions/deploy-appengine@d125194d3ed7c3b3a619cad9d6b422b39973f507
