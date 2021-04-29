@@ -45,6 +45,7 @@
             .wrapped {
                 min-height: calc(100vh - 2 * 64px - 2px);
                 border: 1px solid var(--theme-primary);
+                padding: 0 1rem 0 1rem;
                 border-radius: 1rem;
                 margin: 64px;
                 background-color: white;
@@ -79,7 +80,14 @@
             #sub-header {
                 color: var(--theme-primary);
             }
+            #header-link-wrap {
+                text-decoration: none;
+            }
             @media (max-width: 600px) {
+                .wrapped {
+                    min-height: calc(100vh - 2 * 32px - 2px);
+                    margin: 32px;
+                }
                 header {
                     display: flex;
                     flex-direction: column;
@@ -97,12 +105,12 @@
     </head>
     <body>
         <div id="outer-wrapper" class="wrapped">
-            <header>
-                <img src="/assets/logo.svg"/ id="logo"><h1 id="heading" >Setanta</h1>
+            <a id="header-link-wrap" href="/"><header>
+                <img src="/assets/logo.svg"/ id="logo"><h1 id="heading">Setanta</h1>
                 <h4 id="subtitle">An teanga ríomhchlárúcháin <span class="gaeilge">as Gaeilge</span></h4>
-            </header>
+            </header></a>
             <h1>Setanta needs help!</h1>
-            <h3 id="sub-header">Looking for fluent Irish speakers interested in making learning programming available through Irish.
+            <h3 id="sub-header">Looking for fluent Irish speakers interested in helping make learning programming available through Irish.
             </h3>
             <p>
             Setanta was created to enable people to learn to program through Irish, that is the primary design goal. The last obstacle in the way of this goal is making the tutorial fully available in Irish and that is where I need help.
@@ -116,6 +124,7 @@
             <p>
             Please take a look at the current English tutorials <a href="/tut/intro.html">here</a>, and if you're interested in helping out, feel free to send me an email at <a href="mailto:eoin@try-setanta.ie">eoin@try-setanta.ie</a> or contact me on <a href="https://twitter.com/edaveysligo">Twitter</a>.
             </p>
+            <h3>Míle Buíochas!</h3>
             <p>
             <em>NB:</em> Setanta is free, open source and volunteer developed.
             </p>
