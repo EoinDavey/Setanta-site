@@ -1,0 +1,29 @@
+name: GAE Deploy
+
+on:
+  push:
+    branches: dev
+
+jobs:
+  cd:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js 12.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+        registry-url: 'https://registry.npmjs.org'
+    - run: npm ci
+    - run: npm run test
+    - run: npm clean
+    - run: npm run build
+    - name: Deploy to Dev
+      uses: google-github-actions/deploy-appengine@d125194d3ed7c3b3a619cad9d6b422b39973f507
+      with:
+          project_id: final-year-project-257911
+          working_directory: app/
+          deliverables: dev.yaml
+          version: dev
+          promote: true
+          credentials: ${{ secrets.GCP_SA_KEY }}
