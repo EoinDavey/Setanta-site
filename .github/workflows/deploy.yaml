@@ -2,10 +2,12 @@ name: GAE Deploy
 
 on:
   push:
-    branches: dev
+    branches:
+        - dev
+        - master
 
 jobs:
-  cd:
+  CD:
     runs-on: ubuntu-latest
     defaults:
        run:
@@ -33,3 +35,14 @@ jobs:
           version: dev
           promote: true
           credentials: ${{ secrets.GAE_SA_KEY }}
+      if: ${{ github.ref == 'refs/heads/dev' }}
+
+    - name: deploy to prod
+      uses: google-github-actions/deploy-appengine@d125194d3ed7c3b3a619cad9d6b422b39973f507
+      with:
+          project_id: final-year-project-257911
+          working_directory: ./app
+          deliverables: app.yaml
+          promote: true
+          credentials: ${{ secrets.GAE_SA_KEY }}
+      if: ${{ github.ref == 'refs/heads/master' }}
