@@ -37,7 +37,7 @@ jobs:
           credentials: ${{ secrets.GAE_SA_KEY }}
       if: ${{ github.ref == 'refs/heads/dev' }}
 
-    - name: deploy to prod
+    - name: Deploy to Prod
       uses: google-github-actions/deploy-appengine@d125194d3ed7c3b3a619cad9d6b422b39973f507
       with:
           project_id: final-year-project-257911
