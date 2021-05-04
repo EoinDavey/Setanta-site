@@ -1,6 +1,6 @@
 # try-setanta.ie
 
-[![Build Status](https://travis-ci.com/EoinDavey/Setanta-site.svg?branch=master)](https://travis-ci.com/EoinDavey/Setanta-site)
+[![GAE Deploy](https://github.com/EoinDavey/Setanta-site/actions/workflows/deploy.yaml/badge.svg?branch=master)](https://github.com/EoinDavey/Setanta-site/actions/workflows/deploy.yaml)
 
 This is the source code for try-setanta.ie
 
@@ -12,4 +12,4 @@ Visit [dev.try-setanta.ie](https://dev.try-setanta.ie) to see the dev deployment
 
 ## Deployment
 
-try-setanta.ie is deployed to Google App Engine by Travis CI
+try-setanta.ie is deployed to Google App Engine by Github Actions
