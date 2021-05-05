@@ -1,0 +1,30 @@
+version: "3.9"
+services:
+  datastore:
+    image: gcr.io/google.com/cloudsdktool/cloud-sdk
+    entrypoint: ["gcloud", "beta", "emulators", "datastore", "start", "--project=test-project"]
+
+  backend:
+    build:
+      context: '.'
+      dockerfile: Dockerfile.backend
+    image: try-setanta-backend
+    depends_on:
+      - datastore
+    environment:
+      DATASTORE_EMULATOR_HOST: datastore:8081
+      DATASTORE_PROJECT_ID: test-project
+    volumes:
+      - '../.:/app'
+
+  frontend:
+    build:
+      context: '..'
+      dockerfile: docker/Dockerfile.frontend
+    image: try-setanta-frontend
+    depends_on:
+      - backend
+    volumes:
+      - '../.:/app'
+    ports:
+      - '80:80'
