@@ -4,7 +4,10 @@ services:
     expose:
       - 8081
     image: gcr.io/google.com/cloudsdktool/cloud-sdk
-    entrypoint: ["gcloud", "beta", "emulators", "datastore", "start", "--project=test-project", "--host-port=0.0.0.0:8081"]
+    entrypoint: ["gcloud", "beta", "emulators", "datastore", "start",
+      "--project=test-project", "--host-port=0.0.0.0:8081", "--data-dir=/var/datastore"]
+    volumes:
+      - 'datastore_data:/var/datastore'
 
   backend:
     build:
@@ -30,3 +33,6 @@ services:
       - '../.:/app'
     ports:
       - '80:80'
+
+volumes:
+  datastore_data:
