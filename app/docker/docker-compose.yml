@@ -1,8 +1,10 @@
 version: "3.9"
 services:
   datastore:
+    expose:
+      - 8081
     image: gcr.io/google.com/cloudsdktool/cloud-sdk
-    entrypoint: ["gcloud", "beta", "emulators", "datastore", "start", "--project=test-project"]
+    entrypoint: ["gcloud", "beta", "emulators", "datastore", "start", "--project=test-project", "--host-port=0.0.0.0:8081"]
 
   backend:
     build:
