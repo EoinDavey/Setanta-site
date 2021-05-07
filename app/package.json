@@ -6,8 +6,8 @@
     "build": "./buildtut.sh && tsc && webpack",
     "clean": "rm -rf jsbuild dist tutout",
     "test": "eslint --ext .ts,.js --max-warnings=0 src/ && cd tut/ && awk -f scripts/test.awk *.md",
-    "local": "GOOGLE_APPLICATION_CREDENTIALS=\"google-creds.json\" dev_appserver.py --port=8081 app.yaml",
-    "local-light": "tsc && webpack serve --host=0.0.0.0 --mode=development",
+    "launch-local": "docker-compose -f docker/docker-compose.yml up -d",
+    "launch-local-light": "tsc && webpack serve --host=0.0.0.0 --mode=development",
     "build-tut": "./buildtut.sh",
     "lint": "eslint",
     "lint-all": "eslint --ext .ts,.js src/"
