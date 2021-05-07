@@ -25,7 +25,7 @@ const defaultContent = `>-- Cliceáil "Foghlaim" chun Setanta a fhoghlaim
 >-- nó scríobh do ríomhchlár Setanta anseo
 
 >-- Click "Foghlaim" to learn Setanta
->-- or write your Setanta program here`;
+>-- or write your Setanta program here`
 
 type Entry struct {
 	Content string `datastore:",noindex"`
@@ -75,7 +75,20 @@ func storeHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+		log.Printf("Defaulting to port %s", port)
+	}
+
+	projectID := os.Getenv("GOOGLE_CLOUD_PROJECT")
+	if projectID == "" {
+		projectID = "test-project"
+		log.Printf("Defaulting to project ID %q", projectID)
+	}
+
 	var err error
+
 	client, err = datastore.NewClient(context.Background(), projectID)
 	if err != nil {
 		log.Fatalf("Failed to create datastore client: %v", err)
@@ -83,12 +96,6 @@ func main() {
 
 	http.HandleFunc("/store", storeHandler)
 	http.HandleFunc("/", retrieveHandler)
-
-	port := os.Getenv("PORT")
-	if port == "" {
-		port = "8080"
-		log.Printf("Defaulting to port %s", port)
-	}
 
 	log.Printf("Listening on port %s", port)
 	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", port), nil))

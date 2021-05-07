@@ -8,6 +8,7 @@
     "test": "eslint --ext .ts,.js --max-warnings=0 src/ && cd tut/ && awk -f scripts/test.awk *.md",
     "launch-local": "docker-compose -f docker/docker-compose.yml up -d",
     "launch-local-light": "tsc && webpack serve --host=0.0.0.0 --mode=development",
+    "launch-test-env-gcloud": "docker run --rm -it --volumes-from gcloud-config -v \"$PWD:/app\" -w /app gcr.io/google.com/cloudsdktool/cloud-sdk bash",
     "build-tut": "./buildtut.sh",
     "lint": "eslint",
     "lint-all": "eslint --ext .ts,.js src/"
