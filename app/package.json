@@ -1,14 +1,14 @@
 {
-  "name": "fyp",
-  "description": "Final year project",
+  "name": "try-setanta",
+  "description": "try-setanta.ie AppEngine project",
   "scripts": {
     "setup": "npm install",
     "build": "./buildtut.sh && tsc && webpack",
     "clean": "rm -rf jsbuild dist tutout",
     "test": "eslint --ext .ts,.js --max-warnings=0 src/ && cd tut/ && awk -f scripts/test.awk *.md",
-    "local": "GOOGLE_APPLICATION_CREDENTIALS=\"google-creds.json\" dev_appserver.py --port=8081  app.yaml",
-    "local-light": "tsc && webpack serve --host=0.0.0.0 --mode=development",
-    "diff": "git diff -- . ':(exclude)package-lock.json'",
+    "launch-local": "docker-compose -f docker/docker-compose.yml up -d",
+    "launch-local-light": "tsc && webpack serve --host=0.0.0.0 --mode=development",
+    "launch-test-env-gcloud": "docker run --rm -it --volumes-from gcloud-config -v \"$PWD:/app\" -w /app gcr.io/google.com/cloudsdktool/cloud-sdk bash",
     "build-tut": "./buildtut.sh",
     "lint": "eslint",
     "lint-all": "eslint --ext .ts,.js src/"
