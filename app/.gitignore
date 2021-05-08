@@ -3,6 +3,7 @@
 /templates/index.tmpl
 /testbuild/
 /dist/
+/new_dist/
 /tutout/
 /buildfiles/
 google-creds.json

@@ -4,7 +4,7 @@
   "scripts": {
     "setup": "npm install",
     "build": "./buildtut.sh && tsc && webpack",
-    "new-build": "make all && webpack -c webpack.new-build.config.js",
+    "new-build": "make new_dist",
     "clean": "rm -rf jsbuild dist tutout",
     "test": "eslint --ext .ts,.js --max-warnings=0 src/ && cd tut/ && awk -f scripts/test.awk *.md",
     "launch-local": "docker-compose -f docker/docker-compose.yml up -d",
