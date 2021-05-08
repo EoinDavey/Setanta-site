@@ -1,6 +1,7 @@
 version: "3.9"
 services:
   datastore:
+    container_name: try-setanta_datastore
     expose:
       - 8081
     image: gcr.io/google.com/cloudsdktool/cloud-sdk
@@ -10,6 +11,7 @@ services:
       - 'datastore_data:/var/datastore'
 
   backend:
+    container_name: try-setanta_backend
     build:
       context: '.'
       dockerfile: Dockerfile.backend
@@ -23,9 +25,10 @@ services:
       - '../.:/app'
 
   frontend:
+    container_name: try-setanta_frontend
     build:
       context: '..'
-      dockerfile: docker/Dockerfile.frontend
+      dockerfile: local_dev/Dockerfile.frontend
     image: try-setanta-frontend
     depends_on:
       - backend
