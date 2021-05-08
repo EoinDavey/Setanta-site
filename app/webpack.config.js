@@ -23,10 +23,15 @@ module.exports = {
     },
     plugins: [
         new CopyPlugin({
-            patterns: [{ from: '*.html', to: path.resolve(__dirname, 'buildfiles/webpack/')},
+            patterns: [
+                {
+                    from: '*.html',
+                    context: path.resolve(__dirname, 'src'),
+                    to: path.resolve(__dirname, 'buildfiles/webpack/')
+                },
                 { from: 'node_modules/codemirror/**/*.css', to: path.resolve(__dirname, 'buildfiles/webpack')},
-                { from: "manifest.json", to: path.resolve(__dirname, 'buildfiles/webpack/manifest.json') },
-                { from: "favicon.ico", to: path.resolve(__dirname, 'buildfiles/webpack/favicon.ico') },
+                { from: "assets/manifest.json", to: path.resolve(__dirname, 'buildfiles/webpack/manifest.json') },
+                { from: "assets/favicon.ico", to: path.resolve(__dirname, 'buildfiles/webpack/favicon.ico') },
                 {
                     from: "node_modules/@webcomponents/webcomponentsjs/",
                     to: path.resolve(__dirname, "buildfiles/webpack/node_modules/@webcomponents/webcomponentsjs/")

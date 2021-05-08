@@ -15,7 +15,7 @@ import (
 
 var (
 	qRegexp = regexp.MustCompile(`^/editor/[a-zA-Z0-9-_]+$`)
-	tmplt   = template.Must(template.ParseFiles(`editor.html`))
+	tmplt   = template.Must(template.ParseFiles(`src/editor.html`))
 	client  *datastore.Client
 )
 
