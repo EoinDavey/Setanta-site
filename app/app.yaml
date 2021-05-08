@@ -13,6 +13,6 @@ handlers:
       secure: always
       upload: dist/.*\.(gif|ico|xml|webmanifest|json|png|js|html|css|map|svg)$
 
-    - url: /editor/.*
+    - url: .*
       script: auto
       secure: always
