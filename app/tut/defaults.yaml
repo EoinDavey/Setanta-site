@@ -5,7 +5,7 @@ standalone: true
 include-in-header: ["tut/header.html"]
 
 css:
-    - main.css
+    - ../main.css
 
 table-of-contents: true
 template: "tut/template.html"

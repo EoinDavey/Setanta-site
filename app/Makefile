@@ -11,32 +11,42 @@ clean:
 ## Tutorial generation
 
 TUT_SRC_DIR=tut
-TUT_BUILD_DIR=${BUILD_DIR}/tut
-TUT_SRC_ASSETS_DIR=${TUT_SRC_DIR}/assets
-TUT_BUILD_ASSETS_DIR=${TUT_BUILD_DIR}/assets
+TUT_BUILD_DIR=${BUILD_DIR}/tutbuild
+TUT_OUT_DIR=${BUILD_DIR}/tut
 
-TUT_SRC_MD_FILES=$(wildcard ${TUT_SRC_DIR}/*.md)
-TUT_SRC_CSS_FILES=$(wildcard ${TUT_SRC_DIR}/*.css)
-TUT_SRC_ASSETS=$(wildcard ${TUT_SRC_ASSETS_DIR}/*)
+TUT_SRC_EN_MD=$(wildcard ${TUT_SRC_DIR}/en/*.md)
+TUT_SRC_GA_MD=$(wildcard ${TUT_SRC_DIR}/ga/*.md)
+TUT_SRC_ASSETS=$(shell find ${TUT_SRC_DIR} -name '*.gif' -or -name '*.png')
 
-TUT_BUILD_HTML_TGTS=${TUT_SRC_MD_FILES:${TUT_SRC_DIR}/%.md=${TUT_BUILD_DIR}/%.html} ${TUT_BUILD_DIR}/all-toc.html
-TUT_BUILD_CSS_TGTS=${TUT_SRC_CSS_FILES:${TUT_SRC_DIR}/%=${TUT_BUILD_DIR}/%}
-TUT_BUILD_ASSETS=${TUT_SRC_ASSETS:${TUT_SRC_DIR}/%=${TUT_BUILD_DIR}/%}
-TUT_BUILD_ALL=${TUT_BUILD_HTML_TGTS} ${TUT_BUILD_CSS_TGTS} ${TUT_BUILD_ASSETS}
+TUT_TEMPLATE_SRC_FILES=$(wildcard ${TUT_SRC_DIR}/*.html) \
+					   ${TUT_SRC_DIR}/setanta.xml ${TUT_SRC_DIR}/style.theme \
+					   ${TUT_SRC_DIR}/defaults.yaml
 
-tut-all: ${TUT_BUILD_ALL}
+TUT_OUT_FILES=${TUT_SRC_ASSETS:${TUT_SRC_DIR}/%=${TUT_OUT_DIR}/%} \
+	${TUT_SRC_EN_MD:${TUT_SRC_DIR}/%.md=${TUT_OUT_DIR}/%.html} \
+	${TUT_SRC_GA_MD:${TUT_SRC_DIR}/%.md=${TUT_OUT_DIR}/%.html} \
+	${TUT_OUT_DIR}/main.css
 
-${TUT_BUILD_DIR}/all-toc.html: ${TUT_SRC_MD_FILES} tut/scripts/gen_toc.awk
+tut-all: ${TUT_OUT_FILES}
+
+${TUT_BUILD_DIR}/en/templates/all-toc.html: ${TUT_SRC_EN_MD} tut/scripts/gen_toc.awk
+	@mkdir -p $(@D)
+	awk -f tut/scripts/gen_toc.awk -v START=intro.md ${TUT_SRC_EN_MD} > $@
+
+${TUT_BUILD_DIR}/ga/templates/all-toc.html: ${TUT_SRC_GA_MD} tut/scripts/gen_toc.awk
+	@mkdir -p $(@D)
+	awk -f tut/scripts/gen_toc.awk -v START=reamhra.md ${TUT_SRC_GA_MD} > $@
+
+${TUT_OUT_DIR}/%: ${TUT_SRC_DIR}/%
+	@mkdir -p $(@D)
+	cp $< $@
+
+.SECONDEXPANSION:
+PERCENT := %
+${TUT_OUT_DIR}/%.html: ${TUT_SRC_DIR}/%.md $$(patsubst ${TUT_OUT_DIR}/$${PERCENT}, ${TUT_BUILD_DIR}/$${PERCENT}/templates/all-toc.html, $$(@D)) ${TUT_TEMPLATE_SRC_FILES}
 	@mkdir -p ${@D}
-	awk -f tut/scripts/gen_toc.awk -v START=intro.md $^ > $@
-
-${TUT_BUILD_DIR}/%.html: ${TUT_SRC_DIR}/%.md ${TUT_BUILD_DIR}/all-toc.html tut/scripts/proc.awk ${TUT_SRC_DIR}/defaults.yaml
-	@mkdir -p ${@D}
-	awk -f tut/scripts/proc.awk $< | pandoc -s --defaults ${TUT_SRC_DIR}/defaults.yaml -o $@
-
-${TUT_BUILD_DIR}/%: ${TUT_SRC_DIR}/%
-	@mkdir -p ${@D}
-	cp $^ $@
+	awk -f tut/scripts/proc.awk $< | pandoc -s --defaults ${TUT_SRC_DIR}/defaults.yaml \
+		--data-dir $(patsubst ${TUT_OUT_DIR}/%, ${TUT_BUILD_DIR}/%, ${@D}) -o $@
 
 ## Typescript Compilation
 
@@ -67,7 +77,7 @@ WEBPACK_POLYFILLS=node_modules/@webcomponents/webcomponentsjs/
 
 webpack: ${WEBPACK_BUILD_DIR}
 
-${WEBPACK_BUILD_DIR}: ${TSC_BUILD_DIR} ${TUT_BUILD_ALL} ${WEBPACK_CONFIG} \
+${WEBPACK_BUILD_DIR}: ${TSC_BUILD_DIR} ${TUT_OUT_FILES} ${WEBPACK_CONFIG} \
 		${WEBPACK_HTML_FILES} ${WEBPACK_CODE_MIRROR_CSS} ${WEBPACK_ASSETS} \
 		${WEBPACK_ROOT_ASSETS} ${WEBPACK_POLYFILLS}
 	${WEBPACK} -c ${WEBPACK_CONFIG}
@@ -76,5 +86,5 @@ ${WEBPACK_BUILD_DIR}: ${TSC_BUILD_DIR} ${TUT_BUILD_ALL} ${WEBPACK_CONFIG} \
 ## Final stage
 
 ${DIST_DIR}: ${WEBPACK_BUILD_DIR}
-	rsync -rvh ${WEBPACK_BUILD_DIR}/ ${DIST_DIR}
+	rsync -r ${WEBPACK_BUILD_DIR}/ ${DIST_DIR}
 	@touch $@

@@ -9,7 +9,7 @@ prev-text: Tutorial Introduction
 
 Before we start [[learning|ag foghlaim]] how to write and use *Setanta*, we should ask:
 
-> [[What is programming|Cad é ríomhchlarú]]?
+> [[What is programming|Cad é ríomhchlarúchán]]?
 
 [[Computers|Ríomhairí]] today are very [[smart|cliste]], they can do calculations no human could ever do in their head, and in the [[blink of an eye|i bhfaiteadh na súl]]. However, computers need a lot of [[help|cabhair]], and programming is how we help them.
 

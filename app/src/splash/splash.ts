@@ -200,7 +200,7 @@ class Splash extends LitElement {
 
     private buttons(): TemplateResult {
         return html`<div class="buttons horizontal-wrap">
-    <a class="button" href="/tut/intro.html">
+    <a class="button" href="/tut/en/intro.html">
         <span>Foghlaim Setanta</span>
         <hr/>
         <span class="bearla">Learn Setanta</span>
