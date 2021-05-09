@@ -1,4 +1,4 @@
-import { LitElement, TemplateResult, css, customElement, html } from "lit-element";
+import { LitElement, TemplateResult, css, customElement, html, property } from "lit-element";
 import "@polymer/paper-icon-button/paper-icon-button";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icon/iron-icon";
@@ -19,6 +19,7 @@ interface PaperTabs extends HTMLElement {
 /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 class Tut extends LitElement {
 
+    @property({type: String}) public lang = 'ga';
     static get styles() {
         return css`
 #body-wrap {
@@ -124,13 +125,13 @@ paper-tab {
                 <h1 id="heading">Setanta</h1>
             </a>
             <div id="contents-hdr-wrap">
-                <h2 id="contents-text">Contents</h2>
+                <h2 id="contents-text">${this.lang === 'en' ? 'Contents' : 'Clár'}</h2>
                 <paper-icon-button id="menu-button" icon="icons:menu" @click="${this.toggleToc}">
                 </paper-icon-button>
             </div>
             <paper-tabs id="tabs" selected="0" @iron-select="${this.tabSelect}">
-                <paper-tab><b>This Page</b></paper-tab>
-                <paper-tab><b>All</b></paper-tab>
+                <paper-tab><b>${this.lang === 'en' ? 'This Page' : 'An Leathanach Seo'}</b></paper-tab>
+                <paper-tab><b>${this.lang === 'en' ? 'All' : 'Gach Leathanach'}</b></paper-tab>
             </paper-tabs>
             <div id="toc-wrap">
                 <slot id="tocslot" name="toc">

@@ -34,8 +34,8 @@ $endfor$
 $for(include-before)$
 $include-before$
 $endfor$
-$if(toc)$
-<tut-template>
+<tut-template lang="$lang$">
+    $if(toc)$
     <nav slot="toc" id="$idprefix$TOC" role="doc-toc">
         $if(toc-title)$
         <h2 id="$idprefix$toc-title">$toc-title$</h2>

@@ -19,8 +19,8 @@ TUT_SRC_GA_MD=$(wildcard ${TUT_SRC_DIR}/ga/*.md)
 TUT_SRC_ASSETS=$(shell find ${TUT_SRC_DIR} -name '*.gif' -or -name '*.png')
 
 TUT_TEMPLATE_SRC_FILES=$(wildcard ${TUT_SRC_DIR}/*.html) \
-					   ${TUT_SRC_DIR}/setanta.xml ${TUT_SRC_DIR}/style.theme \
-					   ${TUT_SRC_DIR}/defaults.yaml
+	${TUT_SRC_DIR}/setanta.xml ${TUT_SRC_DIR}/style.theme \
+	${TUT_SRC_DIR}/defaults.yaml
 
 TUT_OUT_FILES=${TUT_SRC_ASSETS:${TUT_SRC_DIR}/%=${TUT_OUT_DIR}/%} \
 	${TUT_SRC_EN_MD:${TUT_SRC_DIR}/%.md=${TUT_OUT_DIR}/%.html} \
@@ -43,10 +43,13 @@ ${TUT_OUT_DIR}/%: ${TUT_SRC_DIR}/%
 
 .SECONDEXPANSION:
 PERCENT := %
-${TUT_OUT_DIR}/%.html: ${TUT_SRC_DIR}/%.md $$(patsubst ${TUT_OUT_DIR}/$${PERCENT}, ${TUT_BUILD_DIR}/$${PERCENT}/templates/all-toc.html, $$(@D)) ${TUT_TEMPLATE_SRC_FILES}
+${TUT_OUT_DIR}/en/%.html: LANG=en
+${TUT_OUT_DIR}/ga/%.html: LANG=ga
+${TUT_OUT_DIR}/%.html: ${TUT_SRC_DIR}/%.md $$(patsubst ${TUT_OUT_DIR}/$${PERCENT}, ${TUT_BUILD_DIR}/$${PERCENT}/templates/all-toc.html, $$(@D)) \
+		${TUT_TEMPLATE_SRC_FILES}
 	@mkdir -p ${@D}
 	awk -f tut/scripts/proc.awk $< | pandoc -s --defaults ${TUT_SRC_DIR}/defaults.yaml \
-		--data-dir $(patsubst ${TUT_OUT_DIR}/%, ${TUT_BUILD_DIR}/%, ${@D}) -o $@
+		--data-dir ${TUT_BUILD_DIR}/${LANG} -V lang=${LANG} -o $@
 
 ## Typescript Compilation
 
