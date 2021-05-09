@@ -3,7 +3,7 @@ DIST_DIR=dist
 
 .PHONY: tsc tut-all all clean webpack
 
-all: tut-all tsc
+all: ${DIST_DIR}
 
 clean:
 	rm -rf ./${BUILD_DIR} ./${DIST_DIR}
