@@ -1,0 +1,23 @@
+name: Run Tests
+
+on: [push, pull_request]
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    defaults:
+       run:
+         working-directory: ./app
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js 12.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+        registry-url: 'https://registry.npmjs.org'
+    - uses: r-lib/actions/setup-pandoc@fa2d6e5dd83d6bcb71dbcdb0f48ea9e59e345fcb
+      with:
+        pandoc-version: '2.9.2.1'
+    - run: npm ci
+    - run: npm run build
+    - run: npm run test
