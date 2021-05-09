@@ -1,12 +1,22 @@
 BUILD_DIR=buildfiles
 DIST_DIR=dist
 
-.PHONY: tsc tut-all all clean webpack
+.PHONY: tsc tut-all all clean webpack test
 
 all: ${DIST_DIR}
 
 clean:
 	rm -rf ./${BUILD_DIR} ./${DIST_DIR}
+
+test:
+	npx eslint --ext .ts,.js --max-warnings=0 src/
+	for lang in en ga; do \
+		( \
+			cd ${TUT_SRC_DIR}/$${lang}/; \
+			awk -f ../scripts/test.awk *.md; \
+		) || exit 1; \
+	done || exit 1;
+
 
 ## Tutorial generation
 
