@@ -55,7 +55,8 @@ ${TUT_OUT_DIR}/%: ${TUT_SRC_DIR}/%
 PERCENT := %
 ${TUT_OUT_DIR}/en/%.html: LANG=en
 ${TUT_OUT_DIR}/ga/%.html: LANG=ga
-${TUT_OUT_DIR}/%.html: ${TUT_SRC_DIR}/%.md $$(patsubst ${TUT_OUT_DIR}/$${PERCENT}, ${TUT_BUILD_DIR}/$${PERCENT}/templates/all-toc.html, $$(@D)) \
+${TUT_OUT_DIR}/%.html: ${TUT_SRC_DIR}/%.md \
+		$$(patsubst ${TUT_OUT_DIR}/$${PERCENT}, ${TUT_BUILD_DIR}/$${PERCENT}/templates/all-toc.html, $$(@D)) \
 		${TUT_TEMPLATE_SRC_FILES}
 	@mkdir -p ${@D}
 	awk -f tut/scripts/proc.awk $< | pandoc -s --defaults ${TUT_SRC_DIR}/defaults.yaml \
