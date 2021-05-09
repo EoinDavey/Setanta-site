@@ -6,10 +6,10 @@
 # For more information, run:
 #   $ gcloud topic gcloudignore
 #
-.gcloudignore
 # If you would like to upload your .git directory, .gitignore file or files
 # from your .gitignore file, remove the corresponding line
 # below:
+.gcloudignore
 .git
 .gitignore
 .eslintignore
@@ -19,12 +19,15 @@
 /tut/
 /demos/
 /node_modules/
-/test/
 /assets/
+/gae-keys.json.enc
+/local_dev
+/Makefile
+/*.json
+/*.js
 
 # Build files
-/tutout/
-/jsbuild/
+/buildfiles/
 
 # Binaries for programs and plugins
 *.exe
