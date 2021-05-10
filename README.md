@@ -1,6 +1,8 @@
 # try-setanta.ie
 
-[![GAE Deploy](https://github.com/EoinDavey/Setanta-site/actions/workflows/deploy.yaml/badge.svg?branch=master)](https://github.com/EoinDavey/Setanta-site/actions/workflows/deploy.yaml)
+Production: [![GAE Deploy](https://github.com/EoinDavey/Setanta-site/actions/workflows/deploy.yaml/badge.svg?branch=master)](https://github.com/EoinDavey/Setanta-site/actions/workflows/deploy.yaml)
+
+Dev: [![GAE Deploy](https://github.com/EoinDavey/Setanta-site/actions/workflows/deploy.yaml/badge.svg?branch=dev)](https://github.com/EoinDavey/Setanta-site/actions/workflows/deploy.yaml)
 
 This is the source code for try-setanta.ie
 
