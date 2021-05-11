@@ -145,7 +145,7 @@ ciorcal@stáitse(100, 100, 50)`;
         const ed = this.getShadowRoot().getElementById("editor");
         if(ed)
             return ed as FYPEditor;
-        throw new Error("Theip air an éagarthóir a fháil");
+        throw new Error("Theip air an eagarthóir a fháil");
     }
 
     get console(): FYPConsole {

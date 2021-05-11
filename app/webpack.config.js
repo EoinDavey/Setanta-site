@@ -17,9 +17,10 @@ module.exports = {
         path: path.resolve(__dirname, 'buildfiles/webpack')
     },
     devServer: {
-        contentBase: './buildfiles/webpack',
+        contentBase: path.resolve(__dirname, 'buildfiles', 'webpack'),
         watchContentBase: true,
-        publicPath: '/'
+        publicPath: '/',
+        writeToDisk: true,
     },
     plugins: [
         new CopyPlugin({

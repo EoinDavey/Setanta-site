@@ -206,7 +206,7 @@ class Splash extends LitElement {
         <span class="bearla">Learn Setanta</span>
     </a>
     <a class="button" href="/editor">
-        <span>Oscail an éagarthóir</span>
+        <span>Oscail an eagarthóir</span>
         <hr/>
         <span class="bearla">Open the editor</span>
     </a>
