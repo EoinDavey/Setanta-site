@@ -80,7 +80,7 @@ ${TSC_BUILD_DIR}: ${TSC_SRC_FILES} ${TSC_CONFIG}
 ## Webpack Compilation
 
 WEBPACK_BUILD_DIR=${BUILD_DIR}/webpack
-WEBPACK=npx webpack
+WEBPACK=npx webpack --mode=production
 
 WEBPACK_CONFIG=webpack.config.js
 WEBPACK_HTML_FILES=$(wildcard src/*.html)
