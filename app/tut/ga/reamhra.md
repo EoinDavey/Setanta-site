@@ -7,7 +7,7 @@ title: Réamhrá Teagaisc
 **_Fáilte go dtí Teagasc Setanta_**.
 
 Tá súil againn go bhfuil tú réidh chun gach rud faoi [[ríomhchlárú|programming]] a fhoghlaim, agus
-conas a oibríonn sé agus an Ghaeilge le chéile.
+conas a oibríonn Gaeilge leis.
 
 Níl ach cúpla rudaí le míniú sula mbeidh tú réidh le tosú.
 
@@ -44,7 +44,7 @@ a scríobh.  Sa ríomhchlár roimhe (`scríobh("Dia duit!")`{.setanta}), d'úsá
 [[gníomh|action]] `scríobh`{.setanta} chun "Dia duit!" a scríobh amach ar an gconsól.
 
 Freisin, is féidir linn an consól a úsáid chun teachtaireachtaí a sheoladh chuig an ríomhchlár. Bain
-triail as an gcéad ríomhchlár eile seo a rith; Ba chóir go scríobhadh sé "Cad is ainm duit?" sa
+triail as an gcéad ríomhchlár eile seo a rith; Ba chóir go scríobhfadh sé "Cad is ainm duit?" sa
 chonsól. Clóscríobh d'ainm isteach sá bosca téacs ag an bun agus brúigh an
 [[eochair iontrála|enter key]].
 
@@ -64,7 +64,7 @@ Brúigh an <iron-icon class="clear" icon="icons:clear"></iron-icon> chun an cons
 Tá dhá táib i ngach eagarthóir, agus is féidir leat athrú eatarthu. Taispeánann ceann amháin an
 consól, agus taispeánann ceann eile an stáitse.
 
-Is féidir linn an stáitse a úsáid le Setanta chun pictiúir nó [[beochaintí |animations]] a tharraingt,
+Is féidir linn an stáitse a úsáid le Setanta chun pictiúir nó [[beochaintí|animations]] a tharraingt,
 agus fiú cluichí a chruthú!
 
 Rith an ríomhchlár a leanas, agus ansin cliceáil ar an táb "Stáitse/Stage" chun an stáitse a
