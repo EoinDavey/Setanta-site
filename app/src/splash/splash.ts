@@ -255,10 +255,10 @@ class Splash extends LitElement {
     private scrollDown() {
         const sr = this.shadowRoot;
         if(sr === null)
-            throw new Error("Theip air shadowRoot a fháil");
+            throw new Error("Fáil shadowRoot teipthe.");
         const main = sr.getElementById("main");
         if(main === null)
-            throw new Error("Theip air main a fháil");
+            throw new Error("Fáil main teipthe.");
         const ht = main.scrollHeight;
         window.scrollTo(0, ht);
     }

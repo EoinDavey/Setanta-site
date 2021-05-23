@@ -159,21 +159,21 @@ paper-tab {
         const tbs = this.getShadowRoot().getElementById("tabs");
         if(tbs)
             return tbs as PaperTabs;
-        throw new Error("Theip air tabs a fháil");
+        throw new Error("Fáil tabs teipthe.");
     }
 
     private get tocslot() {
         const ts = this.getShadowRoot().getElementById("tocslot");
         if(ts)
             return ts;
-        throw new Error("Theip air tocslot a fháil");
+        throw new Error("Fáil tocslot teipthe.");
     }
 
     private get alltoc() {
         const ts = this.getShadowRoot().getElementById("all-toc-slot");
         if(ts)
             return ts;
-        throw new Error("Theip air all-toc-slot a fháil");
+        throw new Error("Fáil all-toc-slot teipthe.");
     }
 
     private tabSelect() {
