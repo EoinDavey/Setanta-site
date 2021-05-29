@@ -206,7 +206,7 @@ class Splash extends LitElement {
         <span class="bearla">Learn Setanta</span>
     </a>
     <a class="button" href="/editor">
-        <span>Oscail an éagarthóir</span>
+        <span>Oscail an eagarthóir</span>
         <hr/>
         <span class="bearla">Open the editor</span>
     </a>
@@ -255,10 +255,10 @@ class Splash extends LitElement {
     private scrollDown() {
         const sr = this.shadowRoot;
         if(sr === null)
-            throw new Error("Theip air shadowRoot a fháil");
+            throw new Error("Fáil shadowRoot teipthe.");
         const main = sr.getElementById("main");
         if(main === null)
-            throw new Error("Theip air main a fháil");
+            throw new Error("Fáil main teipthe.");
         const ht = main.scrollHeight;
         window.scrollTo(0, ht);
     }

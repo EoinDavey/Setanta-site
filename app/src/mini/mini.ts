@@ -138,28 +138,28 @@ ciorcal@stáitse(100, 100, 50)`;
         const st = this.getShadowRoot().getElementById("stage");
         if(st)
             return st as HTMLCanvasElement;
-        throw new Error("Theip air an stáitse a fháil");
+        throw new Error("Fáil stáitse teipthe.");
     }
 
     get editor(): FYPEditor {
         const ed = this.getShadowRoot().getElementById("editor");
         if(ed)
             return ed as FYPEditor;
-        throw new Error("Theip air an éagarthóir a fháil");
+        throw new Error("Fáil eagarthóir teipthe.");
     }
 
     get console(): FYPConsole {
         const co = this.getShadowRoot().getElementById("console");
         if(co)
             return co as FYPConsole;
-        throw new Error("Theip air an consól a fháil");
+        throw new Error("Fáil consól teipthe.");
     }
 
     get tabs(): PaperTabs {
         const tbs = this.getShadowRoot().getElementById("tabs");
         if(tbs)
             return tbs as PaperTabs;
-        throw new Error("Theip air tabs a fháil");
+        throw new Error("Fáil tabs teipthe.");
     }
 
     public firstUpdated() {

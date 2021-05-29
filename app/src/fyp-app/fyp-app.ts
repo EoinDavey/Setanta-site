@@ -136,21 +136,21 @@ class FypApp extends RuntimeComponent {
         const st = this.getShadowRoot().getElementById("stage");
         if(st)
             return st as HTMLCanvasElement;
-        throw new Error("Theip air an stáitse a fháil");
+        throw new Error("Fáil stáitse teipithe.");
     }
 
     get editor(): FYPEditor {
         const ed = this.getShadowRoot().getElementById("editor");
         if(ed)
             return ed as FYPEditor;
-        throw new Error("Theip air an éagarthóir a fháil");
+        throw new Error("Fáil eagarthóir teipthe.");
     }
 
     get console(): FYPConsole {
         const co = this.getShadowRoot().getElementById("console");
         if(co)
             return co as FYPConsole;
-        throw new Error("Theip air an consól a fháil");
+        throw new Error("Fáil consól teipthe.");
     }
 
     @property({type: String}) public title = "Setanta";
@@ -235,7 +235,7 @@ class FypApp extends RuntimeComponent {
         }
         const target = this.getShadowRoot().getElementById("stage-card");
         if(target === null)
-            throw new Error("Theip air an stáitse a fháil");
+            throw new Error("Fáil stáitse teipthe.");
         if(target.requestFullscreen) {
             await target.requestFullscreen();
         } else if(target.webkitRequestFullscreen) {
