@@ -73,7 +73,7 @@ export class ExecCtx {
         if (res.errs.length > 0)
             return res.errs;
         if (res.ast === null)
-            return Promise.reject(new Error("Unknown parser error: serious failure"));
+            return Promise.reject(new Error("Theip ar an bparsálaí: Earráid anaithnid"));
         const ast = res.ast;
         const i = new Interpreter(builtins);
         this.interpreter = i;

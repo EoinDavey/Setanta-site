@@ -136,7 +136,7 @@ class FypApp extends RuntimeComponent {
         const st = this.getShadowRoot().getElementById("stage");
         if(st)
             return st as HTMLCanvasElement;
-        throw new Error("Fáil stáitse teipithe.");
+        throw new Error("Fáil stáitse teipthe.");
     }
 
     get editor(): FYPEditor {

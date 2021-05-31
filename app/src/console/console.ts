@@ -83,7 +83,7 @@ p {
 
     private getShadowRoot() {
         if(this.shadowRoot === null)
-            throw new Error("Failed to access shadowRoot");
+            throw new Error("Fáil shadowRoot teipthe.");
         return this.shadowRoot;
     }
 
@@ -109,7 +109,7 @@ p {
     public scrollDown(): void {
         const list = this.getShadowRoot().getElementById("list");
         if(list === null)
-            throw new Error("Failed to scroll down");
+            throw new Error("Theip ar an gconsól scrollú síos");
         list.scrollTop = list.scrollHeight;
     }
 
