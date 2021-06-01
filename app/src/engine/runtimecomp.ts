@@ -50,7 +50,7 @@ export abstract class RuntimeComponent extends LitElement {
         this.clearMarks();
         const ctx = this.stage.getContext("2d");
         if (ctx === null) {
-            throw new Error("Ní féidir linn an stáitse a thosnú, bain triail as brabhsálí eile");
+            throw new Error("Ní féidir linn an stáitse a thosnú, bain triail as brabhsálaí eile");
         }
         ctx.lineWidth = 10;  // Start with line width 10
 
