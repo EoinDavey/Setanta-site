@@ -1,5 +1,7 @@
 ---
 title: Réamhrá Teagaisc
+next: cad-e-riomhchlaru
+next-text: Cad é Ríomhchlarú?
 ---
 
 # Fáilte!
