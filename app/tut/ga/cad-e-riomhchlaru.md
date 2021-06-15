@@ -122,3 +122,32 @@ Bain triail as:
 {{{
 scríobh("Dia" + " Duit")
 }}}
+
+## Tráchtanna
+
+Uaireanta ba mhaith linn rudaí a scríobh inár ríomhchláir nach mhaith linn go ndéanfaidh an
+ríomhaire iarracht iad a thuiscint. Go minic is nótaí beaga iad, nó mínithe ar cad a
+dhéanann rud éigin.
+
+Ar an dea-uair, is féidir linn é seo a dhéanamh. Dá scríobhfadh muid `>--`{.setanta} in aon áit sa
+ríomhchlár, thabharfadh an ríomhaire neamhaird ar aon rud a scríobhfadh muid ina dhiaidh ar an líne
+céanna.
+Tugaimid "tráchtanna" ar na píosa cód sin. Seo sampla:
+
+{{{
+scríobh("Scríobh mé")
+>-- Tabharfaidh an ríomhaire neamhaird ar seo :o
+}}}
+
+Ní thugann an ríomhaire aird ach ar an gcéad líne. Tugann sé neamhaird ar an dara cheann mar
+tosaíonn sé le `>--`{.setanta}.
+
+De ghnáth, téann tráchtanna go dtí deireadh an líne, ach is féidir linn trácht a chríochnaigh go
+luath. Caithfidh muid `--<`{.setanta} a chur isteach san áit ar mhaith linn deireadh a chur leis an
+trácht.
+
+Tugaimid "tráchtanna inlíne" ar na trácht sin.
+
+```{.setanta .numberLines}
+scríobh(1 + >-- Trácht inlíne --< 2)
+```

@@ -100,7 +100,7 @@ scríobh("Dia" + " Duit")
 ## Comments
 
 [[Sometimes|Uaireanta]] we want to write things in our programs that we don't want the computer to try and understand.
-Often these are just little [[notes|notaí]] to ourselves, or [[explanations|mínithe]] of what something does.
+Often these are just little [[notes|nótaí]] to ourselves, or [[explanations|mínithe]] of what something does.
 
 [[Luckily|Ar an dea-uair]] there's a way to do this. If we write "`>--`{.setanta}" anywhere in the program, anything we write after it on the same line will be ignored by the computer. We call these entries [[comments|tráchtanna]]. Here's an example:
 
