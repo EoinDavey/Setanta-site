@@ -6,7 +6,7 @@ prev-text: Réamhrá Teagaisc
 
 # Is é Ríomhchlárú ná...
 
-Sula dtosóimid ag foghlaim conas Setanta a scríobh agus a úsáid, ba chóir dúinn an ceist seo a chur:
+Sula dtosóimid ag foghlaim conas *Setanta* a scríobh agus a úsáid, ba chóir dúinn an ceist seo a chur:
 
 > Cad é ríomhchlárú?
 
@@ -44,7 +44,7 @@ Chun tosú ar ríomhchlárú agus *Setanta*, féachaimis anois ar roinnt treorac
 
 ## Scríobh
 
-Tá gníomh ag Setanta ar a dtugtar `scríobh`{.setanta}. Is féidir linn `scríobh`{.setanta} a úsáid
+Tá gníomh ag *Setanta* ar a dtugtar `scríobh`{.setanta}. Is féidir linn `scríobh`{.setanta} a úsáid
 chun téacs a scríobh ar an gconsól. Bainimid úsáid as an gníomh `scríobh`{.setanta} mar seo:
 
 ```setanta
@@ -65,8 +65,8 @@ iarracht an cód a athrú chun d'ainm a scríobh! Seo GIF gearr mar shampla:
 
 ### Ní féidir liom "í" a scríobh!
 
-Tuigeann _Setanta_ go mb'fhéidir nach féidir leat síntí fada (áéíóú) a scríobh, mar sin oibríonn
-gach gníomh a thagann le _Setanta_ i gceart gan na síntí fada.
+Tuigeann *Setanta* go mb'fhéidir nach féidir leat síntí fada (áéíóú) a scríobh, mar sin oibríonn
+gach gníomh a thagann le *Setanta* i gceart gan na síntí fada.
 
 Bain triail as `scriobh`{.setanta} (gan fada) a chuir in ionad `scríobh`{.setanta} sá cód thuas agus
 feicfidh tú go n-oibríonn sé fós.
@@ -85,3 +85,40 @@ Is é an dara rogha ná comharthaí singile athfhriotail a úsáid chun do théa
 ```{.setanta .numberLines}
 'Tá "comharthaí dúbailte athfhriotail" sa téacs seo'
 ```
+
+## Áirimh
+
+Chonaiceamar gur féidir le *Setanta* téacs a scríobh, ach is féidir leis a lán níos mó ná sin amháin
+a dhéanamh. Mar shampla: Is féidir le *Setanta* áirimh a dhéanamh duit! Rith an cód seo a leanas
+agus feicfidh tú go ndéanann *Setanta* an áireamh ar fad. Scríobhfaidh *Setanta* freagra
+`28 + 36 * 2`{.setanta} ar an gconsól.
+
+{{{
+scríobh("Freagra:", 28 + 36 * 2)
+}}}
+
+Is féidir leat luachanna na n-uimhreacha a athrú nó níos mó a chur isteach. Bain triail as slonn
+mata eile a chur isteach in ionad `28 + 36 * 2`{.setanta}. Is féidir leat gach siombail atá a fhios
+agat cheana a úsáid. Mar shampla:
+
+> `+` le haghaidh suimiú, `-` le haghaidh dealú, `*` le haghaidh iolrú agus `/` le haghaidh roinnt.
+
+Is féidir leat lúibíní a úsáid chun sloinn casta a chruthú. Déan iarracht freagraí na sloinn seo a
+scríobh ar an gconsól le `scríobh`{.setanta} san eagarthóir thuas:
+
+```setanta
+1 + 2 * (3 - 4) / 5
+1 + 2 - (3 + (4 - 5))
+```
+
+Chomh maith, is féidir leat uimhreacha le pointe deachúlach a úsáid. Mar shampla `1.2`{.setanta} nó
+`123.4`{.setanta}.
+
+## Ag cur téacs le chéile.
+
+Is féidir linn an oibritheoir `+` a úsáid le téacs freisin chun dhá phíosa téacs a chur le chéile.
+Bain triail as:
+
+{{{
+scríobh("Dia" + " Duit")
+}}}
