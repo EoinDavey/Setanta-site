@@ -119,7 +119,7 @@ scríobh(1 + >-- Inline comment --< 2)
 
 # Combo Time
 
-When the computer is following the instructions in our *Setanta* program. It starts at the top and works its way down the list. This means if we want to do one instruction after the other, all we have to do is put it on the next line. Check out this code:
+When the computer is following the instructions in our *Setanta* program it starts at the top and works its way down the list. This means if we want to do one instruction after the other, all we have to do is put it on the next line. Check out this code:
 
 {{{
 scríobh("Before sleeping")
