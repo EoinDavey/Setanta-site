@@ -214,4 +214,62 @@ scríobh(bia)
 
 ## Ag uasdátaigh athróga
 
-Nuair a chruthaíonn tú athróg, níl an luach san athróg socraithe go deo.
+Nuair a chruthaíonn tú athróg, níl an luach san athróg socraithe go deo. Is féidir leat luach na
+hathróige a athrú in áit ar bith i do ríomhchlár. Chun luach na hathróige a athrú, bainimid úsáid as sín
+chothroime (`=`). Tá an siombail seo difriúil leis an siombail `:=` a úsáidtear chun athróg nua a
+chruthú.
+
+Bain triail as an ríomhchlár seo:
+
+{{{
+>-- Cruthaigh athróg nua "ainm" leis an luach "Setanta"
+ainm := "Setanta"
+scríobh(ainm)
+>-- Athraigh luach "ainm" go "Cú Chulainn"
+ainm = "Cú Chulainn"
+scríobh(ainm)
+}}}
+
+Tabhair faoi deara nuair an chead uair a scríobhamar `ainm` scríobhadh `"Setanta"`{.setanta}, ach an
+dara uair a scríobhamar `ainm`, scríobhadh `"Cú Chulainn"`{.setanta}. Athraíodh an téacs mar
+d'athraíomar luach na hathróige.
+
+Nuair a ritheann an ríomhaire ráiteas uasdátaigh athróige mar seo, ríomhann sé an slonn tar éis an
+sín chothroime ar dtús sula athraíonn sé luach na hathróige. Da bhrí sin, is féidir linn luach
+reatha na hathróige a úsáid chun an luach nua a ríomh. Féach anois ar an cód seo:
+
+{{{
+x := 2
+x = x + 10
+scríobh(x)
+}}}
+
+Nuair a rithimid an cód sin, scríobhann sé `12`{.setanta} ar an gconsól. Cén fáth?
+
+### Míniú
+
+1. Cruthaíonn an chéad líne athróg nua `x` leis an luach `2`{.setanta}.
+2. Ar an dara líne, tosaíonn an ríomhaire ag athrú luach `x`. Chun an luach nua a fháil, ríomhann sé
+   luach an tsloinn `x + 10`{.setanta}. Is é `12`{.setanta} freagra an áireamh sin mar is é
+   `2`{.setanta} luach `x` faoi láthair.
+3. Ansin, athraíonn an ríomhaire luach `x` go `12`{.setanta}.
+4. Ar an tríú líne, scríobhann an ríomhaire luach `x` ar an gconsól, agus anois is é `12`{.setanta}
+   luach `x`.
+
+
+## Dúshlán
+
+Athraigh an cód sa ríomhchlár seo go scríobhann sé `"bainne"`{.setanta} ar an gconsól:
+
+{{{
+bia := "sceallóga"
+scríobh(bia)
+}}}
+
+[[Cliceáil anseo le haghaidh an freagra|Athraigh an céad líne go bia := &quot;bainne&quot;]]
+
+# Cad a dhéanfaimid anois?
+
+Chonaiceamar roinnt treoracha simplí chun an consól a úsáid, tuigimid anois conas treoir éigin a
+dhéanamh tar éis treoir eile agus d'fhoghlaimíomar conas athróga a úsáid chun luachanna a
+chuimhnigh. Anois is féidir linn ár scileanna nua a thógáil go dtí an stáitse!
