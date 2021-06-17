@@ -6,23 +6,24 @@ prev-text: Réamhrá Teagaisc
 
 # Is é Ríomhchlárú ná...
 
-Sula dtosóimid ag foghlaim conas *Setanta* a scríobh agus a úsáid, ba chóir dúinn an ceist seo a chur:
+Sula dtosóimid ag foghlaim conas *Setanta* a scríobh agus a úsáid, ba chóir dúinn smaoineamh faoin
+ceist seo.
 
-> Cad é ríomhchlárú?
+> **Cad é ríomhchlárú?**
 
 Inniu tá ríomhairí an chliste, is féidir leo áirimh a dhéanamh i bhfaiteadh na súl nach féidir le
 aon duine a dhéanamh ina cheann. Áfach, tá a lán cabhair ag teastáil ó ríomhairí agus is féidir linn
 iad a chabhrú le ríomhchlárú.
 
-Nuair a scríobhaimid ríomhchláir, scríobhaimid treoracha chun an ríomhaire a leanúint. Léifidh an
+Nuair a scríobhaimid ríomhchláir, scríobhaimid treoracha don ríomhaire le leanúint. Léifidh an
 ríomhaire ár dtreoracha agus leanfaidh sé iad go díreach.
 
 ## Cad é teanga ríomhchlárúcháin?
 
-Is é teanga ríomhchlárúcháin ná teanga speisialta a thuigeann ríomhairí. Bainimid úsáid as chun ár
+Is teanga speisialta a thuigeann ríomhairí é teanga ríomhchlárúcháin. Bainimid úsáid as chun ár
 dtreoracha a scríobh.
 
-Deartar teangacha ríomhchlárúcháin ionas gur féidir le daoine iad a thuiscint, chomh maith le
+Deartar roinnt teangacha ríomhchlárúcháin ionas gur féidir le daoine iad a thuiscint chomh maith le
 ríomhairí. Is é *Setanta* ceann de na teangacha sin, ach tá sé beagáinín difriúil.
 
 Deartar beagnach gach teanga ríomhchlárúcháin chun a bheith cosúil le Béarla, ach tá *Setanta*
@@ -32,7 +33,7 @@ dtreoracha as Gaeilge.
 ## Comhréir
 
 Is ainm galánta é "Comhréir" ar na rialacha a shainíonn cad é ríomhchlár bailí. Tá comhréir ag
-teangacha labhartha freisin, leithéidí Gaeilge agus Béarla. Mar shampla, caithfidh gach ceist
+teangacha labhartha freisin ach glaoimid "gramadach" air. Mar shampla, caithfidh gach ceist
 Gaeilge críochnaigh le comhartha ceiste.
 
 Tá rialacha cosúil le sin ag teangacha ríomhchlárúcháin freisin. Shainíonn siad an caoi a scríobhann
@@ -51,8 +52,8 @@ chun téacs a scríobh ar an gconsól. Bainimid úsáid as an gníomh `scríobh`
 scríobh("Do théacs anseo")
 ```
 
-Is féidir leat aon téacs is mian leat idir na comharthaí dúbailte athfhriotail (") agus scríobhfaidh
-`scríobh`{.setanta} é amach ar an gconsól. Bain triail as anseo:
+Is féidir leat aon téacs is mian leat a chuir idir na comharthaí dúbailte athfhriotail (") agus
+scríobhfaidh `scríobh`{.setanta} é amach ar an gconsól. Bain triail as anseo:
 
 {{{
 scríobh("Cuir do théacs anseo")
@@ -65,7 +66,7 @@ iarracht an cód a athrú chun d'ainm a scríobh! Seo GIF gearr mar shampla:
 
 ### Ní féidir liom "í" a scríobh!
 
-Tuigeann *Setanta* go mb'fhéidir nach féidir leat síntí fada (áéíóú) a scríobh, mar sin oibríonn
+Tuigeann *Setanta* go mb'fhéidir nach féidir leat síntí fada (áéíóú) a chlóscríobh, mar sin oibríonn
 gach gníomh a thagann le *Setanta* i gceart gan na síntí fada.
 
 Bain triail as `scriobh`{.setanta} (gan fada) a chuir in ionad `scríobh`{.setanta} sá cód thuas agus
@@ -146,7 +147,7 @@ De ghnáth, téann tráchtanna go dtí deireadh an líne, ach is féidir linn tr
 luath. Caithfidh muid `--<`{.setanta} a chur isteach san áit ar mhaith linn deireadh a chur leis an
 trácht.
 
-Tugaimid "tráchtanna inlíne" ar na trácht sin.
+Tugaimid "tráchtanna inlíne" ar na tráchtanna sin.
 
 ```{.setanta .numberLines}
 scríobh(1 + >-- Trácht inlíne --< 2)
@@ -154,8 +155,8 @@ scríobh(1 + >-- Trácht inlíne --< 2)
 
 # Ag Meascadh
 
-Nuair atá an an ríomhaire ag leanadh na treoracha i ríomhchlár Setanta tosaíonn sé ag an mbarr, agus
-ansin leanann sé ag dul síos an liosta. Mar sin, más mian linn treoir a dhéanamh tar éis treoir
+Nuair atá an an ríomhaire ag leanadh na treoracha i ríomhchlár *Setanta* tosaíonn sé ag an mbarr,
+agus ansin leanann sé ag dul síos an liosta. Mar sin, más mian linn treoir a dhéanamh tar éis treoir
 eile, níl le déanamh againn ach é a scríobh ar an céad líne eile. Féach anois ar an cód seo:
 
 {{{
@@ -186,7 +187,7 @@ Seo iad ná céimeanna a leanann an ríomhaire:
 
 Is ceann de na cumas is tábhachtaí atá ag ríomhairí ná cuimhne. Nuair a scríobhaimid ríomhchlár is
 féidir linn iarr ar an ríomhaire luachanna áirithe a chuimhnigh. Níos déanaí sa ríomhchlár is féidir
-linn iarr ar an ríomhaire chun chuimhnigh ar iad.
+linn iarr ar an ríomhaire chun iad a chuimhnigh ar.
 
 Chun é sin a dhéanamh, bainimid úsáid as *athróga*.
 
@@ -212,12 +213,18 @@ bia := "sceallóga"
 scríobh(bia)
 }}}
 
+### Míniú
+
+1. Cruthaíonn an céad líne an athróg `bia`, leis an luach `"sceallóga"`{.setanta}.
+2. Ar an dara líne, chuimhníonn an ríomhaire go bhfuil `"sceallóga"`{.setanta} stóráilte san athróg
+   `bia`, agus baineann sé úsáid as an luach sin chun "sceallóga" a scríobh ar an gconsól.
+
 ## Ag uasdátaigh athróga
 
 Nuair a chruthaíonn tú athróg, níl an luach san athróg socraithe go deo. Is féidir leat luach na
-hathróige a athrú in áit ar bith i do ríomhchlár. Chun luach na hathróige a athrú, bainimid úsáid as sín
-chothroime (`=`). Tá an siombail seo difriúil leis an siombail `:=` a úsáidtear chun athróg nua a
-chruthú.
+hathróige a athrú in áit ar bith i do ríomhchlár. Chun luach na hathróige a athrú, bainimid úsáid as
+sín chothroime (`=`). Tá an siombail seo difriúil leis an siombail `:=` a úsáidtear chun athróg nua
+a chruthú.
 
 Bain triail as an ríomhchlár seo:
 
@@ -235,7 +242,7 @@ dara uair a scríobhamar `ainm`, scríobhadh `"Cú Chulainn"`{.setanta}. Athraí
 d'athraíomar luach na hathróige.
 
 Nuair a ritheann an ríomhaire ráiteas uasdátaigh athróige mar seo, ríomhann sé an slonn tar éis an
-sín chothroime ar dtús sula athraíonn sé luach na hathróige. Da bhrí sin, is féidir linn luach
+sín chothroime ar dtús sula athraíonn sé luach na hathróige. De bhrí sin, is féidir linn luach
 reatha na hathróige a úsáid chun an luach nua a ríomh. Féach anois ar an cód seo:
 
 {{{

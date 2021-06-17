@@ -161,6 +161,12 @@ bia := "sceallóga"
 scríobh(bia)
 }}}
 
+### Explanation
+
+1. The first line creates a new variables `bia`, with the value `"sceallóga"`{.setanta}.
+2. On the second line, the computer remembers that `"sceallóga"` is stored in the variable `bia`,
+   and it uses that value to write "sceallóga" on the console.
+
 ## Updating variables
 
 When you make a variable, it's value is not fixed forever. You can change the value of the variable throughout your program. When we want to change the value of a variable we use a single equals sign (`=`). This is different from the `:=` symbol used to make a new variable.
