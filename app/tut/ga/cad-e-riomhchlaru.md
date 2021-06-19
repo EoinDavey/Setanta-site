@@ -11,20 +11,21 @@ ceist seo.
 
 > **Cad é ríomhchlárú?**
 
-Inniu tá ríomhairí an chliste, is féidir leo áirimh a dhéanamh i bhfaiteadh na súl nach féidir le
-aon duine a dhéanamh ina cheann. Áfach, tá a lán cabhair ag teastáil ó ríomhairí agus is féidir linn
-iad a chabhrú le ríomhchlárú.
+Inniu tá ríomhairí sár-chliste, is féidir leo [[áirimh|calculations]] a dhéanamh i bhfaiteadh na súl
+nach féidir le aon duine a dhéanamh ina cheann. Bíodh sin mar atá, tá a lán cabhair ag teastáil ó
+ríomhairí agus is féidir linn iad a chabhrú le ríomhchlárú.
 
-Nuair a scríobhaimid ríomhchláir, scríobhaimid treoracha don ríomhaire le leanúint. Léifidh an
-ríomhaire ár dtreoracha agus leanfaidh sé iad go díreach.
+Nuair a scríobhaimid ríomhchláir, scríobhaimid [[treoracha|instructions]] don ríomhaire le leanúint.
+Léifidh an ríomhaire ár dtreoracha agus leanfaidh sé iad go díreach.
 
 ## Cad é teanga ríomhchlárúcháin?
 
 Is teanga speisialta a thuigeann ríomhairí é teanga ríomhchlárúcháin. Bainimid úsáid as chun ár
 dtreoracha a scríobh.
 
-Deartar roinnt teangacha ríomhchlárúcháin ionas gur féidir le daoine iad a thuiscint chomh maith le
-ríomhairí. Is é *Setanta* ceann de na teangacha sin, ach tá sé beagáinín difriúil.
+[[Deartar roinnt teangacha ríomhchlárúcháin|Some programming languages are designed]] ionas gur
+féidir le daoine iad a thuiscint chomh maith le ríomhairí. Tá *Setanta* ceann de na teangacha sin,
+ach tá sé beagáinín difriúil.
 
 Deartar beagnach gach teanga ríomhchlárúcháin chun a bheith cosúil le Béarla, ach tá *Setanta*
 difriúil. Nuair a scríobhaimid cód *Setanta*, tá sé beagnach cosúil go bhfuilimid ag scríobh na
@@ -32,12 +33,12 @@ dtreoracha as Gaeilge.
 
 ## Comhréir
 
-Is ainm galánta é "Comhréir" ar na rialacha a shainíonn cad é ríomhchlár bailí. Tá comhréir ag
-teangacha labhartha freisin ach glaoimid "gramadach" air. Mar shampla, caithfidh gach ceist
-Gaeilge críochnaigh le comhartha ceiste.
+Is ainm galánta é [["Comhréir"|Syntax]] ar na rialacha a shainíonn cad é ríomhchlár bailí. Tá
+comhréir ag teangacha labhartha freisin ach glaoimid "gramadach" air. Mar shampla, caithfidh gach
+ceist Gaeilge críochnaigh le comhartha ceiste.
 
-Tá rialacha cosúil le sin ag teangacha ríomhchlárúcháin freisin. Shainíonn siad an caoi a scríobhann
-tú ríomhchláir sa teanga.
+Tá rialacha cosúil le sin ag teangacha ríomhchlárúcháin freisin. [[Shainíonn siad|they define]]
+an caoi a scríobhann tú ríomhchláir sa teanga.
 
 # Treoracha simplí
 
@@ -52,8 +53,9 @@ chun téacs a scríobh ar an gconsól. Bainimid úsáid as an gníomh `scríobh`
 scríobh("Do théacs anseo")
 ```
 
-Is féidir leat aon téacs is mian leat a chuir idir na comharthaí dúbailte athfhriotail (") agus
-scríobhfaidh `scríobh`{.setanta} é amach ar an gconsól. Bain triail as anseo:
+Is féidir leat aon téacs is mian leat a chuir idir na
+[[comharthaí dúbailte athfhriotail|double quotes]] (") agus scríobhfaidh `scríobh`{.setanta} é amach
+ar an gconsól. Bain triail as anseo:
 
 {{{
 scríobh("Cuir do théacs anseo")
@@ -74,14 +76,15 @@ feicfidh tú go n-oibríonn sé fós.
 
 ### Cad más mian liom comharthaí dúbailte athfhriotail (") a úsáid i mo théacs?
 
-Tá dhá roghanna agat: Is é an céad rogha ná `\"` a scríobh chun na comharthaí athfhriotail a "éalú",
-mar seo:
+Tá dhá roghanna agat: Is é an céad rogha ná `\"` a scríobh chun na comharthaí athfhriotail a
+[["éalú"|escape]] mar seo:
 
 ```{.setanta .numberLines}
 "Tá \"comharthaí dúbailte athfhriotail\" sa téacs seo"
 ```
 
-Is é an dara rogha ná comharthaí singile athfhriotail a úsáid chun do théacs a shainmhíniú, mar seo:
+Is é an dara rogha ná [[comharthaí singile athfhriotail|single quotes]] a úsáid chun do théacs a
+shainmhíniú, mar seo:
 
 ```{.setanta .numberLines}
 'Tá "comharthaí dúbailte athfhriotail" sa téacs seo'
@@ -90,35 +93,36 @@ Is é an dara rogha ná comharthaí singile athfhriotail a úsáid chun do théa
 ## Áirimh
 
 Chonaiceamar gur féidir le *Setanta* téacs a scríobh, ach is féidir leis a lán níos mó ná sin amháin
-a dhéanamh. Mar shampla: Is féidir le *Setanta* áirimh a dhéanamh duit! Rith an cód seo a leanas
-agus feicfidh tú go ndéanann *Setanta* an áireamh ar fad. Scríobhfaidh *Setanta* freagra
-`28 + 36 * 2`{.setanta} ar an gconsól.
+a dhéanamh. Mar shampla: Is féidir le *Setanta* [[áirimh|calculations]] a dhéanamh duit! Rith an cód
+seo a leanas agus feicfidh tú go ndéanfaidh *Setanta* an áireamh ar fad. Scríobhfaidh *Setanta*
+freagra `28 + 36 * 2`{.setanta} ar an gconsól.
 
 {{{
 scríobh("Freagra:", 28 + 36 * 2)
 }}}
 
-Is féidir leat luachanna na n-uimhreacha a athrú nó níos mó a chur istigh. Bain triail as slonn
-mata eile a chur isteach in ionad `28 + 36 * 2`{.setanta}. Is féidir leat gach siombail atá a fhios
-agat cheana a úsáid. Mar shampla:
+Is féidir leat luachanna na n-uimhreacha a athrú nó níos mó a chur istigh. Bain triail as
+[[slonn|expression]] mata eile a chur isteach in ionad `28 + 36 * 2`{.setanta}. Is féidir leat gach
+siombail atá a fhios agat cheana a úsáid. Mar shampla:
 
-> `+` le haghaidh suimiú, `-` le haghaidh dealú, `*` le haghaidh iolrú agus `/` le haghaidh roinnt.
+> `+` le haghaidh [[suimiú|addition]], `-` le haghaidh [[dealú|subtraction]], `*` le haghaidh
+> [[iolrú|multiplication]] agus `/` le haghaidh [[roinnt|division]].
 
-Is féidir leat lúibíní a úsáid chun sloinn casta a chruthú. Déan iarracht freagraí na sloinn seo a
-scríobh ar an gconsól le `scríobh`{.setanta} san eagarthóir thuas:
+Is féidir leat [[lúibíní|brackets]] a úsáid chun sloinn casta a chruthú. Déan iarracht freagraí na
+sloinn seo a scríobh ar an gconsól le `scríobh`{.setanta} san eagarthóir thuas:
 
 ```setanta
 1 + 2 * (3 - 4) / 5
 1 + 2 - (3 + (4 - 5))
 ```
 
-Chomh maith, is féidir leat uimhreacha le pointe deachúlach a úsáid. Mar shampla `1.2`{.setanta} nó
-`123.4`{.setanta}.
+Chomh maith, is féidir leat uimhreacha le [[pointe deachúlach|decimal point]] a úsáid. Mar shampla
+`1.2`{.setanta} nó `123.4`{.setanta}.
 
 ## Ag cur téacs le chéile.
 
-Is féidir linn an oibritheoir `+` a úsáid le téacs freisin chun dhá phíosa téacs a chur le chéile.
-Bain triail as:
+Is féidir linn an [[oibritheoir|operator]] `+` a úsáid le téacs freisin chun dhá phíosa téacs a chur
+le chéile. Bain triail as:
 
 {{{
 scríobh("Dia" + " Duit")
@@ -131,9 +135,9 @@ ríomhaire iarracht iad a thuiscint. Go minic is nótaí beaga iad, nó mínithe
 dhéanann rud éigin.
 
 Ar an dea-uair, is féidir linn é seo a dhéanamh. Dá scríobhfadh muid `>--`{.setanta} in aon áit sa
-ríomhchlár, thabharfadh an ríomhaire neamhaird ar aon rud a scríobhfadh muid ina dhiaidh ar an líne
-céanna.
-Tugaimid "tráchtanna" ar na píosa cód sin. Seo sampla:
+ríomhchlár, [[thabharfadh an ríomhaire neamhaird|the computer would ignore]] ar aon rud a
+scríobhfadh muid ina dhiaidh ar an líne céanna. Tugaimid [[**"tráchtanna"**|comments]] ar na píosa
+cód sin. Seo sampla:
 
 {{{
 scríobh("Scríobh mé")
@@ -144,10 +148,10 @@ Ní thugann an ríomhaire aird ach ar an gcéad líne. Tugann sé neamhaird ar a
 tosaíonn sé le `>--`{.setanta}.
 
 De ghnáth, téann tráchtanna go dtí deireadh an líne, ach is féidir linn trácht a chríochnaigh go
-luath. Caithfidh muid `--<`{.setanta} a chur isteach san áit ar mhaith linn deireadh a chur leis an
-trácht.
+luath más maith linn. Caithfidh muid `--<`{.setanta} a chur isteach san áit ar mhaith linn deireadh
+a chur leis an trácht.
 
-Tugaimid "tráchtanna inlíne" ar na tráchtanna sin.
+Tugaimid [[**"tráchtanna inlíne"**|inline comments]] ar na tráchtanna sin.
 
 ```{.setanta .numberLines}
 scríobh(1 + >-- Trácht inlíne --< 2)
@@ -156,8 +160,9 @@ scríobh(1 + >-- Trácht inlíne --< 2)
 # Ag Meascadh
 
 Nuair atá an an ríomhaire ag leanadh na treoracha i ríomhchlár *Setanta* tosaíonn sé ag an mbarr,
-agus ansin leanann sé ag dul síos an liosta. Mar sin, más mian linn treoir a dhéanamh tar éis treoir
-eile, níl le déanamh againn ach é a scríobh ar an céad líne eile. Féach anois ar an cód seo:
+agus ansin leanann sé ag dul síos an liosta. Mar gheall ar sin, más mian linn treoir a dhéanamh tar
+éis treoir eile, níl le déanamh againn ach é a scríobh ar an céad líne eile. Féach anois ar an cód
+seo:
 
 {{{
 scríobh("Roimh chodladh")
@@ -167,11 +172,12 @@ scríobh("Tar éis an chodlata")
 
 Má ritheann tú an cód seo, ar dtús scríobhfaidh sé `"Roimh chodladh"`, ansin fanfaidh sé ar feadh 2
 soicind, faoi dheireadh scríobhfaidh sé `"Tar éis an chodlata"`. Déanfaidh an ríomhchlár é sin mar
-d'úsáideamar an gníomh `codladh`{.setanta}. Bainimid úsáid as `codladh`{.setanta} nuair ba mhaith
-linn go codlaíonn an ríomhaire sula leanann sé ar aghaidh go dtí an chéad treoir eile.
+d'úsáideamar an gníomh [[`codladh`{.setanta}|sleep]]. Bainimid úsáid as `codladh`{.setanta} nuair ba
+mhaith linn go codlaíonn an ríomhaire sula leanann sé ar aghaidh go dtí an chéad treoir eile.
 
-Glacann an gníomh `codladh`{.setanta} le méid milleasoicind (2000 sa chás seo), agus nuair a
-sroicheann an ríomhaire an treoir sin, fanfaidh sé ar feadh an méid sin sula leanann sé ar aghaidh.
+Glacann an gníomh `codladh`{.setanta} le méid [[milleasoicind|millisecond]] (2000 sa chás seo), agus
+nuair a sroicheann an ríomhaire an treoir sin, fanfaidh sé ar feadh an méid sin sula leanann sé ar
+aghaidh.
 
 Seo iad ná céimeanna a leanann an ríomhaire:
 
@@ -185,11 +191,11 @@ Seo iad ná céimeanna a leanann an ríomhaire:
 
 # Athróga
 
-Is ceann de na cumas is tábhachtaí atá ag ríomhairí ná cuimhne. Nuair a scríobhaimid ríomhchlár is
-féidir linn iarr ar an ríomhaire luachanna áirithe a chuimhnigh. Níos déanaí sa ríomhchlár is féidir
-linn iarr ar an ríomhaire chun iad a chuimhnigh ar.
+Is ceann de na [[cumas|ability]] is tábhachtaí atá ag ríomhairí ná [[cuimhne|memory]]. Nuair a
+scríobhaimid ríomhchlár is féidir linn [[iarr|ask]] ar an ríomhaire luachanna áirithe a chuimhnigh.
+Níos déanaí sa ríomhchlár is féidir linn iarr ar an ríomhaire chun iad a chuimhnigh ar.
 
-Chun é sin a dhéanamh, bainimid úsáid as *athróga*.
+Chun é sin a dhéanamh, bainimid úsáid as [[**athróga**|variables]].
 
 Tá athróg cosúil le bosca is féidir linn luach a chuir isteach. Tugaimid ainm ar an bosca agus
 úsáidimid an ainm sin chun an luach a úsáid nó athrú inár ríomhchlár.
@@ -221,10 +227,10 @@ scríobh(bia)
 
 ## Ag uasdátaigh athróga
 
-Nuair a chruthaíonn tú athróg, níl an luach san athróg socraithe go deo. Is féidir leat luach na
-hathróige a athrú in áit ar bith i do ríomhchlár. Chun luach na hathróige a athrú, bainimid úsáid as
-sín chothroime (`=`). Tá an siombail seo difriúil leis an siombail `:=` a úsáidtear chun athróg nua
-a chruthú.
+Nuair a chruthaíonn tú athróg, níl an luach san athróg [[socraithe|fixed]] go deo. Is féidir leat
+luach na hathróige a athrú in áit ar bith i do ríomhchlár. Chun luach na hathróige a athrú, bainimid
+úsáid as sín chothroime (`=`). Tá an siombail seo difriúil leis an siombail `:=` a úsáidtear chun
+athróg nua a chruthú.
 
 Bain triail as an ríomhchlár seo:
 
@@ -239,11 +245,12 @@ scríobh(ainm)
 
 Tabhair faoi deara nuair an chead uair a scríobhamar `ainm` scríobhadh `"Setanta"`{.setanta}, ach an
 dara uair a scríobhamar `ainm`, scríobhadh `"Cú Chulainn"`{.setanta}. Athraíodh an téacs mar
-d'athraíomar luach na hathróige.
+d'athraíomar luach na hathróige ar an 5ú líne.
 
-Nuair a ritheann an ríomhaire ráiteas uasdátaigh athróige mar seo, ríomhann sé an slonn tar éis an
-sín chothroime ar dtús sula athraíonn sé luach na hathróige. De bhrí sin, is féidir linn luach
-reatha na hathróige a úsáid chun an luach nua a ríomh. Féach anois ar an cód seo:
+Nuair a ritheann an ríomhaire [[ráiteas uasdátaigh athróige|variable update statement]] mar seo,
+ríomhann sé an slonn tar éis an [[sín chothroime|equals sign]] ar dtús sula athraíonn sé luach na
+hathróige. De bhrí sin, is féidir linn [[luach reatha|current value]] na hathróige a úsáid chun an
+luach nua a ríomh. Féach anois ar an cód seo:
 
 {{{
 x := 2
@@ -258,7 +265,7 @@ Nuair a rithimid an cód sin, scríobhann sé `12`{.setanta} ar an gconsól. Cé
 1. Cruthaíonn an chéad líne athróg nua `x` leis an luach `2`{.setanta}.
 2. Ar an dara líne, tosaíonn an ríomhaire ag athrú luach `x`. Chun an luach nua a fháil, ríomhann sé
    luach an tsloinn `x + 10`{.setanta}. Is é `12`{.setanta} freagra an áireamh sin mar is é
-   `2`{.setanta} luach `x` faoi láthair.
+   `2`{.setanta} luach `x` [[faoi láthair|at the moment]].
 3. Ansin, athraíonn an ríomhaire luach `x` go `12`{.setanta}.
 4. Ar an tríú líne, scríobhann an ríomhaire luach `x` ar an gconsól, agus anois is é `12`{.setanta}
    luach `x`.
@@ -266,7 +273,7 @@ Nuair a rithimid an cód sin, scríobhann sé `12`{.setanta} ar an gconsól. Cé
 
 ## Dúshlán
 
-Athraigh an cód sa ríomhchlár seo go scríobhann sé `"bainne"`{.setanta} ar an gconsól:
+Athraigh an cód sa ríomhchlár seo ionas go scríobhann sé `"bainne"`{.setanta} ar an gconsól:
 
 {{{
 bia := "sceallóga"
