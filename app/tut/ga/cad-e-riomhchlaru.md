@@ -12,11 +12,11 @@ ceist seo.
 > **Cad é ríomhchlárú?**
 
 Inniu tá ríomhairí sár-chliste, is féidir leo [[áirimh|calculations]] a dhéanamh i bhfaiteadh na súl
-nach féidir le aon duine a dhéanamh ina cheann. Bíodh sin mar atá, tá a lán cabhair ag teastáil ó
-ríomhairí agus is féidir linn iad a chabhrú le ríomhchlárú.
+nach féidir le haon duine a dhéanamh ina cheann. Bíodh sin mar atá, bíonn treoir de dhíth ar
+ríomhaire chun áireamh a dhéanamh agus is éard atá i ríomhchlárú ná an treoir sin a thabhairt.
 
-Nuair a scríobhaimid ríomhchláir, scríobhaimid [[treoracha|instructions]] don ríomhaire le leanúint.
-Léifidh an ríomhaire ár dtreoracha agus leanfaidh sé iad go díreach.
+Nuair a scríobhaimid ríomhchláir, scríobhaimid [[treoracha|instructions]] chun go leanfaidh an
+ríomhaire iad. Léifidh an ríomhaire ár dtreoracha agus leanfaidh sé iad go díreach.
 
 ## Cad é teanga ríomhchlárúcháin?
 
@@ -24,11 +24,11 @@ Is teanga speisialta a thuigeann ríomhairí é teanga ríomhchlárúcháin. Bai
 dtreoracha a scríobh.
 
 [[Deartar roinnt teangacha ríomhchlárúcháin|Some programming languages are designed]] ionas gur
-féidir le daoine iad a thuiscint chomh maith le ríomhairí. Tá *Setanta* ceann de na teangacha sin,
+féidir le daoine iad a thuiscint chomh maith le ríomhairí. Is ceann de na teangacha sin é Setanta,
 ach tá sé beagáinín difriúil.
 
 Deartar beagnach gach teanga ríomhchlárúcháin chun a bheith cosúil le Béarla, ach tá *Setanta*
-difriúil. Nuair a scríobhaimid cód *Setanta*, tá sé beagnach cosúil go bhfuilimid ag scríobh na
+difriúil. Nuair a scríobhaimid cód *Setanta*, tá sé beagnach cosúil le bheith ag scríobh na
 dtreoracha as Gaeilge.
 
 ## Comhréir
