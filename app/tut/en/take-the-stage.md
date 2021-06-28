@@ -86,6 +86,9 @@ biggest := uas(3, 2)
 scríobh(biggest)
 }}}
 
+Try out different values, for example what would the code write if you put `uas(100, 200)`{.setanta}
+in instead of `uas(3, 2)`{.setanta}.
+
 *Note that we could also write `scríobh(uas(3, 2))`{.setanta}, using the result of `uas`{.setanta} as the argument for `scríobh`{.setanta} directly*
 
 ### Example from before

@@ -58,3 +58,48 @@ Ní féidir le gach gníomh an oiread argóintí agus is mian linn a ghlacadh. G
 argóint amháin, ní ghlacann sé le aon méid argóinte eile.
 
 Is féidir le roinnt argóintí 0 argóintí a ghlacadh.
+
+## Dúshlán
+
+Anois triailimis ár n-eolas ar gníomhartha!
+
+Seo cód a úsáideann `scríobh`{.setanta} chun "Is aoibhinn liom Setanta!" a scríobh. Athraigh an cód
+ionas go fós scríobhann sé "Is aoibhinn liom Setanta!" ach baineann sé úsáid as ceithre athróg ina
+ionad sin.
+
+{{{
+scríobh("Is aoibhinn liom Setanta!")
+}}}
+
+[[Cliceáil anseo le haghaidh an freagra|scríobh(&quot;Is&quot;, &quot;aoibhinn&quot;, &quot;liom&quot;, &quot;Setanta!&quot;)]]
+
+## Torthaí
+
+Nuair a glaoitear ar roinnt gníomhartha i *Setanta* tugann siad luach éigin ar ais. Tugaimid "toradh
+an ghnímh" ar an luach sin.
+
+Seo sampla beag chun a bheith níos soiléire: Tá gníomh `uas`{.setanta} ag *Setanta*. Is giorrúchán é
+`uas`{.setanta} ar "uasmhéid".
+
+Cad a dhéanann `uas`?. Glacann `uas` le dhá uimhir agus tugann sé ar ais an ceann is mó.
+
+Mar shampla: Is é `3`{.setanta} toradh an tsloinn `uas(3, 2)`{.setanta}.
+
+Is féidir linn toradh ghnímh a chur in athróg, mar seo:
+
+```
+is_mó := uas(3, 2)
+```
+
+Sa chás seo, ba é `3`{.setanta} luach an athróg `is_mó`. Bain triail as:
+
+{{{
+is_mó := uas(3, 2)
+scríobh(is_mó)
+}}}
+
+Bain triail as luachanna difriúil, mar shampla, cad a scríobhfadh an cód dá gcuirfeá
+`uas(100, 200)`{.setanta} in ionad `uas(3, 2)`{.setanta}.
+
+*Tabhair faoi deara go féidir linn `scríobh(uas(3, 2)){.setanta} a scríobh, ag úsáid toradh
+`uas`{.setanta} díreach mar argóint `scríobh`{.setanta}*.
