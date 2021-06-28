@@ -35,9 +35,9 @@ dtreoracha as Gaeilge.
 
 Is ainm galánta é [["Comhréir"|Syntax]] ar na rialacha a shainíonn cad é ríomhchlár bailí. Tá
 comhréir ag teangacha labhartha freisin ach glaoimid "gramadach" air. Mar shampla, caithfidh gach
-ceist Gaeilge críochnaigh le comhartha ceiste.
+ceist Gaeilge críochnú le comhartha ceiste.
 
-Tá rialacha cosúil le sin ag teangacha ríomhchlárúcháin freisin. [[Shainíonn siad|they define]]
+Tá rialacha cosúil le sin ag teangacha ríomhchlárúcháin freisin. [[Sainíonn siad|they define]]
 an caoi a scríobhann tú ríomhchláir sa teanga.
 
 # Treoracha simplí
@@ -101,7 +101,7 @@ freagra `28 + 36 * 2`{.setanta} ar an gconsól.
 scríobh("Freagra:", 28 + 36 * 2)
 }}}
 
-Is féidir leat luachanna na n-uimhreacha a athrú nó níos mó a chur istigh. Bain triail as
+Is féidir leat luachanna na n-uimhreacha a athrú nó níos mó a chur isteach. Bain triail as
 [[slonn|expression]] mata eile a chur isteach in ionad `28 + 36 * 2`{.setanta}. Is féidir leat gach
 siombail atá a fhios agat cheana a úsáid. Mar shampla:
 
@@ -147,7 +147,7 @@ scríobh("Scríobh mé")
 Ní thugann an ríomhaire aird ach ar an gcéad líne. Tugann sé neamhaird ar an dara cheann mar
 tosaíonn sé le `>--`{.setanta}.
 
-De ghnáth, téann tráchtanna go dtí deireadh an líne, ach is féidir linn trácht a chríochnaigh go
+De ghnáth, téann tráchtanna go dtí deireadh an líne, ach is féidir linn trácht a chríochnú go
 luath más maith linn. Caithfidh muid `--<`{.setanta} a chur isteach san áit ar mhaith linn deireadh
 a chur leis an trácht.
 
@@ -173,7 +173,7 @@ scríobh("Tar éis an chodlata")
 Má ritheann tú an cód seo, ar dtús scríobhfaidh sé `"Roimh chodladh"`, ansin fanfaidh sé ar feadh 2
 soicind, faoi dheireadh scríobhfaidh sé `"Tar éis an chodlata"`. Déanfaidh an ríomhchlár é sin mar
 d'úsáideamar an gníomh [[`codladh`{.setanta}|sleep]]. Bainimid úsáid as `codladh`{.setanta} nuair ba
-mhaith linn go codlaíonn an ríomhaire sula leanann sé ar aghaidh go dtí an chéad treoir eile.
+mhaith linn go codlódh an ríomhaire sula leanann sé ar aghaidh go dtí an chéad treoir eile.
 
 Glacann an gníomh `codladh`{.setanta} le méid [[milleasoicind|millisecond]] (2000 sa chás seo), agus
 nuair a sroicheann an ríomhaire an treoir sin, fanfaidh sé ar feadh an méid sin sula leanann sé ar
@@ -184,7 +184,7 @@ Seo iad ná céimeanna a leanann an ríomhaire:
 1. Léigh an céad líne "`scríobh("Roimh chodladh")`{.setanta}" agus scríobh
    `"Roimh chodladh"`{.setanta} ar an gconsól.
 2. Lean ar aghaidh go dtí an dara líne "`codladh(2000)`{.setanta}". Fan anseo ar feadh 2000
-   milleasoicindí (2 soicindí).
+   milleasoicindí (2 soicind).
 3. Léigh an tríú líne "`scríobh("Tar éis an chodlata")`{.setanta}" agus scríobh
    `"Tar éis an chodlata"`{.setanta} ar an gconsól.
 4. Críochnaigh.
@@ -192,12 +192,13 @@ Seo iad ná céimeanna a leanann an ríomhaire:
 # Athróga
 
 Is ceann de na [[cumas|ability]] is tábhachtaí atá ag ríomhairí ná [[cuimhne|memory]]. Nuair a
-scríobhaimid ríomhchlár is féidir linn [[iarr|ask]] ar an ríomhaire luachanna áirithe a chuimhnigh.
-Níos déanaí sa ríomhchlár is féidir linn iarr ar an ríomhaire chun iad a chuimhnigh ar.
+scríobhaimid ríomhchlár is féidir linn [[iarraidh|ask]] ar an ríomhaire cuimhneamh ar luachanna
+áirithe.  Níos déanaí sa ríomhchlár is féidir linn iarraidh ar an ríomhaire úsáid a bhaint as na
+luachanna sa chuimhne.
 
 Chun é sin a dhéanamh, bainimid úsáid as [[**athróga**|variables]].
 
-Tá athróg cosúil le bosca is féidir linn luach a chuir isteach. Tugaimid ainm ar an bosca agus
+Tá athróg cosúil le bosca ar féidir linn luach a chuir isteach ann. Tugaimid ainm ar an bosca agus
 úsáidimid an ainm sin chun an luach a úsáid nó athrú inár ríomhchlár.
 
 ## Ag cruthú athróga
@@ -208,9 +209,9 @@ Chun athróg nua a chruthú bainimid úsáid as an siombail `:=`{.setanta}. Mar 
 bia := "sceallóga"
 ```
 
-Cruthaíonn an cód sin athróg nua "`bia`", agus cuireann sé an luach `"sceallóga"`{.setanta} istigh
-ann. Anois dá ghlaofadh muid `scríobh(bia)`{.setanta}, chuimhneodh an ríomhaire go d'iarramar air
-chun "sceallóga" a stóráil san athróg `bia`, agus scríobhfadh sé "sceallóga" ar an gconsól.
+Cruthaíonn an cód sin athróg nua "`bia`", agus cuireann sé an luach `"sceallóga"`{.setanta}
+ann. Anois dá ghlaofadh muid `scríobh(bia)`{.setanta}, chuimhneodh an ríomhaire gur iarramar air
+"sceallóga" a stóráil san athróg `bia`, agus scríobhfadh sé "sceallóga" ar an gconsól.
 
 Bain triail as anois!
 
@@ -225,7 +226,7 @@ scríobh(bia)
 2. Ar an dara líne, chuimhníonn an ríomhaire go bhfuil `"sceallóga"`{.setanta} stóráilte san athróg
    `bia`, agus baineann sé úsáid as an luach sin chun "sceallóga" a scríobh ar an gconsól.
 
-## Ag uasdátaigh athróga
+## Ag uasdátú athróga
 
 Nuair a chruthaíonn tú athróg, níl an luach san athróg [[socraithe|fixed]] go deo. Is féidir leat
 luach na hathróige a athrú in áit ar bith i do ríomhchlár. Chun luach na hathróige a athrú, bainimid
@@ -247,7 +248,7 @@ Tabhair faoi deara nuair an chead uair a scríobhamar `ainm` scríobhadh `"Setan
 dara uair a scríobhamar `ainm`, scríobhadh `"Cú Chulainn"`{.setanta}. Athraíodh an téacs mar
 d'athraíomar luach na hathróige ar an 5ú líne.
 
-Nuair a ritheann an ríomhaire [[ráiteas uasdátaigh athróige|variable update statement]] mar seo,
+Nuair a ritheann an ríomhaire [[ráiteas uasdátaithe athróige|variable update statement]] mar seo,
 ríomhann sé an slonn tar éis an [[sín chothroime|equals sign]] ar dtús sula athraíonn sé luach na
 hathróige. De bhrí sin, is féidir linn [[luach reatha|current value]] na hathróige a úsáid chun an
 luach nua a ríomh. Féach anois ar an cód seo:
@@ -285,5 +286,5 @@ scríobh(bia)
 # Cad a dhéanfaimid anois?
 
 Chonaiceamar roinnt treoracha simplí chun an consól a úsáid, tuigimid anois conas treoir éigin a
-dhéanamh tar éis treoir eile agus d'fhoghlaimíomar conas athróga a úsáid chun luachanna a
-chuimhnigh. Anois is féidir linn ár scileanna nua a thógáil go dtí an stáitse!
+dhéanamh tar éis treoir eile agus d'fhoghlaimíomar conas athróga a úsáid chun chuimhniú ar luachanna.
+Anois is féidir linn ár scileanna nua a thógáil go dtí an stáitse!
