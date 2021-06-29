@@ -101,5 +101,37 @@ scríobh(is_mó)
 Bain triail as luachanna difriúil, mar shampla, cad a scríobhfadh an cód dá gcuirfeá
 `uas(100, 200)`{.setanta} in ionad `uas(3, 2)`{.setanta}.
 
-*Tabhair faoi deara go féidir linn `scríobh(uas(3, 2)){.setanta} a scríobh, ag úsáid toradh
+*Tabhair faoi deara go féidir linn `scríobh(uas(3, 2))`{.setanta} a scríobh, ag úsáid toradh
 `uas`{.setanta} díreach mar argóint `scríobh`{.setanta}*.
+
+### Sampla
+
+Sa réamhrá, chonaiceamar an cód seo:
+
+```{.setanta .numberLines}
+ainm := ceist("Cad is ainm duit?")
+scríobh("Dia duit", ainm)
+```
+
+Anois is féidir linn a thuiscint cad atá ar siúl.
+
+1. Ar an gcéad líne, úsáidimid an gníomh `ceist`{.setanta} chun "Cad is ainm duit?" a scríobh ar an
+   gconsól.
+2. Scríobhfaidh an úsáideoir a ainm sa chonsól, tabharfaidh `ceist` an ainm ar ais mar toradh agus
+   stórálfar an toradh san athróg `ainm`.
+3. Ansin, úsáidfear an gníomh `scríobh` chun "Dia duit" agus luach an athróg `ainm` a scríobh.
+
+Bain triail as arís!
+
+{{{
+ainm := ceist("Cad is ainm duit?")
+scríobh("Dia duit", ainm)
+}}}
+
+**Déan iarracht an ríomchlár a athrú chun aois an úsáideoir a scríobh freisin.**
+
+# Gníomhartha stáitse
+
+Anois tuigfimid gníomhartha, dá bhrí sin is féidir linn tosú ag úsáid an stáitse faoi dheireadh.
+
+Úsáidimid gníomhartha le haghaidh cruthanna a tharraing agus an stáitse a athrú.
