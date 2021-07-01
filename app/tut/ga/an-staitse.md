@@ -81,13 +81,14 @@ an ghnímh" ar an luach sin.
 Seo sampla beag chun a bheith níos soiléire: Tá gníomh `uas`{.setanta} ag *Setanta*. Is giorrúchán é
 `uas`{.setanta} ar "uasmhéid".
 
-Cad a dhéanann `uas`?. Glacann `uas` le dhá uimhir agus tugann sé ar ais an ceann is mó.
+Cad a dhéanann `uas`{.setanta}?. Glacann `uas`{.setanta} le dhá uimhir agus tugann sé ar ais an
+ceann is mó.
 
 Mar shampla: Is é `3`{.setanta} toradh an tsloinn `uas(3, 2)`{.setanta}.
 
 Is féidir linn toradh ghnímh a chur in athróg, mar seo:
 
-```
+```{.setanta}
 is_mó := uas(3, 2)
 ```
 
@@ -117,9 +118,10 @@ Anois is féidir linn a thuiscint cad atá ar siúl.
 
 1. Ar an gcéad líne, úsáidimid an gníomh `ceist`{.setanta} chun "Cad is ainm duit?" a scríobh ar an
    gconsól.
-2. Scríobhfaidh an úsáideoir a ainm sa chonsól, tabharfaidh `ceist` an ainm ar ais mar toradh agus
-   stórálfar an toradh san athróg `ainm`.
-3. Ansin, úsáidfear an gníomh `scríobh` chun "Dia duit" agus luach an athróg `ainm` a scríobh.
+2. Scríobhfaidh an úsáideoir a ainm sa chonsól, tabharfaidh `ceist`{.setanta} an ainm ar ais mar
+   toradh agus stórálfar an toradh san athróg `ainm`.
+3. Ansin, úsáidfear an gníomh `scríobh`{.setanta} chun "Dia duit" agus luach an athróg `ainm` a
+   scríobh.
 
 Bain triail as arís!
 
@@ -134,4 +136,85 @@ scríobh("Dia duit", ainm)
 
 Anois tuigfimid gníomhartha, dá bhrí sin is féidir linn tosú ag úsáid an stáitse faoi dheireadh.
 
-Úsáidimid gníomhartha le haghaidh cruthanna a tharraing agus an stáitse a athrú.
+Úsáidimid gníomhartha le haghaidh cruthanna a tharraing agus an stáitse a athrú. Tá go leor
+gníomhartha stáitse ann is féidir linn a úsáid.
+
+Ar dtús, féachfaimid ar ár gcéad gníomh stáitse "`ciorcal`{.setanta}". Le `ciorcal` is féidir linn
+ciorcail a tharraing ar an stáitse. Chun an gníomh seo a fháil, is gá dúinn é seo a scríobh:
+
+```{.setanta}
+ciorcal@stáitse
+```
+
+Níos déanaí foghlaimeoimid cad is brí leis `@stáitse`{.setanta}, ach faoi láthair bogaimid ar
+aghaidh.
+
+Bain triail as an cód seo:
+
+{{{s
+ciorcal@stáitse(200, 200, 50)
+}}}
+
+**Tabhair faoi deara anois gur féidir leat na táib a úsáid chun athrú idir an consól agus an
+stáitse**.
+
+Anois ba chóir duit a fheiceáil gur tharraingíodh ciorcal dubh ar an stáitse.
+
+![Ag tarraing ciorcal dubh](../en/assets/circle-black.gif)
+
+Ach cad is brí leis na argóintí "`(200, 200, 50)`{.setanta}"? Caithfimid foghlaim faoi
+comhordanáidí.
+
+## Comhordanáidí
+
+Is péire uimhreach iad comhordanáidí a shonraíonn pointe éigin ar an stáitse. Tá péire uimhreacha ar
+leith ag gach pointe ar an stáitse. Mar shampla, ciallaíonn an péire (0, 0) an cúinne ag barr ar
+chlé.
+
+Ciallaíonn an chéad uimhir cé chomh fada ón taobh clé atá an pointe, agus ciallaíonn an dara uimhir
+cé chomh fada ón bharr atá sé.
+
+Mar shampla: Chun an pointe (10, 20) a shroicheadh, tosaigh sa chúinne ag barr ar chlé, bog 10 aonad
+ar dheis agus 20 aonad síos.
+
+Tugaimid "an x-comhordanáid ar an gcéad uimhir sa phéire, agus tugaimid "an y-comhordanáid" ar an
+dara uimhir.
+
+Nuair a ghlaoimid ar an gníomh `ciorcal`{.setanta}, tugaimid 3 argóint dó. Is é an x-comhordanáid an
+chéad argóint, is é an y-comhordanáid an dara argóint, agus is é an ga an triú argóint.
+
+Anois féachaimis arís ar an slonn `ciorcal@stáitse(200, 200, 50)`{.setanta}. Nuair a ritheamar an
+ráiteas sin bhíomar ag iarraidh ar an ríomhaire ciorcal a tharraing ar an stáitse, leis an lár ag an
+bpointe (200, 200) agus le ga 50.
+
+![Comhordanáidí an chiorcail](../en/assets/circle-coords.png)
+
+Ach cad iad na aonaid seo? Cé chomh fada atá "200 aonad"? Faraor, ní ceist simplí é sin, braitheann
+sé go mór ar mhéid do scáileán. Áfach, is féidir leat leithead an stáitse a fháil le
+`fad_x@stáitse`{.setanta} agus airde an stáitse a fháil le `fad_y@stáitse`{.setanta}.
+
+Mar shampla, scríobhann an ríomhchlár seo leithead agus airde an stáitse, agus scríobhann sé an
+pointe i lár an stáitse. Ansin baineann sé úsáid as an pointe sin chun ciorcal mór a tharraing i lár
+an stáitse.
+
+{{{
+>-- Scríobh sonraí an stáitse ar an gconsól.
+scríobh('Leithead', fad_x@stáitse)
+scríobh('Airde', fad_y@stáitse)
+
+>-- Ríomh an x-comhordanáid sa lár.
+lár_x := fad_x@stáitse / 2
+>-- Ríomh an y-comhordanáid sa lár.
+lár_y := fad_y@stáitse / 2
+
+scríobh('An pointe sa lár:', lár_x, lár_y)
+
+>-- Roghnaímid an fad is lú, agus roinnimid é ar
+>-- 2 chun ga an ciorcal a ríomh.
+ga := íos(fad_x@stáitse, fad_y@stáitse) / 2
+
+>-- Tarraing an ciorcal ar an stáitse.
+ciorcal@stáitse(lár_x, lár_y, ga)
+}}}
+
+![An ciorcal sa lár](assets/ciorcal-sa-lar.gif)

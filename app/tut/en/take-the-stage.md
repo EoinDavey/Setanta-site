@@ -157,9 +157,38 @@ When we call the `ciorcal` action, we pass in three arguments. The first is the 
 
 ![Circle coords](assets/circle-coords.png)
 
+But what are these units? How wide is "200 units"? Unfortunately that's not a simple question, it
+totally depends on the size of your screen. However, you can get the width of the screen with
+`fad_x@stáitse`{.setanta} and the height of the screen with `fad_y@stáitse`{.setanta}.
+
+For example, this program writes the width and height of the stage, and it writes the point in the
+middle of the stage. Then it uses that point to draw a big circle in the middle of the stage.
+
+{{{
+>-- Write the details of the stage.
+scríobh('Width', fad_x@stáitse)
+scríobh('Height', fad_y@stáitse)
+
+>-- Compute the middle x-coordinate.
+mid_x := fad_x@stáitse / 2
+>-- Compute the middle y-coordinate.
+mid_y := fad_y@stáitse / 2
+
+scríobh('The point in the centre:', mid_x, mid_y)
+
+>-- We pick the smallest length, and we divide it by 2
+>-- to get the radius of the circle.
+rad := íos(fad_x@stáitse, fad_y@stáitse) / 2
+
+>-- Draw the circle on the stage.
+ciorcal@stáitse(mid_x, mid_y, rad)
+}}}
+
+![The circle in the middle](assets/circle-in-middle.gif)
+
 ## Colours
 
-What if want to use different [[colours|dathanna]]? Luckily *Setanta* has an action just for that!
+What if want to use different [[colours|dathanna]]? Luckily *Setanta* has an action just for that !
 
 The "[[`dath`|colour]]" action can be used to change the colour of the [[pen|peann]]. As with the `ciorcal` action we call it with `dath@stáitse`{.setanta}. The `dath` action takes 1 argument, the colour you want to change to.
 
