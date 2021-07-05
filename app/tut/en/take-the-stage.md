@@ -188,7 +188,7 @@ ciorcal@stáitse(mid_x, mid_y, rad)
 
 ## Colours
 
-What if want to use different [[colours|dathanna]]? Luckily *Setanta* has an action just for that !
+What if want to use different [[colours|dathanna]]? Luckily *Setanta* has an action just for that!
 
 The "[[`dath`|colour]]" action can be used to change the colour of the [[pen|peann]]. As with the `ciorcal` action we call it with `dath@stáitse`{.setanta}. The `dath` action takes 1 argument, the colour you want to change to.
 

@@ -218,3 +218,34 @@ ciorcal@stáitse(lár_x, lár_y, ga)
 }}}
 
 ![An ciorcal sa lár](assets/ciorcal-sa-lar.gif)
+
+## Dathanna
+
+Cad a dhéanfaimid más maith linn dathanna difriúla a úsáid? Ar an dea-uair tá gníomh ag *Setanta*
+chun é sin a dhéanamh!
+
+Is féidir linn an gníomh `dath` a úsáid chun dath an phinn a athrú. Glaoimid ar `dath` ar an gcaoi
+chéanna a ghlaoimid ar `ciorcal`, scríobhaimid `dath@stáitse`{.setanta}. Glacann an gníomh `dath` le
+argóint amháin, an dath ar mhaith leat dath an phinn a athrú go.
+
+```{.setanta .numberLines}
+dath@stáitse("dearg")
+dath@stáitse("buí")
+```
+
+Anois bainimid úsáid as ár ngníomh nua chun ciorcal glas a tharraing in ionad an ciorcal dubh a
+tharraingíomar níos luaithe:
+
+{{{s
+dath@stáitse("glas")
+ciorcal@stáitse(200, 200, 50)
+}}}
+
+Glacann an gníomh `dath` le dathanna Gaeilge agus Béarla, freisin glacann sé le [cód dathanna
+HTML](https://htmlcolorcodes.com/).
+
+## Gníomhartha eile
+
+Tá liosta mór gníomhartha ag *Setanta* le haghaidh cruthanna eile a tharraingt. Feicfimid ceann acu
+níos déanaí sa theagasc, ach más maith leat an liosta iomlán a fheiceáil anois, tá sé ar fáil as
+Gaeilge [anseo](https://docs.try-setanta.ie/ga-docs/st%C3%A1itse) agus as Béarla [anseo](https://docs.try-setanta.ie/en-docs/stage).
